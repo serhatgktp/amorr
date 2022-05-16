@@ -8,11 +8,11 @@
 
 ----------------------------------
 
-Full name - Mir Safwat Ayser
-UTORID - aysermir
-Student ID - 1006732813
-Email - mirsafwat.ayser@mail.utoronto.ca
-Best way to contact - Email/Discord
+Full name - Mir Safwat Ayser |
+UTORID - aysermir |
+Student ID - 1006732813 | 
+Email - mirsafwat.ayser@mail.utoronto.ca |
+Best way to contact - Email/Discord |
 Discord - nitrogen#3835
 
 ----------------------------------
