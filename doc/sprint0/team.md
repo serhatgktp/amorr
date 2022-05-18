@@ -13,3 +13,5 @@
 ### Theora Gavrila Pui | puitheor | 1006898485 | theora.pui@mail.utoronto.ca | Email/Discord/4168359767 | bol#7932
 
 ### Shannon Budiman | budimans | 1006863770 | shannon.budiman@mail.utoronto.ca | 6478771182 | sexy potato#9517
+
+**Discord Chat/Server Invite : https://discord.gg/RZHx746dxk** 
