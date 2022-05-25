@@ -1,4 +1,4 @@
-# Team Stackato Studios
+# Team Stackato Studio
 
 ### Efkan Serhat Goktepe | goktepee | 1005939166 | serhat.goktepe@mail.utoronto.ca | +1 (437) 220-7404 | Dizzerio#7088
 
