@@ -15,7 +15,7 @@ Amorr provides a convenient way to find and have beauty services provided to peo
 - Connector: Flask (Installaton guide [here for Flask](https://flask.palletsprojects.com/en/2.1.x/installation/) and [here for Python](https://www.python.org/downloads/))
 
 ## Required tools to use Amorr
-To use Amorr, you need is a device with connection to the internet (I AM SUPER UNSURE ABOUT THIS, I WILL BRING IT UP IN THE MEETING)
+To use Amorr, you need is a device with connection to the internet (WAITING FOR PIAZZA POST RESPONSE)
 
 ## Development Team
 Amorr is currently being developed by a Stackato Studio:
