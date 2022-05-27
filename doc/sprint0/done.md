@@ -1,6 +1,6 @@
 # done.md
 
-## What does it mean to be _Done with a User Story_?
+## What does is Our definition to be _Done with a User Story_?
 
 1. Done means that the features being implemented for a particular user story has been developed, tested and satisfies the standards of the group.
 2. To satisfy the standards of the group, the features being implemented needs to be code reviewed and accepted by at least 2 other members.
