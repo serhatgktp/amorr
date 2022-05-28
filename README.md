@@ -18,7 +18,7 @@ Amorr provides a convenient way to find and have beauty services provided to peo
 
 Clone down this repository by running 
 ```sh
-Git Clone URL
+git Clone URL
 ```
 
 Install with Flask pip:
