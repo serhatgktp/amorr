@@ -20,7 +20,7 @@ Clone down this repository by running
 git clone https://github.com/UTSCCSCC01/finalprojects22-stackato-studio.git
 ```
 
-Install Flask with pip:
+Install Flask with pip
 
 ```sh
 pip install Flask
@@ -48,25 +48,25 @@ npm install mysql
 ```
 
 Sometimes it may also ask you to install the latest version from Github to check
-if a bugfix is working. In this case, please do:
+if a bugfix is working. In this case, please do
 
 ```sh
 npm install mysqljs/mysql
 ```
 
-To install all the necessary JavaScript packages for the frontend:
+To install all the necessary JavaScript packages for the frontend
 
 ```sh
 npm install
 ```  
 
-To start the Server:
+To start the Server
 
 ```sh
 npm start
 ```  
 
-To Visit App:
+To Visit App
 
 ```sh
 localhost:3000/amorr
