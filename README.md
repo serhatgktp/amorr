@@ -41,7 +41,7 @@ npm -v
 ```
 
 MySQL Installation is done using the
-[`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
+[`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally)
 
 ```sh
 npm install mysql
