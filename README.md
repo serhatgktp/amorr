@@ -24,12 +24,13 @@ git clone https://github.com/UTSCCSCC01/finalprojects22-stackato-studio.git
 Install with Flask pip:
 
 ```sh
-$ pip install Flask
+pip install Flask
 ```
 
 Then, you will need [`node`](https://nodejs.org/en/) and `npm` installed globally on your machine.  
 
 To install npm, run the following commands
+
 ```sh
 node -v
 ```
@@ -41,14 +42,14 @@ MySQL Installation is done using the
 [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
 
 ```sh
-$ npm install mysql
+npm install mysql
 ```
 
 Sometimes it may also ask you to install the latest version from Github to check
 if a bugfix is working. In this case, please do:
 
 ```sh
-$ npm install mysqljs/mysql
+npm install mysqljs/mysql
 ```
 
 React Installation:
