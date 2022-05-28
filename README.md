@@ -14,8 +14,60 @@ Amorr provides a convenient way to find and have beauty services provided to peo
 - Backend Database: MySQL (Installation guide [here](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/))
 - Connector: Flask (Installaton guide [here for Flask](https://flask.palletsprojects.com/en/2.1.x/installation/) and [here for Python](https://www.python.org/downloads/))
 
-## Required tools to use Amorr
-To use Amorr, you need is a device with connection to the internet (WAITING FOR PIAZZA POST RESPONSE)
+## Guideline to use Amorr
+
+Clone down this repository by running 
+```sh
+Git Clone URL
+```
+
+Install with Flask pip:
+
+```sh
+$ pip install -r requirements.txt
+```
+
+Then, you will need [`node`](https://nodejs.org/en/) and `npm` installed globally on your machine.  
+
+To install npm, run the following commands
+```sh
+node -v
+```
+```sh
+npm -v
+```
+
+Installation:
+
+```sh
+npm install
+```  
+
+MySQL Installation is done using the
+[`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
+
+```sh
+$ npm install mysql
+```
+
+Sometimes it may also ask you to install the latest version from Github to check
+if a bugfix is working. In this case, please do:
+
+```sh
+$ npm install mysqljs/mysql
+```
+
+To Start Server:
+
+```sh
+npm start
+```  
+
+To Visit App:
+
+```sh
+localhost:3000/
+```
 
 ## Development Team
 Amorr is currently being developed by a Stackato Studio:
