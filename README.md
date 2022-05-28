@@ -15,7 +15,6 @@ Amorr provides a convenient way to find and have beauty services provided to peo
 - Connector: Flask (Installaton guide [here for Flask](https://flask.palletsprojects.com/en/2.1.x/installation/) and [here for Python](https://www.python.org/downloads/))
 
 ## Guideline to use Amorr
-
 Clone down this repository by running 
 ```sh
 git clone https://github.com/UTSCCSCC01/finalprojects22-stackato-studio.git
@@ -25,6 +24,9 @@ Install with Flask pip:
 
 ```sh
 pip install Flask
+```
+```sh
+python app.py
 ```
 
 Then, you will need [`node`](https://nodejs.org/en/) and `npm` installed globally on your machine.  
@@ -52,13 +54,13 @@ if a bugfix is working. In this case, please do:
 npm install mysqljs/mysql
 ```
 
-React Installation:
+To install all the necessary JavaScript packages for the frontend:
 
 ```sh
 npm install
 ```  
 
-To Start Server:
+To start the Server:
 
 ```sh
 npm start
@@ -67,7 +69,7 @@ npm start
 To Visit App:
 
 ```sh
-localhost:3000/
+localhost:3000/amorr
 ```
 
 ## Development Team
