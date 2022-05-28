@@ -20,7 +20,7 @@ Clone down this repository by running
 git clone https://github.com/UTSCCSCC01/finalprojects22-stackato-studio.git
 ```
 
-Install with Flask pip:
+Install Flask with pip:
 
 ```sh
 pip install Flask
