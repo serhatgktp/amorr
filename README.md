@@ -18,7 +18,7 @@ Amorr provides a convenient way to find and have beauty services provided to peo
 
 Clone down this repository by running 
 ```sh
-git Clone URL
+git clone https://github.com/UTSCCSCC01/finalprojects22-stackato-studio.git
 ```
 
 Install with Flask pip:
