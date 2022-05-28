@@ -37,12 +37,6 @@ node -v
 npm -v
 ```
 
-Installation:
-
-```sh
-npm install
-```  
-
 MySQL Installation is done using the
 [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
 
@@ -56,6 +50,12 @@ if a bugfix is working. In this case, please do:
 ```sh
 $ npm install mysqljs/mysql
 ```
+
+React Installation:
+
+```sh
+npm install
+```  
 
 To Start Server:
 
