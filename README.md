@@ -24,7 +24,7 @@ git Clone URL
 Install with Flask pip:
 
 ```sh
-$ pip install -r requirements.txt
+$ pip install Flask
 ```
 
 Then, you will need [`node`](https://nodejs.org/en/) and `npm` installed globally on your machine.  
