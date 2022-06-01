@@ -19,6 +19,7 @@ CREATE TABLE `amorr`.`users` (
   `uid` INT NOT NULL,
   `uname` VARCHAR(45) NULL,
   `pwd` VARCHAR(45) NULL,
+  `email` VARCHAR(300) NULL,
   PRIMARY KEY (`uid`));
 
 -- Cleanup
