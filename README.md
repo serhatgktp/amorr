@@ -90,7 +90,7 @@ We follow the git flow with 2 types of branches: the development branch and the 
 
 ## Branch naming convention
 - Development Branches correspond to sprints thus would be named __"development-*sprint#*"__ (example: "development-sprint2")
-- Feature Branches would be named __"feature-*clear and concise feature description*"__ (example: "feature-signup")
+- Feature Branches would be named __"STAC-##-feature-*clear and concise feature description*"__ (example: "STAC-22-feature-signup-page")
 
 ## Measuring Project and Tasks
 - Jira Boards are used to keep track of tasks and overall progress
