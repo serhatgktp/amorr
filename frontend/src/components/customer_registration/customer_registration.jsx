@@ -1,10 +1,15 @@
 import React from 'react';
-
 import useStyles from './styles';
 
-const customer_registration = () => {
+const CustomerRegistration = () => {
 
-  return;
+  const classes = useStyles();
+
+  return(
+    <body className={classes.body}>
+      <span>Hello Senon</span>
+    </body>
+  );
 };
 
-export default customer_registration;
+export default CustomerRegistration;
