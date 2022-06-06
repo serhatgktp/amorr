@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <h2> AMORR Login </h2>
+
+        <form method="post"> 
+            <label for="uname">User Name:</label><br>
+
+            <!-- not sure what value does -->
+            <input type="text" id="uname" name="username" value="{{ request.form['username']}}"></input><br>
+
+            <label for="pword">Password:</label><br>
+
+            <input type="text" id="pword" name="password" value="{{ request.form['password']}}"></input><br>
+
+            <button type="submit">Submit</button>
+
+        </form>
+    </body>
+</html>
