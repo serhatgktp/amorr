@@ -1,0 +1,15 @@
+.new_to{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.customer_text{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+}
+
+.registration_form{
+    background-color: #F9F6EE;
+}
