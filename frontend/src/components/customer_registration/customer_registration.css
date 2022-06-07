@@ -14,14 +14,28 @@
 
 .registration_form{
     padding: 2%;
-    position: absolute;
+    position: fixed;
+    display: block;
     margin: auto;
     height: 40%;
     left: 15%;
     right: 15%;
-    top: 20%;
+    top: 15%;
 
     background: #F9F6EE;
     box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
     border-radius: 45px;
+}
+
+.tools{
+    display: block;
+    position: fixed;
+    bottom: -48px;
+    width: 100%;
+    height: 60%;
+
+    background-image: url("../../assets/transparent-background-tools-cropped.png"); /* The image used */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-position: center;
+    background-size: contain;
 }
