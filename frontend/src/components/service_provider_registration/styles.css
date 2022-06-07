@@ -1,0 +1,64 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+span{
+    font-weight: medium;
+    font-size:28px;
+}
+
+input{
+    font-size:16px;
+    font-weight: regular;
+    border-radius: 40px;
+    border: none;
+    margin: 10px;
+    outline: none;
+    padding: 5px;
+    padding-left: 30px;
+    width: 400px;
+}
+
+.newTo{
+    font-weight: bold;
+    font-size: 32px;
+}
+
+form{
+    background-color: #F9F6EE;
+}
+
+.selector{
+    font-family: 'Poppins', sans-serif;
+}
+
+.submit{
+    padding-left: 20px;
+}
+
+.registration{
+    padding: 2%;
+    position: absolute;
+    margin: auto;
+    height: 40%;
+    left: 15%;
+    right: 15%;
+    top: 20%;
+
+    background: #F9F6EE;
+    box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 45px;
+}
+
+.id{
+    font-size: 16px;
+    margin-left: -25px;
+    margin-right: 0px;
+    color: #808080;
+}
+
+.idLabel{
+    margin-right: 0px;
+    margin-left: 15px
+}
+
