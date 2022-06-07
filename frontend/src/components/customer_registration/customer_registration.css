@@ -39,3 +39,32 @@
     background-position: center;
     background-size: contain;
 }
+
+span{
+    font-weight: medium;
+    font-size:28px;
+}
+
+input{
+    font-size:16px;
+    font-weight: regular;
+    border-radius: 40px;
+    border: none;
+    margin: 10px;
+    outline: none;
+    padding: 5px;
+    padding-left: 30px;
+    width: 400px;
+}
+
+.id{
+    font-size: 16px;
+    margin-left: -25px;
+    margin-right: 0px;
+    color: #808080;
+}
+
+.idLabel{
+    margin-right: 0px;
+    margin-left: 15px
+}
