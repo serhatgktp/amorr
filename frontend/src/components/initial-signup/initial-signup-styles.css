@@ -56,7 +56,8 @@
 .tools{
     display: block;
     position: fixed;
-    bottom: -48px;
+    z-index: -5;
+    bottom: -90px;
     width: 100%;
     height: 60%;
 

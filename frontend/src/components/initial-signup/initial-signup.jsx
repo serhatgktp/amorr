@@ -5,6 +5,7 @@ import { Icon, InlineIcon } from '@iconify/react';
 const InitialSignUp = () => {
     return(
         <body>
+            <div className='tools'></div>
             <div id="container">
                 <div id="slogan">
                     <div className="Heading">Beauty services <br />at your <span id="doorstep">doorstep.</span></div>
@@ -23,7 +24,6 @@ const InitialSignUp = () => {
                 </div>
             </div>
 
-            <div className='tools'></div>
         </body>
     )
 }
