@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from "react";
-import './BigCard.css';
+import './CoverPage.css';
 
 const servicesLoop = [
     "Hairdressers",
