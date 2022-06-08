@@ -1,5 +1,5 @@
-import React from 'react'
-import './CardItem.css'
+import React from 'react';
+import './CardItem.css';
 
 function CardItem(props) {
 
