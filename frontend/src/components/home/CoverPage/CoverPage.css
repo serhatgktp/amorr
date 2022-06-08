@@ -8,7 +8,7 @@
 }
 
 .bigcard-container {
-    background: url('../../assets/home/bigcardBg.png') center center/cover no-repeat;
+    background: url('../../../assets/home/coverPage.png') center center/cover no-repeat;
     height: 50vh;
     width: 100%;
     top:0;
@@ -90,7 +90,7 @@ input:focus {
     margin-top: 5px;
     width: 30px;
     height: 30px;
-    background: url('../../assets/home/search-bar.png') center center/cover no-repeat;
+    background: url('../../../assets/home/search-bar.png') center center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;

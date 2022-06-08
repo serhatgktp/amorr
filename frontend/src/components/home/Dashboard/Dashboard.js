@@ -1,14 +1,14 @@
 import React from 'react'
 import './Dashboard.css'
 import CardItem from './CardItem'
-import hairdresser from "../../assets/home/hairdresser.png";
-import makeup from "../../assets/home/makeup.png";
-import eyebrowTech from "../../assets/home/eyebrowTech.png";
-import eyelashTech from "../../assets/home/eyelashTech.png";
-import massage from "../../assets/home/massage.png";
-import barber from "../../assets/home/barber.png";
-import cleaner from "../../assets/home/cleaner.png";
-import seeMore from "../../assets/home/seeMore.png";
+import hairdresser from "../../../assets/home/hairdresser.png";
+import makeup from "../../../assets/home/makeup.png";
+import eyebrowTech from "../../../assets/home/eyebrowTech.png";
+import eyelashTech from "../../../assets/home/eyelashTech.png";
+import massage from "../../../assets/home/massage.png";
+import barber from "../../../assets/home/barber.png";
+import cleaner from "../../../assets/home/cleaner.png";
+import seeMore from "../../../assets/home/seeMore.png";
 
 function Dashboard() {
 

@@ -18,7 +18,7 @@ function QuickGuide() {
             <p className='p_QuickGuide'>4. Select a specific service offered by the service provider, fill out the required information and request an appointment by clicking the 'request' button</p>
             <p className='p_QuickGuide'>5. Wait for confirmation from the service provider, it will appear as 'confirmed' in the 'my appointments' page</p>
         </div>
-        {/* <div className='imgLeft'>
+        {/* <div className='imgRight'>
             <img src='../../home/makeup_QG.png' alt='sideImg'></img>
         </div> */}
     </div>
