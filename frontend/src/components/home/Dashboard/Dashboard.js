@@ -1,6 +1,6 @@
-import React from 'react'
-import './Dashboard.css'
-import CardItem from './CardItem'
+import React from 'react';
+import './Dashboard.css';
+import CardItem from './CardItem';
 import hairdresser from "../../../assets/home/hairdresser.png";
 import makeup from "../../../assets/home/makeup.png";
 import eyebrowTech from "../../../assets/home/eyebrowTech.png";
