@@ -9,10 +9,15 @@ const InitialSignUp = () => {
                 <div className="Subheading">Hairdressers, Barbers, Masseurs, Makeup Artists, <br/>Eyebrow and Eyelash techs, and more</div>
             </div>
 
-            <div>
-                <div id="LoginPrompt">New to <font color='#D46F5E'>a</font><font color="#345392">morr</font>?</div>
-                <div id="LoginSubheading">I am a...</div>
+            <div id="LoginCard">
+                <div>
+                    <div id="LoginPrompt">New to <font color='#D46F5E'>a</font><font color="#345392">morr</font>?</div>
+                    <div id="LoginSubheading">I am a...</div>
+                </div>
+                <br/>
                 <button>SERVICE PROVIDER</button>
+                <br/>
+                <button>CUSTOMER</button>
             </div>
         </body>
     )
