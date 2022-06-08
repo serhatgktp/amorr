@@ -1,10 +1,21 @@
 import React from 'react'
-import './styles.css'
+import './initial-signup-styles.css'
 
 const InitialSignUp = () => {
     return(
         <body>
-            <div>Hello World</div>
+            <div id="slogan">
+                <div className="Heading">Beauty services <br />at your <span id="doorstep">doorstep.</span></div>
+                <div className="Subheading">Hairdressers, Barbers, Masseurs, Makeup Artists, <br/>Eyebrow and Eyelash techs, and more</div>
+            </div>
+
+            <div>
+                <div id="LoginPrompt">New to <font color='#D46F5E'>a</font><font color="#345392">morr</font>?</div>
+                <div id="LoginSubheading">I am a...</div>
+                <button>SERVICE PROVIDER</button>
+            </div>
         </body>
     )
 }
+
+export default InitialSignUp

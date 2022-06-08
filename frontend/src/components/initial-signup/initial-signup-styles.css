@@ -1,0 +1,35 @@
+*{
+    font-family: 'Poppins';
+}
+
+#doorstep{
+    color: #345392;
+}
+
+.Heading{
+    font-weight: bold;
+    font-size: 75px;
+}
+
+.Subheading{
+    font-size: 24px;
+    font-weight: 400;
+}
+
+#LoginPrompt{
+    font-weight: bold;
+    font-size: 32px;
+}
+
+#LoginSubheading{
+    font-weight: bold;
+    font-size: 24px;
+}
+
+button{
+    background-color: #D46F5E;
+    border: none;
+    border-radius: 40px;
+    padding: 10px 20px;
+    font-size: 24px;
+}
