@@ -12,7 +12,7 @@ const servicesLoop = [
     "Cleaner"
   ];
 
-function BigCard() {
+function CoverPage() {
     const [index, setIndex] = useState(0);
     useEffect(() => {
         const interval = setInterval(() => {
@@ -24,7 +24,7 @@ function BigCard() {
       });
 
     return (
-        <div className='bigcard-container'>
+        <div className='coverpage-container'>
             <div className='small-container'>
                 <div class="text-container">
                     <h1>{servicesLoop[index]}</h1>
@@ -39,4 +39,4 @@ function BigCard() {
     )
 }
 
-export default BigCard
+export default CoverPage
