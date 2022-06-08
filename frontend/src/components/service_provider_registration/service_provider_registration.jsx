@@ -9,6 +9,8 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
+import { MuiThemeProvider, createTheme } from '@mui/material/styles';
+import { red } from '@mui/material/colors';
 
 const ITEM_HEIGHT = 45;
 const ITEM_PADDING_TOP = 8;
@@ -45,15 +47,15 @@ const ServiceProviderRegistration = () => {
       );
     };
 
-      
-
     return(
-        <main className="registration">
-            <form>
-                <div><span className="newTo">New to <font color="#d46f5e">a</font><font color="#345392">morr</font>? </span>
-                <span>I am a service provider for</span>
+        <body>
+
+        <div className="registration">
+          <form>
+              <div className="heading"><span className="newTo">Welcome to <font color="#d46f5e">a</font><font color="#345392">morr</font>! </span>
+                <span className="provide">I provide the following services</span>
                 <span className="selector">
-                    <FormControl sx={{ m: 1, width: 300, backgroundColor: 'white', marginTop: 0}}>
+                    <FormControl sx={{ m: 1, width: 275, backgroundColor: 'white', marginTop: 0, borderRadius: 10, pt: 0}}>
                         <InputLabel id="services-checkbox-label"><font family='Poppins'>Types of Services Provided</font></InputLabel>
                         <Select
                         labelId="services-checkbox-label"
@@ -63,12 +65,12 @@ const ServiceProviderRegistration = () => {
                         onChange={handleChange}
 
                         // temporary workaround weird bug where dropdown label is not spaced properly
-                        input={<OutlinedInput label="ListServices"/>}
+                        input={<OutlinedInput sx={{borderRadius: 10, pt: 0, height:55}} label="ListServices"/>}
                         renderValue={(selected) => selected.join(', ')}
                         MenuProps={MenuProps}
                         >
                         {services.map((service) => (
-                            <MenuItem key={service} value={service}>
+                            <MenuItem style= {{fontFamily:'poppins'}} key={service} value={service}>
                             <Checkbox checked={serviceType.indexOf(service) > -1} />
                             <ListItemText primary={service} />
                             </MenuItem>
@@ -76,19 +78,21 @@ const ServiceProviderRegistration = () => {
                         </Select>
                     </FormControl>
                 </span>
-                </div>
-                <div className="inputs">
-                    <label></label><input type="text" placeholder="Email Address" />
-                    <label><input type="text" placeholder="Full Name" /></label><br />
-                    <label><input type="password" placeholder="Password" /></label>
-                    <label><input type="password" placeholder="Re-enter password" /></label><br />
-                    <label><input className="Address" type="text" placeholder="Address, City, Province, Postal Code" /></label>
-                    <label className="idLabel">Attach ID: <input className="id" type="file" id="myFile" name="filename" /></label>
-                    <p>By clicking SIGN UP, I agree to amorr's <a>term's and conditions</a> and <a>privacy policy</a></p>
-                </div>   
-                <input className="submit" type="submit" value="Submit" />
-            </form>
-        </main>
+              </div>
+              <div className="inputs">
+                  <label></label><input type="text" placeholder="Email Address" className='left'/>
+                  <label><input type="text" placeholder="Full Name"/></label><br />
+                  <label><input type="password" placeholder="Password" className="left"/></label>
+                  <label><input type="password" placeholder="Re-enter password" /></label><br />
+                  <label><input type="text" placeholder="Address" className="left"/></label>
+                  <label className="idLabel">Attach ID: <input className="id" type="file" id="myFile" name="filename" /></label>
+                  <p className='terms'>By clicking SIGN UP, I agree to amorr's <a href='#'>term's and conditions</a> and <a href='#'>privacy policy</a></p>
+                  <input className="submit" type="submit" value="SIGN UP" />
+              </div>   
+          </form>
+        </div>
+        <div className='tools'></div>
+        </body>
     );
 }
 
