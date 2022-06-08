@@ -11,6 +11,7 @@ import cleaner from "../../assets/home/cleaner.png";
 import seeMore from "../../assets/home/seeMore.png";
 
 function Dashboard() {
+
   return (
       <div className='all_container'>
         <h1 className='hdg'>Services offered at 
@@ -18,16 +19,16 @@ function Dashboard() {
             <font color="#0b5394">morr</font></h1>
         <div className='cards_container'>
             <ul className='cards_items'>
-                <CardItem title='Hairdresser' img={hairdresser}></CardItem>
-                <CardItem title='Makeup' img={makeup}></CardItem>
-                <CardItem title='Eyebrow Tech' img={eyebrowTech}></CardItem>
-                <CardItem title='Eyelash Tech' img={eyelashTech}></CardItem>
+                <CardItem title='Hairdresser' img={hairdresser} redirection="http://localhost:3000/"></CardItem>
+                <CardItem title='Makeup' img={makeup} redirection="http://google.com"></CardItem>
+                <CardItem title='Eyebrow Tech' img={eyebrowTech} redirection="http://localhost:3000/"></CardItem>
+                <CardItem title='Eyelash Tech' img={eyelashTech} redirection="http://localhost:3000/"></CardItem>
             </ul>
             <ul className='cards_items'>
-                <CardItem title='Massage' img={massage}></CardItem>
-                <CardItem title='Barber' img={barber}></CardItem>
-                <CardItem title='Cleaner' img={cleaner}></CardItem>
-                <CardItem title='See More' img={seeMore}></CardItem>
+                <CardItem title='Massage' img={massage} redirection="http://localhost:3000/"></CardItem>
+                <CardItem title='Barber' img={barber} redirection="http://localhost:3000/"></CardItem>
+                <CardItem title='Cleaner' img={cleaner} redirection="http://localhost:3000/"></CardItem>
+                <CardItem title='See More' img={seeMore} redirection="http://localhost:3000/"></CardItem>
             </ul>
         </div>
       </div>
