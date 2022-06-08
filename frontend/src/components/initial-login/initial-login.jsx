@@ -14,7 +14,7 @@ const InitialLogin = () => {
 
                 <div id="LoginCard">
                     <div>
-                        <div id="LoginPrompt">New to <font color='#D46F5E'>a</font><font color="#345392">morr</font>?</div>
+                        <div id="LoginPrompt">Weclome back!</div>
                         <div id="LoginSubheading">I am a...</div>
                     </div>
                     <br/>
