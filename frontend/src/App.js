@@ -1,11 +1,13 @@
-
 import React from 'react'
-import CustomerRegistration from './components/customer_registration/customer_registration'
+// import React, { useState, useEffect } from 'react'
+import './App.css';
+import Home from './components/home/Home';
 
 function App(){
   return (
-    <CustomerRegistration/>
-
+    <>
+      <Home></Home>
+    </>
   )
 }
 
