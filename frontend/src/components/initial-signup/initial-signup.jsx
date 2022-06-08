@@ -1,5 +1,6 @@
 import React from 'react'
 import './initial-signup-styles.css'
+import { Icon, InlineIcon } from '@iconify/react';
 
 const InitialSignUp = () => {
     return(
@@ -15,9 +16,9 @@ const InitialSignUp = () => {
                     <div id="LoginSubheading">I am a...</div>
                 </div>
                 <br/>
-                <button>SERVICE PROVIDER</button>
+                <button><Icon icon="bx:store" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'28px' }}/> SERVICE PROVIDER</button>
                 <br/>
-                <button>CUSTOMER</button>
+                <button><Icon icon="bi:person-fill" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'28px' }}/> CUSTOMER</button>
             </div>
         </body>
     )
