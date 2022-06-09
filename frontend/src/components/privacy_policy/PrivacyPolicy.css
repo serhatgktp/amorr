@@ -1,29 +1,27 @@
-.box {
+* {
+  font-family: 'Poppins';
+}
+
+.container {
     background-color: #F9F6EE;
     width: 90%;
-    height: 100rem;
     margin-left: 5%;
-    margin-top: 2%;
-  
-    
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
   }
-  
-  .image{
-    position: absolute;
-  }
-  
   
   .titleContainer {
     flex-direction: row;
     display: flex;
+    text-align: center;
   }
   
-  .title{
+  .title {
     background: #F9F6EE;
     align-items: center;
+    text-align: center;
     color: #345392;
-    
-  }*/
+  }
   
   body {
     background-color: #f3ebdb;
@@ -32,26 +30,8 @@
   .container {
     margin-top: 1%;
     flex: 1;
-  
   }
-  
-  
-  .headerOne {
-    display: flex;
-    flex-direction: row;
-    margin-left: 8rem;
-  
-  }
-  
-  .headerTwo {
-    display: flex;
-    flex-direction: row;
-    margin-left: 30rem;
-    align-items: center;
-    
-    
-  }
-  
+
   .title .a{
     color: #d46f5e;
   }
@@ -60,151 +40,19 @@
     color: black;
   }
   
-  .box{
-    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-  }
-  .p1{
-    position: relative;
-    margin-left: 4rem;
-  }
-  .p2{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .p3{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .p4{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .p5{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .p6{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .p7{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .p8{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .p9{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .p10{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .p11{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .p12{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .p13{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .p14{
-    position: relative;
-    margin-left: 4rem;
-  }
-  
-  .title{
+  .title {
     position: relative;
     height: 50px;
-    margin-left: 30rem;
+    margin-left: 25rem;
+    text-align: center;
+    align-items: center;
   }
 
-  .first{
+  h2, p {
     position: relative;
-    margin-left: 4rem;
+    margin: 2rem
   }
 
-  .second{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .third{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .fourth{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .fifth{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .sixth{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .seventh{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .eighth{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .ninth{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .tenth{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .eleventh{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .twelvth{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .thirteenth{
-    position: relative;
-    margin-left: 4rem;
-  }
-
-  .fourteenth{
-    position: relative;
-    margin-left: 4rem;
+  .content {
+    overflow: hidden;
   }
