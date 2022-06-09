@@ -16,7 +16,7 @@ function App () {
     },
     {
       question: 'How many service providers',
-      answer: '3',
+      answer: '4',
       open: false
     }
   ]);
