@@ -53,11 +53,16 @@ if a bugfix is working. In this case, please do
 ```sh
 npm install mysqljs/mysql
 ```
+This project uses yarn to handle dependencies, to install yarn run
+
+```sh
+npm install -g yarn
+```  
 
 To install all the necessary JavaScript packages for the frontend
 
 ```sh
-npm install
+yarn install
 ```  
 
 To start the Server
