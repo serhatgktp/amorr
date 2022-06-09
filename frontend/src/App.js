@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import ServiceProviderRegistration from './components/service_provider_registration/service_provider_registration';
+import LoginSignupLanding from './components/initial_login_signup_landing/login_signup_landing'
 
 const App = () => {
   return(
     <div>
-      <ServiceProviderRegistration/>
+      <LoginSignupLanding/>
     </div>
   )
 }
