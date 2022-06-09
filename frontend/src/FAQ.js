@@ -7,12 +7,13 @@ function FAQ ({faq, index, toggleFAQ}) {
 			key={index}
 			onClick={() => toggleFAQ(index)
             }
-		>   Q
+		>  
 			<div className="faq-question">
-				{faq.question}
+				<span className="q">Q: </span> {faq.question}
 			</div>
 			<div className="faq-answer">
-				{faq.answer}
+				<br/>
+			<span className="a">A: </span>{faq.answer}
 			</div>
 		</div>
 	)
