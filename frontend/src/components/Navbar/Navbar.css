@@ -1,0 +1,91 @@
+*{
+  font-family: 'Poppins', sans-serif;
+  background-color: #f3ebdb;
+}
+
+.Navbar {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f3ebdb;
+  }
+
+  .Navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    
+  } 
+
+  .Navbar > .nav-items > a {
+    color: #000000;
+    font-size: 20px;
+    font-style: poppins;
+    text-decoration: none;
+    margin: 15px;
+    opacity: 0.9;
+    text-align: right;
+  }
+  .Navbar > .hdg_guide {
+    margin-right: 100px;
+  }
+  
+  
+  .Navbar > .nav-items > a:hover {
+    opacity: 1;
+  }
+
+  
+  .Navbar > .nav-items > a::before {
+    content: "";
+    position: left;
+    left: 150;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #000000;
+    transition: all 0.45s;
+  }
+  
+  .Navbar > .nav-items > a:hover::before {
+    width: 100%;
+  }
+  
+  .Navbar > .nav-toggle {
+    display: none;
+  }
+  
+  @media (max-width: 700px) {
+    .Navbar > .nav-items {
+      position: center;
+      top: 60px;
+      display: flex;
+      flex-direction: column;
+      background: #3b4da7;
+  
+      width: 100%;
+      height: 100%;
+      transform: translateX(-100%);
+      transition: all .45s;
+    }
+  
+    .Navbar > .nav-items > a::before {
+        background: transparent;
+    }
+  
+    
+  
+
+  
+  
+  }
+
+.hdg_guide span {
+    color: #d46f5e;
+}
+.hdg_guide span:nth-child(2) {
+    color: #0b5394;
+}
