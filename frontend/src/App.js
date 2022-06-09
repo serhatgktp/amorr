@@ -1,12 +1,11 @@
-import React from 'react';
-import './App.css';
-import FAQpage from './components/FAQ/FAQpage';
+
+import React from 'react'
+import CustomerRegistration from './components/customer_registration/customer_registration'
 
 function App(){
   return (
-    <>
-      <FAQpage></FAQpage>
-    </>
+    <CustomerRegistration/>
+
   )
 }
 
