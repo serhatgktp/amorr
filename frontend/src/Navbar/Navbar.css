@@ -1,3 +1,8 @@
+*{
+  font-family: 'Poppins', sans-serif;
+  background-color: #f3ebdb;
+}
+
 .Navbar {
     height: 60px;
     display: flex;
