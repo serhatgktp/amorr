@@ -3,7 +3,7 @@
 **Sprint Goal:**
 
 - Learn important tools/frameforks.
-- Create a function website using which a user can log-in, sign-up and see static pages such as "About Us", "Contact Us", and "FAQs" with and without logging in. 
+- Create a functioning website using which a user can log in, sign-up, and see static pages such as "About Us", "Contact Us", and "FAQs" with and without logging in. 
 
 ---
 
@@ -14,7 +14,7 @@
 
 - Second stand-up (2022/05/31)
     - Evaluated points for the user stories.
-    - Divided the user stories into tasks and assigned to the team members.
+    - Divided the user stories into tasks and assigned them to the team members.
     - Added tasks on JIRA.
 
 - Third stand-up (2022/06/01)
@@ -23,7 +23,7 @@
 
 - Fourth stand-up (2022/06/02)
     - Discussed CRC cards. 
-    - Reviewed  the final wireframe.
+    - Reviewed the final wireframe.
 
 - Fifth stand-up (2022/06/06)
     - Went over the CRC cards.
@@ -65,9 +65,9 @@ If the user is not logged in, the navigation bar should include clickable button
     - **Points assigned = 20**
 
 
-- As a registered user, I want to be able to log in with my username and password so that the system can authenticate me and redirect me to the homepage with the corresponding navigation bar according to my type of user (service provider or customer). The follwoing is the task breakdown:
-    - Checking Database of User Existance
-    - Check Validity of password
+- As a registered user, I want to be able to log in with my username and password so that the system can authenticate me and redirect me to the homepage with the corresponding navigation bar according to my type of user (service provider or customer). The following is the task breakdown:
+    - Checking Database of User existance
+    - Check validity of password
     -  Login Page
     - Privilege Logic
     - **Points assigned = 13**
@@ -77,16 +77,16 @@ If the user is not logged in, the navigation bar should include clickable button
     - Frontend for 'Contact Us'
     - **Points assigned = 3**
 
-- As a user, I would like to be able to learn more about the CEO and the company through accessing a page that contains that information.The follwoing is the task breakdown: 
+- As a user, I would like to be able to learn more about the CEO and the company by accessing a page that contains that information.The following is the task breakdown: 
     - Frontend for 'About Us'
     - **Points assigned = 3**
 
-- As a user, before signing up, I would like to be able to read the Terms of Service of becoming a user or service provider through a Terms of Service and privacy Policy page. The follwoing is the task breakdown: 
-    - Frontend for 'Terms of Service and Privacy Policy'
+- As a user, before signing up, I would like to be able to read the Terms of Service of becoming a user or service provider through a Terms of Service and Privacy policy page. The following is the task breakdown: 
+    - Frontend for 'Terms of Service and Privacy policy'
     - Hyperlink which navigates to the page
     - **Points assigned = 1**
 
-- As a user, I would like to be able to see Frequently Asked Questions on the platform. The follwoing is the task breakdown: 
+- As a user, I would like to be able to see Frequently Asked Questions on the platform. The following is the task breakdown: 
     - Frontend for 'FAQ'
     - **Points assigned = 3**
 
@@ -100,7 +100,7 @@ The table below displays who worked on which task during this sprint.
 
 | Ticket Number    | Description     | Assigned to:    |
 | ------------- | ------------- | -------- |
-| STAC-43          |  The home page should entail a navigation bar containing buttons that will redirect the user to various other pages.       |  dsfgsd |
+| STAC-43          |  The home page should entail a navigation bar containing buttons that will redirect the user to various other pages.       |  dsfag |
 | STAC-66          | The home page should contain a cover page with updating heading text and a search bar.        |  dsfgsd |
 | STAC-67          | The home page should contain a grid of clickable visual photos and texts containing the different service types offered.        |  dsfgsd |
 | STAC-68          |  The home page should include a Quick Guide to using the website.      |  dsfgsd |
@@ -117,7 +117,7 @@ The table below displays who worked on which task during this sprint.
 | STAC-49         | Error messages should be displayed if the user types a wrong username or password.        |  dsfgsd |
 | STAC-72          | Backend Login Implementation.        |  dsfgsd |
 | STAC-51          |  There won’t be a sign-in requirement for a user to view the page.       |  dsfgsd |
-| STAC-50          |  There should be a 'Contact Us' page that users can view.       |  dsfgsd |
+| STAC-50          |  There should be a 'Contact Us' page that users can view.       | Annanya Sharma |
 | STAC-52          | There will be an ‘About Us’ page that anyone can view.        |  dsfgsd |
 | STAC-53          |  There will be an ‘About Us’ page that anyone can view.       |  dsfgsd |
 | STAC-54          |  There will be a button that takes you to a ‘Terms of Service and Privacy Policy’ page that anyone can view.       |  dsfgsd |
@@ -126,14 +126,14 @@ The table below displays who worked on which task during this sprint.
 | STAC-57          | There musn't be a sign-in requirement for a user to view the page.        |  dsfgsd |
 | STAC-65          | Software Architecture Diagram.        |  dsfgsd |
 | STAC-64          |  CRC Cards.       |  dsfgsd |
-| STAC-77          |   Create sprint1.md      |  dsfgsd |
+| STAC-77          |   Create sprint1.md      | Annanya Sharma |
 | STAC-78          |   Complete RPM.md      |  dsfgsd |
 | STAC-58          |  Initialize front end set up (React, Flask, npm, yarn)       |  dsfgsd |
 | STAC-59          | Finalize storyboard design and accessible pages for each user type.        |  dsfgsd |
-| STAC-60          |  finalize storyboard design and accessible pages for each user type       |  **SAME AS STAC-59**|
+| STAC-60          |  Finalize storyboard design and accessible pages for each user type       |  **SAME AS STAC-59**|
 
 --- 
 **Spikes Recorded:**
-- Few of the team mates had to uninstall a buggy version of Node.js and reinstall Node.js (16.15.0)
+- Few of the teammates had to uninstall a buggy version of Node.js and reinstall Node.js (16.15.0)
 - Database is hosted on a local system, so everyone has to update it regularly. 
 - 
