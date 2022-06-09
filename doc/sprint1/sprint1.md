@@ -4,6 +4,7 @@
 
 - Learn important tools/frameforks.
 - Create a functioning website using which a user can log in, sign-up, and see static pages such as "About Us", "Contact Us", and "FAQs" with and without logging in. 
+- Have a functioning navigation bar to go from one page to another. 
 
 ---
 
