@@ -96,3 +96,40 @@ button:hover{
     width: 320px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+@media only screen and (max-width: 1300px) {
+    .Heading {
+      font-size: 60px;
+    }
+
+    .Subheading {
+        font-size: 20px;
+      }
+
+    #LoginPrompt {
+        font-size: 30px;
+    }
+
+    #LoginSubheading {
+        font-size: 20px;
+    }
+
+    #LoginCard {
+        width: 350px;
+        height: 230px;
+    }
+
+    #service {
+        font-size: 20px;
+        width: 270px;
+    }
+
+    #customer {
+        font-size: 20px;
+        width: 270px;
+    }
+
+    #container {
+        padding-top: 100px;
+    }
+  }
