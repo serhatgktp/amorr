@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Header from './Header';
 import FAQ from './FAQ';
 import FAQ2 from './FAQ2';
-import VerticalLine from './VerticalLine';
 
 function App () {
   const [faqs, setfaqs] = useState([
