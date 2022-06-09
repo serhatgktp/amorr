@@ -15,8 +15,8 @@ function App () {
       open: false
     },
     {
-      question: 'How many questions does it take to make a successful FAQ Page?',
-      answer: 'This many.',
+      question: 'How many service providers',
+      answer: '3',
       open: false
     }
   ]);
