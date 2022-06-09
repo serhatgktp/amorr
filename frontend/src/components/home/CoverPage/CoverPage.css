@@ -40,7 +40,7 @@
 
 h1 {
     color: #0b5394;
-    font-size: 23px;
+    font-size: 170%;
     font-family: "poppins";
     font-weight: 700;
     text-align: center;
@@ -51,7 +51,7 @@ h1 {
 
 .subtext {
     color: black;
-    font-size: 23px;
+    font-size: 150%;
     font-family: "poppins";
     font-weight: 700;
     text-align: center;
