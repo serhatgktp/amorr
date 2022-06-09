@@ -1169,10 +1169,14 @@
     "@babel/plugin-transform-typescript" "^7.1.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.17.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
 =======
 "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.17.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
 >>>>>>> b572537 (Added a navigation bar)
+=======
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.17.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+>>>>>>> d5bb1b1406fc49f1c91fe41beaa92b59268ac266
   "integrity" "sha512-38Y8f7YUhce/K7RMwTp7m0uCumpv9hZkitCbBClqQIow1qSbCvGkcegKOXpEWCQLfWmevgRiWokZ1GkpfhbZug=="
   "resolved" "https://registry.npmjs.org/@babel/runtime/-/runtime-7.18.3.tgz"
   "version" "7.18.3"
@@ -5566,6 +5570,7 @@
   "version" "1.1.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "history@^5.2.0":
   "integrity" "sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ=="
   "resolved" "https://registry.npmjs.org/history/-/history-5.3.0.tgz"
@@ -5575,6 +5580,8 @@
 
 =======
 >>>>>>> b572537 (Added a navigation bar)
+=======
+>>>>>>> d5bb1b1406fc49f1c91fe41beaa92b59268ac266
 "hmac-drbg@^1.0.1":
   "integrity" "sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg=="
   "resolved" "https://registry.npmjs.org/hmac-drbg/-/hmac-drbg-1.0.1.tgz"
@@ -9428,10 +9435,14 @@
     "text-table" "0.2.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "react-dom@^17.0.0 || ^18.0.0", "react-dom@^18.0.0", "react-dom@^18.1.0", "react-dom@>=16.6.0", "react-dom@>=16.8":
 =======
 "react-dom@^17.0.0 || ^18.0.0", "react-dom@^18.0.0", "react-dom@>=16.6.0":
 >>>>>>> b572537 (Added a navigation bar)
+=======
+"react-dom@^17.0.0 || ^18.0.0", "react-dom@^18.0.0", "react-dom@>=16.6.0":
+>>>>>>> d5bb1b1406fc49f1c91fe41beaa92b59268ac266
   "integrity" "sha512-fU1Txz7Budmvamp7bshe4Zi32d0ll7ect+ccxNu9FlObT605GOEB8BfO4tmRJ39R5Zj831VCpvQ05QPBW5yb+w=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.1.0.tgz"
   "version" "18.1.0"
@@ -9460,6 +9471,7 @@
   "version" "17.0.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "react-router-dom@6":
   "integrity" "sha512-uaJj7LKytRxZNQV8+RbzJWnJ8K2nPsOOEuX7aQstlMZKQT0164C+X2w6bnkqU3sjtLvpd5ojrezAyfZ1+0sStw=="
   "resolved" "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.3.0.tgz"
@@ -9477,6 +9489,8 @@
 
 =======
 >>>>>>> b572537 (Added a navigation bar)
+=======
+>>>>>>> d5bb1b1406fc49f1c91fe41beaa92b59268ac266
 "react-scripts@^2.1.3":
   "integrity" "sha512-JASD0QVVgSVleVhA9TeA+UBx+shq887hm/L+09qjZLrqIUvJZHZU+oOnhMFGot02Yop+LKfkvf9KSsTNlu/Rwg=="
   "resolved" "https://registry.npmjs.org/react-scripts/-/react-scripts-2.1.3.tgz"
@@ -9543,10 +9557,14 @@
     "prop-types" "^15.6.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "react@^17.0.0", "react@^17.0.0 || ^18.0.0", "react@^18.0.0", "react@^18.1.0", "react@>=16.6.0", "react@>=16.8", "react@>=16.8.0":
 =======
 "react@^17.0.0", "react@^17.0.0 || ^18.0.0", "react@^18.0.0", "react@^18.1.0", "react@>=16.6.0", "react@>=16.8.0":
 >>>>>>> b572537 (Added a navigation bar)
+=======
+"react@^17.0.0", "react@^17.0.0 || ^18.0.0", "react@^18.0.0", "react@^18.1.0", "react@>=16.6.0", "react@>=16.8.0":
+>>>>>>> d5bb1b1406fc49f1c91fe41beaa92b59268ac266
   "integrity" "sha512-4oL8ivCz5ZEPyclFQXaNksK3adutVS8l2xzZU0cqEFrE9Sb7fC0EFK5uEk74wIreL1DERyjvsU915j1pcT2uEQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.1.0.tgz"
   "version" "18.1.0"
@@ -10153,10 +10171,14 @@
 
 "set-blocking@^2.0.0":
 <<<<<<< HEAD
+<<<<<<< HEAD
   "integrity" "sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw=="
 =======
   "integrity" "sha1-BF+XgtARrppoA93TgrJDkrPYkPc="
 >>>>>>> b572537 (Added a navigation bar)
+=======
+  "integrity" "sha1-BF+XgtARrppoA93TgrJDkrPYkPc="
+>>>>>>> d5bb1b1406fc49f1c91fe41beaa92b59268ac266
   "resolved" "https://registry.npmjs.org/set-blocking/-/set-blocking-2.0.0.tgz"
   "version" "2.0.0"
 
