@@ -2,29 +2,31 @@ import React, { useState } from 'react';
 import Header from './Header';
 import FAQ from './FAQ';
 import FAQ2 from './FAQ2';
+import VerticalLine from './VerticalLine';
+
 function App () {
   const [faqs, setfaqs] = useState([
     {
-      question: 'How many programmers does it take to screw in a lightbulb?',
-      answer: 'None. We don\'t address hardware issues.',
+      question: 'What is Amorr?',
+      answer: 'Amorr is a platform where you can order many mobile services from beauty household tasks. Our verified service provider will come to your address and fulfill your needs!',
       open: true
     },
     {
-      question: 'Who is the most awesome person?',
-      answer: 'You. The Viewer.',
+      question: 'How do I pay my service provider?',
+      answer: 'Your payment will be automatically charged to the credit or debit card you have provided.',
       open: false
     },
     {
-      question: 'How many service providers',
-      answer: '4',
+      question: 'How far in advance can I book my appointment?',
+      answer: 'You can book your appointment up to 14 days in advance.',
       open: false
     }
   ]);
 
   const [faqs2, setfaqs2] = useState([
     {
-      question: 'How many programmers does it take to screw in a lightbulb?',
-      answer: 'None. We don\'t address hardware issues.',
+      question: 'Can I cancel my appointment?',
+      answer: 'You can only cancel 24 hours before the scheduled appointment date without a fee.',
       open: false
     },
     {
@@ -43,9 +45,7 @@ function App () {
     setfaqs(faqs.map((faq, i) => {
       if (i === index) {
         faq.open = !faq.open
-      } else {
-        faq.open = false;
-      }
+      } 
 
       return faq;
     }))
@@ -55,9 +55,7 @@ function App () {
     setfaqs2(faqs2.map((faq, i) => {
       if (i === index) {
         faq.open = !faq.open
-      } else {
-        faq.open = false;
-      }
+      } 
 
       return faq;
     }))
@@ -67,6 +65,7 @@ function App () {
   return (
     <div className="App">
       <Header />
+
       <div className="faqs">
         {faqs.map((faq, i) => (
           <FAQ faq={faq} index={i} toggleFAQ={toggleFAQ} />
