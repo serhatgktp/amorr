@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import ServiceProviderRegistration from './components/service_provider_registration/service_provider_registration';
+import React from 'react'
+import CustomerRegistration from './components/customer_registration/customer_registration'
 
-const App = () => {
-  return(
-    <div>
-      <ServiceProviderRegistration/>
-    </div>
+function App(){
+  return (
+    <CustomerRegistration/>
   )
 }
 
