@@ -1,7 +1,7 @@
 .box {
     background-color: #F9F6EE;
     width: 90%;
-    height: 40rem;
+    height: 100rem;
     margin-left: 5%;
     margin-top: 2%;
   
@@ -56,7 +56,7 @@
     color: #d46f5e;
   }
   
-  .title .about{
+  .title .ToS{
     color: black;
   }
   
@@ -64,21 +64,147 @@
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
   }
-  
   .p1{
     position: relative;
-    width: 600px;
     margin-left: 4rem;
   }
-  
   .p2{
     position: relative;
-    width: 600px;
+    margin-left: 4rem;
+  }
+
+  .p3{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .p4{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .p5{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .p6{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .p7{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .p8{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .p9{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .p10{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .p11{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .p12{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .p13{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .p14{
+    position: relative;
     margin-left: 4rem;
   }
   
   .title{
     position: relative;
     height: 50px;
+    margin-left: 30rem;
+  }
+
+  .first{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .second{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .third{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .fourth{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .fifth{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .sixth{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .seventh{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .eighth{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .ninth{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .tenth{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .eleventh{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .twelvth{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .thirteenth{
+    position: relative;
+    margin-left: 4rem;
+  }
+
+  .fourteenth{
+    position: relative;
     margin-left: 4rem;
   }
