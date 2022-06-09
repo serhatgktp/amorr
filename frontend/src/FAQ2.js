@@ -9,10 +9,11 @@ function FAQ2 ({faq, index, toggleFAQ2}) {
             }
 		>
 			<div className="faq2-question">
-				{faq.question}
+			<span className="q">Q: </span>{faq.question}
 			</div>
 			<div className="faq2-answer">
-				{faq.answer}
+				<br/>
+			<span className="a">A: </span>{faq.answer}
 			</div>
 		</div>
 	)
