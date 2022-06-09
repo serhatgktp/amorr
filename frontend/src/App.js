@@ -8,6 +8,5 @@ function App(){
       <Home></Home>
     </>
   )
-}
-
-export default App
+  }
+export default App;
