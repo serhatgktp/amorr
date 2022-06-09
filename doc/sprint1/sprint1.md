@@ -46,9 +46,8 @@
 **The user stories we chose to work on are the following (with the breakdown and points assigned):**
 -  As a user, I want to be able to see the home page without having to sign up and login, so that I can browse through the website first and decide from then on if I am interested in the services that they provide or if I am interested in joining amorr’s service providers. The following is the task breakdown: 
 
-    - Front End page (Home Page/Explore page with search bar)
+    - Front End page (Home/Explore page with the following sections: Cover page with search bar, Dashboard, Quick Guide)
     - Privilege Logic in the flask
-    - Navigation Bar
     - **Points assigned = 13**
 
 -  As a user, I want to be able to navigate to other pages of the website easily by having a navigation bar at the top of every web page (or a drop down menu in the case of mobile web pages.) 
@@ -101,10 +100,9 @@ The table below displays who worked on which task during this sprint.
 
 | Ticket Number    | Description     | Assigned to:    |
 | ------------- | ------------- | -------- |
-| STAC-43          |  The home page should entail a navigation bar containing buttons that will redirect the user to various other pages.       |  dsfag |
-| STAC-66          | The home page should contain a cover page with updating heading text and a search bar.        |  dsfgsd |
-| STAC-67          | The home page should contain a grid of clickable visual photos and texts containing the different service types offered.        |  dsfgsd |
-| STAC-68          |  The home page should include a Quick Guide to using the website.      |  dsfgsd |
+| STAC-66          | The home page should contain a cover page with updating heading text and a search bar.        |  Theora Pui |
+| STAC-67          | The home page should contain a grid of clickable visual photos and texts containing the different service types offered.        |  Theora Pui |
+| STAC-68          |  The home page should include a Quick Guide to using the website.      |  Theora Pui |
 | STAC-44          |   If the user is not logged in, the navigation bar should include clickable buttons that redirect the user to an About Us page, FAQ page, Contact Us page, and Sign Up / Log In page.      |  dsfgsd |
 | STAC-69          | If the user is logged in as a customer, then the navigation bar should additionally include Explore and My Appointments on the left side, a profile icon on the right side that leads to a dropdown to manage profile. delete account or logout.       |  dsfgsd |
 | STAC-70          | If the user is logged in as a service provider, then the navigation bar should additionally include Home and My Appointments on the left side, a profile icon on the right side that leads to a dropdown to manage profile. delete account or logout.        |  dsfgsd |
@@ -125,7 +123,7 @@ The table below displays who worked on which task during this sprint.
 | STAC-56          | There should be a static FAQ page that users can view.        |  dsfgsd |
 | STAC-57          | There musn't be a sign-in requirement for a user to view the page.        |  dsfgsd |
 | STAC-65          | Software Architecture Diagram.        |  dsfgsd |
-| STAC-64          |  CRC Cards.       |  dsfgsd |
+| STAC-64          |  CRC Cards.       |  Theora Pui |
 | STAC-77          |   Create sprint1.md      | Annanya Sharma |
 | STAC-78          |   Complete RPM.md      |  dsfgsd |
 | STAC-58          |  Initialize front end set up (React, Flask, npm, yarn)       |  dsfgsd |
