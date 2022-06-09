@@ -119,8 +119,8 @@ The table below displays who worked on which task during this sprint.
 | STAC-72          | Backend Login Implementation.        |  dsfgsd |
 | STAC-51          |  There won’t be a sign-in requirement for a user to view the page.       |  dsfgsd |
 | STAC-50          |  There should be a 'Contact Us' page that users can view.       | Annanya Sharma |
-| STAC-52          | There will be an ‘About Us’ page that anyone can view.        |  dsfgsd |
-| STAC-54          |  There will be a button that takes you to a ‘Terms of Service and Privacy Policy’ page that anyone can view.       |  dsfgsd |
+| STAC-52          | There will be an ‘About Us’ page that anyone can view.        |  Jumana Fanous |
+| STAC-54          |  There will be a button that takes you to a ‘Terms of Service and Privacy Policy’ page that anyone can view.       |  Jumana Fanous |
 | STAC-55          |   The user won’t be required to sign-in/up to view this page.      |  dsfgsd |
 | STAC-56          | There should be a static FAQ page that users can view.        |  dsfgsd |
 | STAC-57          | There musn't be a sign-in requirement for a user to view the page.        |  dsfgsd |
