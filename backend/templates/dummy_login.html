@@ -1,19 +1,21 @@
 <html>
+    <head>
+        <link rel="stylesheet" href="../static/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </head>
     <body>
-        <h2> AMORR Login </h2>
+        <div class="container">
+            <h2>Welcome back to <span style="color: #D46F5E;">a</span><span style="color: #345392;">morr </span></h2>
 
-        <form method="post"> 
-            <label for="uname">User Name:</label><br>
+            <form method="post"> 
+                <!-- not sure what value does -->
+                <input type="text" id="uname" name="username" value="{{ request.form['username']}}" placeholder="username"></input><br>
+                <input type="text" id="pword" name="password" value="{{ request.form['password']}}" placeholder="password"></input><br>
+                <button type="submit">LOG IN</button>
+            </form>
 
-            <!-- not sure what value does -->
-            <input type="text" id="uname" name="username" value="{{ request.form['username']}}"></input><br>
-
-            <label for="pword">Password:</label><br>
-
-            <input type="text" id="pword" name="password" value="{{ request.form['password']}}"></input><br>
-
-            <button type="submit">Submit</button>
-
-        </form>
+        </div>
     </body>
 </html>
