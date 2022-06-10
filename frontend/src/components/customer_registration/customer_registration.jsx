@@ -1,5 +1,10 @@
+import { useRef, useState, useEffect} from 'react';
 import React from 'react';
 import "./customer_registration.css";
+
+const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const NONEMPTY_REGEX = /([^\s])/
 
 const CustomerRegistration = () => {
 
