@@ -109,24 +109,24 @@ The table below displays who worked on which task during this sprint.
 | STAC-48          |  Error messages should be displayed if the user picks a username or email address that already exists in the database.       |  dsfgsd |
 | STAC-45          |   Clicking Signup should bring the user to an initial signup page where they are prompt to either sign up as a customer or as a service provider.      |  Shannon Budiman |
 | STAC-75          | Clicking login should bring the user to an initial login page where they are prompted to either login as a customer or a service provider.        |  Shannon Budiman |
-| STAC-80          |  Error message should be displayed if the user fills in an invalid email or leaves one input unfilled.       |  dsfgsd |
+| STAC-80          |  Error message should be displayed if the user fills in an invalid email or leaves one input unfilled.       |  Christopher Nathanael |
 | STAC-46          |   Service provider has to fill out information for the following: full name, email address, password, government-issued photo ID, a selfie for confirmation, and an address.      |  Shannon Budiman |
 | STAC-47          | Customer has to fill out information for the following: full name, email address, password, and an address.        |  Christopher Nathanael |
+| STAC-82          | New users should be first prompted to login or signup, before selecting whether they would like to signup as a customer or a service provider      |   Shannon Budiman |
 | STAC-71          | Implement Backend Registration. | dsfgsd |
 | STAC-49         | Error messages should be displayed if the user types a wrong username or password.        |  dsfgsd |
 | STAC-72          | Backend Login Implementation.        |  dsfgsd |
-| STAC-51          |  There won’t be a sign-in requirement for a user to view the page.       |  dsfgsd |
+| STAC-81          | frontend login implmentation, user has to enter email and password           |     Shannon Budiman |
 | STAC-50          |  There should be a 'Contact Us' page that users can view.       | Annanya Sharma |
 | STAC-52          | There will be an ‘About Us’ page that anyone can view.        |  Jumana Fanous |
-| STAC-54          |  There will be a button that takes you to a ‘Terms of Service and Privacy Policy’ page that anyone can view.       |  Jumana Fanous |
-| STAC-55          |   The user won’t be required to sign-in/up to view this page.      |  dsfgsd |
+| STAC-54          | There will be a static ‘Terms of Service and Privacy Policy’ page that anyone can view.       |  Jumana Fanous |
 | STAC-56          | There should be a static FAQ page that users can view.        |  dsfgsd |
 | STAC-57          | There musn't be a sign-in requirement for a user to view the page.        |  dsfgsd |
 | STAC-65          | Software Architecture Diagram.        |  dsfgsd |
 | STAC-64          |  CRC Cards.       |  Theora Pui |
 | STAC-77          |   Create sprint1.md      | Annanya Sharma |
 | STAC-78          |   Complete RPM.md      |  dsfgsd |
-| STAC-58          |  Initialize front end set up (React, Flask, npm, yarn)       |  dsfgsd |
+| STAC-58          |  Initialize front end set up (React, Flask, npm, yarn)       |  Shannon Budiman |
 | STAC-59          | Finalize storyboard design and accessible pages for each user type.        |  Shannon Budiman |
 | STAC-60          |  Finalize storyboard design and accessible pages for each user type       |  Christopher Nathanael  |
 
