@@ -2,79 +2,70 @@ import { useRef, useState, useEffect} from 'react';
 import React from 'react';
 import "./customer_registration.css";
 
-const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-const NONEMPTY_REGEX = /([^\s])/
-
 const CustomerRegistration = () => {
 
-  const userRef = useRef();
-  const errRef = useRef();
+  const initialValues = { email: "", name: "", password: "", repassword: "", address: "", ID: "" };
+  const [formValues, setFormValues] = useState(initialValues);
+  const initialErrors = { email: false, name: false, password: false, repassword: false, address: false, ID: false };
+  const [formErrors, setFormErrors] = useState(initialErrors);
+  const [isSubmit, setIsSubmit] = useState(false);
 
-  const [emailAddress, setEmailAddress] = useState('');
-  const [validEmail, setValidEmail] = useState(false);
-  const [emailFocus, setEmailFocus] = useState(false);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
 
-  const [pwd, setPwd] = useState('');
-  const [validPwd, setValidPwd] = useState(false);
-  const [pwdFocus, setPwdFocus] = useState(false);
+  const handleSubmit = (e) => {
+    setFormErrors(validate(formValues));
+    console.log(!formErrors.email && !formErrors.name);
+    return (!formErrors.email && !formErrors.name);
+  };
+  
+  const validate = (values) => {
+    const errors = { email: false, name: false, password: false, repassword: false, address: false, ID: false };
+    const email_regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const name_regex = /^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/i;
+    if (!values.email) {
+      errors.email = true;
+    } else if (!email_regex.test(values.email)) {
+      errors.email = true;
+    }
+    if (!values.name) {
+      errors.name = true;
+    } else if (!name_regex.test(values.name)) {
+      errors.name = true;
+    }
 
-  const [matchPwd, setMatchPwd] = useState('');
-  const [validMatch, setValidMatch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
 
-  const [userAddress, setUserAddress] = useState('');
-  const [validAddress, setValidAddress] = useState(false);
-  const [AddressFocus, setAddressFocus] = useState(false);
+    return errors;
+  };
 
-  const [idFile, setIdFile] = useState('');
-  const [validIdFile, setValidId] = useState(false);
-  const [idFocus, setidFocus] = useState(false);
-
-  const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState(false)
-
-  useEffect(() => {
-    userRef.current.focus();
-}, [])
-
-useEffect(() => {
-    setValidEmail(EMAIL_REGEX.test(emailAddress));
-    console.log(emailAddress);
-}, [emailAddress])
-
-useEffect(() => {
-    setValidPwd(NONEMPTY_REGEX.test(pwd));
-    setValidMatch(pwd === matchPwd);
-}, [pwd, matchPwd])
-
-useEffect(() => {
-  setValidAddress(NONEMPTY_REGEX.test(userAddress));
-}, [userAddress])
 
   return(
     <body>
 
         <section className="registration">
-          <form>
+          <form onSubmit={ handleSubmit }>
               <div className="heading"><span className="newTo">Welcome to <font color="#d46f5e">a</font><font color="#345392">morr</font>! </span>
                 <span className="provide">I am a new Customer</span>
               </div>
 
               <div className="inputs">
                 <div className='row'>
-                  <div className="input"><input
-                    type="text" 
-                    placeholder="Email Address"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => setEmailAddress(e.target.value)}
-                    value={emailAddress}
-                    required
-                    style={
-                      emailAddress && !validEmail? {borderColor:'#00FF00'} : {borderColor:'#FF0000'} 
-                    }
+                  <div className={`input ${formErrors.email ? 'input-error' : ''}`}><input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    value={formValues.email}
+                    onChange={handleChange}
                   /></div>
-                  <div className="input"><input type="text" placeholder="Full Name"/></div>
+                  <div className={`input ${formErrors.name ? 'input-error' : ''}`}><input 
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  value={formValues.name}
+                  onChange={handleChange}
+                  /></div>
                 </div>
 
                 <div className='row'>
