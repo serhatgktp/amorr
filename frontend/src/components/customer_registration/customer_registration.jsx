@@ -3,10 +3,53 @@ import React from 'react';
 import "./customer_registration.css";
 
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const NONEMPTY_REGEX = /([^\s])/
 
 const CustomerRegistration = () => {
+
+  const userRef = useRef();
+  const errRef = useRef();
+
+  const [emailAddress, setEmailAddress] = useState('');
+  const [validEmail, setValidEmail] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
+
+  const [pwd, setPwd] = useState('');
+  const [validPwd, setValidPwd] = useState(false);
+  const [pwdFocus, setPwdFocus] = useState(false);
+
+  const [matchPwd, setMatchPwd] = useState('');
+  const [validMatch, setValidMatch] = useState(false);
+  const [matchFocus, setMatchFocus] = useState(false);
+
+  const [userAddress, setUserAddress] = useState('');
+  const [validAddress, setValidAddress] = useState(false);
+  const [AddressFocus, setAddressFocus] = useState(false);
+
+  const [idFile, setIdFile] = useState('');
+  const [validIdFile, setValidId] = useState(false);
+  const [idFocus, setidFocus] = useState(false);
+
+  const [errMsg, setErrMsg] = useState('');
+  const [success, setSuccess] = useState(false)
+
+  useEffect(() => {
+    userRef.current.focus();
+}, [])
+
+useEffect(() => {
+    setValidEmail(EMAIL_REGEX.test(emailAddress));
+    console.log(emailAddress);
+}, [emailAddress])
+
+useEffect(() => {
+    setValidPwd(NONEMPTY_REGEX.test(pwd));
+    setValidMatch(pwd === matchPwd);
+}, [pwd, matchPwd])
+
+useEffect(() => {
+  setValidAddress(NONEMPTY_REGEX.test(userAddress));
+}, [userAddress])
 
   return(
     <body>
@@ -19,7 +62,18 @@ const CustomerRegistration = () => {
 
               <div className="inputs">
                 <div className='row'>
-                  <div className="input"><input type="text" placeholder="Email Address"/></div>
+                  <div className="input"><input
+                    type="text" 
+                    placeholder="Email Address"
+                    ref={userRef}
+                    autoComplete="off"
+                    onChange={(e) => setEmailAddress(e.target.value)}
+                    value={emailAddress}
+                    required
+                    style={
+                      emailAddress && !validEmail? {borderColor:'#00FF00'} : {borderColor:'#FF0000'} 
+                    }
+                  /></div>
                   <div className="input"><input type="text" placeholder="Full Name"/></div>
                 </div>
 
