@@ -8,7 +8,6 @@ const CustomerRegistration = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const initialErrors = { email: false, name: false, password: false, repassword: false, address: false, ID: false };
   const [formErrors, setFormErrors] = useState(initialErrors);
-  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,15 +15,17 @@ const CustomerRegistration = () => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     setFormErrors(validate(formValues));
-    console.log(!formErrors.email && !formErrors.name);
-    return (!formErrors.email && !formErrors.name);
   };
   
   const validate = (values) => {
     const errors = { email: false, name: false, password: false, repassword: false, address: false, ID: false };
     const email_regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     const name_regex = /^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/i;
+    const alphanum_regex = /^[a-zA-Z0-9]*$/i;
+    const addr_regex = /^[a-zA-Z0-9 ]*$/i;
+
     if (!values.email) {
       errors.email = true;
     } else if (!email_regex.test(values.email)) {
@@ -36,6 +37,26 @@ const CustomerRegistration = () => {
       errors.name = true;
     }
 
+    if (!values.password) {
+      errors.password = true;
+    }
+    else if (!alphanum_regex.test(values.password)) {
+      errors.password = true;
+    }
+
+    if (!values.repassword) {
+      errors.repassword = true;
+    }
+    else if (values.repassword.localCompare(values.password)!=0){
+      errors.repassword = true;
+    }
+
+    if (!values.address) {
+      errors.address = true;
+    }
+    else if (!addr_regex.test(values.address)) {
+      errors.address = true;
+    }
 
     return errors;
   };
