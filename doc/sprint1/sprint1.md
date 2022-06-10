@@ -107,11 +107,11 @@ The table below displays who worked on which task during this sprint.
 | STAC-69          | If the user is logged in as a customer, then the navigation bar should additionally include Explore and My Appointments on the left side, a profile icon on the right side that leads to a dropdown to manage profile. delete account or logout.       |  dsfgsd |
 | STAC-70          | If the user is logged in as a service provider, then the navigation bar should additionally include Home and My Appointments on the left side, a profile icon on the right side that leads to a dropdown to manage profile. delete account or logout.        |  dsfgsd |
 | STAC-48          |  Error messages should be displayed if the user picks a username or email address that already exists in the database.       |  dsfgsd |
-| STAC-45          |   Clicking Signup should bring the user to an initial signup page where they are prompt to either sign up as a customer or as a service provider.      |  dsfgsd |
-| STAC-75          | Clicking login should bring the user to an initial login page where they are prompted to either login as a customer or a service provider.        |  dsfgsd |
+| STAC-45          |   Clicking Signup should bring the user to an initial signup page where they are prompt to either sign up as a customer or as a service provider.      |  Shannon Budiman |
+| STAC-75          | Clicking login should bring the user to an initial login page where they are prompted to either login as a customer or a service provider.        |  Shannon Budiman |
 | STAC-80          |  Error message should be displayed if the user fills in an invalid email or leaves one input unfilled.       |  dsfgsd |
-| STAC-46          |   Service provider has to fill out information for the following: full name, email address, password, government-issued photo ID, a selfie for confirmation, and an address.      |  dsfgsd |
-| STAC-47          | Customer has to fill out information for the following: full name, email address, password, and an address.        |  dsfgsd |
+| STAC-46          |   Service provider has to fill out information for the following: full name, email address, password, government-issued photo ID, a selfie for confirmation, and an address.      |  Shannon Budiman |
+| STAC-47          | Customer has to fill out information for the following: full name, email address, password, and an address.        |  Christopher Nathanael |
 | STAC-71          | Implement Backend Registration. | dsfgsd |
 | STAC-49         | Error messages should be displayed if the user types a wrong username or password.        |  dsfgsd |
 | STAC-72          | Backend Login Implementation.        |  dsfgsd |
@@ -127,8 +127,8 @@ The table below displays who worked on which task during this sprint.
 | STAC-77          |   Create sprint1.md      | Annanya Sharma |
 | STAC-78          |   Complete RPM.md      |  dsfgsd |
 | STAC-58          |  Initialize front end set up (React, Flask, npm, yarn)       |  dsfgsd |
-| STAC-59          | Finalize storyboard design and accessible pages for each user type.        |  dsfgsd |
-| STAC-60          |  Finalize storyboard design and accessible pages for each user type       |  **SAME AS STAC-59**|
+| STAC-59          | Finalize storyboard design and accessible pages for each user type.        |  Shannon Budiman |
+| STAC-60          |  Finalize storyboard design and accessible pages for each user type       |  Christopher Nathanael  |
 
 --- 
 **Spikes Recorded:**
