@@ -1,12 +1,13 @@
 import React from 'react';
-import './App.css';
-import Home from './components/home/Home';
+import Navbar from './components/Navbar/Navbar.js'
+import Home from './components/home/Home'
 
 function App(){
   return (
-    <>
-      <Home></Home>
-    </>
+    <body>
+    <Navbar/>
+    <Home/>
+    </body>
   )
   }
 export default App;

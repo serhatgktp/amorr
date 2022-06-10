@@ -4,12 +4,12 @@ import './CoverPage.css';
 
 const servicesLoop = [
     "Hairdressers",
-    "Makeup",
+    "Makeup Artists",
     "Eyebrow Tech",
     "Eyelash Tech",
-    "Massage",
-    "Barber",
-    "Cleaner"
+    "Massages",
+    "Barbers",
+    "Cleaners"
   ];
 
 function CoverPage() {
@@ -27,7 +27,7 @@ function CoverPage() {
         <div className='coverpage-container'>
             <div className='small-container'>
                 <div class="text-container">
-                    <h1>{servicesLoop[index]}</h1>
+                    <h1 id="loop">{servicesLoop[index]}</h1>
                     <h2 className='subtext'>wherever, whenever.</h2>
                 </div>
                 <div class="search-bar">
