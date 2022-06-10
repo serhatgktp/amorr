@@ -134,4 +134,4 @@ The table below displays who worked on which task during this sprint.
 **Spikes Recorded:**
 - Few of the teammates had to uninstall a buggy version of Node.js and reinstall Node.js (16.15.0)
 - Database is hosted on a local system, so everyone has to update it regularly. 
-- 
+- Issues with frontend components positioning.
