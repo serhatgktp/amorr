@@ -113,9 +113,9 @@ The table below displays who worked on which task during this sprint.
 | STAC-46          |   Service provider has to fill out information for the following: full name, email address, password, government-issued photo ID, a selfie for confirmation, and an address.      |  Shannon Budiman |
 | STAC-47          | Customer has to fill out information for the following: full name, email address, password, and an address.        |  Christopher Nathanael |
 | STAC-82          | New users should be first prompted to login or signup, before selecting whether they would like to signup as a customer or a service provider      |   Shannon Budiman |
-| STAC-71          | Implement Backend Registration. | dsfgsd |
+| STAC-71          |  Implement Registration Functionality in the back-end       |  Efkan Serhat Goktepe  |
+| STAC-72          |  Implement Login Functionality in the back-end (Work for this task was committed with the STAC-71 branch       |  Efkan Serhat Goktepe  |
 | STAC-49         | Error messages should be displayed if the user types a wrong username or password.        |  dsfgsd |
-| STAC-72          | Backend Login Implementation.        |  dsfgsd |
 | STAC-81          | frontend login implmentation, user has to enter email and password           |     Shannon Budiman |
 | STAC-50          |  There should be a 'Contact Us' page that users can view.       | Annanya Sharma |
 | STAC-52          | There will be an ‘About Us’ page that anyone can view.        |  Jumana Fanous |
