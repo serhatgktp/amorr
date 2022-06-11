@@ -121,7 +121,7 @@ const CustomerRegistration = () => {
               </div>
 
               <div className="cardFooter">
-                <span className='terms'>By clicking SIGN UP, I agree to amorr's <a href='#'>term's and conditions</a> and <a href='#'>privacy policy</a></span>
+                <span className='terms'>By clicking SIGN UP, I agree to amorr's <a href='#'>terms and conditions</a> and <a href='#'>privacy policy</a></span>
                 <input className="submit" type="submit" value="SIGN UP" />
               </div>  
           </form>
