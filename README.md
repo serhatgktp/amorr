@@ -25,7 +25,7 @@ Install Backend Dependencies
 ```sh
 pip install pymysql
 pip install pandas
-```A
+```
 
 Install Flask with pip
 
