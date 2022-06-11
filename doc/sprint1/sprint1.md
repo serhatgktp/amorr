@@ -43,7 +43,7 @@
 
 ---
 
-**The user stories we chose to work on are the following (with the breakdown and points assigned):**
+**The user stories we chose to work on (and completed) are the following (with the breakdown and points assigned):**
 -  (STAC-33) As a user, I want to be able to see the home page so that I can browse through the website and decide from then on if I am interested in the services that they provide or if I am interested in joining amorr’s service providers.The following is the task breakdown: 
 
     - The home page should contain a cover page with updating heading text and a search bar.
