@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import ServiceProviderRegistration from './components/service_provider_registration/service_provider_registration';
-import Login from './components/login-page/login-page'
-const App = () => {
-  return(
-    <div>
-      <Login/>
-    </div>
-  )
-}
+import React from 'react';
+import Navbar from './components/Navbar/Navbar.js'
+import Home from './components/home/Home'
 
-export default App
+function App(){
+  return (
+    <body>
+    <Navbar/>
+    <Home/>
+    </body>
+  )
+  }
+export default App;

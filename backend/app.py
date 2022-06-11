@@ -47,7 +47,7 @@ def login():
         print('Attempting login:\n' + 'username: ' + request.form['username'] + '\npassword: ' + request.form['password'])
         return attempt_login(request.form['username'],request.form['password'])
     else:
-        return show_login_page()
+        return render_template("dummy_login.html")
 
 def attempt_login(username,password):
     if check_credentials(username,password):
@@ -66,10 +66,11 @@ def attempt_login(username,password):
     # return show_login_page(login_failed = True)
     return make_response("Incorrect username or password", 401)
 
-def show_login_page(login_failed=False):
+def show_login_page():
     #return 'Login Page'
     print("showing login page")
-    return render_template('dummy_login.html', login_failed=login_failed)
+    return redirect('/login')
+    # return render_template('dummy_login.html', login_failed=login_failed)
 
 def check_credentials(username, password):
     # rows = d.query('SELECT * FROM login_credentials')
@@ -115,7 +116,7 @@ def do_register():  # Assuming username, password, & email regex is implemented 
         print("Email is already in use!")
         return show_register_page()
 
-    new_user = {'email':[email], 'uname':[username], 'pwd':[password], 'privilege':[privilege], 'uid':['0000']}
+    new_user = {'email':[email], 'uname':[username], 'pwd':[password], 'privilege':[privilege]}
     df = pd.DataFrame.from_dict(new_user)
     mu.insert(config, 'users', df)
     print('Registered successfully!\n')
