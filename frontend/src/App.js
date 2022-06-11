@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import InitialLogin from './components/initial-login/initial-login'
-function App(){
+import React from 'react';
+import Navbar from './components/Navbar/Navbar.js'
+import Home from './components/home/Home'
 
-  return(
+function App(){
+  return (
     <body>
-      <InitialLogin />
+    <Navbar/>
+    <Home/>
     </body>
   )
-}
-
-export default App
+  }
+export default App;

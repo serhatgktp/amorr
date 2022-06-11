@@ -1,0 +1,43 @@
+.card-container{
+    overflow: hidden;
+    transition: 0.3s;
+    animation: ease-in;
+    background: #f9f6ee;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    position: relative;
+    margin-right: 35px;
+    float: left;
+}
+
+.card-container:hover {
+    transform: scale(1.1);
+}
+
+.card {
+    background: #f9f6ee;
+    text-decoration: none;
+}
+
+img {
+    background: #f9f6ee;
+    width: 60%;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 13px;
+    align-items: center;
+    background: none;
+}
+
+h3 {
+    color: black;
+    font-size: 110%;
+    font-family: "poppins";
+    font-weight: 600;
+    text-align: center;
+    margin: auto;
+    background: none;
+}
