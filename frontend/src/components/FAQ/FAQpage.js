@@ -20,6 +20,11 @@ function FAQpage () {
       question: 'How far in advance can I book my appointment?',
       answer: 'You can book your appointment up to 14 days in advance.',
       open: false
+    },
+    {
+      question: 'Who do i reach out to for questions',
+      answer: 'You can contact us in the Contact Us page or you can call us!',
+      open: false
     }
   ]);
 
@@ -30,13 +35,18 @@ function FAQpage () {
       open: false
     },
     {
-      question: 'Who is the most awesome person?',
-      answer: 'You. The Viewer.',
+      question: 'Can I leave notes for the service provider?',
+      answer: 'You. You can do it in the application after payment',
       open: false
     },
     {
-      question: 'How many questions does it take to make a successful FAQ Page?',
-      answer: 'This many.',
+      question: 'How does tipping work?',
+      answer: '100% of all tips are always passed through automatically to the delivery driver. Tips can be added via the Uber Direct Dashboard once dropoff is complete.',
+      open: false
+    },
+    {
+      question: 'How far can I order a service? Is there a mileage limit?',
+      answer: 'Mileage limits are set at the market-level to optimize the experience for your customers and service providers.',
       open: false
     }
   ]);
