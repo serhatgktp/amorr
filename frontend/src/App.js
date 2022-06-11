@@ -1,12 +1,12 @@
 import React from 'react';
 import Navbar from './components/Navbar/Navbar.js'
-import ServiceProviderRegistration from './components/service_provider_registration/service_provider_registration'
+import ContactUs from './components/contact_us/contact_us';
 
 function App(){
   return (
     <body>
     <Navbar/>
-    <ServiceProviderRegistration/>
+    <ContactUs/>
     </body>
   )
  }
