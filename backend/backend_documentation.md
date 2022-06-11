@@ -19,9 +19,9 @@ Sessions are aggregated in the `SESSIONS` list. A `sessionId` string is generate
 
 ### User()
 
-Constructor: `__init__(self, sql_data)`
-    Params: Dict sql_data
-    "Initialized with dictionary `sql_data` 
+Constructor: `__init__(self, sql_data)`  
+    Params: Dict sql_data  
+    "Initialized with dictionary `sql_data`   
 
 Data Structure:
 - str uname
@@ -33,56 +33,56 @@ Data Structure:
 ## 4) Methods
 
 ### newSessionID()
-Params: None
-Return: sessionId
-"Returns a randomly-generated string that represents a logged-in user's sessionID"
+Params: None  
+Return: sessionId  
+"Returns a randomly-generated string that represents a logged-in user's sessionID"  
 
 ### login()
-Params: None
-Returns: `attempt_login(...)` or `render_template(...)`
-"Manages GET/POST requests to the `/login` route
+Params: None  
+Returns: `attempt_login(...)` or `render_template(...)`  
+"Manages GET/POST requests to the `/login` route  
 
 ### attempt_login(username,password)
-Params: str username, str password
-Returns: `make_response(...)`
-"Attemps to log in user. If login is successful, redirect to the home page. Otherwise return response 'Incorrect username or password'"
+Params: str username, str password  
+Returns: `make_response(...)`  
+"Attemps to log in user. If login is successful, redirect to the home page. Otherwise return response 'Incorrect username or password'"  
 
 ### check_credentials(username,password)
-Params: str username, str password
-Returns: Bool
-"Compares arguments to user credentials in the database. If the arguments match exactly with the credentials of a user in the database, return True. Otherwise, return False."
+Params: str username, str password  
+Returns: Bool  
+"Compares arguments to user credentials in the database. If the arguments match exactly with the credentials of a user in the database, return True. Otherwise, return False."  
 
 ### show_login_page()
-Params: None
-Returns: `redirect(/login)`
-"Redirects the user to the `/login` route
+Params: None  
+Returns: `redir  ect(/login)`
+"Redirects the user to the `/login` route  
 
 ### register()
-Params: None
-Returns: `do_register()` or `show_register_page()`
-"Handles GET/POST requests for the `/register` route. If GET request is received, return `show_register_page()`. Otherwise, return `do_register()` (attempt to register a new user).
+Params: None  
+Returns: `do_register()` or `show_register_page()`  
+"Handles GET/POST requests for the `/register` route. If GET request is received, return `show_register_page()`. Otherwise, return `do_register()` (attempt to register a new user).  
 
 ### do_register()
-Params: None
-Returns: `show_register_page()` or `show_login_page()`
-"Attempt to register a new user by creating a new user entry with the parameters from the incoming POST request. Check if the username or email has already been used before creating a new user. Upon success, redirect to the `/login` route. Otherwise, return `show_register_page()`
+Params: None  
+Returns: `show_register_page()` or `show_login_page()`  
+"Attempt to register a new user by creating a new user entry with the parameters from the incoming POST request. Check if the username or email has already been used before creating a new user. Upon success, redirect to the `/login` route. Otherwise, return `show_register_page()`  
 
 ### show_register_page()
-Params: None
-Returns: `render_template('dummy_register.html')`
-"Render the registration page"
+Params: None  
+Returns: `render_template('dummy_register.html')`  
+"Render the registration page"  
 
 ### get_userid()
-Params: None
-Returns: Str
-"Return the userid of the user of the current session"
+Params: None  
+Returns: Str  
+"Return the userid of the user of the current session"  
 
 ### home()
-Params: None
-Returns: `render_template("dummy_home.html")`
-"Render the home page."
+Params: None  
+Returns: `render_template("dummy_home.html")`  
+"Render the home page."  
 
 ### admin()
-Params: None
-Returns: redirect(url_for("home"))
-"Serves the purpose of a test function"
+Params: None  
+Returns: redirect(url_for("home"))  
+"Serves the purpose of a test function"  
