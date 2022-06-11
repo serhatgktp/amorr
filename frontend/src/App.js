@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import LoginSignupLanding from './components/initial_login_signup_landing/login_signup_landing'
+import React from 'react';
+import Navbar from './components/Navbar/Navbar.js'
+import Home from './components/home/Home'
 
-const App = () => {
-  return(
-    <div>
-      <LoginSignupLanding/>
-    </div>
+function App(){
+  return (
+    <body>
+    <Navbar/>
+    <Home/>
+    </body>
   )
-}
-
-export default App
+  }
+export default App;
