@@ -20,6 +20,13 @@ Clone down this repository by running
 git clone https://github.com/UTSCCSCC01/finalprojects22-stackato-studio.git
 ```
 
+Install Backend Dependencies
+
+```sh
+pip install pymysql
+pip install pandas
+```A
+
 Install Flask with pip
 
 ```sh
