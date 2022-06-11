@@ -66,7 +66,7 @@ def attempt_login(username,password):
     # return show_login_page(login_failed = True)
     return make_response("Incorrect username or password", 401)
 
-def show_login_page(login_failed=False):
+def show_login_page():
     #return 'Login Page'
     print("showing login page")
     return redirect('/login')
