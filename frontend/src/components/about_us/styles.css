@@ -1,0 +1,113 @@
+.box {
+    background-color: #F9F6EE;
+    width: 90%;
+    height: 37rem;
+    margin-left: 5%;
+    margin-top: 6%;
+    margin-bottom: 6%;
+
+  }
+  
+  .image{
+    position: absolute;
+  }
+  
+  
+  .titleContainer {
+    flex-direction: row;
+    display: flex;
+  }
+  
+  .title{
+    background: #F9F6EE;
+    align-items: center;
+    color: #345392;
+    
+  }
+  
+  body {
+    background-color: #f3ebdb;
+  }
+  
+  .container {
+    margin-top: 2%;
+    flex: 1;
+    margin-bottom: 2%;
+  }
+  
+  
+  .headerOne {
+    display: flex;
+    flex-direction: row;
+    margin-left: 8rem;
+  
+  }
+  
+  .headerTwo {
+    display: flex;
+    flex-direction: row;
+    margin-left: 30rem;
+    align-items: center;
+    
+    
+  }
+  
+  .title .a{
+    color: #d46f5e;
+  }
+  
+  .title .about{
+    color: black;
+  }
+  
+  .click{
+    background-color: #345392;
+    border: none;
+    color: #f9f6ee;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 70px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 26px;
+    height: 40px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+  }
+
+  .click:hover{
+    transform: scale(1.03);
+  }
+  
+  .box{
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+  }
+  
+  .p1{
+    position: relative;
+    width: 600px;
+    margin-left: 4rem;
+  }
+  
+  .p2{
+    position: relative;
+    width: 600px;
+    margin-left: 4rem;
+  }
+  
+  .title{
+    position: relative;
+    height: 50px;
+    margin-left: 4rem;
+  }
+  
+  .img-peacock {
+    margin-top: -450px;
+    margin-right: 100px;
+    display: flex;
+    height: 500px
+    
+  }
