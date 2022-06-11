@@ -103,9 +103,9 @@ The table below displays who worked on which task during this sprint.
 | STAC-66          | The home page should contain a cover page with updating heading text and a search bar.        |  Theora Pui |
 | STAC-67          | The home page should contain a grid of clickable visual photos and texts containing the different service types offered.        |  Theora Pui |
 | STAC-68          |  The home page should include a Quick Guide to using the website.      |  Theora Pui |
-| STAC-44          |   If the user is not logged in, the navigation bar should include clickable buttons that redirect the user to an About Us page, FAQ page, Contact Us page, and Sign Up / Log In page.      |  dsfgsd |
-| STAC-69          | If the user is logged in as a customer, then the navigation bar should additionally include Explore and My Appointments on the left side, a profile icon on the right side that leads to a dropdown to manage profile. delete account or logout.       |  dsfgsd |
-| STAC-70          | If the user is logged in as a service provider, then the navigation bar should additionally include Home and My Appointments on the left side, a profile icon on the right side that leads to a dropdown to manage profile. delete account or logout.        |  dsfgsd |
+| STAC-44          |   If the user is not logged in, the navigation bar should include clickable buttons that redirect the user to an About Us page, FAQ page, Contact Us page, and Sign Up / Log In page.      |  Mir Safwat Ayser |
+| STAC-69          | If the user is logged in as a customer, then the navigation bar should additionally include Explore and My Appointments on the left side, a profile icon on the right side that leads to a dropdown to manage profile. delete account or logout.       |  Mir Safwat Ayser |
+| STAC-70          | If the user is logged in as a service provider, then the navigation bar should additionally include Home and My Appointments on the left side, a profile icon on the right side that leads to a dropdown to manage profile. delete account or logout.        |  Mir Safwat Ayser |
 | STAC-48          |  Error messages should be displayed if the user picks a username or email address that already exists in the database.       |  dsfgsd |
 | STAC-45          |   Clicking Signup should bring the user to an initial signup page where they are prompt to either sign up as a customer or as a service provider.      |  Shannon Budiman |
 | STAC-75          | Clicking login should bring the user to an initial login page where they are prompted to either login as a customer or a service provider.        |  Shannon Budiman |
@@ -120,12 +120,12 @@ The table below displays who worked on which task during this sprint.
 | STAC-50          |  There should be a 'Contact Us' page that users can view.       | Annanya Sharma |
 | STAC-52          | There will be an ‘About Us’ page that anyone can view.        |  Jumana Fanous |
 | STAC-54          | There will be a static ‘Terms of Service and Privacy Policy’ page that anyone can view.       |  Jumana Fanous |
-| STAC-56          | There should be a static FAQ page that users can view.        |  dsfgsd |
+| STAC-56          | There should be a static FAQ page that users can view.        |  Mir Safwat Ayser |
 | STAC-57          | There musn't be a sign-in requirement for a user to view the page.        |  dsfgsd |
-| STAC-65          | Software Architecture Diagram.        |  dsfgsd |
+| STAC-65          | Software Architecture Diagram.        |  Mir Safwat Ayser |
 | STAC-64          |  CRC Cards.       |  Theora Pui |
 | STAC-77          |   Create sprint1.md      | Annanya Sharma |
-| STAC-78          |   Complete RPM.md      |  dsfgsd |
+| STAC-78          |   Complete RPM.md      |  Theora Pui |
 | STAC-58          |  Initialize front end set up (React, Flask, npm, yarn)       |  Shannon Budiman |
 | STAC-59          | Finalize storyboard design and accessible pages for each user type.        |  Shannon Budiman |
 | STAC-60          |  Finalize storyboard design and accessible pages for each user type       |  Christopher Nathanael  |
