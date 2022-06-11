@@ -6,7 +6,7 @@ const CustomerRegistration = () => {
 
   const initialValues = { email: "", name: "", password: "", repassword: "", address: "", ID: "" };
   const [formValues, setFormValues] = useState(initialValues);
-  const initialErrors = { email: false, name: false, password: false, repassword: false, address: false, ID: false };
+  const initialErrors = { email: false, name: false, password: false, repassword: false, address: false};
   const [formErrors, setFormErrors] = useState(initialErrors);
 
   const handleChange = (e) => {
@@ -20,11 +20,11 @@ const CustomerRegistration = () => {
   };
   
   const validate = (values) => {
-    const errors = { email: false, name: false, password: false, repassword: false, address: false, ID: false };
+    const errors = { email: false, name: false, password: false, repassword: false, address: false};
     const email_regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    const name_regex = /^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/i;
-    const alphanum_regex = /^[a-zA-Z0-9]*$/i;
-    const addr_regex = /^[a-zA-Z0-9 ]*$/i;
+    const name_regex = /^[a-zA-Z ]+$/;
+    const alphanum_regex = /^[a-zA-z0-9]+$/;
+    const addr_regex = /^[a-zA-z0-9 ]+$/;
 
     if (!values.email) {
       errors.email = true;
@@ -39,15 +39,14 @@ const CustomerRegistration = () => {
 
     if (!values.password) {
       errors.password = true;
-    }
-    else if (!alphanum_regex.test(values.password)) {
-      errors.password = true;
+    } else if (!alphanum_regex.test(values.password)) {
+    errors.password = true;
     }
 
     if (!values.repassword) {
       errors.repassword = true;
     }
-    else if (values.repassword.localCompare(values.password)!=0){
+    else if (!(values.repassword === values.password)){
       errors.repassword = true;
     }
 
@@ -76,26 +75,44 @@ const CustomerRegistration = () => {
                   <div className={`input ${formErrors.email ? 'input-error' : ''}`}><input
                     type="text"
                     name="email"
-                    placeholder="Email"
+                    placeholder="Enter Email"
                     value={formValues.email}
                     onChange={handleChange}
                   /></div>
                   <div className={`input ${formErrors.name ? 'input-error' : ''}`}><input 
                   type="text"
                   name="name"
-                  placeholder="Full Name"
+                  placeholder="Enter Full Name"
                   value={formValues.name}
                   onChange={handleChange}
                   /></div>
                 </div>
 
                 <div className='row'>
-                  <div className="input"><input type="password" placeholder="Password"/></div>
-                  <div className="input"><input type="password" placeholder="Re-enter password"/></div>
+                <div className={`input ${formErrors.password ? 'input-error' : ''}`}><input 
+                  type="password"
+                  name="password"
+                  placeholder="Enter password"
+                  value={formValues.password}
+                  onChange={handleChange}
+                  /></div>
+                  <div className={`input ${formErrors.repassword ? 'input-error' : ''}`}><input 
+                  type="password"
+                  name="repassword"
+                  placeholder="Re-enter password"
+                  value={formValues.repassword}
+                  onChange={handleChange}
+                  /></div>
                 </div>
 
                 <div className='row'>
-                  <div className="input" id="address"><input type="text" placeholder="Address"/></div>
+                <div className={`input ${formErrors.address ? 'input-error' : ''}`}><input 
+                  type="text"
+                  name="address"
+                  placeholder="Enter Address"
+                  value={formValues.address}
+                  onChange={handleChange}
+                  /></div>
                   <div className="input" id="attachFile">
                     <label for="myFile">Attach ID: </label>
                     <input className="id" type="file" id="myFile" name="filename"/>
