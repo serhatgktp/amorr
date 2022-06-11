@@ -1,27 +1,42 @@
 <html>
+    <head>
+        <link rel="stylesheet" href="../static/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </head>
     <body>
-        <h2> AMORR Registration </h2>
+        <div class="container">
+            <h2>Welcome to <span style="color: #D46F5E;">a</span><span style="color: #345392;">morr </span></h2>
 
-        <form method="post">
+            <form method="post">
 
-            <!-- not sure what value does -->
-            <input type="text" id="email" name="email" placeholder="email" value=""></input><br>
+                <!-- not sure what value does -->
+                <input type="text" id="email" name="email" placeholder="email" value=""></input><br>
 
-            <input type="text" id="uname" name="username" placeholder="username" value=""></input><br>
+                <input type="text" id="uname" name="username" placeholder="username" value=""></input><br>
 
-            <input type="text" id="pword" name="password" placeholder="password" value=""></input><br>
+                <input type="text" id="pword" name="password" placeholder="password" value=""></input><br>
 
-            <input type="text" id="r_pword" name="r_password" placeholder="repeat password" value=""></input><br>
+                <input type="text" id="r_pword" name="r_password" placeholder="repeat password" value=""></input><br>
+                
+                <div class="radio">
+                    <span>
+                        <input type="radio" id="customer" name="privilege" value="customer">
+                        <label for="customer">customer</label>
+                    </span>
+                    <span>
+                        <input type="radio" id="SP" name="privilege" value="SP" class="userType">
+                        <label for="SP">SP</label>
+                    </span>
+                    <span>
+                        <input type="radio" id="admin" name="privilege" value="admin" class="userType">
+                        <label for="admin">admin</label> 
+                    </span>
+                </div>
+                <div><button type="submit">SIGN IN</button></div>
 
-            <input type="radio" id="customer" name="privilege" value="customer">
-            <label for="customer">customer</label><br>
-            <input type="radio" id="SP" name="privilege" value="SP">
-            <label for="SP">SP</label><br>
-            <input type="radio" id="admin" name="privilege" value="admin">
-            <label for="admin">admin</label> 
-
-            <button type="submit">Submit</button>
-
-        </form>
+            </form>
+        </div>
     </body>
 </html>

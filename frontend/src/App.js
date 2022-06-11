@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import './App.css';
-import PrivacyPolicy from './components/privacy_policy/PrivacyPolicy'; 
+import React from 'react';
+import Navbar from './components/Navbar/Navbar.js'
+import Home from './components/home/Home'
 
 function App(){
-
   return (
-    <PrivacyPolicy />
+    <body>
+    <Navbar/>
+    <Home/>
+    </body>
   )
-}
-
-export default App
+ }
+export default App;
