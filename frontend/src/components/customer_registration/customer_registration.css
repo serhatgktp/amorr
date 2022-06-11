@@ -36,6 +36,7 @@
     border-radius: 45px;
     padding: 40px;
     margin: 100px 150px;
+    margin-top: 50px;
     text-align: center;
 }
 
@@ -129,4 +130,9 @@ input[type=submit]{
 
 input[type=submit]:hover{
     transform: scale(1.03);
+}
+
+.input-error {
+    border: red 1px solid;
+    border-radius: 30px;
 }
