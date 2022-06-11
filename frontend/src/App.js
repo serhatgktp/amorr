@@ -9,5 +9,5 @@ function App(){
     <Home/>
     </body>
   )
-  }
+ }
 export default App;
