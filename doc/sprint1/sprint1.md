@@ -106,7 +106,6 @@ The table below displays who worked on which task during this sprint.
 | STAC-44          |   If the user is not logged in, the navigation bar should include clickable buttons that redirect the user to an About Us page, FAQ page, Contact Us page, and Sign Up / Log In page.      |  Mir Safwat Ayser |
 | STAC-69          | If the user is logged in as a customer, then the navigation bar should additionally include Explore and My Appointments on the left side, a profile icon on the right side that leads to a dropdown to manage profile. delete account or logout.       |  Mir Safwat Ayser |
 | STAC-70          | If the user is logged in as a service provider, then the navigation bar should additionally include Home and My Appointments on the left side, a profile icon on the right side that leads to a dropdown to manage profile. delete account or logout.        |  Mir Safwat Ayser |
-| STAC-48          |  Error messages should be displayed if the user picks a username or email address that already exists in the database.       |  dsfgsd |
 | STAC-45          |   Clicking Signup should bring the user to an initial signup page where they are prompt to either sign up as a customer or as a service provider.      |  Shannon Budiman |
 | STAC-75          | Clicking login should bring the user to an initial login page where they are prompted to either login as a customer or a service provider.        |  Shannon Budiman |
 | STAC-80          |  Error message should be displayed if the user fills in an invalid email or leaves one input unfilled.       |  Christopher Nathanael |
@@ -115,13 +114,11 @@ The table below displays who worked on which task during this sprint.
 | STAC-82          | New users should be first prompted to login or signup, before selecting whether they would like to signup as a customer or a service provider      |   Shannon Budiman |
 | STAC-71          |  Implement Registration Functionality in the back-end       |  Efkan Serhat Goktepe  |
 | STAC-72          |  Implement Login Functionality in the back-end (Work for this task was committed with the STAC-71 branch       |  Efkan Serhat Goktepe  |
-| STAC-49         | Error messages should be displayed if the user types a wrong username or password.        |  dsfgsd |
 | STAC-81          | frontend login implmentation, user has to enter email and password           |     Shannon Budiman |
 | STAC-50          |  There should be a 'Contact Us' page that users can view.       | Annanya Sharma |
 | STAC-52          | There will be an ‘About Us’ page that anyone can view.        |  Jumana Fanous |
 | STAC-54          | There will be a static ‘Terms of Service and Privacy Policy’ page that anyone can view.       |  Jumana Fanous |
 | STAC-56          | There should be a static FAQ page that users can view.        |  Mir Safwat Ayser |
-| STAC-57          | There musn't be a sign-in requirement for a user to view the page.        |  dsfgsd |
 | STAC-65          | Software Architecture Diagram.        |  Mir Safwat Ayser |
 | STAC-64          |  CRC Cards.       |  Theora Pui |
 | STAC-77          |   Create sprint1.md      | Annanya Sharma |
