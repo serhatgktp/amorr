@@ -4,7 +4,6 @@ How to update React Dependencies and start frontend:
 ```
 yarn install
 yarn start
-pip install flask
 ```
 
 ## File Structure
