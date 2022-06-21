@@ -4,10 +4,10 @@
 Christopher Nathanael, Jumana Fanous, Efkan Serhat Goktepe, Mir Safwat Ayser, Shannon Budiman, Theora Pui, Annanya Sharma
 
 ## New User Stories from unfinished Sprint 1 Tasks
-- As a User, I want my newly **registered account to be stored internally** so I can **log back into** my account without having to create a new account
-- As a Customer, I want to be able to access my appointments page, home page through the **navigation bar**
-- As a Service Provider, I want to be able to view my Service Provider page and my appointments through the **navigation bar**
-- As a User, I want my messages sent in the Contact Us page to be **stored internally** so I can receive future responses to my inquiries
+- As a first time User, I want to be able to sign up with a newly registered account that securely stores my information
+- As a returning User, I want to be able to log  back into the account that I previously registered using my username and password for the system to authenticate me and redirect me to the homepage
+- As a User, I want to be able to navigate to other pages by clicking components of the navigation bar
+- As a User, I want my messages sent in the Contact Us page to be stored internally so I can receive future responses to my inquiries
 
 ## What are practices that you should continue during next sprint
 - Frequent Sprint meetings 
