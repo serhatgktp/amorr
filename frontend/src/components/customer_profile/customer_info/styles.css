@@ -1,0 +1,22 @@
+*{
+    font-family: 'Poppins';
+}
+
+#customer_info{
+    background-color: #F9F6EE;
+}
+
+#customer_name{
+    font-weight: 600;
+    font-size: 20px;
+}
+
+#rating{
+    display:flex;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.rating_num{
+    font-size: 18px;
+}

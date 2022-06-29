@@ -1,12 +1,10 @@
 import React from 'react';
-import Navbar from './components/Navbar/Navbar.js'
-import Home from './components/home/Home';
+import CustomerProfile from './components/customer_profile/customer_profile.jsx';
 
 function App(){
   return (
     <body>
-    <Navbar/>
-    <Home/>
+    <CustomerProfile/>
     </body>
   )
  }
