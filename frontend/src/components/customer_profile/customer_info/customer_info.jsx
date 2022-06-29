@@ -12,18 +12,30 @@ const CustomerInfo = () => {
 
     return(
         <div id="customer_info">
+
             <div id="customer_left">
                 <div><Avatar alt="Sans Calibri" src={customer} sx={{ width: 100, height: 100 }}/></div>
                 <div id="change_photo">Change profile photo</div>
             </div>
-            <div id="customer_name">Sans Calibri</div>
-            <div id="rating">
-                <span className="rating_num">4.5</span>
-                <Rating name="read-only" size="medium" value={4.5} precision={0.5} readOnly />
-                <span className="rating_num">(50)</span>
+
+            <div id="customer_right">
+
+                <div id="customer_name">Sans Calibri</div>
+
+                <div id="rating">
+                    <span className="rating_num">4.5</span>
+                    <Rating name="read-only" size="medium" value={4.5} precision={0.5} readOnly />
+                    <span className="rating_num">(50)</span>
+                </div>
+
+                <div id="services_ordered"> <span>75 </span>Services Ordered</div>
+
+                <div id="editable_line">
+                    <div><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px' }}/><InlineEdit value={value} setValue={setValue}/></div>
+                    <button id="save_changes">Save Changes</button>
+                </div>
+
             </div>
-            <div> <span>75 </span>Services Ordered</div>
-            <InlineEdit value={value} setValue={setValue}/>
         </div>
     )
 }
