@@ -1,0 +1,18 @@
+#editable{
+    border-radius: 30px;
+    border: none;
+    background-color: transparent;
+    padding: 8px;
+    width: 700px;
+    font-size: 16px;
+}
+
+#editable:hover{
+    background-color:  white;
+    cursor: pointer;
+}
+
+#editable:focus{
+    outline: 5px auto Highlight;
+    cursor: text;
+}

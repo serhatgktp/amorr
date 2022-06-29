@@ -20,3 +20,17 @@
 .rating_num{
     font-size: 18px;
 }
+
+#change_photo{
+    color: #808080;
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+#customer_left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
