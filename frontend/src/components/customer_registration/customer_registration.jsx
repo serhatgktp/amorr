@@ -23,8 +23,8 @@ const CustomerRegistration = () => {
     const errors = { email: false, name: false, password: false, repassword: false, address: false};
     const email_regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     const name_regex = /^[a-zA-Z ]+$/;
-    const alphanum_regex = /^[a-zA-z0-9]+$/;
-    const addr_regex = /^[a-zA-z0-9 ]+$/;
+    const alphanum_regex = /^[a-zA-z0-9]{8,}$/;
+    const addr_regex = /^[a-zA-z0-9 ,]+$/;
 
     if (!values.email) {
       errors.email = true;
