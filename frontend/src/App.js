@@ -1,12 +1,12 @@
 import React from 'react';
 import Navbar from './components/Navbar/Navbar.js'
-import CustomerRegistration from './components/customer_registration/customer_registration';
+import Home from './components/home/Home';
 
 function App(){
   return (
     <body>
     <Navbar/>
-    <CustomerRegistration/>
+    <Home/>
     </body>
   )
  }
