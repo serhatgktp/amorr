@@ -1,0 +1,70 @@
+.successPopup {
+    position: relative;
+    width: 300px;
+    height: auto;
+    display: block;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.popupUpper {
+    padding: 2em;
+    background-color: #8BC34A;
+    display: block;
+    color: #fff;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
+}
+
+.popupLower {
+    padding: 2em 2em 5em 2em;
+    background: #fff;
+    display: block;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
+}
+
+#successIcon {
+    color: #fff;
+    font-size: 100px;
+}
+
+#successHeading {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+#successPara {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+#contBtn {
+    position: relative;
+    top: 2em;
+    text-decoration: none;
+    background: #7bc431;
+    color: #fff;
+    margin: auto;
+    padding: .8em 3em;
+    box-shadow: 0px 2px 6px rgba(50, 50, 50, 0.21);
+    border-radius: 25px;
+    -webkit-transition: all .4s ease;
+          -moz-transition: all .4s ease;
+          -o-transition: all .4s ease;
+          transition: all .4s ease;
+}
+
+#contBtn:hover {
+    padding: .9em 3.1em;
+    -webkit-transition: all .4s ease;
+            -moz-transition: all .4s ease;
+            -o-transition: all .4s ease;
+            transition: all .4s ease;
+}
