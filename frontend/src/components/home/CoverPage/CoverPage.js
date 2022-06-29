@@ -31,7 +31,7 @@ function CoverPage() {
                     <h2 className='subtext'>wherever, whenever.</h2>
                 </div>
                 <div class="search-bar">
-                    <input type="text" placeholder="Search..."></input>
+                    <input class="inputSearchCP" type="text" placeholder="Search..."></input>
                     <a class="search-btn" href="http://localhost:3000/"> </a>
                 </div>
             </div>

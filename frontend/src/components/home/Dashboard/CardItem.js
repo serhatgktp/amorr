@@ -5,9 +5,9 @@ function CardItem(props) {
 
   return (
     <div className="card-container">
-        <a class='card' href={props.redirection}>
-          <img src={props.img} alt=''/>
-          <h3>{props.title}</h3> 
+        <a class='cardLink' href={props.redirection}>
+          <img class="imgCardItem" src={props.img} alt=''/>
+          <h3 class="hdgCardItem">{props.title}</h3> 
         </a>
     </div>
   )

@@ -1,9 +1,11 @@
-.hdg {
+.headingForDashboard {
     color: black;
-    margin-left: -380px;
-    margin-bottom: 30px;
     font-family: "poppins";
     font-weight: 600;
+    text-align: center;
+    margin-right: 380px;
+    margin-bottom: 30px;
+    font-size: 28px;
 }
 
 .cards_container {
