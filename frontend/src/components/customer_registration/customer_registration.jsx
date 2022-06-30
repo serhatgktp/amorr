@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import "./customer_registration.css";
 import {ErrorPopup} from '../error_registration_popup/errorPopup';
+import SuccessPopup from '../success_registration_popup/SuccessPopup';
 
 const CustomerRegistration = () => {
 
@@ -11,6 +12,7 @@ const CustomerRegistration = () => {
 
   // Initial Settings for Success Popup is FALSE, so the Success Popup is not rendered
   const [triggererrorPopup, setTriggererrorPopup] = useState(false);
+  const [triggerSuccessPopup, setTriggerSuccessPopup] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +24,7 @@ const CustomerRegistration = () => {
     setFormErrors(validate(formValues));
     // If registered correctly, render Success Popup
     setTriggererrorPopup(true);
+    setTriggerSuccessPopup(true);
   };
   
   const validate = (values) => {
@@ -133,6 +136,7 @@ const CustomerRegistration = () => {
         </section>
         <div className='tools'></div>
         <ErrorPopup trigger={triggererrorPopup} />
+        <SuccessPopup trigger={triggerSuccessPopup}></SuccessPopup>
         </body>
   );
 };
