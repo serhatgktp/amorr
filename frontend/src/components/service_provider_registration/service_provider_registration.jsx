@@ -10,7 +10,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 
-import errorPopup from '../error_registration_popup/errorPopup';
+import {ErrorPopup} from '../error_registration_popup/errorPopup';
 
 const ITEM_HEIGHT = 45;
 const ITEM_PADDING_TOP = 8;
@@ -193,13 +193,13 @@ const ServiceProviderRegistration = () => {
               </div>
 
               <div className="cardFooter">
-                <span className='terms'>By clicking SIGN UP, I agree to amorr's <a href='#'>terms and conditions</a> and <a href='#'>privacy policy</a></span>
+                <span className='terms'>By clicking SIGN UP, I agree to amorr's <a href='/#'>terms and conditions</a> and <a href='/#'>privacy policy</a></span>
                 <input className="submit" type="submit" value="SIGN UP" />
               </div>  
           </form>
         </section>
         <div className='tools'></div>
-        <errorPopup trigger={triggererrorPopup}></errorPopup>
+        <ErrorPopup trigger={triggererrorPopup} />
         </body>
   );
 }

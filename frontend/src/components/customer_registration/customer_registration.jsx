@@ -1,7 +1,6 @@
-import {useState} from 'react';
-import React from 'react';
+import React, {useState} from 'react';
 import "./customer_registration.css";
-import errorPopup from '../error_registration_popup/errorPopup';
+import {ErrorPopup} from '../error_registration_popup/errorPopup';
 
 const CustomerRegistration = () => {
 
@@ -133,7 +132,7 @@ const CustomerRegistration = () => {
           </form>
         </section>
         <div className='tools'></div>
-        <errorPopup trigger={triggererrorPopup}></errorPopup>
+        <ErrorPopup trigger={triggererrorPopup} />
         </body>
   );
 };
