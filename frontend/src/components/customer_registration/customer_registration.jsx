@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect} from 'react';
 import React from 'react';
 import "./customer_registration.css";
+import SuccessPopup from '../success_registration_popup/SuccessPopup';
 
 const CustomerRegistration = () => {
 
@@ -8,6 +9,9 @@ const CustomerRegistration = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const initialErrors = { email: false, name: false, password: false, repassword: false, address: false};
   const [formErrors, setFormErrors] = useState(initialErrors);
+
+  // Initial Settings for Success Popup is FALSE, so the Success Popup is not rendered
+  const [triggerSuccessPopup, setTriggerSuccessPopup] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,6 +21,8 @@ const CustomerRegistration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
+    // If registered correctly, render Success Popup
+    setTriggerSuccessPopup(true);
   };
   
   const validate = (values) => {
@@ -127,6 +133,7 @@ const CustomerRegistration = () => {
           </form>
         </section>
         <div className='tools'></div>
+        <SuccessPopup trigger={triggerSuccessPopup}></SuccessPopup>
         </body>
   );
 };
