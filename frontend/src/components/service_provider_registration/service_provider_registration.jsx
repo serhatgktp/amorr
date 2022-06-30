@@ -65,7 +65,7 @@ const ServiceProviderRegistration = () => {
     const email_regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     const name_regex = /^[a-zA-Z ]+$/;
     const alphanum_regex = /^[a-zA-z0-9]{8,}$/;
-    const addr_regex = /^[0-9]{1,3}[a-zA-z ,-.]+/;
+    const addr_regex = /^[0-9]{1,5}[a-zA-z ,-.]{3,}[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
 
     if (!values.email) {
       errors.email = true;
