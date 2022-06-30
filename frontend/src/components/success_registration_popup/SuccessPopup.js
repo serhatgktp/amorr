@@ -2,8 +2,8 @@ import React from 'react'
 import './SuccessPopup.css'
 import { Icon } from '@iconify/react';
 
-function SuccessPopup() {
-  return (
+function SuccessPopup(props) {
+  return (props.trigger) ? ( // if triggered, it will display this popup
     <div className="successPopup">
         <div className="overlay"></div>
         <div className="sucessPopupContent">
@@ -17,7 +17,7 @@ function SuccessPopup() {
             </div>
         </div>
   </div>
-  )
+  ) : ""; // else it will show nothing
 }
 
 export default SuccessPopup
