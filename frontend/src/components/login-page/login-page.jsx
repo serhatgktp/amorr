@@ -13,6 +13,13 @@ const Login = () => {
 
         // If login correctly, render Success Login Popup
         setLoginTriggerSuccessPopup(true);
+
+        // Set a timer to close the popup after 2 seconds for redirecting
+        setTimeout(function () {
+            setLoginTriggerSuccessPopup(false);
+        }, 1200);
+
+        // TODO: Redirect to Home/My Profile page according to type of user
     };
 
     return(
