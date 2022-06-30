@@ -14,7 +14,7 @@ const CustomerInfo = () => {
         <div id="customer_info">
 
             <div id="customer_left">
-                <div><Avatar alt="Sans Calibri" src={customer} sx={{ width: 100, height: 100 }}/></div>
+                <div><Avatar alt="Sans Calibri" src={customer} sx={{ width: 100, height: 100, mb: 2 }}/></div>
                 <div id="change_photo">Change profile photo</div>
             </div>
 
@@ -31,7 +31,7 @@ const CustomerInfo = () => {
                 <div id="services_ordered"> <span>75 </span>Services Ordered</div>
 
                 <div id="editable_line">
-                    <div><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px' }}/><InlineEdit value={value} setValue={setValue}/></div>
+                    <div id="editable_input"><span id="icon"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px' }}/></span><InlineEdit value={value} setValue={setValue}/></div>
                     <button id="save_changes">Save Changes</button>
                 </div>
 
