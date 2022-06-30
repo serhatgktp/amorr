@@ -1,12 +1,10 @@
 import React from 'react';
-// import LoginPage from './components/login-page/login-page.jsx';
-import SuccessLoginPopup from './components/success_login_popup/SuccessLoginPopup';
+import LoginPage from './components/login-page/login-page.jsx';
 
 function App(){
   return (
     <body>
-    {/* <LoginPage/> */}
-    <SuccessLoginPopup trigger={true}/>
+    <LoginPage/>
     </body>
   )
  }
