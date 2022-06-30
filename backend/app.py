@@ -41,14 +41,12 @@ def newSessionID():
 # Login Page
 #
 ###
-@app.route('/login', methods=['GET','POST'])
+@app.route('/login', methods=['POST'])
 def login():
     if request.method == 'POST':
         print('Attempting login:\n' + 'username: ' + request.form['username'] + '\npassword: ' + request.form['password'])
         return attempt_login(request.form['username'],request.form['password'])
-    else:
-        return render_template("dummy_login.html")
-
+    
 def attempt_login(username,password):
     if check_credentials(username,password):
         if 'sessionId' in request.cookies:
@@ -63,14 +61,7 @@ def attempt_login(username,password):
         resp = make_response(redirect('/'))
         resp.set_cookie('sessionId', sessionId, max_age=60*30)
         return resp
-    # return show_login_page(login_failed = True)
     return make_response("Incorrect username or password", 401)
-
-def show_login_page():
-    #return 'Login Page'
-    print("showing login page")
-    return redirect('/login')
-    # return render_template('dummy_login.html', login_failed=login_failed)
 
 def check_credentials(username, password):
     # rows = d.query('SELECT * FROM login_credentials')
@@ -90,12 +81,10 @@ def check_credentials(username, password):
 # Register Page
 #
 ###
-@app.route('/register', methods=['GET','POST'])
+@app.route('/register', methods=['POST'])
 def register():
     if request.method == 'POST':
         return do_register()
-    else:
-        return show_register_page()
 
 def do_register():  # Assuming username, password, & email regex is implemented on front-end
     r = request
@@ -110,21 +99,17 @@ def do_register():  # Assuming username, password, & email regex is implemented 
     identical_users = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uname = \'{username}\'')
     if len(identical_users) != 0:
         print("Username already exists!")
-        return show_register_page()
+        # Redirect the user here?
     identical_emails = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email = \'{email}\'')
     if len(identical_emails) != 0:
         print("Email is already in use!")
-        return show_register_page()
+        # Redirect the user here?
 
-    new_user = {'email':[email], 'uname':[username], 'pwd':[password], 'privilege':[privilege]}
+    new_user = {'email':[email], 'uname':[username], 'pwd':[hashlib.md5(str(password).encode()).hexdigest()], 'privilege':[privilege]}
     df = pd.DataFrame.from_dict(new_user)
     mu.insert(config, 'users', df)
     print('Registered successfully!\n')
-    return show_login_page()
-
-
-def show_register_page():
-    return render_template('dummy_register.html')
+    # Redirect the user here?
 
 ###
 #
@@ -138,15 +123,6 @@ def get_userid():
 ################################################################################################################################################
 ################################################################################################################################################
 ################################################################################################################################################
-
-# Home Page
-@app.route("/")
-def home():
-    return render_template("dummy_home.html")
-
-@app.route("/admin")
-def admin():
-    return redirect(url_for("home"))    # Redirect to the function passed in the string
 
 if __name__ == "__main__":
     app.run()
