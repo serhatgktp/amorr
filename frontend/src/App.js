@@ -1,10 +1,12 @@
 import React from 'react';
-import CustomerProfile from './components/customer_profile/customer_profile.jsx';
+// import LoginPage from './components/login-page/login-page.jsx';
+import SuccessLoginPopup from './components/success_login_popup/SuccessLoginPopup';
 
 function App(){
   return (
     <body>
-    <CustomerProfile/>
+    {/* <LoginPage/> */}
+    <SuccessLoginPopup trigger={true}/>
     </body>
   )
  }
