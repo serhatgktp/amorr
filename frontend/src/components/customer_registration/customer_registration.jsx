@@ -1,6 +1,7 @@
-import { useRef, useState, useEffect} from 'react';
+import {useState} from 'react';
 import React from 'react';
 import "./customer_registration.css";
+import errorPopup from '../error_registration_popup/errorPopup';
 
 const CustomerRegistration = () => {
 
@@ -8,6 +9,9 @@ const CustomerRegistration = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const initialErrors = { email: false, name: false, password: false, repassword: false, address: false};
   const [formErrors, setFormErrors] = useState(initialErrors);
+
+  // Initial Settings for Success Popup is FALSE, so the Success Popup is not rendered
+  const [triggererrorPopup, setTriggererrorPopup] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,6 +21,8 @@ const CustomerRegistration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
+    // If registered correctly, render Success Popup
+    setTriggererrorPopup(true);
   };
   
   const validate = (values) => {
@@ -121,12 +127,13 @@ const CustomerRegistration = () => {
               </div>
 
               <div className="cardFooter">
-                <span className='terms'>By clicking SIGN UP, I agree to amorr's <a href='#'>terms and conditions</a> and <a href='#'>privacy policy</a></span>
+                <span className='terms'>By clicking SIGN UP, I agree to amorr's <a href='/#'>terms and conditions</a> and <a href='/#'>privacy policy</a></span>
                 <input className="submit" type="submit" value="SIGN UP" />
               </div>  
           </form>
         </section>
         <div className='tools'></div>
+        <errorPopup trigger={triggererrorPopup}></errorPopup>
         </body>
   );
 };

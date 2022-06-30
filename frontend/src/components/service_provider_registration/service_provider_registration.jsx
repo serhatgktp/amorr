@@ -10,6 +10,8 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 
+import errorPopup from '../error_registration_popup/errorPopup';
+
 const ITEM_HEIGHT = 45;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -49,7 +51,10 @@ const ServiceProviderRegistration = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const initialErrors = { email: false, name: false, password: false, repassword: false, address: false};
   const [formErrors, setFormErrors] = useState(initialErrors);
-
+  
+  // Initial Settings for Success Popup is FALSE, so the Success Popup is not rendered
+  const [triggererrorPopup, setTriggererrorPopup] = useState(false);
+  
   const handleChanges = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
@@ -58,6 +63,8 @@ const ServiceProviderRegistration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
+    // If registered correctly, render Success Popup
+    setTriggererrorPopup(true);
   };
   
   const validate = (values) => {
@@ -192,6 +199,7 @@ const ServiceProviderRegistration = () => {
           </form>
         </section>
         <div className='tools'></div>
+        <errorPopup trigger={triggererrorPopup}></errorPopup>
         </body>
   );
 }
