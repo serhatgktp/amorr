@@ -10,6 +10,8 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 
+import {ErrorPopup} from '../error_registration_popup/errorPopup';
+
 const ITEM_HEIGHT = 45;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -49,7 +51,10 @@ const ServiceProviderRegistration = () => {
   const [formValues, setFormValues] = useState(initialValues);
   const initialErrors = { email: false, name: false, password: false, repassword: false, address: false};
   const [formErrors, setFormErrors] = useState(initialErrors);
-
+  
+  // Initial Settings for Success Popup is FALSE, so the Success Popup is not rendered
+  const [triggererrorPopup, setTriggererrorPopup] = useState(false);
+  
   const handleChanges = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
@@ -58,6 +63,8 @@ const ServiceProviderRegistration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
+    // If registered correctly, render Success Popup
+    setTriggererrorPopup(true);
   };
   
   const validate = (values) => {
@@ -186,12 +193,13 @@ const ServiceProviderRegistration = () => {
               </div>
 
               <div className="cardFooter">
-                <span className='terms'>By clicking SIGN UP, I agree to amorr's <a href='#'>terms and conditions</a> and <a href='#'>privacy policy</a></span>
+                <span className='terms'>By clicking SIGN UP, I agree to amorr's <a href='/#'>terms and conditions</a> and <a href='/#'>privacy policy</a></span>
                 <input className="submit" type="submit" value="SIGN UP" />
               </div>  
           </form>
         </section>
         <div className='tools'></div>
+        <ErrorPopup trigger={triggererrorPopup} />
         </body>
   );
 }
