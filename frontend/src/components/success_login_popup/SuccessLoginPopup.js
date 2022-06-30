@@ -15,7 +15,7 @@ function SuccessLoginPopup(props) {
               <p id="successPara">Please wait while redirecting...</p>
             </div>
         </div>
-  </div>
+    </div>
   ) : ""; // else it will show nothing
 }
 

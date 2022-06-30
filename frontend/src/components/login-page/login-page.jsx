@@ -1,8 +1,20 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './login-page-styles.css'
-import { Icon, InlineIcon } from '@iconify/react';
+import SuccessLoginPopup from '../success_login_popup/SuccessLoginPopup';
 
 const Login = () => {
+    // Initial Settings for Success Login Popup is FALSE, so the Success Login Popup is not rendered
+    const [triggerLoginSuccessPopup, setLoginTriggerSuccessPopup] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // TODO: Check if Login is correct
+
+        // If login correctly, render Success Login Popup
+        setLoginTriggerSuccessPopup(true);
+    };
+
     return(
         <body className='login_page'>
             <div className='tools'></div>
@@ -13,14 +25,14 @@ const Login = () => {
                 </div>
 
                 <div id="LoginCard">
-                    <form>
+                    <form onSubmit={ handleSubmit }>
                         <input type="text" placeholder="Email Address"/>
                         <input type="password" placeholder="Password"/>
-                        <button id="login">LOG IN</button>
+                        <button type="submit" id="login">LOG IN</button>
                     </form>
                 </div>
             </div>
-
+            <SuccessLoginPopup trigger={triggerLoginSuccessPopup} />
         </body>
     )
 }
