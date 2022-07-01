@@ -21,10 +21,9 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 330px;
+    width: 320px;
     line-height: 1.4;
     padding: 14px 28px;
-    height: auto;
     display: block;
     margin: 40px auto;
     text-align: center;
@@ -41,13 +40,12 @@
 }
 
 .popupLower {
-    padding: 2em 2em 5em 2em;
+    padding: 2em 2em 3em 2em;
     background: #fff;
     display: block;
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
     box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
-    height: 10vh;
 }
 
 #successIcon {
@@ -58,6 +56,7 @@
 #successHeading {
     font-size: 25px;
     font-weight: 600;
+    margin-top: 0px;
     margin-bottom: 15px;
     letter-spacing: 1px;
 }
@@ -66,5 +65,5 @@
     font-size: 15px;
     font-weight: 400;
     letter-spacing: 1px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
