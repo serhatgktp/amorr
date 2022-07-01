@@ -17,10 +17,11 @@ CREATE TABLE `amorr`.`service_providers` (
 -- Login info table
 CREATE TABLE `amorr`.`users` (
   `uid` INT NOT NULL AUTO_INCREMENT,
-  `uname` VARCHAR(45) NULL,
-  `pwd` VARCHAR(45) NULL,
-  `email` VARCHAR(300) NULL,
-  `privilege` VARCHAR(50) NULL
+  `email_address` VARCHAR(45) NULL,
+  `address` VARCHAR(45) NULL,
+  `user_type` VARCHAR(300) NULL,
+  `full_name` VARCHAR(300) NULL,
+  `user_type` VARCHAR(50) NULL
   PRIMARY KEY (`uid`));
 
 -- Cleanup

@@ -87,7 +87,7 @@ def register():
 
 def do_register():  # Assuming username, password, & email regex is implemented on front-end
     r = request
-    email = r.form['email']
+    email_address = r.form['email_address']
     address = r.form['address']
     user_type = r.form['user_type']
     full_name = r.form['full_name']
