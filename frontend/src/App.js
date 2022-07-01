@@ -1,10 +1,12 @@
 import React from 'react';
-import CustomerProfile from './components/customer_profile/customer_profile.jsx';
+import Navbar from './components/Navbar/Navbar.js'
+import Customer from './components/customer_registration/customer_registration';
 
 function App(){
   return (
     <body>
-    <CustomerProfile/>
+    <Navbar/>
+    <Customer/>
     </body>
   )
  }
