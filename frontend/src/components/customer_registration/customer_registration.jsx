@@ -74,7 +74,6 @@ const CustomerRegistration = () => {
       requestbody.password = formValues.password;
       
       fetch('http://localhost:5000/register', {
-<<<<<<< HEAD
           method: 'POST',
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(requestbody)
@@ -90,17 +89,6 @@ const CustomerRegistration = () => {
         else { // response is not ok
           throw new Error(response.statusText)
         }
-=======
-        method: 'POST',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(requestbody)
-      }).then(response => {
-        if (!response.ok) {
-          throw new Error(response.statusText)
-        }
-        // If registered correctly, render Success Popup
-        setTriggerSuccessPopup(true);
->>>>>>> af4d84f (110: Added comments)
         }).catch(err => {
           console.log(err)
         })
