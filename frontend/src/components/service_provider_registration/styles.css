@@ -1,8 +1,8 @@
-*{
+.sp_registration *{
     font-family: 'Poppins';
 }
 
-.tools{
+.sp_registration .tools{
     display: block;
     position: fixed;
     z-index: -5;
@@ -16,17 +16,17 @@
     background-size: contain;
 }
 
-.provide{
+.sp_registration .provide{
     font-weight: medium;
     font-size:28px;
 }
 
-.newTo{
+.sp_registration .newTo{
     font-weight: bold;
     font-size: 32px;
 }
 
-.registration{
+.sp_registration{
     background: #F9F6EE;
     box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
     border-radius: 45px;
@@ -37,12 +37,12 @@
 }
 
 
-.id{
+.sp_registration .id{
     font-size: 16px;
     color: #808080;
 }
 
-.submit{
+.sp_registration .submit{
     padding: 10px;
     width: 150px;
     font-weight: 900;
@@ -51,17 +51,17 @@
     background-color: #D46F5E;
 }
 
-.provide{
+.sp_registration .provide{
     font-size: 22px;
     font-weight: medium;
 }
 
-.row{
+.sp_registration .row{
     display: flex;
     flex-wrap: wrap;
 }
 
-.input{
+.sp_registration .input{
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -69,7 +69,7 @@
     border: none;
 }
 
-input{
+.sp_registration input{
     border:none;
     border-radius: 30px;
     padding:10px;
@@ -77,58 +77,58 @@ input{
     padding-left: 15px
 }
 
-#address{
+.sp_registration #address{
     margin-right: 10px;
 }
 
-#attachFile{
+.sp_registration #attachFile{
     display: block;
 }
 
-#myFile{
+.sp_registration #myFile{
     margin-left: -10px;
 }
 
-label{
+.sp_registration label{
     padding-left: 0px;
     border-color: red;
 }
-.cardFooter{
+.sp_registration .cardFooter{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.terms{
+.sp_registration .terms{
     padding: 10px;
     margin-top: 10px;
 }
 
-input[type=submit]{
+.sp_registration input[type=submit]{
     cursor: pointer;
 }
 
 @media only screen and (max-width: 1365px){
-    .provide{
+    .sp_registration .provide{
         font-size: 20px;
     }
 
-    .newTo{
+    .sp_registration .newTo{
         font-size: 24px;
     }
 }
 
 @media only screen and (max-width: 1320px){
-    #myFile{
+    .sp_registration #myFile{
         margin-right: -80px;
     }
 }
 
-input[type=submit]:hover{
+.sp_registration input[type=submit]:hover{
     transform: scale(1.03);
 }
 
-.input-error {
+.sp_registration .input-error {
     border: red 1px solid;
     border-radius: 30px;
 }

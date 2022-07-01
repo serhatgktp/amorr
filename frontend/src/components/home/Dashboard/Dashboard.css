@@ -1,4 +1,4 @@
-.headingForDashboard {
+.dashboard_container .headingForDashboard {
     color: black;
     font-family: "poppins";
     font-weight: 600;
@@ -8,7 +8,7 @@
     font-size: 28px;
 }
 
-.cards_container {
+.dashboard_container .cards_container {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@
     margin: auto;
 }
 
-.cards_items {
+.dashboard_container .cards_items {
     margin-bottom: 30px;
     display: inline-block;
 }

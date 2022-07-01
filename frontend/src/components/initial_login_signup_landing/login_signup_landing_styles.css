@@ -1,33 +1,33 @@
-*{
+.LoginSignupLanding *{
     font-family: 'Poppins';
 }
 
-#doorstep{
+.LoginSignupLanding #doorstep{
     color: #345392;
 }
 
-.Heading{
+.LoginSignupLanding .Heading{
     font-weight: bold;
     font-size: 75px;
 }
 
-.Subheading{
+.LoginSignupLanding .Subheading{
     font-size: 24px;
     font-weight: 400;
 }
 
-#LoginPrompt{
+.LoginSignupLanding #LoginPrompt{
     margin-top: 0px;
     font-weight: bold;
     font-size: 36px;
 }
 
-#LoginSubheading{
+.LoginSignupLanding #LoginSubheading{
     font-weight: bold;
     font-size: 24px;
 }
 
-#LoginCard{
+.LoginSignupLanding #LoginCard{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -42,18 +42,18 @@
     height: 280px;
 }
 
-#container{
+.LoginSignupLanding #container{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding-top: 130px;
 }
 
-#slogan{
+.LoginSignupLanding #slogan{
     padding-top: 20px;
 }
 
-.tools{
+.LoginSignupLanding .tools{
     display: block;
     position: fixed;
     z-index: -5;
@@ -67,11 +67,11 @@
     background-size: contain;
 }
 
-button:hover{
+.LoginSignupLanding button:hover{
     transform: scale(1.03);
 }
 
-button{
+.LoginSignupLanding button{
     cursor: pointer;
     border: none;
     border-radius: 40px;
@@ -83,51 +83,51 @@ button{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-#login{
+.LoginSignupLanding #login{
     background-color: #345392;
 }
 
-#signup{
+.LoginSignupLanding #signup{
     background-color: #D46F5E;
 }
 
-#continue{
+.LoginSignupLanding #continue{
     background-color: #949494;
 }
 
 @media only screen and (max-width: 1300px) {
-    .Heading {
+    .LoginSignupLanding .Heading {
       font-size: 60px;
     }
 
-    .Subheading {
+    .LoginSignupLanding .Subheading {
         font-size: 20px;
       }
 
-    #LoginPrompt {
+    .LoginSignupLanding #LoginPrompt {
         font-size: 30px;
     }
 
-    #LoginSubheading {
+    .LoginSignupLanding #LoginSubheading {
         font-size: 20px;
     }
 
-    #LoginCard {
+    .LoginSignupLanding #LoginCard {
         width: 350px;
         height: 230px;
     }
 
-    #service {
+    .LoginSignupLanding #service {
         font-size: 20px;
         width: 270px;
     }
 
-    #customer {
+    .LoginSignupLanding #customer {
         font-size: 20px;
         width: 270px;
     }
 
-    #container {
+    .LoginSignupLanding #container {
         padding-top: 100px;
     }
   }

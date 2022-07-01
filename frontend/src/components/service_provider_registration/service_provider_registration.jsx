@@ -173,7 +173,7 @@ const ServiceProviderRegistration = () => {
   return(
     <body>
 
-        <section className="registration">
+        <section className="sp_registration">
           <form onSubmit={ handleSubmit }>
           <div className="heading"><span className="newTo">Welcome to <font color="#d46f5e">a</font><font color="#345392">morr</font>! </span>
                 <span className="provide">I provide the following services</span>

@@ -10,7 +10,7 @@ import paints from "../../assets/contact_us/paints.png";
 
 const ContactUs = () => {
     return(
-        <body>
+        <body className='contact_us_wrapper'>
             <div className='container'>
                 <div className='left'>
                     <div><img src={paints} className="paints" alt="paints" /></div>

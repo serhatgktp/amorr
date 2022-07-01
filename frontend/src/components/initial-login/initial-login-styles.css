@@ -1,33 +1,33 @@
-*{
+.initial_login *{
     font-family: 'Poppins';
 }
 
-#doorstep{
+.initial_login #doorstep{
     color: #345392;
 }
 
-.Heading{
+.initial_login .Heading{
     font-weight: bold;
     font-size: 75px;
 }
 
-.Subheading{
+.initial_login .Subheading{
     font-size: 24px;
     font-weight: 400;
 }
 
-#LoginPrompt{
+.initial_login #LoginPrompt{
     margin-top: 0px;
     font-weight: bold;
     font-size: 36px;
 }
 
-#LoginSubheading{
+.initial_login #LoginSubheading{
     font-weight: bold;
     font-size: 24px;
 }
 
-#LoginCard{
+.initial_login #LoginCard{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -42,18 +42,18 @@
     height: 280px;
 }
 
-#container{
+.initial_login #container{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding-top: 130px;
 }
 
-#slogan{
+.initial_login #slogan{
     padding-top: 20px;
 }
 
-.tools{
+.initial_login .tools{
     display: block;
     position: fixed;
     z-index: -5;
@@ -67,11 +67,11 @@
     background-size: contain;
 }
 
-button:hover{
+.initial_login button:hover{
     transform: scale(1.03);
 }
 
-#service{
+.initial_login #service{
     cursor: pointer;
     background-color: #345392;
     border: none;
@@ -84,7 +84,7 @@ button:hover{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-#customer{
+.initial_login #customer{
     cursor: pointer;
     background-color: #345392;
     border: none;
@@ -98,38 +98,38 @@ button:hover{
 }
 
 @media only screen and (max-width: 1300px) {
-    .Heading {
+    .initial_login .Heading {
       font-size: 60px;
     }
 
-    .Subheading {
+    .initial_login .Subheading {
         font-size: 20px;
       }
 
-    #LoginPrompt {
+    .initial_login #LoginPrompt {
         font-size: 30px;
     }
 
-    #LoginSubheading {
+    .initial_login #LoginSubheading {
         font-size: 20px;
     }
 
-    #LoginCard {
+    .initial_login #LoginCard {
         width: 350px;
         height: 230px;
     }
 
-    #service {
+    .initial_login #service {
         font-size: 20px;
         width: 270px;
     }
 
-    #customer {
+    .initial_login #customer {
         font-size: 20px;
         width: 270px;
     }
 
-    #container {
+    .initial_login #container {
         padding-top: 100px;
     }
   }
