@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, g, redirect, url_for, make_response
+from flask import Flask, render_template, request, g, redirect, url_for, make_response, jsonify
 import configparser # For retrieving credentials
 import pymysql as pms   # For Inserting
 import mysql_utils as mu    # MySQL Helper Module
@@ -78,9 +78,8 @@ def check_credentials(username, password):
 #    
 # End of login
 
-# Register Page
-#
-###
+# Register
+#########
 @app.route('/register', methods=['POST'])
 def register():
     if request.method == 'POST':
@@ -94,25 +93,39 @@ def do_register():  # Assuming username, password, & email regex is implemented 
     r_password = r.form['r_password']
     privilege = r.form['privilege']
 
-    print(username, password, r_password, privilege)
+    # print(username, password, r_password, privilege)  
 
     identical_users = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uname = \'{username}\'')
     if len(identical_users) != 0:
-        print("Username already exists!")
-        # Redirect the user here?
+        resp = make_response(
+            jsonify(
+                {"message": "Username already exists!"}
+            ),
+            400,
+        )
     identical_emails = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email = \'{email}\'')
     if len(identical_emails) != 0:
-        print("Email is already in use!")
-        # Redirect the user here?
+        resp = make_response(
+            jsonify(
+                {"message": "Email is already in use!"}
+            ),
+            400,
+        )
 
     new_user = {'email':[email], 'uname':[username], 'pwd':[hashlib.md5(str(password).encode()).hexdigest()], 'privilege':[privilege]}
     df = pd.DataFrame.from_dict(new_user)
     mu.insert(config, 'users', df)
-    print('Registered successfully!\n')
-    # Redirect the user here?
+    resp = make_response(
+        jsonify(
+            {"message": "Registration successful!"}
+        ),
+        200,
+    )
 
-###
-#
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+
+#########
 # End of register
 
 def get_userid():
