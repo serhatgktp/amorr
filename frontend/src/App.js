@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import Navbar from './components/Navbar/Navbar.js';
 import AboutUs from './components/about_us/about_us';
 import ContactUs from './components/contact_us/contact_us';
@@ -41,6 +42,17 @@ function App(){
 
       </Routes>
     </Router>
+=======
+import Navbar from './components/Navbar/Navbar.js'
+// import CustomerRegistration from './components/customer_registration/customer_registration';
+import ServiceRegistration from './components/service_provider_registration/service_provider_registration';
+
+function App(){
+  return (
+    <body>
+      <Navbar/>
+      <ServiceRegistration/>
+>>>>>>> a1f255c (110: Added fetch for service provider registration)
     </body>
   )
  }
