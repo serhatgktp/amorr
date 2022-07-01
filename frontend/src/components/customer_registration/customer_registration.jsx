@@ -22,17 +22,57 @@ const CustomerRegistration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
+    // this one is for changing the styling of the textbox
 
-    var requestbody = new Object();
+    // this is the actual check if we should send the request
+    const errors = { email: false, name: false, password: false, repassword: false, address: false};
+    const email_regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const name_regex = /^[a-zA-Z ]+$/;
+    const alphanum_regex = /^[a-zA-z0-9]{8,}$/;
+    const addr_regex = /^[0-9]{1,5}[a-zA-z0-9 ,-.]{3,}[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+
+    if (!formValues.email) {
+      errors.email = true;
+    } else if (!email_regex.test(formValues.email)) {
+      errors.email = true;
+    }
+    if (!formValues.name) {
+      errors.name = true;
+    } else if (!name_regex.test(formValues.name)) {
+      errors.name = true;
+    }
+
+    if (!formValues.password) {
+      errors.password = true;
+    } else if (!alphanum_regex.test(formValues.password)) {
+    errors.password = true;
+    }
+
+    if (!formValues.repassword) {
+      errors.repassword = true;
+    }
+    else if (!(formValues.repassword === formValues.password)){
+      errors.repassword = true;
+    }
+
+    if (!formValues.address) {
+      errors.address = true;
+    }
+    else if (!addr_regex.test(formValues.address)) {
+      errors.address = true;
+    }
+
+    // only send request if it satisfies all regex
+    if(!(errors.email || errors.name || errors.password || errors.repassword || errors.address)){
+      
+      var requestbody = new Object();
       requestbody.email_address = formValues.email;
       requestbody.address = formValues.address;
       requestbody.user_type = "Customer";
       requestbody.full_name = formValues.name;
       requestbody.password = formValues.password;
-
-    console.log(requestbody);
-
-    fetch('http://localhost:5000/register', {
+      
+      fetch('http://localhost:5000/register', {
         method: 'POST',
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(requestbody)
@@ -46,6 +86,7 @@ const CustomerRegistration = () => {
       .catch(err => {
         console.log(err)
       })
+    }  
   };
   
   const validate = (values) => {
