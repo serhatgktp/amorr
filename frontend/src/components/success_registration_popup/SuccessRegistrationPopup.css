@@ -1,4 +1,8 @@
-.successPopup, .overlay {
+* {
+    font-family: 'Poppins';
+}
+
+.successRegistrationPopup, .SRP_overlay {
     width: 100%;
     height: 100vh;
     top: 0;
@@ -8,11 +12,11 @@
     position: fixed;
 }
 
-.overlay {
+.SRP_overlay {
     background: rgba(49,49,49,0.8);
 }
 
-.sucessPopupContent {
+.SRP_content {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -26,7 +30,7 @@
     text-align: center;
 }
 
-.popupUpper {
+.SRP_upper {
     padding: 2em;
     background-color: #8BC34A;
     display: block;
@@ -36,7 +40,7 @@
     box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
 }
 
-.popupLower {
+.SRP_lower {
     padding: 2em 2em 5em 2em;
     background: #fff;
     display: block;
@@ -45,26 +49,26 @@
     box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
 }
 
-#successIcon {
+#SRP_icon {
     color: #fff;
     font-size: 100px;
 }
 
-#successHeading {
+#SRP_heading {
     font-size: 25px;
     font-weight: 600;
     margin-bottom: 15px;
     letter-spacing: 1px;
 }
 
-#successPara {
+#SRP_para {
     font-size: 15px;
     font-weight: 400;
     letter-spacing: 1px;
     margin-bottom: 10px;
 }
 
-#contBtn {
+#SRP_contBtn {
     position: relative;
     top: 2em;
     text-decoration: none;
@@ -80,7 +84,7 @@
           transition: all .4s ease;
 }
 
-#contBtn:hover {
+#SRP_contBtn:hover {
     padding: .9em 3.1em;
     -webkit-transition: all .4s ease;
             -moz-transition: all .4s ease;
