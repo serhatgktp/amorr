@@ -47,7 +47,7 @@ const ServiceProviderRegistration = () => {
       );
     };
 
-  const initialValues = { email: "", name: "", password: "", repassword: "", address: "", ID: "" };
+  const initialValues = { email: "", name: "", password: "", repassword: "", address: ""};
   const [formValues, setFormValues] = useState(initialValues);
   const initialErrors = { email: false, name: false, password: false, repassword: false, address: false};
   const [formErrors, setFormErrors] = useState(initialErrors);
