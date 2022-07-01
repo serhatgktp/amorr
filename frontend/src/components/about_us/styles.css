@@ -1,4 +1,4 @@
-.box {
+.about_us_wrapper .box {
     background-color: #F9F6EE;
     width: 90%;
     height: 37rem;
@@ -8,42 +8,42 @@
 
   }
   
-  .image{
+  .about_us_wrapper .image{
     position: absolute;
   }
   
   
-  .titleContainer {
+  .about_us_wrapper .titleContainer {
     flex-direction: row;
     display: flex;
   }
   
-  .title{
+  .about_us_wrapper .title{
     background: #F9F6EE;
     align-items: center;
     color: #345392;
     
   }
   
-  body {
+  .about_us_wrapper body {
     background-color: #f3ebdb;
   }
   
-  .container {
+  .about_us_wrapper .container {
     margin-top: 2%;
     flex: 1;
     margin-bottom: 2%;
   }
   
   
-  .headerOne {
+  .about_us_wrapper .headerOne {
     display: flex;
     flex-direction: row;
     margin-left: 8rem;
   
   }
   
-  .headerTwo {
+  .about_us_wrapper .headerTwo {
     display: flex;
     flex-direction: row;
     margin-left: 30rem;
@@ -52,15 +52,15 @@
     
   }
   
-  .title .a{
+  .about_us_wrapper .title .a{
     color: #d46f5e;
   }
   
-  .title .about{
+  .about_us_wrapper .title .about{
     color: black;
   }
   
-  .click{
+  .about_us_wrapper .click{
     background-color: #345392;
     border: none;
     color: #f9f6ee;
@@ -77,34 +77,34 @@
     
   }
 
-  .click:hover{
+  .about_us_wrapper .click:hover{
     transform: scale(1.03);
   }
   
-  .box{
+  .about_us_wrapper .box{
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
   }
   
-  .p1{
+  .about_us_wrapper .p1{
     position: relative;
     width: 600px;
     margin-left: 4rem;
   }
   
-  .p2{
+  .about_us_wrapper .p2{
     position: relative;
     width: 600px;
     margin-left: 4rem;
   }
   
-  .title{
+  .about_us_wrapper .title{
     position: relative;
     height: 50px;
     margin-left: 4rem;
   }
   
-  .img-peacock {
+  .about_us_wrapper .img-peacock {
     margin-top: -450px;
     margin-right: 100px;
     display: flex;
