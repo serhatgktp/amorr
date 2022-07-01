@@ -72,6 +72,7 @@ const CustomerRegistration = () => {
       requestbody.user_type = "Customer";
       requestbody.full_name = formValues.name;
       requestbody.password = formValues.password;
+<<<<<<< HEAD
       
       fetch('http://localhost:5000/register', {
           method: 'POST',
@@ -93,6 +94,25 @@ const CustomerRegistration = () => {
           console.log(err)
         })
     }  
+=======
+
+    console.log(requestbody);
+
+    fetch('http://localhost:5000/register', {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(requestbody)
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText)
+      }
+      // If registered correctly, render Success Popup
+      setTriggerSuccessPopup(true);
+      })
+      .catch(err => {
+        console.log(err)
+      })
+>>>>>>> 86e2832 (110: Fixed CORS problem in Fetch Request)
   };
   
   const validate = (values) => {
