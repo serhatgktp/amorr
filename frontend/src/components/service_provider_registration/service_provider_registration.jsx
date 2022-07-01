@@ -53,8 +53,9 @@ const ServiceProviderRegistration = () => {
   const initialErrors = { email: false, name: false, password: false, repassword: false, address: false};
   const [formErrors, setFormErrors] = useState(initialErrors);
   
-  // Initial Settings for Success Popup is FALSE, so the Success Popup is not rendered
+  // Initial Settings for Error Popup is FALSE, so the Error Popup is not rendered
   const [triggererrorPopup, setTriggererrorPopup] = useState(false);
+  // Initial Settings for Success Popup is FALSE, so the Success Popup is not rendered
   const [triggerSuccessPopup, setTriggerSuccessPopup] = useState(false);
   
   const handleChanges = (e) => {
