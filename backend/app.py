@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, g, redirect, url_for, make_response
+from flask import Flask, render_template, request, g, redirect, url_for, make_response, jsonify
 import configparser # For retrieving credentials
 import pymysql as pms   # For Inserting
 import mysql_utils as mu    # MySQL Helper Module
@@ -78,41 +78,62 @@ def check_credentials(username, password):
 #    
 # End of login
 
-# Register Page
-#
-###
+# Register
+#########
 @app.route('/register', methods=['POST'])
 def register():
     if request.method == 'POST':
         return do_register()
 
 def do_register():  # Assuming username, password, & email regex is implemented on front-end
+
+    content_type = request.headers.get('Content-Type')
     r = request
-    email = r.form['email']
-    username = r.form['username']
-    password = r.form['password']
-    r_password = r.form['r_password']
-    privilege = r.form['privilege']
 
-    print(username, password, r_password, privilege)
+    if (content_type == 'application/json'):    # Case for JSON request body 
+        json = r.json
+        email_address = json['email_address']
+        address = json['address']
+        user_type = json['user_type']
+        full_name = json['full_name']
+        password = json['password']
+    
+    else:                                       # Case for submitted form
+        email_address = r.form['email_address']
+        address = r.form['address']
+        user_type = r.form['user_type']
+        full_name = r.form['full_name']
+        password = r.form['password']
 
-    identical_users = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uname = \'{username}\'')
-    if len(identical_users) != 0:
-        print("Username already exists!")
-        # Redirect the user here?
-    identical_emails = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email = \'{email}\'')
+
+    # print("Received data: ", email_address, address, user_type, full_name, password)  
+
+    identical_emails = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
+    print("identical_emails:", identical_emails, len(identical_emails))
+
     if len(identical_emails) != 0:
-        print("Email is already in use!")
-        # Redirect the user here?
+        resp = make_response(
+            jsonify(
+                {"message": "Email is already in use!"}
+            ),
+            400,
+        )
 
-    new_user = {'email':[email], 'uname':[username], 'pwd':[hashlib.md5(str(password).encode()).hexdigest()], 'privilege':[privilege]}
-    df = pd.DataFrame.from_dict(new_user)
-    mu.insert(config, 'users', df)
-    print('Registered successfully!\n')
-    # Redirect the user here?
+    else:    
+        new_user = {'email_address':[email_address], 'address':[address], 'user_type':[user_type], 'full_name':[full_name], 'password':[hashlib.md5(str(password).encode()).hexdigest()]}
+        df = pd.DataFrame.from_dict(new_user)
+        mu.insert(config, 'users', df)
+        resp = make_response(
+            jsonify(
+                {"message": "Registration successful!"}
+            ),
+            200,
+        )
+        resp.headers["Content-Type"] = "application/json"
+        
+    return resp
 
-###
-#
+#########
 # End of register
 
 def get_userid():
