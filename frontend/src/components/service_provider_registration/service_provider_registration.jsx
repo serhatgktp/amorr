@@ -10,7 +10,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 
-import SuccessPopup from '../success_registration_popup/SuccessPopup';
+import SuccessRegistrationPopup from '../success_registration_popup/SuccessRegistrationPopup';
 
 const ITEM_HEIGHT = 45;
 const ITEM_PADDING_TOP = 8;
@@ -199,7 +199,7 @@ const ServiceProviderRegistration = () => {
           </form>
         </section>
         <div className='tools'></div>
-        <SuccessPopup trigger={triggerSuccessPopup}></SuccessPopup>
+        <SuccessRegistrationPopup trigger={triggerSuccessPopup}></SuccessRegistrationPopup>
         </body>
   );
 }
