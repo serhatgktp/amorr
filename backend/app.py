@@ -6,6 +6,9 @@ import hashlib  # For password encryption
 import string   # For generating sessionIDs
 import random   # For randomizing sessionIDs
 import pandas as pd
+from flask import Flask, jsonify
+from flask_cors import CORS, cross_origin
+
 
 # Database Settings
 config = configparser.ConfigParser()
@@ -29,6 +32,7 @@ PRIVILEGES = {"Guest":0, "Customer":1, "Service Provider":2, "Admin":3,}
 
 # Initialize Flask App
 app = Flask(__name__)
+CORS(app, support_credentials=True)
 
 # Generate new session
 def newSessionID():
@@ -81,6 +85,7 @@ def check_credentials(username, password):
 # Register
 #########
 @app.route('/register', methods=['POST'])
+@cross_origin(supports_credentials=True)
 def register():
     if request.method == 'POST':
         return do_register()

@@ -22,9 +22,30 @@ const CustomerRegistration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
-    // If registered correctly, render Success Popup
-    setTriggererrorPopup(true);
-    setTriggerSuccessPopup(true);
+
+    var requestbody = new Object();
+      requestbody.email_address = formValues.email;
+      requestbody.address = formValues.address;
+      requestbody.user_type = "Customer";
+      requestbody.full_name = formValues.name;
+      requestbody.password = formValues.password;
+
+    console.log(requestbody);
+
+    fetch('http://localhost:5000/register', {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(requestbody)
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText)
+      }
+      // If registered correctly, render Success Popup
+      setTriggerSuccessPopup(true);
+      })
+      .catch(err => {
+        console.log(err)
+      })
   };
   
   const validate = (values) => {
