@@ -38,45 +38,64 @@ def newSessionID():
     print(sessionId)
     return sessionId
 
-# Login Page
-#
-###
+# Login 
+#########
 @app.route('/login', methods=['POST'])
 def login():
     if request.method == 'POST':
-        print('Attempting login:\n' + 'username: ' + request.form['username'] + '\npassword: ' + request.form['password'])
-        return attempt_login(request.form['username'],request.form['password'])
+        content_type = request.headers.get('Content-Type')
+        r = request
+
+        if (content_type == 'application/json'):    # Case for JSON request body 
+            json = r.json
+            email_address = json['email_address']
+            password = json['password']
+        
+        else:                                       # Case for submitted form
+            email_address = r.form['email_address']
+            password = r.form['password']
+        
+        print('Attempting login:\n' + 'email_address: ' + email_address + '\npassword: ' + password)
+        return attempt_login(email_address, password)
     
-def attempt_login(username,password):
-    if check_credentials(username,password):
-        if 'sessionId' in request.cookies:
-            print('Pass')
-        else:
-            print('Fail')    
+def attempt_login(email_address,password):
+    if check_credentials(email_address,password):
         sessionId = newSessionID()
-        # user_data = d.query_assoc("SELECT * FROM login_credentials WHERE username = '" + username + "'")[0]
-        user_data = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uname = \'{username}\'')
+        user_data = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
         user = User(user_data[0])
         SESSIONS[sessionId] = user
-        resp = make_response(redirect('/'))
-        resp.set_cookie('sessionId', sessionId, max_age=60*30)
-        return resp
-    return make_response("Incorrect username or password", 401)
 
-def check_credentials(username, password):
-    # rows = d.query('SELECT * FROM login_credentials')
-    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uname = \'{username}\'')
+        resp = make_response(
+            jsonify(
+                {"message": f"Login successful for {user.email_address}"}
+            ),
+            200,
+        )
+        resp.headers["Content-Type"] = "application/json"
+        resp.set_cookie('sessionId', sessionId, max_age=60*30)
+    else:
+        resp = make_response(
+            jsonify(
+                {"message": "Incorrect username or password"}
+            ),
+            401,
+        )
+        resp.headers["Content-Type"] = "application/json"
+    return resp
+
+def check_credentials(email_address, password):
+    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
     if len(user) == 0:
         print("User does not exist")
         return False
-    if user[0]['uname'] == username and user[0]['pwd'] == hashlib.md5(str(password).encode()).hexdigest():
+    if user[0]['email_address'] == email_address and user[0]['password'] == hashlib.md5(str(password).encode()).hexdigest():
             print('Login successful!\n')
             return True
     print('Login failed!\n')
     return False
-###
-#    
+###    
 # End of login
+
 
 # Register
 #########
@@ -156,15 +175,13 @@ if __name__ == "__main__":
 
 class User:
     def __init__(self, sql_data):
-        self.username = sql_data['uname']
-        self.privilege = sql_data['privilege']
-        if self.privilege  == '0':
-            self.privilege_title = 'Guest'
-        elif self.privilege  == '1':
+        self.email_address = sql_data['email_address']
+        self.user_type = sql_data['user_type']
+        if self.user_type  == 'Customer':
             self.privilege_title = 'Customer'
-        elif self.privilege  == '2':
+        elif self.user_type  == 'Service Provider':
             self.privilege_title = 'Service Provider'
-        elif self.privilege  == '3':
+        elif self.user_type  == 'Admin':
             self.privilege_title = 'Admin'
         else:
             self.privilege_title = 'Unknown'
