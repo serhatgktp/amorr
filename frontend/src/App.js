@@ -27,17 +27,17 @@ function App(){
     <Router>
       <Routes>
 
-        <Route exact path='/' element={<Home/>} />
-        <Route exact path='/home' element={<Home/>} />
-        <Route exact path='/about' element={<AboutUs/>} />
-        <Route exact path='/contact' element={<ContactUs/>} />
-        <Route exact path='/customer-register' element={<CustomerRegistration/>} />
-        <Route exact path='/sp-register' element={<ServiceProviderRegistration/>} />
-        <Route exact path='/FAQ' element={<FAQ/>} />
-        <Route exact path='/initial-signup-landing' element={<LoginSignupLanding/>} />
-        <Route exact path='/initial-login' element={<InitialLogin/>} />
-        <Route exact path='/initial-signup' element={<InitialSignUp/>} />
-        <Route exact path='/login' element={<Login/>} />
+        <Route path='/' element={<Home/>} />
+        <Route path='/home' element={<Home/>} />
+        <Route path='/about' element={<AboutUs/>} />
+        <Route path='/contact' element={<ContactUs/>} />
+        <Route path='/customer-register' element={<CustomerRegistration/>} />
+        <Route path='/sp-register' element={<ServiceProviderRegistration/>} />
+        <Route path='/FAQ' element={<FAQ/>} />
+        <Route path='/initial-signup-landing' element={<LoginSignupLanding/>} />
+        <Route path='/initial-login' element={<InitialLogin/>} />
+        <Route path='/initial-signup' element={<InitialSignUp/>} />
+        <Route path='/login' element={<Login/>} />
 
       </Routes>
     </Router>
