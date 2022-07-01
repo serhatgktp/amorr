@@ -2,7 +2,7 @@
     font-family: 'Poppins';
 }
 
-.successPopup, .overlay {
+.successLoginPopup, .SLP_overlay {
     width: 100%;
     height: 100vh;
     top: 0;
@@ -12,11 +12,11 @@
     position: fixed;
 }
 
-.overlay {
+.SLP_overlay {
     background: rgba(49,49,49,0.8);
 }
 
-.sucessPopupContent {
+.SLP_content {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -29,7 +29,7 @@
     text-align: center;
 }
 
-.popupUpper {
+.SLP_upper {
     padding: 2em;
     background-color: #8BC34A;
     display: block;
@@ -39,7 +39,7 @@
     box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
 }
 
-.popupLower {
+.SLP_lower {
     padding: 2em 2em 3em 2em;
     background: #fff;
     display: block;
@@ -48,12 +48,12 @@
     box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
 }
 
-#successIcon {
+#SLP_icon {
     color: #fff;
     font-size: 100px;
 }
 
-#successHeading {
+#SLP_heading {
     font-size: 25px;
     font-weight: 600;
     margin-top: 0px;
@@ -61,7 +61,7 @@
     letter-spacing: 1px;
 }
 
-#successPara {
+#SLP_para {
     font-size: 15px;
     font-weight: 400;
     letter-spacing: 1px;
