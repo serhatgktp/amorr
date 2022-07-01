@@ -106,9 +106,11 @@ def do_register():  # Assuming username, password, & email regex is implemented 
         password = r.form['password']
 
 
-    print("Received data: ", email_address, address, user_type, full_name, password)  
+    # print("Received data: ", email_address, address, user_type, full_name, password)  
 
     identical_emails = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
+    print("identical_emails:", identical_emails, len(identical_emails))
+
     if len(identical_emails) != 0:
         resp = make_response(
             jsonify(
@@ -117,17 +119,18 @@ def do_register():  # Assuming username, password, & email regex is implemented 
             400,
         )
 
-    new_user = {'email_address':[email_address], 'address':[address], 'user_type':[user_type], 'full_name':[full_name], 'password':[hashlib.md5(str(password).encode()).hexdigest()]}
-    df = pd.DataFrame.from_dict(new_user)
-    mu.insert(config, 'users', df)
-    resp = make_response(
-        jsonify(
-            {"message": "Registration successful!"}
-        ),
-        200,
-    )
-
-    resp.headers["Content-Type"] = "application/json"
+    else:    
+        new_user = {'email_address':[email_address], 'address':[address], 'user_type':[user_type], 'full_name':[full_name], 'password':[hashlib.md5(str(password).encode()).hexdigest()]}
+        df = pd.DataFrame.from_dict(new_user)
+        mu.insert(config, 'users', df)
+        resp = make_response(
+            jsonify(
+                {"message": "Registration successful!"}
+            ),
+            200,
+        )
+        resp.headers["Content-Type"] = "application/json"
+        
     return resp
 
 #########
