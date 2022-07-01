@@ -29,6 +29,11 @@
     text-align: right;
     font-weight: medium;
   }
+  .Navbar > Button{
+    border-radius: 20px;
+    float: right;
+    margin-left: 400px;
+  }
   .Navbar > .logo {
     margin-right: 100px;
     background-color: #f3ebdb;
