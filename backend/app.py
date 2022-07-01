@@ -88,10 +88,10 @@ def register():
 def do_register():  # Assuming username, password, & email regex is implemented on front-end
     r = request
     email = r.form['email']
-    username = r.form['username']
+    address = r.form['address']
+    user_type = r.form['user_type']
+    full_name = r.form['full_name']
     password = r.form['password']
-    r_password = r.form['r_password']
-    privilege = r.form['privilege']
 
     # print(username, password, r_password, privilege)  
 
@@ -112,7 +112,7 @@ def do_register():  # Assuming username, password, & email regex is implemented 
             400,
         )
 
-    new_user = {'email':[email], 'uname':[username], 'pwd':[hashlib.md5(str(password).encode()).hexdigest()], 'privilege':[privilege]}
+    new_user = {'email':[email], 'address':[address], 'user_type':[user_type], 'full_name':[full_name], 'password':[hashlib.md5(str(password).encode()).hexdigest()]}
     df = pd.DataFrame.from_dict(new_user)
     mu.insert(config, 'users', df)
     resp = make_response(
