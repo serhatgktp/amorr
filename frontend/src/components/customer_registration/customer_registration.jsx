@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import "./customer_registration.css";
 import {ErrorPopup} from '../error_registration_popup/errorPopup';
-import SuccessPopup from '../success_registration_popup/SuccessPopup';
+import SuccessRegistrationPopup from '../success_registration_popup/SuccessRegistrationPopup';
 
 const CustomerRegistration = () => {
 
@@ -136,7 +136,7 @@ const CustomerRegistration = () => {
         </section>
         <div className='tools'></div>
         <ErrorPopup trigger={triggererrorPopup} />
-        <SuccessPopup trigger={triggerSuccessPopup}></SuccessPopup>
+        <SuccessRegistrationPopup trigger={triggerSuccessPopup}></SuccessRegistrationPopup>
         </body>
   );
 };

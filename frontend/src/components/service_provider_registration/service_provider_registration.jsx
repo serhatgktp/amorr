@@ -11,7 +11,7 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 
 import {ErrorPopup} from '../error_registration_popup/errorPopup';
-import SuccessPopup from '../success_registration_popup/SuccessPopup';
+import SuccessRegistrationPopup from '../success_registration_popup/SuccessRegistrationPopup';
 
 const ITEM_HEIGHT = 45;
 const ITEM_PADDING_TOP = 8;
@@ -203,7 +203,7 @@ const ServiceProviderRegistration = () => {
         </section>
         <div className='tools'></div>
         <ErrorPopup trigger={triggererrorPopup} />
-        <SuccessPopup trigger={triggerSuccessPopup}></SuccessPopup>
+        <SuccessRegistrationPopup trigger={triggerSuccessPopup}></SuccessRegistrationPopup>
         </body>
   );
 }
