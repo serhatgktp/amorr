@@ -1,8 +1,7 @@
 import React , { useState }from 'react';
 import './customer_info_styles.css'
-import { Icon, InlineIcon } from '@iconify/react';
-import { Rating, Avatar, imageListItemBarClasses } from '@mui/material';
-import customer from "../../../assets/customer_profile/customer.jpg";
+import { Icon } from '@iconify/react';
+import { Rating, Avatar } from '@mui/material';
 import InlineEdit from "./editable"
 
 const CustomerInfo = () => {
@@ -25,6 +24,7 @@ const CustomerInfo = () => {
         }
 
     }
+
     return(
         <div id="customer_info">
 
