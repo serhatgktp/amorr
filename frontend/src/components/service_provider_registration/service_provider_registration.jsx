@@ -121,13 +121,18 @@ const ServiceProviderRegistration = () => {
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(requestbody)
       }).then(response => {
-        if (!response.ok) {
+        if (response.ok) {
+          // If registered correctly, render Success Popup
+          setTriggerSuccessPopup(true);
+        }
+        else if (response.status == 400) {
+          // If 400 BAD REQUEST, means Email is taken, so render Error Popup
+          setTriggererrorPopup(true);
+        }
+        else { // response is not ok
           throw new Error(response.statusText)
         }
-        // If registered correctly, render Success Popup
-        setTriggerSuccessPopup(true);
-        })
-        .catch(err => {
+        }).catch(err => {
           console.log(err)
         })
     }
