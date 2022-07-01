@@ -10,7 +10,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 
-import {ErrorPopup} from '../error_registration_popup/errorPopup';
+import ErrorPopup from '../error_registration_popup/errorPopup';
 import SuccessRegistrationPopup from '../success_registration_popup/SuccessRegistrationPopup';
 
 const ITEM_HEIGHT = 45;

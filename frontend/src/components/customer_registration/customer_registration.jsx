@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import "./customer_registration.css";
-import {ErrorPopup} from '../error_registration_popup/errorPopup';
+import ErrorPopup from '../error_registration_popup/errorPopup';
 import SuccessRegistrationPopup from '../success_registration_popup/SuccessRegistrationPopup';
 
 const CustomerRegistration = () => {
