@@ -13,7 +13,7 @@ function SuccessRegistrationPopup(props) {
             <div className="SRP_lower">
               <h1 id="SRP_heading">Success!</h1>
               <p id="SRP_para">Your account has been successfully created.</p>
-              <a href="/home" id="SRP_contBtn">Continue</a>
+              <a href="/login" id="SRP_contBtn">Continue</a>
             </div>
         </div>
   </div>
