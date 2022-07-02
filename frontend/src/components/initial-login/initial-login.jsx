@@ -1,8 +1,15 @@
 import React from 'react'
 import './initial-login-styles.css'
 import { Icon, InlineIcon } from '@iconify/react';
+import  { useNavigate } from 'react-router-dom'
 
 const InitialLogin = () => {
+    // For redirection
+    const navigate = useNavigate();
+    const handleLoginClick = (e) => {
+        navigate('/login');
+    }
+
     return(
         <body className='initial_login'>
             <div className='tools'></div>
@@ -18,9 +25,9 @@ const InitialLogin = () => {
                         <div id="LoginSubheading">I am a...</div>
                     </div>
                     <br/>
-                    <button id="service"><Icon icon="bx:store" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'28px' }}/> SERVICE PROVIDER</button>
+                    <button id="service" onClick={handleLoginClick}><Icon icon="bx:store" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'28px' }}/> SERVICE PROVIDER</button>
                     <br/>
-                    <button id="customer"><Icon icon="bi:person-fill" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'28px' }}/> CUSTOMER</button>
+                    <button id="customer" onClick={handleLoginClick}><Icon icon="bi:person-fill" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'28px' }}/> CUSTOMER</button>
                 </div>
             </div>
 
