@@ -1,4 +1,7 @@
 from flask import Flask, render_template, request, g, redirect, url_for, make_response, jsonify
+from werkzeug.utils import secure_filename  # For uploading files to the filesystem
+import os                   # For navigating the filesystem
+from sys import platform    # To check operating system for correct file path format for filesystem
 import configparser # For retrieving credentials
 import pymysql as pms   # For Inserting
 import mysql_utils as mu    # MySQL Helper Module
@@ -6,6 +9,7 @@ import hashlib  # For password encryption
 import string   # For generating sessionIDs
 import random   # For randomizing sessionIDs
 import pandas as pd
+
 
 # Database Settings
 config = configparser.ConfigParser()
@@ -23,12 +27,26 @@ config = {
     'db': db
 }
 
-# Session Info & User Privileges
-SESSIONS = dict() # Contains session_id and user_id
-PRIVILEGES = {"Guest":0, "Customer":1, "Service Provider":2, "Admin":3,}
+### Global variables
+
+# Session Info
+SESSIONS = dict() # Contains session_id and email_address
+
+# Determine OS and determine image uploads folder
+if platform == "win32": # Windows
+    path = os.getcwd() + '\image_uploads'
+    UPLOAD_FOLDER = path.replace("\\", "/")
+elif platform == "linux" or platform == "linux2" or platform == "darwin": # linux or OSX
+    UPLOAD_FOLDER = os.getcwd() + '/image_uploads'
+
+# List of allowed file extensions
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+
+### End of global variables
 
 # Initialize Flask App
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Generate new session
 def newSessionID():
@@ -128,7 +146,6 @@ def do_register():  # Assuming username, password, & email regex is implemented 
     # print("Received data: ", email_address, address, user_type, full_name, password)  
 
     identical_emails = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
-    print("identical_emails:", identical_emails, len(identical_emails))
 
     if len(identical_emails) != 0:
         resp = make_response(
@@ -191,11 +208,72 @@ def fetch_profile():  # Fetch full name and address from database
         )
     resp.headers["Content-Type"] = "application/json"
     return resp
+#########
+# End of get-profile
 
-def get_userid():
+# upload-profile-photo
+#########
+@app.route('/upload-profile-photo', methods=['POST'])
+def upload_file():  # Expects one image and sessionID
+
+    files = request.files
+    user_id = str(get_user_id())
+    if user_id == -1:
+        resp = make_response(jsonify( {'message': 'Must be logged in to edit profile photo'} ), 400,)
+        return resp
+    else:
+        print("Attempting to update profile picture for user:", user_id)
+
+    # check if the post request has 'pic' (<input type="file" name="pic" />)
+    if 'pic' not in files:
+        resp = make_response(jsonify( {'message': 'No file was attached to the request'} ), 400,)
+        return resp
+
+
+    file = files['pic'] # Type <werkzeug.FileStorage>
+
+    # if user does not select file, the browser submits an empty string for filename
+    if file.filename == '':
+        resp = make_response(jsonify( {'message': 'No file was selected'} ), 400,)
+        return resp
+
+
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        filetype = '.' + filename.rsplit('.', 1)[1].lower()
+        # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        # file.save(app.config['UPLOAD_FOLDER'] + '/' + filename)
+        file.save(app.config['UPLOAD_FOLDER'] + '/' + user_id + filetype)
+        resp = make_response(jsonify( {'message': 'Profile photo was successfully changed!'} ), 200,)
+        return resp
+
+    elif not allowed_file(file.filename):   # Unsupported file type
+        resp = make_response(jsonify( {'message': 'File type not supported!'} ), 400,)
+        return resp
+
+    # File is None
+    resp = make_response(jsonify( {'message': 'Request could not be completed'} ), 500,)
+    return resp
+
+def allowed_file(filename):         # Check if file type is in ALLOWED_EXTENSIONS
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+#########
+# End of upload-profile-photo
+
+@app.route('/') # For testing upload-profile-photo
+def render_homepage():
+    return render_template('dummy_image_upload.html')
+
+@app.route('/test-login') # For testing upload-profile-photo
+def test_login():
+    return attempt_login('efkan@amorr.com', 'fa6834fsf6')
+
+def get_user_id():   # Email is used to identify each user
     if 'sessionId' in request.cookies:
         if request.cookies.get('sessionId') in SESSIONS.keys():
-            return SESSIONS[request.cookies.get('sessionId')].userid
+            return SESSIONS[request.cookies.get('sessionId')].uid
+    return -1   # Session not found
 
 ################################################################################################################################################
 ################################################################################################################################################
@@ -214,6 +292,7 @@ class User:
     def __init__(self, sql_data):
         self.email_address = sql_data['email_address']
         self.user_type = sql_data['user_type']
+        self.uid  = sql_data['uid']
         if self.user_type  == 'Customer':
             self.privilege_title = 'Customer'
         elif self.user_type  == 'Service Provider':
