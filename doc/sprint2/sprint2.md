@@ -19,25 +19,29 @@
     - Demo prepration.
 
 - Third stand-up (2022/06/17)
-    - 
+    - Worked on provious user stories.
 
 - Fourth stand-up (2022/06/20)
-    - 
+    - Worked on provious user stories.
 
 - Fifth stand-up (2022/06/27)
-    -
+    - Discussed the user stories.
+    - Set up JIRA
 
 
 - Sixth stand-up (2022/06/28)
-    -
+    - Distributed the task among the team. 
 
 
 - Seventh stand-up (2022/06/29)
-    -
-
+    - Updated the team with the progress.
 
 - Eighth stand-up (2022/06/30)
-    - 
+    - Updated the team with the progress. 
+
+- Nineth stand-up (2022/07/02)
+    - Went over the documents we need to submit.
+    - Made some quick changes.
 
 ---
 
