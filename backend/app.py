@@ -9,9 +9,6 @@ import hashlib  # For password encryption
 import string   # For generating sessionIDs
 import random   # For randomizing sessionIDs
 import pandas as pd
-from flask import Flask, jsonify
-from flask_cors import CORS, cross_origin
-
 
 
 # Database Settings
@@ -37,10 +34,10 @@ SESSIONS = dict() # Contains session_id and email_address
 
 # Determine OS and determine image uploads folder
 if platform == "win32": # Windows
-    path = os.getcwd() + '\image_uploads'
+    path = os.path.abspath('../frontend/src/assets/profile_photos')
     UPLOAD_FOLDER = path.replace("\\", "/")
 elif platform == "linux" or platform == "linux2" or platform == "darwin": # linux or OSX
-    UPLOAD_FOLDER = os.getcwd() + '/image_uploads'
+    UPLOAD_FOLDER = os.path.abspath('../frontend/src/assets/profile_photos')
 
 # List of allowed file extensions
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
@@ -50,7 +47,6 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 # Initialize Flask App
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-CORS(app, support_credentials=True)
 
 # Generate new session
 def newSessionID():
@@ -122,7 +118,6 @@ def check_credentials(email_address, password):
 # Register
 #########
 @app.route('/register', methods=['POST'])
-@cross_origin(supports_credentials=True)
 def register():
     if request.method == 'POST':
         return do_register()
@@ -248,7 +243,18 @@ def upload_file():  # Expects one image and sessionID
         filetype = '.' + filename.rsplit('.', 1)[1].lower()
         # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         # file.save(app.config['UPLOAD_FOLDER'] + '/' + filename)
-        file.save(app.config['UPLOAD_FOLDER'] + '/' + user_id + filetype)
+        file_save_path = app.config['UPLOAD_FOLDER'] + '/' + user_id + filetype
+        file.save(file_save_path)   # Save image to upload folder
+
+        # Delete old path if user already has a pfp path in the database
+        rows = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{user_id}\'')
+        if len(rows) > 0:
+            mu.delete(config, [f'uid = \'{user_id}\''], 'amorr.profile_photos') # Delete old path
+
+        d = {'uid':[user_id], 'pfp_path':[file_save_path]}
+        df = pd.DataFrame.from_dict(d)
+        mu.insert(config, 'profile_photos', df) # Insert new pfp_path into database
+
         resp = make_response(jsonify( {'message': 'Profile photo was successfully changed!'} ), 200,)
         return resp
 
@@ -274,7 +280,7 @@ def render_homepage():
 def test_login():
     return attempt_login('efkan@amorr.com', 'fa6834fsf6')
 
-def get_user_id():   # Email is used to identify each user
+def get_user_id():   # uid is used to identify each user
     if 'sessionId' in request.cookies:
         if request.cookies.get('sessionId') in SESSIONS.keys():
             return SESSIONS[request.cookies.get('sessionId')].uid
