@@ -32,7 +32,7 @@ const Login = () => {
                 setLoginTriggerSuccessPopup(false);
                 // Redirect to Home (TODO: or My Profile page according to type of user) after
                 navigate('/home');
-            }, 1200);
+            }, 1300);
           }
         //   else if (response.status == 401) {
         //     // If 401 UNAUTHORIZED, means Email/Password is taken, so render an Error Popup
