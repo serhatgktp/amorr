@@ -12,6 +12,7 @@ import LoginSignupLanding from './components/initial_login_signup_landing/login_
 import InitialLogin from './components/initial-login/initial-login';
 import InitialSignUp from './components/initial-signup/initial-signup';
 import Login from './components/login-page/login-page';
+import CustomerProfile from './components/customer_profile/customer_profile'
 
 import {
   BrowserRouter as Router,
@@ -25,24 +26,7 @@ import {
 function App(){
   return (
     <body> 
-    <Navbar/>
-    <Router>
-      <Routes>
-
-        <Route path='/' element={<Home/>} />
-        <Route path='/home' element={<Home/>} />
-        <Route path='/about' element={<AboutUs/>} />
-        <Route path='/contact' element={<ContactUs/>} />
-        <Route path='/customer-register' element={<CustomerRegistration/>} />
-        <Route path='/sp-register' element={<ServiceProviderRegistration/>} />
-        <Route path='/FAQ' element={<FAQ/>} />
-        <Route path='/initial-signup-landing' element={<LoginSignupLanding/>} />
-        <Route path='/initial-login' element={<InitialLogin/>} />
-        <Route path='/initial-signup' element={<InitialSignUp/>} />
-        <Route path='/login' element={<Login/>} />
-
-      </Routes>
-    </Router>
+    <CustomerProfile/>
     </body>
   )
  }
