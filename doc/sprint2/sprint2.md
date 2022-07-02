@@ -103,8 +103,7 @@ The table below displays who worked on which task during this sprint.
 | STAC-117          | If the user is not logged in, the navigation bar should include clickable buttons that redirect the user to an About Us, FAQ, Contact Us, and Sign Up / Log In page.        | Mir Safwat Ayser  |
 | STAC-118          | If the user is logged in as a service provider, the navigation bar should include clickable buttons that redirect the user to the About Us, FAQ, Contact Us, My Appointment, dropdown for manage/logging out/delete account.        |  Mir Safwat Ayser |
 | STAC-119          | If the user is logged in as a customer, the navigation bar should include clickable buttons that redirect the user to the About Us, FAQ, Contact Us, Explore, My Appointments, dropdown for manage/logging out/delete account.        |  Mir Safwat Ayser |
-| STAC-121          | Connect frontend and backend: data is stored in the database (Full name, email, subject and message). 
-- add |  Annanya Sharma |
+| STAC-121          | Connect frontend and backend: data is stored in the database (Full name, email, subject and message). |  Annanya Sharma |
 | STAC-123         | User information section including editable components: address, and save changes button.        | Shannon Budiman  |
 | STAC-124          | Editable profile photo.        | Shannon Budiman  |
 | STAC-125          | Get data of user to display name, rating, number of services ordered, address.        | Shannon Budiman  |
