@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import Navbar from './components/Navbar/Navbar.js';
 import AboutUs from './components/about_us/about_us';
 import ContactUs from './components/contact_us/contact_us';
@@ -41,6 +42,14 @@ function App(){
 
       </Routes>
     </Router>
+=======
+import LoginPage from './components/login-page/login-page.jsx';
+
+function App(){
+  return (
+    <body>
+    <LoginPage/>
+>>>>>>> 4b5b92969b21f0099059b043629a6cd62d7373c8
     </body>
   )
  }
