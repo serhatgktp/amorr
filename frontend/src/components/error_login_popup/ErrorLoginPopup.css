@@ -1,4 +1,4 @@
-.errorPopup, .overlay {
+.errorLoginPopup, .overlay {
     width: 100%;
     height: 100vh;
     top: 0;
@@ -12,7 +12,7 @@
     background: rgba(49,49,49,0.8);
 }
 
-.errorPopupContent {
+.errorLoginPopupContent {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -26,7 +26,7 @@
     text-align: center;
 }
 
-.popupUpper {
+.loginpopupUpper {
     padding: 2em;
     background-color: red;
     display: block;
@@ -36,7 +36,7 @@
     box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
 }
 
-.popupLower {
+.loginpopupLower {
     padding: 2em 2em 5em 2em;
     background: #fff;
     display: block;
@@ -45,19 +45,19 @@
     box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
 }
 
-#errorIcon {
+#errorLoginIcon {
     color: #fff;
     font-size: 100px;
 }
 
-#errorHeading {
+#errorLoginHeading {
     font-size: 25px;
     font-weight: 600;
     margin-bottom: 15px;
     letter-spacing: 1px;
 }
 
-#errorPara {
+#errorLoginPara {
     font-size: 15px;
     font-weight: 400;
     letter-spacing: 1px;
