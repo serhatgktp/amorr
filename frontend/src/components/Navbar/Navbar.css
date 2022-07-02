@@ -19,6 +19,9 @@
     
   } 
 
+  .Navbar > .icon{
+    margin-left: 300px;
+  }
   .Navbar > .nav-items > a {
     color: #000000;
     font-size: 18px;
