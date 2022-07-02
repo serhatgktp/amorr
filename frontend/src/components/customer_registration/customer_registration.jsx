@@ -1,16 +1,19 @@
 import React, {useState} from 'react';
 import "./customer_registration.css";
-import {ErrorPopup} from '../error_registration_popup/errorPopup';
+import ErrorPopup from '../error_registration_popup/errorPopup';
+import SuccessRegistrationPopup from '../success_registration_popup/SuccessRegistrationPopup';
 
 const CustomerRegistration = () => {
 
-  const initialValues = { email: "", name: "", password: "", repassword: "", address: ""};
+  const initialValues = { email: "", name: "", password: "", repassword: "", address: "", ID: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const initialErrors = { email: false, name: false, password: false, repassword: false, address: false};
   const [formErrors, setFormErrors] = useState(initialErrors);
 
-  // Initial Settings for Success Popup is FALSE, so the Success Popup is not rendered
+  // Initial Settings for Error Popup is FALSE, so the Error Popup is not rendered
   const [triggererrorPopup, setTriggererrorPopup] = useState(false);
+  // Initial Settings for Success Popup is FALSE, so the Success Popup is not rendered
+  const [triggerSuccessPopup, setTriggerSuccessPopup] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,20 +73,26 @@ const CustomerRegistration = () => {
       requestbody.full_name = formValues.name;
       requestbody.password = formValues.password;
       
-      /*
-      fetch('http://localhost:5000/Awaiting_Efkans_Endpoint', {
-        method: 'POST',
-        //method: 'PUT',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(requestbody);
-      })
-      // incomplete
-      // If registered correctly, render Success Popup
-      // setTriggererrorPopup(true);
-      */
+      fetch('http://localhost:5000/register', {
+          method: 'POST',
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(requestbody)
+      }).then(response => {
+        if (response.ok) {
+          // If registered correctly, render Success Popup
+          setTriggerSuccessPopup(true);
+        }
+        else if (response.status == 400) {
+          // If 400 BAD REQUEST, means Email is taken, so render Error Popup
+          setTriggererrorPopup(true);
+        }
+        else { // response is not ok
+          throw new Error(response.statusText)
+        }
+        }).catch(err => {
+          console.log(err)
+        })
     }  
-
-    
   };
   
   const validate = (values) => {
@@ -91,7 +100,7 @@ const CustomerRegistration = () => {
     const email_regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     const name_regex = /^[a-zA-Z ]+$/;
     const alphanum_regex = /^[a-zA-z0-9]{8,}$/;
-    const addr_regex = /^[0-9]{1,5}[a-zA-z0-9 ,-.]{3,}[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+    const addr_regex = /^[0-9]{1,5}[a-zA-z ,-.]{3,}[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
 
     if (!values.email) {
       errors.email = true;
@@ -194,7 +203,8 @@ const CustomerRegistration = () => {
           </form>
         </section>
         <div className='tools'></div>
-        <ErrorPopup trigger={triggererrorPopup} />
+        <ErrorPopup trigger={triggererrorPopup} redirection="/customer-register"/>
+        <SuccessRegistrationPopup trigger={triggerSuccessPopup}></SuccessRegistrationPopup>
         </body>
   );
 };
