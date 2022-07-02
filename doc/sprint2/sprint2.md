@@ -25,12 +25,15 @@
     - 
 
 - Fifth stand-up (2022/06/27)
+    -
 
 
 - Sixth stand-up (2022/06/28)
+    -
 
 
 - Seventh stand-up (2022/06/29)
+    -
 
 
 - Eighth stand-up (2022/06/30)
