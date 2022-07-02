@@ -14,7 +14,6 @@ const Login = () => {
 
     // Initial Settings for Success Login Popup is FALSE, so the Success Login Popup is not rendered
     const [triggerLoginSuccessPopup, setLoginTriggerSuccessPopup] = useState(false);
-
     // Initial Settings for Error Login Popup is FALSE, so the Success Login Popup is not rendered
     const [triggerErrorLoginPopup, setErrorLoginTriggerPopup] = useState(false);
 
@@ -39,7 +38,7 @@ const Login = () => {
             }, 1300);
           }
            else if (response.status == 401) {
-             // If 401 UNAUTHORIZED, means Email/Password is taken, so render an Error Popup
+             // If 401 UNAUTHORIZED, means Email/Password is invalid, so render an Error Popup
             setErrorLoginTriggerPopup(true);
            }
           else { // response is not ok
