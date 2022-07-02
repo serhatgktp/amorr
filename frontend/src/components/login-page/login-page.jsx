@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './login-page-styles.css'
 import SuccessLoginPopup from '../success_login_popup/SuccessLoginPopup';
+import ErrorLoginPopup from '../error_login_popup/ErrorLoginPopup';
 import  { useNavigate } from 'react-router-dom'
 
 const Login = () => {
@@ -13,6 +14,9 @@ const Login = () => {
 
     // Initial Settings for Success Login Popup is FALSE, so the Success Login Popup is not rendered
     const [triggerLoginSuccessPopup, setLoginTriggerSuccessPopup] = useState(false);
+
+    // Initial Settings for Error Login Popup is FALSE, so the Success Login Popup is not rendered
+    const [triggerErrorLoginPopup, setErrorLoginTriggerPopup] = useState(false);
 
     // Form submission handler
     const handleSubmit = (e) => {
@@ -34,10 +38,10 @@ const Login = () => {
                 navigate('/home');
             }, 1300);
           }
-        //   else if (response.status == 401) {
-        //     // If 401 UNAUTHORIZED, means Email/Password is taken, so render an Error Popup
-        //     setTriggererrorPopup(true);
-        //   }
+           else if (response.status == 401) {
+             // If 401 UNAUTHORIZED, means Email/Password is taken, so render an Error Popup
+            setErrorLoginTriggerPopup(true);
+           }
           else { // response is not ok
             throw new Error(response.statusText)
           }
@@ -72,6 +76,7 @@ const Login = () => {
                 </div>
             </div>
             <SuccessLoginPopup trigger={triggerLoginSuccessPopup} />
+            <ErrorLoginPopup trigger={triggerErrorLoginPopup} />
         </body>
     )
 }
