@@ -4,7 +4,7 @@ import { Icon, InlineIcon } from '@iconify/react';
 
 const InitialSignUp = () => {
     return(
-        <body>
+        <body className='initial_sign_up'>
             <div className='tools'></div>
             <div id="container">
                 <div id="slogan">

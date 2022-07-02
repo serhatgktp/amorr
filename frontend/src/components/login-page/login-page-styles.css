@@ -1,22 +1,22 @@
-*{
+.login_page *{
     font-family: 'Poppins';
 }
 
-#doorstep{
+.login_page #doorstep{
     color: #345392;
 }
 
-.Heading{
+.login_page .Heading{
     font-weight: bold;
     font-size: 75px;
 }
 
-.Subheading{
+.login_page .Subheading{
     font-size: 24px;
     font-weight: 400;
 }
 
-#LoginCard{
+.login_page #LoginCard{
     background-color: #F9F6EE;
     padding: 15px;
     padding-bottom: 50px;
@@ -30,18 +30,18 @@
     justify-content: center;
 }
 
-#container{
+.login_page #container{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding-top: 130px;
 }
 
-#slogan{
+.login_page #slogan{
     padding-top: 20px;
 }
 
-.tools{
+.login_page .tools{
     display: block;
     position: fixed;
     z-index: -5;
@@ -55,11 +55,11 @@
     background-size: contain;
 }
 
-button:hover{
+.login_page button:hover{
     transform: scale(1.03);
 }
 
-form{
+.login_page form{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,7 +67,7 @@ form{
     align-items: center;
 }
 
-input{
+.login_page input{
     margin: 15px;
     width: 300px;
     border:none;
@@ -77,11 +77,11 @@ input{
     padding-left: 15px
 }
 
-input[type=password]{
+.login_page input[type=password]{
     margin-bottom: 60px;
 }
 
-button{
+.login_page button{
     cursor: pointer;
     background-color: #345392;
     border: none;
@@ -95,38 +95,38 @@ button{
 }
 
 @media only screen and (max-width: 1300px) {
-    .Heading {
+    .login_page .Heading {
       font-size: 60px;
     }
 
-    .Subheading {
+    .login_page .Subheading {
         font-size: 20px;
       }
 
-    #LoginPrompt {
+    .login_page #LoginPrompt {
         font-size: 30px;
     }
 
-    #LoginSubheading {
+    .login_page #LoginSubheading {
         font-size: 20px;
     }
 
-    #LoginCard {
+    .login_page #LoginCard {
         width: 350px;
         height: 230px;
     }
 
-    #service {
+    .login_page #service {
         font-size: 20px;
         width: 270px;
     }
 
-    #customer {
+    .login_page #customer {
         font-size: 20px;
         width: 270px;
     }
 
-    #container {
+    .login_page #container {
         padding-top: 100px;
     }
   }

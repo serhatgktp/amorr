@@ -73,18 +73,20 @@ function FAQpage () {
 
 
   return (
-    <div className="App">
-      <Header />
+    <div className='faq_wrapper'>
+      <div className="App">
+        <Header />
 
-      <div className="faqs">
-        {faqs.map((faq, i) => (
-          <FAQ faq={faq} index={i} toggleFAQ={toggleFAQ} />
-        ))}
-      </div>
-      <div className="faqs2">
-        {faqs2.map((faq, i) => (
-          <FAQ2 faq={faq} index={i} toggleFAQ2={toggleFAQ2} />
-        ))}
+        <div className="faqs">
+          {faqs.map((faq, i) => (
+            <FAQ faq={faq} index={i} toggleFAQ={toggleFAQ} />
+          ))}
+        </div>
+        <div className="faqs2">
+          {faqs2.map((faq, i) => (
+            <FAQ2 faq={faq} index={i} toggleFAQ2={toggleFAQ2} />
+          ))}
+        </div>
       </div>
     </div>
   );

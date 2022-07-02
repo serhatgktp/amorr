@@ -13,7 +13,7 @@ import seeMore from "../../../assets/home/seeMore.png";
 function Dashboard() {
 
   return (
-      <div className='all_container'>
+      <div className='dashboard_container'>
         <h1 className="headingForDashboard">Services offered at 
             <font color="#d46f5e"> a</font>
             <font color="#0b5394">morr</font>
