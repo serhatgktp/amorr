@@ -3,12 +3,21 @@ import './login-page-styles.css'
 import SuccessLoginPopup from '../success_login_popup/SuccessLoginPopup';
 
 const Login = () => {
+    const initialValues = { email_address: "", password: ""};
+    const [formValues, setFormValues] = useState(initialValues);
+
     // Initial Settings for Success Login Popup is FALSE, so the Success Login Popup is not rendered
     const [triggerLoginSuccessPopup, setLoginTriggerSuccessPopup] = useState(false);
 
+    const handleChanges = (e) => {
+        const { name, value } = e.target;
+        setFormValues({ ...formValues, [name]: value });
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        
+        console.log(formValues);
         // TODO: Check if Login is correct
 
         // If login correctly, render Success Login Popup
@@ -33,8 +42,8 @@ const Login = () => {
 
                 <div id="LoginCard">
                     <form onSubmit={ handleSubmit }>
-                        <input type="text" placeholder="Email Address"/>
-                        <input type="password" placeholder="Password"/>
+                        <input type="text" placeholder="Email Address" value={formValues.email_address} onChange={handleChanges}/>
+                        <input type="password" placeholder="Password" value={formValues.password} onChange={handleChanges}/>
                         <button type="submit" id="login">LOG IN</button>
                     </form>
                 </div>
