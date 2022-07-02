@@ -262,7 +262,8 @@ def upload_file():  # Expects one image and sessionID
         if len(rows) > 0:
             mu.delete(config, [f'uid = \'{user_id}\''], 'amorr.profile_photos') # Delete old path
 
-        d = {'uid':[user_id], 'pfp_path':[file_save_path]}
+        file_relative_path = '../../../assets/profile_photos/' + filename
+        d = {'uid':[user_id], 'pfp_path':[file_relative_path]}
         df = pd.DataFrame.from_dict(d)
         mu.insert(config, 'profile_photos', df) # Insert new pfp_path into database
 
