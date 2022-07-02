@@ -155,6 +155,43 @@ def do_register():  # Assuming username, password, & email regex is implemented 
 #########
 # End of register
 
+# get-profile
+#########
+@app.route('/get-profile', methods=['GET'])
+def get_profile():
+    if request.method == 'GET':
+        return fetch_profile()
+def fetch_profile():  # Fetch full name and address from database
+
+    content_type = request.headers.get('Content-Type')
+    r = request
+
+    if (content_type == 'application/json'):    # Case for JSON request body 
+        json = r.json
+        email_address = json['email_address']    
+    else:                                       # Case for submitted form
+        email_address = r.form['email_address']
+    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
+    if len(user) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": "User not found!"}
+            ),
+            404,
+        )
+    else:
+        full_name = user[0]['full_name']
+        address = user[0]['address']
+        resp = make_response(
+            jsonify(
+                {'full_name': full_name,
+                'address': address}
+            ),
+            200,
+        )
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+
 def get_userid():
     if 'sessionId' in request.cookies:
         if request.cookies.get('sessionId') in SESSIONS.keys():
