@@ -45,6 +45,7 @@ def newSessionID():
 # Login 
 #########
 @app.route('/login', methods=['POST'])
+@cross_origin(supports_credentials=True)
 def login():
     if request.method == 'POST':
         content_type = request.headers.get('Content-Type')

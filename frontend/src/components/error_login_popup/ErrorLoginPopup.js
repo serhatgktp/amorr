@@ -1,5 +1,5 @@
 import React from 'react'
-import './errorPopup.css'
+import './ErrorLoginPopup.css'
 import { Icon } from '@iconify/react';
 
 function ErrorLoginPopup(props) {
