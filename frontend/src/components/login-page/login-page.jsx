@@ -3,32 +3,15 @@ import './login-page-styles.css'
 import SuccessLoginPopup from '../success_login_popup/SuccessLoginPopup';
 
 const Login = () => {
-    const initialValues = { email_address: "", password: ""};
-    const [formValues, setFormValues] = useState(initialValues);
+    const [email_address, setEmailAddress] = useState('');
+    const [password, setPassword] = useState('');
 
     // Initial Settings for Success Login Popup is FALSE, so the Success Login Popup is not rendered
     const [triggerLoginSuccessPopup, setLoginTriggerSuccessPopup] = useState(false);
 
-    const handleChanges = (e) => {
-        const { name, value } = e.target;
-        setFormValues({ ...formValues, [name]: value });
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        console.log(formValues);
-        // TODO: Check if Login is correct
-
-        // If login correctly, render Success Login Popup
-        setLoginTriggerSuccessPopup(true);
-
-        // Set a timer to close the popup after 2 seconds for redirecting
-        setTimeout(function () {
-            setLoginTriggerSuccessPopup(false);
-        }, 1200);
-
-        // TODO: Redirect to Home/My Profile page according to type of user
+        const requestbody = {email_address, password};
     };
 
     return(
@@ -42,8 +25,16 @@ const Login = () => {
 
                 <div id="LoginCard">
                     <form onSubmit={ handleSubmit }>
-                        <input type="text" placeholder="Email Address" value={formValues.email_address} onChange={handleChanges}/>
-                        <input type="password" placeholder="Password" value={formValues.password} onChange={handleChanges}/>
+                        <input 
+                            type="text" 
+                            placeholder="Email Address" 
+                            value={email_address} 
+                            onChange={(e) => setEmailAddress(e.target.value)}/>
+                        <input 
+                            type="password" 
+                            placeholder="Password" 
+                            value={password} 
+                            onChange={(e) => setPassword(e.target.value)}/>
                         <button type="submit" id="login">LOG IN</button>
                     </form>
                 </div>
