@@ -162,7 +162,17 @@ def do_register():  # Assuming username, password, & email regex is implemented 
     else:    
         new_user = {'email_address':[email_address], 'address':[address], 'user_type':[user_type], 'full_name':[full_name], 'password':[hashlib.md5(str(password).encode()).hexdigest()]}
         df = pd.DataFrame.from_dict(new_user)
-        mu.insert(config, 'users', df)
+        mu.insert(config, 'users', df)  # Insert new user into users table
+
+        if user_type == 'Customer':
+            user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
+            user_id = user[0]['uid']
+            d = {'uid':[user_id], 'total_rating':['0'], 'num_ratings':['0']}
+            df = pd.DataFrame.from_dict(d)
+            mu.insert(config, 'customers', df)  # Create new entry for new customer user
+
+        # No case for service provider as of now. SP registration form is not complete yet.
+
         resp = make_response(
             jsonify(
                 {"message": "Registration successful!"}
