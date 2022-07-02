@@ -3,6 +3,7 @@ import "./editable_styles.css"
 
 const InlineEdit = ({value, setValue}) => {
     const [editingValue, setEditingValue] = useState(value);
+    console.log(value);
 
     const onChange = (event) => setEditingValue(event.target.value);
 
