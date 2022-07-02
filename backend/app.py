@@ -10,6 +10,8 @@ import string   # For generating sessionIDs
 import random   # For randomizing sessionIDs
 import pandas as pd
 
+from flask_cors import CORS, cross_origin   # For front end request issue
+
 
 # Database Settings
 config = configparser.ConfigParser()
@@ -47,6 +49,7 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 # Initialize Flask App
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+CORS(app, support_credentials=True)
 
 # Generate new session
 def newSessionID():
@@ -118,6 +121,7 @@ def check_credentials(email_address, password):
 # Register
 #########
 @app.route('/register', methods=['POST'])
+@cross_origin(supports_credentials=True)
 def register():
     if request.method == 'POST':
         return do_register()
