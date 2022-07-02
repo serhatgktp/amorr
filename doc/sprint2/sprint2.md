@@ -99,17 +99,17 @@ The table below displays who worked on which task during this sprint.
 | STAC-113          | Privilege Logic (Limit access to relevant actions)        |  Serhat Goktepe |
 | STAC-114          | Let the user know if login is successful by success popup/message + redirect to login page.        |  Theora Pui |
 | STAC-130          | Set up Flask API to handle login requests and return sessionID to user.        | Serhat Goktepe  |
-| STAC-133          | Return to frontend if email - password is wrong + error popup/message if email - password is already taken.        |  UNASSIGNED |
+| STAC-133          | Return to frontend if email - password is wrong + error popup/message if email - password is already taken.        |  Jumana Fanous |
 | STAC-117          | If the user is not logged in, the navigation bar should include clickable buttons that redirect the user to an About Us, FAQ, Contact Us, and Sign Up / Log In page.        | Mir Safwat Ayser  |
 | STAC-118          | If the user is logged in as a service provider, the navigation bar should include clickable buttons that redirect the user to the About Us, FAQ, Contact Us, My Appointment, dropdown for manage/logging out/delete account.        |  Mir Safwat Ayser |
 | STAC-119          | If the user is logged in as a customer, the navigation bar should include clickable buttons that redirect the user to the About Us, FAQ, Contact Us, Explore, My Appointments, dropdown for manage/logging out/delete account.        |  Mir Safwat Ayser |
-| STAC-108          | Connect frontend and backend: data is stored in the database (Full name, email, subject and message).        |  Annanya Sharma |
-| STAC-108          | User information section including editable components: address, and save changes button.        | Shannon Budiman  |
-| STAC-108          | Editable profile photo.        | Shannon Budiman  |
-| STAC-108          | Get data of user to display name, rating, number of services ordered, address.        | UNASSIGNED  |
-| STAC-108          | Editing data of user accordingly in the database - address, profile photo.        |  UNASSIGNED |
-| STAC-108          | Set up Flask API to handle profile related GET requests.        |  Serhat Goktepe |
-| STAC-108          | Set up Flask API to handle profile related POST requests.        | Christopher Nathanael  |
+| STAC-121          | Connect frontend and backend: data is stored in the database (Full name, email, subject and message).        |  Annanya Sharma |
+| STAC-123         | User information section including editable components: address, and save changes button.        | Shannon Budiman  |
+| STAC-124          | Editable profile photo.        | Shannon Budiman  |
+| STAC-125          | Get data of user to display name, rating, number of services ordered, address.        | Shannon Budiman  |
+| STAC-126          | Editing data of user accordingly in the database - address, profile photo.        |  Christopher Nathanael |
+| STAC-131          | Set up Flask API to handle profile related GET requests.        |  Serhat Goktepe |
+| STAC-134          | Set up Flask API to handle profile related POST requests.        | Christopher Nathanael  |
 
 --- 
 **Spikes Recorded:**
