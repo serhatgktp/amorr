@@ -14,13 +14,13 @@
     float: none;
 }
 
-.guide_container {
+.all_QuickGuide .guide_container {
     background: #F9F6EE;
     float: left;
     width: 300%;
 }
 
-.hdg_guide {
+.all_QuickGuide .hdg_guide {
     text-align: left;
     margin-top: 35px;
     margin-left: 40px;
@@ -29,18 +29,18 @@
     font-size: 28px;
 }
 
-.hdg_guide span {
+.all_QuickGuide .hdg_guide span {
     color: black;
     background: #F9F6EE;
 }
-.hdg_guide span:nth-child(2) {
+.all_QuickGuide .hdg_guide span:nth-child(2) {
     color: #d46f5e;
 }
-.hdg_guide span:nth-child(3) {
+.all_QuickGuide .hdg_guide span:nth-child(3) {
     color: #0b5394;
 }
 
-.p_QuickGuide {
+.all_QuickGuide .p_QuickGuide {
     font-family: "poppins";
     font-size: 85%;
     font-weight: 500;

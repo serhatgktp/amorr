@@ -1,18 +1,18 @@
-*{
+.contact_us_wrapper *{
     font-family: 'Poppins';
 }
 
-.left{
+.contact_us_wrapper .left{
     display: flex;
     flex-direction: column;
 }
 
-.paints {
+.contact_us_wrapper .paints {
     width: 330px;
     padding-top: 95px;
 }
 
-.belowImage{
+.contact_us_wrapper .belowImage{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 1;
@@ -22,7 +22,7 @@
     padding-top: 20px;
 }
 
-input{
+.contact_us_wrapper input{
     border:none;
     padding:10px;
     font-size: 16px;
@@ -30,7 +30,7 @@ input{
     background-color: transparent;
 }
 
-.input{
+.contact_us_wrapper .input{
     border-bottom:solid;
     border-width: 2px;
     flex: auto; 
@@ -40,17 +40,17 @@ input{
     color: black;
 }
 
-input:focus {
+.contact_us_wrapper input:focus {
     outline: none;
 }
 
-.box{
+.contact_us_wrapper .box{
     border: solid;
     padding: 20px;
     border-width: 2px;
 }
 
-textarea{
+.contact_us_wrapper textarea{
     border: solid;
     border-width: 2px;
     padding:10px;
@@ -63,7 +63,7 @@ textarea{
     height: 200px;
 }
 
-.input1{
+.contact_us_wrapper .input1{
     flex: 1; 
     display: flex;
     flex-direction: column;
@@ -72,7 +72,7 @@ textarea{
     overflow-wrap: break-all;
 }
 
-button{
+.contact_us_wrapper button{
     cursor: pointer;
     background-color: black;
     border: none;
@@ -85,22 +85,22 @@ button{
     margin-top: 15px;
 }
 
-button:hover{
+.contact_us_wrapper button:hover{
     transform: scale(1.03);
 }
 
-.heading {
+.contact_us_wrapper .heading {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
     font-size: 60px;
 }
 
-::placeholder{
+.contact_us_wrapper ::placeholder{
     color:black;
 }
 
-.right{
+.contact_us_wrapper .right{
     width: 50%;
     padding: 20px;
     padding-top: 30px;
@@ -108,13 +108,13 @@ button:hover{
     padding-left: 0px;
 }
 
-.left{
+.contact_us_wrapper .left{
     align-items: center;
     width: 50%;
     margin-right: 0px;
 }
 
-.container{
+.contact_us_wrapper .container{
     display: flex;
     flex-direction: row;
     justify-content: space-around;

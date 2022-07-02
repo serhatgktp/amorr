@@ -3,7 +3,7 @@ import './login_signup_landing_styles.css'
 
 const LoginSignupLanding = () => {
     return(
-        <body>
+        <body className='LoginSignupLanding'>
             <div className='tools'></div>
             <div id="container">
                 <div id="slogan">
