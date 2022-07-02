@@ -1,14 +1,35 @@
-import React , { useState }from 'react';
+import React , { useEffect, useState }from 'react';
 import './customer_info_styles.css'
 import { Icon } from '@iconify/react';
-import { Rating, Avatar } from '@mui/material';
+import { Rating, Avatar, requirePropFactory } from '@mui/material';
 import InlineEdit from "./editable"
+import image from "../../../assets/customer_profile/customer.jpg"
 
 const CustomerInfo = () => {
 
-    const address = "100 Lorem Ipsum Road - M1C 0B7"
-    const [value, setValue] = useState(address);
+    const [user, setUser] = useState({full_name: "", address: "", total_rating: 0, num_ratings: 0, profile_photo: null});
+
+    useEffect(() => {
+        /*fetch("http://localhost:5000/get-profile").then(response => {
+            if (response.ok){
+                response.json().then(data => {
+                    setUser(data)
+                })
+            } 
+            else {
+                throw new Error(response.statusText)
+            }
+            }).catch(err => {
+                console.log(err)
+            });*/
+        setUser({full_name: "Theo Ipsum", address: "190 Fall Guys M1P 0B7", total_rating: 40, num_ratings: 10, profile_photo: "../../../assets/customer_profile/customer.jpg"});
+    }, [])
+
     const [img, setImage] = useState(null);
+
+    let address = "190 drive M1P 0B7";
+    console.log(address);
+    const [value, setValue] = useState(address);
 
     const imageHandler = (e) => {
         const selected = e.target.files[0];
@@ -38,12 +59,12 @@ const CustomerInfo = () => {
 
             <div id="customer_right">
 
-                <div id="customer_name">Sans Calibri</div>
+                <div id="customer_name">{user.full_name}</div>
 
                 <div id="rating">
                     <span className="rating_num">4.5</span>
                     <Rating name="read-only" size="medium" value={4.5} precision={0.5} readOnly />
-                    <span className="rating_num">(50)</span>
+                    <span className="rating_num">({user.num_ratings})</span>
                 </div>
 
                 <div id="services_ordered"> <span>75 </span>Services Ordered</div>
