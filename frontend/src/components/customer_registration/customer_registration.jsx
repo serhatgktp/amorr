@@ -203,7 +203,7 @@ const CustomerRegistration = () => {
           </form>
         </section>
         <div className='tools'></div>
-        <ErrorPopup trigger={triggererrorPopup} />
+        <ErrorPopup trigger={triggererrorPopup} redirection="/customer-register"/>
         <SuccessRegistrationPopup trigger={triggerSuccessPopup}></SuccessRegistrationPopup>
         </body>
   );

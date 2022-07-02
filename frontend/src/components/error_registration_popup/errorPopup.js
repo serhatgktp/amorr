@@ -13,7 +13,7 @@ function errorPopup(props) {
             <div className="popupLower">
               <h1 id="errorHeading">Error!</h1>
               <p id="errorPara">The email you entered has already been taken! Please enter a new email.</p>
-              <a href="/#" id="contBtn" onClick={() => props.setTrigger(false)}>Try Again</a>
+              <a href={props.redirection} id="contBtn" onClick={() => props.setTrigger(false)}>Try Again</a>
             </div>
         </div>
   </div>

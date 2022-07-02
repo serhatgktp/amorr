@@ -270,7 +270,7 @@ const ServiceProviderRegistration = () => {
           </form>
         </section>
         <div className='tools'></div>
-        <ErrorPopup trigger={triggererrorPopup} />
+        <ErrorPopup trigger={triggererrorPopup} redirection="/sp-register"/>
         <SuccessRegistrationPopup trigger={triggerSuccessPopup}></SuccessRegistrationPopup>
         </body>
   );
