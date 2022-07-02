@@ -184,16 +184,15 @@ def get_profile():
         return fetch_profile()
 def fetch_profile():  # Fetch full name and address from database
 
-    content_type = request.headers.get('Content-Type')
-    r = request
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"message": "Please log in to view your profile"} ), 400, )
+        return resp
 
-    if (content_type == 'application/json'):    # Case for JSON request body 
-        json = r.json
-        email_address = json['email_address']    
-    else:                                       # Case for submitted form
-        email_address = r.form['email_address']
-    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
-    if len(user) == 0:
+    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
+    customer = mu.load(config, 'amorr.customers', f'SELECT * FROM amorr.customers WHERE uid = \'{user_id}\'')
+    pfp_path = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{user_id}\'')
+    if len(user) == 0 or len(customer) == 0 or len(pfp_path) == 0:
         resp = make_response(
             jsonify(
                 {"message": "User not found!"}
@@ -203,10 +202,18 @@ def fetch_profile():  # Fetch full name and address from database
     else:
         full_name = user[0]['full_name']
         address = user[0]['address']
+        total_rating = customer[0]['total_rating']
+        num_ratings = customer[0]['num_ratings']
+        profile_pic_path = pfp_path[0]['pfp_path']
+
         resp = make_response(
             jsonify(
                 {'full_name': full_name,
-                'address': address}
+                'address': address,
+                'total_rating': total_rating,
+                'num_ratings': num_ratings,
+                'profile_pic_path': profile_pic_path,
+                }
             ),
             200,
         )
