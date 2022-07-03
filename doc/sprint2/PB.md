@@ -63,6 +63,18 @@ Tasks:
 
 Weight of user story: 40
 
+### As a user, I want to have a profile photo attached to my account so customers/service providers can recognize me
+
+- Profile Photo should be visible from the profile page
+- Profile Photo should be editable from the profile page
+- Profile photo should be stored so I do not have to set a picture every time I log back into my account
+
+Tasks:
+- Editable profile photo in frontend
+- Set default profile photo in profile page to GET request response
+
+Weight of user story: 1
+
 ## Remaining User Stories in the Backlog for Future Sprints
 
 ### As a logged in user, I want to be able to log out by clicking on the log out button on the navigation bar at any web pages so that other users that are not me will not be able to access the system without verifying their credentials.
