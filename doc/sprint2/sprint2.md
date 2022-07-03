@@ -117,10 +117,10 @@ The table below displays who worked on which task during this sprint.
 | STAC-124          | Editable profile photo.        | Shannon Budiman  |
 | STAC-144         |   Add POST request endpoint specifically for changing address.      | Serhat Goktepe |
 | STAC-125          | Get data of user to display name, rating, number of services ordered, address.        | Shannon Budiman  |
-| STAC-126          | Editing data of user accordingly in the database - address, profile photo.        |  Christopher Nathanael |
+| STAC-126          | Editing data of user accordingly in the database - address, profile photo.        |  Shannon Budiman |
 | STAC-131          | Set up Flask API to handle profile related GET requests.        |  Serhat Goktepe |
-| STAC-134          | Set up Flask API to handle profile related POST requests.        | Christopher Nathanael  |
-| STAC-142          | SSet default profile photo in profile page to GET request response.        | Christopher Nathanael  |
+| STAC-134          | Set up Flask API to handle profile related POST requests.        | Serhat Goktepe  |
+| STAC-142          | Set default profile photo in profile page to GET request response.        | Shannon Budiman  |
 
 --- 
 **Spikes Recorded:**
