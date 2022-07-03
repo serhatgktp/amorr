@@ -200,7 +200,7 @@ def do_contact():
     content_type = request.headers.get('Content-Type')
     r = request 
 
-    if (content_type == 'application/jason'):
+    if (content_type == 'application/json'):
         json = r.json
         fullname = json['fullname']
         email = json['fullname']
