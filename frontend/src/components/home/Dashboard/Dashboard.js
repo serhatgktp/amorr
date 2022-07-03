@@ -13,10 +13,11 @@ import seeMore from "../../../assets/home/seeMore.png";
 function Dashboard() {
 
   return (
-      <div className='all_container'>
-        <h1 className='hdg'>Services offered at 
+      <div className='dashboard_container'>
+        <h1 className="headingForDashboard">Services offered at 
             <font color="#d46f5e"> a</font>
-            <font color="#0b5394">morr</font></h1>
+            <font color="#0b5394">morr</font>
+        </h1>
         <div className='cards_container'>
             <ul className='cards_items'>
                 <CardItem title='Hairdresser' img={hairdresser} redirection="http://localhost:3000/"></CardItem>

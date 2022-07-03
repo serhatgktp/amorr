@@ -17,12 +17,12 @@
     transform: scale(1.1);
 }
 
-.card {
+.card-container .cardLink {
     background: #f9f6ee;
     text-decoration: none;
 }
 
-img {
+.card-container .imgCardItem {
     background: #f9f6ee;
     width: 60%;
     overflow: hidden;
@@ -32,7 +32,7 @@ img {
     background: none;
 }
 
-h3 {
+.card-container .hdgCardItem {
     color: black;
     font-size: 110%;
     font-family: "poppins";

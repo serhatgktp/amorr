@@ -13,7 +13,9 @@ The `config` dictionary is initialized with the database server credentials from
 
 ## 2) Sessions
 
-Sessions are aggregated in the `SESSIONS` list. A `sessionId` string is generated whenever a user successfully logs in.
+Sessions are aggregated in the `SESSIONS` dictionary. A `sessionId` string is generated whenever a user successfully logs in.
+The key/value pair `sessionId`:`User(sql_data)` is added to the `SESSIONS` dictionary after each user login.
+Each entry has a maximum age of 30 minutes (1800 seconds).
 
 ## 3) Classes
 
@@ -21,12 +23,12 @@ Sessions are aggregated in the `SESSIONS` list. A `sessionId` string is generate
 
 Constructor: `__init__(self, sql_data)`  
     Params: Dict sql_data  
-    "Initialized with dictionary `sql_data`   
+    "Initialized with dictionary `sql_data`"
 
 Data Structure:
-- str uname
-- str privilege
-- str privilege_title
+- str email_address
+- str user_type
+- str uid
 
 "User class for managing users"
 
@@ -52,11 +54,6 @@ Params: str username, str password
 Returns: Bool  
 "Compares arguments to user credentials in the database. If the arguments match exactly with the credentials of a user in the database, return True. Otherwise, return False."  
 
-### show_login_page()
-Params: None  
-Returns: `redir  ect(/login)`
-"Redirects the user to the `/login` route  
-
 ### register()
 Params: None  
 Returns: `do_register()` or `show_register_page()`  
@@ -67,22 +64,13 @@ Params: None
 Returns: `show_register_page()` or `show_login_page()`  
 "Attempt to register a new user by creating a new user entry with the parameters from the incoming POST request. Check if the username or email has already been used before creating a new user. Upon success, redirect to the `/login` route. Otherwise, return `show_register_page()`  
 
-### show_register_page()
-Params: None  
-Returns: `render_template('dummy_register.html')`  
-"Render the registration page"  
-
-### get_userid()
+### get_user_id()
 Params: None  
 Returns: Str  
 "Return the userid of the user of the current session"  
 
-### home()
+### render_homepage()
 Params: None  
-Returns: `render_template("dummy_home.html")`  
-"Render the home page."  
+Returns: `return render_template('dummy_image_upload.html')`  
+"Renders a page intended for testing"
 
-### admin()
-Params: None  
-Returns: redirect(url_for("home"))  
-"Serves the purpose of a test function"  

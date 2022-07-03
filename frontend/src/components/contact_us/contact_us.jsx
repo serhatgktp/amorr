@@ -1,16 +1,52 @@
 import './styles.css'
 
 import * as React from 'react';
+import { useState } from "react"; 
+// import Axios from 'react'; 
 import { Icon } from '@iconify/react';
 
-
 import paints from "../../assets/contact_us/paints.png";
-
-
+import ContactUsPopup from '../contact_us_popup/contact_us_popup';
 
 const ContactUs = () => {
+    const [fullname, setFullname] = useState('');
+    const [email, setEmail] = useState('');
+    const [subject, setSubject] = useState('');
+    const [message, setMessage] = useState('');
+    const [isPending, setIsPending] = useState(false);
+    const [triggerContactUsPopup, setContactUsPopup] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const body = {fullname, email, subject, message};
+        setIsPending(true);
+        console.log(body);
+
+        fetch('http://localhost:5000/contact', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(body)
+        }).then(response => {
+            if (response.ok){
+                console.log('New message added'); 
+                setContactUsPopup(true);
+                // Set a timer to close the popup after 1.2 seconds for redirecting
+                setTimeout(function () {
+                    setContactUsPopup(false);
+                    window.location.reload();
+                }, 1300);
+                setIsPending(false)
+            }else {
+                throw new Error(response.statusText)
+            }
+            }).catch(err => {
+            console.log(err)
+          })
+
+    };
+
     return(
-        <body>
+        <body className='contact_us_wrapper'>
             <div className='container'>
                 <div className='left'>
                     <div><img src={paints} className="paints" alt="paints" /></div>
@@ -33,13 +69,44 @@ const ContactUs = () => {
                     <div className="heading">Contact Us</div>
                     
                     <div className="box">
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className="inputs">
-                                <div className="input"><input type="text" placeholder="Full Name"/></div>
-                                <div className="input"><input type="text" placeholder="Email Address" required/></div>
-                                <div className="input"><input type="text" placeholder="Subject"/></div>
-                                <div className="input1" id="message"><textarea className="textbox" rows="10" cols="40" type="text" placeholder="Type your message here..."/></div>
-                                <button id="service">Send Message <Icon icon="akar-icons:arrow-right" inline={true} style={{ verticalAlign: '-0.3em', fontSize:'28px' }}/></button>
+                                <div className="input"><input
+                                    type="text"
+                                    required 
+                                    value={fullname} 
+                                    placeholder = "Full Name"
+                                    onChange={(e)=> setFullname(e.target.value)}>
+                                </input></div>
+
+                                <div className="input"><input
+                                    type="text"
+                                    required
+                                    value={email}
+                                    placeholder="Email Address"
+                                    onChange={(e)=> setEmail(e.target.value)}>
+                                </input></div>
+
+                                <div className="input"> <input 
+                                    type="text"
+                                    required
+                                    value={subject}
+                                    placeholder="Subject"
+                                    onChange={(e)=> setSubject(e.target.value)}>
+                                </input></div>
+
+                                <div className="input1" id="message"><textarea 
+                                    className="textbox"
+                                    rows="10" 
+                                    cols="40" 
+                                    required
+                                    value={message}
+                                    onChange={(e)=> setMessage(e.target.value)}
+                                    type="text" placeholder="Type your message here..."/>
+                                </div>
+
+                                { !isPending && <button id="service" type="submit" >Send Message <Icon icon="akar-icons:arrow-right" inline={true} style={{ verticalAlign: '-0.3em', fontSize:'28px' }}/></button>}
+                                { isPending && <button disabled id="service" type="submit">Sending ... <Icon icon="akar-icons:arrow-right" inline={true} style={{ verticalAlign: '-0.3em', fontSize:'28px' }}/></button>}
                             </div>
                         </form>
                     </div>
@@ -47,6 +114,7 @@ const ContactUs = () => {
                 </div>
 
             </div>
+            <ContactUsPopup trigger={triggerContactUsPopup} />
         </body>
     );
 }

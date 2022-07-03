@@ -1,10 +1,21 @@
 import React from 'react'
 import './initial-signup-styles.css'
 import { Icon, InlineIcon } from '@iconify/react';
+import  { useNavigate } from 'react-router-dom'
 
 const InitialSignUp = () => {
+    // For redirection
+    const navigate = useNavigate();
+
+    const handleSPRegistrationClick = (e) => {
+        navigate('/sp-register');
+    }
+    const handleCustomerRegistrationClick = (e) => {
+        navigate('/customer-register');
+    }
+
     return(
-        <body>
+        <body className='initial_sign_up'>
             <div className='tools'></div>
             <div id="container">
                 <div id="slogan">
@@ -18,9 +29,9 @@ const InitialSignUp = () => {
                         <div id="LoginSubheading">I am a...</div>
                     </div>
                     <br/>
-                    <button id="service"><Icon icon="bx:store" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'28px' }}/> SERVICE PROVIDER</button>
+                    <button id="service" onClick={handleSPRegistrationClick}><Icon icon="bx:store" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'28px' }}/> SERVICE PROVIDER</button>
                     <br/>
-                    <button id="customer"><Icon icon="bi:person-fill" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'28px' }}/> CUSTOMER</button>
+                    <button id="customer" onClick={handleCustomerRegistrationClick}><Icon icon="bi:person-fill" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'28px' }}/> CUSTOMER</button>
                 </div>
             </div>
 

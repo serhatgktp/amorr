@@ -1,9 +1,23 @@
 import React from 'react'
 import './login_signup_landing_styles.css'
+import  { useNavigate } from 'react-router-dom'
 
 const LoginSignupLanding = () => {
+    // For redirection
+    const navigate = useNavigate();
+
+    const handleLoginClick = (e) => {
+        navigate('/login');
+    }
+    const handleSignUpClick = (e) => {
+        navigate('/initial-signup');
+    }
+    const handleContinueClick = (e) => {
+        navigate('/home');
+    }
+
     return(
-        <body>
+        <body className='LoginSignupLanding'>
             <div className='tools'></div>
             <div id="container">
                 <div id="slogan">
@@ -12,11 +26,11 @@ const LoginSignupLanding = () => {
                 </div>
 
                 <div id="LoginCard">
-                    <button id="login">LOG IN</button>
+                    <button id="login" onClick={handleLoginClick}>LOG IN</button>
                     <br/>
-                    <button id="signup">SIGN UP</button>
+                    <button id="signup" onClick={handleSignUpClick}>SIGN UP</button>
                     <br/>
-                    <button id="continue">Continue as GUEST</button>
+                    <button id="continue" onClick={handleContinueClick}>Continue as GUEST</button>
                 </div>
             </div>
 
