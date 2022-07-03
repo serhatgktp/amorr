@@ -49,15 +49,15 @@ Updated weight of user story: 5
 
 Weight of user story: 8
 
-### As a customer, I want to be able to see and customize my profile by adding a profile picture and changing my location so that I can update service providers whom I booked an appointment with with my picture and location.
+### As a customer, I want to be able to see and customize my profile by changing my location so that I can update service providers whom I booked an appointment with with my information.
 
-- Information such as customer name, customer rating, services ordered, address and profile picture should be present
+- Information such as customer name, customer rating, services ordered, address should be present
 - Customer should be able to edit address, profile picture, and click a “save changes” button to save the changes made
 
 Tasks:
 - User information section including editable components: address, and save changes button
-- Editable profile photo
-- Set up Flask API to handle profile related requests
+- Add POST request endpoint specifically for changing address
+- Set up Flask API to handle profile related GET and POST requests
 - editing data of user accordingly in the database - address, profile photo
 - get data of user to display name, rating, number of services ordered, address
 
