@@ -21,10 +21,7 @@ const CustomerInfo = () => {
 
 
     const [img, setImage] = useState(null);
-
-    let address = "190 drive M1P 0B7";
-    console.log(address);
-    const [value, setValue] = useState(address);
+    const [newAddr, setnewAddr] = useState('');
 
     const imageHandler = (e) => {
         const selected = e.target.files[0];
@@ -39,7 +36,32 @@ const CustomerInfo = () => {
             reader.readAsDataURL(selected);
         }
     }
+    
+    const handleChange = (e) => {
+        setnewAddr(e.target.value)
+    }
+    const handleSubmit = (e) => {
+        console.log(newAddr);
+        e.preventDefault();
 
+        var requestbody = new Object();
+        requestbody.new_address = newAddr;
+
+<<<<<<< HEAD
+        fetch("http://localhost:5000/edit-profile-address", {
+=======
+        fetch("", {
+>>>>>>> 687e0bef255dc83c99235effe7c262c76bc4ca24
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            credentials: "include",
+            body: JSON.stringify(requestbody)
+        }).then(response => {
+            if (response.ok){
+                window.location.reload();
+            }
+        })
+    }
     return(
         <div id="customer_info">
 
@@ -64,8 +86,8 @@ const CustomerInfo = () => {
                 <div id="services_ordered"> <span>75 </span>Services Ordered</div>
                 <div id="user_address">{user.address}</div>
                 <div id="editable_line">
-                    <div id="editable_input"><span id="icon"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginRight: '10px'}}/></span><input id="new_address" placeholder='Enter new address'/></div>
-                    <button id="save_changes">Save Changes</button>
+                    <div id="editable_input"><span id="icon"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginRight: '10px'}}/></span><input id="new_address" placeholder='Enter new address' value={newAddr} onChange={handleChange}/></div>
+                    <button id="save_changes" onClick={handleSubmit}>Save Changes</button>
                 </div>
 
             </div>
