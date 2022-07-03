@@ -9,26 +9,10 @@ import hashlib  # For password encryption
 import string   # For generating sessionIDs
 import random   # For randomizing sessionIDs
 import pandas as pd
-from flask import Flask, jsonify
-from flask_cors import CORS, cross_origin
+
+from flask_cors import CORS, cross_origin   # For front end request issue
 
 
-# Classes (for now)
-
-class User:
-    def __init__(self, sql_data):
-        self.email_address = sql_data['email_address']
-        self.user_type = sql_data['user_type']
-        self.uid  = sql_data['uid']
-        if self.user_type  == 'Customer':
-            self.privilege_title = 'Customer'
-        elif self.user_type  == 'Service Provider':
-            self.privilege_title = 'Service Provider'
-        elif self.user_type  == 'Admin':
-            self.privilege_title = 'Admin'
-        else:
-            self.privilege_title = 'Unknown'
-            
 # Database Settings
 config = configparser.ConfigParser()
 config.read('db_config.ini')
@@ -52,10 +36,10 @@ SESSIONS = dict() # Contains session_id and email_address
 
 # Determine OS and determine image uploads folder
 if platform == "win32": # Windows
-    path = os.getcwd() + '\image_uploads'
+    path = os.path.abspath('../frontend/src/assets/profile_photos')
     UPLOAD_FOLDER = path.replace("\\", "/")
 elif platform == "linux" or platform == "linux2" or platform == "darwin": # linux or OSX
-    UPLOAD_FOLDER = os.getcwd() + '/image_uploads'
+    UPLOAD_FOLDER = os.path.abspath('../frontend/src/assets/profile_photos')
 
 # List of allowed file extensions
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
@@ -78,6 +62,7 @@ def newSessionID():
 # Login 
 #########
 @app.route('/login', methods=['POST'])
+@cross_origin(supports_credentials=True)
 def login():
     if request.method == 'POST':
         content_type = request.headers.get('Content-Type')
@@ -178,7 +163,17 @@ def do_register():  # Assuming username, password, & email regex is implemented 
     else:    
         new_user = {'email_address':[email_address], 'address':[address], 'user_type':[user_type], 'full_name':[full_name], 'password':[hashlib.md5(str(password).encode()).hexdigest()]}
         df = pd.DataFrame.from_dict(new_user)
-        mu.insert(config, 'users', df)
+        mu.insert(config, 'users', df)  # Insert new user into users table
+
+        if user_type == 'Customer':
+            user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
+            user_id = user[0]['uid']
+            d = {'uid':[user_id], 'total_rating':['0'], 'num_ratings':['0']}
+            df = pd.DataFrame.from_dict(d)
+            mu.insert(config, 'customers', df)  # Create new entry for new customer user
+
+        # No case for service provider as of now. SP registration form is not complete yet.
+
         resp = make_response(
             jsonify(
                 {"message": "Registration successful!"}
@@ -200,16 +195,15 @@ def get_profile():
         return fetch_profile()
 def fetch_profile():  # Fetch full name and address from database
 
-    content_type = request.headers.get('Content-Type')
-    r = request
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"message": "Please log in to view your profile"} ), 400, )
+        return resp
 
-    if (content_type == 'application/json'):    # Case for JSON request body 
-        json = r.json
-        email_address = json['email_address']    
-    else:                                       # Case for submitted form
-        email_address = r.form['email_address']
-    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
-    if len(user) == 0:
+    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
+    customer = mu.load(config, 'amorr.customers', f'SELECT * FROM amorr.customers WHERE uid = \'{user_id}\'')
+    pfp_path = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{user_id}\'')
+    if len(user) == 0 or len(customer) == 0 or len(pfp_path) == 0:
         resp = make_response(
             jsonify(
                 {"message": "User not found!"}
@@ -219,10 +213,18 @@ def fetch_profile():  # Fetch full name and address from database
     else:
         full_name = user[0]['full_name']
         address = user[0]['address']
+        total_rating = customer[0]['total_rating']
+        num_ratings = customer[0]['num_ratings']
+        profile_pic_path = pfp_path[0]['pfp_path']
+
         resp = make_response(
             jsonify(
                 {'full_name': full_name,
-                'address': address}
+                'address': address,
+                'total_rating': total_rating,
+                'num_ratings': num_ratings,
+                'profile_pic_path': profile_pic_path,
+                }
             ),
             200,
         )
@@ -263,7 +265,19 @@ def upload_file():  # Expects one image and sessionID
         filetype = '.' + filename.rsplit('.', 1)[1].lower()
         # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         # file.save(app.config['UPLOAD_FOLDER'] + '/' + filename)
-        file.save(app.config['UPLOAD_FOLDER'] + '/' + user_id + filetype)
+        file_save_path = app.config['UPLOAD_FOLDER'] + '/' + user_id + filetype
+        file.save(file_save_path)   # Save image to upload folder
+
+        # Delete old path if user already has a pfp path in the database
+        rows = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{user_id}\'')
+        if len(rows) > 0:
+            mu.delete(config, [f'uid = \'{user_id}\''], 'amorr.profile_photos') # Delete old path
+
+        file_relative_path = '../../../assets/profile_photos/' + filename
+        d = {'uid':[user_id], 'pfp_path':[file_relative_path]}
+        df = pd.DataFrame.from_dict(d)
+        mu.insert(config, 'profile_photos', df) # Insert new pfp_path into database
+
         resp = make_response(jsonify( {'message': 'Profile photo was successfully changed!'} ), 200,)
         return resp
 
@@ -289,7 +303,7 @@ def render_homepage():
 def test_login():
     return attempt_login('efkan@amorr.com', 'fa6834fsf6')
 
-def get_user_id():   # Email is used to identify each user
+def get_user_id():   # uid is used to identify each user
     if 'sessionId' in request.cookies:
         if request.cookies.get('sessionId') in SESSIONS.keys():
             return SESSIONS[request.cookies.get('sessionId')].uid
@@ -306,3 +320,18 @@ if __name__ == "__main__":
 ################################################################################################################################################
 ################################################################################################################################################
 
+# Classes (for now)
+
+class User:
+    def __init__(self, sql_data):
+        self.email_address = sql_data['email_address']
+        self.user_type = sql_data['user_type']
+        self.uid  = sql_data['uid']
+        if self.user_type  == 'Customer':
+            self.privilege_title = 'Customer'
+        elif self.user_type  == 'Service Provider':
+            self.privilege_title = 'Service Provider'
+        elif self.user_type  == 'Admin':
+            self.privilege_title = 'Admin'
+        else:
+            self.privilege_title = 'Unknown'

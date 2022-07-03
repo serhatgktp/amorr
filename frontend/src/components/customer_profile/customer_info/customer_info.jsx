@@ -11,7 +11,7 @@ const CustomerInfo = () => {
     const [user, setUser] = useState({full_name: "", address: "", total_rating: 0, num_ratings: 0, profile_photo: null});
 
     useEffect(() => {
-        fetch("http://localhost:5000/get-profile").then(response =>
+        fetch("http://localhost:5000/get-profile", {credentials: 'include'}).then(response =>
           response.json().then(data => {
             setUser(data);
             console.log(data);
