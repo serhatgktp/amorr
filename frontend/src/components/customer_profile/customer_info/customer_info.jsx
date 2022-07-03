@@ -45,7 +45,7 @@ const CustomerInfo = () => {
         e.preventDefault();
 
         var requestbody = new Object();
-        requestbody.address = newAddr;
+        requestbody.new_address = newAddr;
 
         fetch("", {
             method: 'POST',
