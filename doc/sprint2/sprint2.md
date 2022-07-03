@@ -121,7 +121,6 @@ The table below displays who worked on which task during this sprint.
 | STAC-131          | Set up Flask API to handle profile related GET requests.        |  Serhat Goktepe |
 | STAC-134          | Set up Flask API to handle profile related POST requests.        | Christopher Nathanael  |
 | STAC-142          | SSet default profile photo in profile page to GET request response.        | Christopher Nathanael  |
-| STAC-124          | Editable profile photo in frontend.      | Shannon Budiman  |
 
 --- 
 **Spikes Recorded:**
