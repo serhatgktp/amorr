@@ -54,11 +54,6 @@ Params: str username, str password
 Returns: Bool  
 "Compares arguments to user credentials in the database. If the arguments match exactly with the credentials of a user in the database, return True. Otherwise, return False."  
 
-### show_login_page()
-Params: None  
-Returns: `redir  ect(/login)`
-"Redirects the user to the `/login` route  
-
 ### register()
 Params: None  
 Returns: `do_register()` or `show_register_page()`  
@@ -69,22 +64,13 @@ Params: None
 Returns: `show_register_page()` or `show_login_page()`  
 "Attempt to register a new user by creating a new user entry with the parameters from the incoming POST request. Check if the username or email has already been used before creating a new user. Upon success, redirect to the `/login` route. Otherwise, return `show_register_page()`  
 
-### show_register_page()
-Params: None  
-Returns: `render_template('dummy_register.html')`  
-"Render the registration page"  
-
-### get_userid()
+### get_user_id()
 Params: None  
 Returns: Str  
 "Return the userid of the user of the current session"  
 
-### home()
+### render_homepage()
 Params: None  
-Returns: `render_template("dummy_home.html")`  
-"Render the home page."  
+Returns: `return render_template('dummy_image_upload.html')`  
+"Renders a page intended for testing"
 
-### admin()
-Params: None  
-Returns: redirect(url_for("home"))  
-"Serves the purpose of a test function"  
