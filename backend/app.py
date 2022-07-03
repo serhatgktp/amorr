@@ -375,24 +375,8 @@ def edit_profile_address():  # Change address on profile
         else:                                       # Case for submitted form
             new_address = r.form['new_address']
 
-        rows = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
-        user = rows[0]
-
-        d = {'email_address':[user['email_address']],
-                'address':[new_address],    # Insert entry with updated address 
-                'user_type':[user['user_type']], 
-                'full_name':[user['full_name']], 
-                'password':[user['password']]}
-        df = pd.DataFrame.from_dict(d)
-
-        mu.delete(config, [f'uid = \'{user_id}\''], 'amorr.users') # Delete old user entry
-        mu.insert(config, 'users', df)  # Insert new entry
-
-        # Update uid in session
-        email_address = user['email_address']
-        rows = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')   # Fetch new `uid` using email
-        new_uid = rows[0]['uid']
-        SESSIONS[request.cookies.get('sessionId')].uid = new_uid    # Update uid of user in SESSIONS
+        sql = f'UPDATE amorr.users SET address = \'{new_address}\' WHERE uid = \'{user_id}\';'
+        mu.query(config, sql)
 
         resp = make_response( jsonify( {"message": "Address has been successfully updated!"} ), 200, )
         return resp

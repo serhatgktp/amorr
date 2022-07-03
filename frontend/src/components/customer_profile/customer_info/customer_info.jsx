@@ -54,7 +54,9 @@ const CustomerInfo = () => {
             body: JSON.stringify(requestbody)
         }).then(response => {
             if (response.ok){
-                window.location.reload();
+                setTimeout(function () {
+                    window.location.reload();
+                }, 1300);
             }
         })
     }
