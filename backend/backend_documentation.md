@@ -41,13 +41,13 @@ Return: sessionId
 
 ### login()
 Params: None  
-Returns: `attempt_login(...)` or `render_template(...)`  
-"Manages GET/POST requests to the `/login` route  
+Returns: `attempt_login(...)`
+"Manages POST request to the `/login` route  
 
 ### attempt_login(username,password)
 Params: str username, str password  
-Returns: `make_response(...)`  
-"Attemps to log in user. If login is successful, redirect to the home page. Otherwise return response 'Incorrect username or password'"  
+Returns: JSON Response
+"Attemps to log in user. Return response message based on whether login was successful.
 
 ### check_credentials(username,password)
 Params: str username, str password  
@@ -56,13 +56,13 @@ Returns: Bool
 
 ### register()
 Params: None  
-Returns: `do_register()` or `show_register_page()`  
-"Handles GET/POST requests for the `/register` route. If GET request is received, return `show_register_page()`. Otherwise, return `do_register()` (attempt to register a new user).  
+Returns: `do_register()`
+"Handles POST request for the `/register` route. Attempts to register a new user.  
 
 ### do_register()
 Params: None  
-Returns: `show_register_page()` or `show_login_page()`  
-"Attempt to register a new user by creating a new user entry with the parameters from the incoming POST request. Check if the username or email has already been used before creating a new user. Upon success, redirect to the `/login` route. Otherwise, return `show_register_page()`  
+Returns: JSON Response
+"Attempt to register a new user by creating a new user entry with the parameters from the incoming POST request. Check if the username or email has already been used before creating a new user. Return response message based on whether registration was successful.
 
 ### get_user_id()
 Params: None  
@@ -74,3 +74,32 @@ Params: None
 Returns: `return render_template('dummy_image_upload.html')`  
 "Renders a page intended for testing"
 
+### do_contact()
+Params: None
+Returns: JSON Response
+"Handles the submitted form from the 'Contact Us' page. Stores received information in database."
+
+### contact()
+Params: None
+Returns: `do_contact()`
+"Calls do_contact()"
+
+### get_profile()
+Params: None
+Returns: `fetch_profile()`
+"Calls fetch_profile()"
+
+### fetch_profile()
+Params: None
+Returns: JSON Response
+"Fetches profile information of the current user"
+
+### upload_file()
+Params: None
+Returns: JSON Response
+"Allows current user to upload a profile picture (overwriting the previous one)"
+
+### edit_profile_address()
+Params: None
+Returns: JSON Response
+"Allows editing of the current user's address"
