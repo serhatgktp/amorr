@@ -6,14 +6,8 @@ import { useState } from "react";
 import { Icon } from '@iconify/react';
 
 import paints from "../../assets/contact_us/paints.png";
-
-// import axios from 'axios';
-
-
-// const axios_ = axios.create({
-//   baseURL: 'http://localhost:5000/contact',
-//   headers: { 'Content-Type': 'application/json' },
-// })
+import ContactUsPopup from '../contact_us_popup/contact_us_popup';
+import  { useNavigate } from 'react-router-dom';
 
 const ContactUs = () => {
     const [fullname, setFullname] = useState('');
@@ -21,6 +15,8 @@ const ContactUs = () => {
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
     const [isPending, setIsPending] = useState(false);
+    const [triggerContactUsPopup, setContactUsPopup] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -35,6 +31,13 @@ const ContactUs = () => {
         }).then(response => {
             if (response.ok){
                 console.log('New message added'); 
+                setContactUsPopup(true);
+                // Set a timer to close the popup after 1.2 seconds for redirecting
+                setTimeout(function () {
+                    setContactUsPopup(false);
+                    // Redirect to Home (TODO: or My Profile page according to type of user) after
+                    navigate('/contact');
+                }, 1300);
                 setIsPending(false)
             }else {
                 throw new Error(response.statusText)
@@ -114,6 +117,7 @@ const ContactUs = () => {
                 </div>
 
             </div>
+            <ContactUsPopup trigger={triggerContactUsPopup} />
         </body>
     );
 }
