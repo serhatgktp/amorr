@@ -190,6 +190,7 @@ def do_register():  # Assuming username, password, & email regex is implemented 
 # get-profile
 #########
 @app.route('/get-profile', methods=['GET'])
+@cross_origin(supports_credentials=True)
 def get_profile():
     if request.method == 'GET':
         return fetch_profile()
@@ -236,6 +237,7 @@ def fetch_profile():  # Fetch full name and address from database
 # upload-profile-photo
 #########
 @app.route('/upload-profile-photo', methods=['POST'])
+@cross_origin(supports_credentials=True)
 def upload_file():  # Expects one image and sessionID
 
     files = request.files
