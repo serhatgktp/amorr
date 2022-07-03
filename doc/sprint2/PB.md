@@ -179,6 +179,7 @@ Weight of user story: 1
 
 ### As a service provider, I want to be able to rate my customer that has completed an appointment so that other service providers can see their potential customer ratings before accepting/rejecting an appointment.
 - Service providers are able to rate their customer out of 5 stars, but should not be able to write review
+- Ratings should dynamically show in the profile of the Customer
 
 
 
