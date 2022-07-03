@@ -4,26 +4,21 @@ import { Icon } from '@iconify/react';
 import { Rating, Avatar, requirePropFactory } from '@mui/material';
 import InlineEdit from "./editable"
 import image from "../../../assets/customer_profile/customer.jpg"
+import pic from "../../../assets/profile_photos/4.jpg"
 
 const CustomerInfo = () => {
 
     const [user, setUser] = useState({full_name: "", address: "", total_rating: 0, num_ratings: 0, profile_photo: null});
 
     useEffect(() => {
-        /*fetch("http://localhost:5000/get-profile").then(response => {
-            if (response.ok){
-                response.json().then(data => {
-                    setUser(data)
-                })
-            } 
-            else {
-                throw new Error(response.statusText)
-            }
-            }).catch(err => {
-                console.log(err)
-            });*/
-        setUser({full_name: "Theo Ipsum", address: "190 Fall Guys M1P 0B7", total_rating: 40, num_ratings: 10, profile_photo: "../../../assets/customer_profile/customer.jpg"});
-    }, [])
+        fetch("http://localhost:5000/get-profile").then(response =>
+          response.json().then(data => {
+            setUser(data);
+            console.log(data);
+          })
+        );
+      }, []);
+
 
     const [img, setImage] = useState(null);
 
@@ -43,7 +38,6 @@ const CustomerInfo = () => {
 
             reader.readAsDataURL(selected);
         }
-
     }
 
     return(
@@ -68,9 +62,9 @@ const CustomerInfo = () => {
                 </div>
 
                 <div id="services_ordered"> <span>75 </span>Services Ordered</div>
-
+                <div id="user_address">{user.address}</div>
                 <div id="editable_line">
-                    <div id="editable_input"><span id="icon"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px' }}/></span><InlineEdit value={value} setValue={setValue}/></div>
+                    <div id="editable_input"><span id="icon"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginRight: '10px'}}/></span><input id="new_address" placeholder='Enter new address'/></div>
                     <button id="save_changes">Save Changes</button>
                 </div>
 
