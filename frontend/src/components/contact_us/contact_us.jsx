@@ -7,7 +7,6 @@ import { Icon } from '@iconify/react';
 
 import paints from "../../assets/contact_us/paints.png";
 import ContactUsPopup from '../contact_us_popup/contact_us_popup';
-import  { useNavigate } from 'react-router-dom';
 
 const ContactUs = () => {
     const [fullname, setFullname] = useState('');
@@ -16,7 +15,6 @@ const ContactUs = () => {
     const [message, setMessage] = useState('');
     const [isPending, setIsPending] = useState(false);
     const [triggerContactUsPopup, setContactUsPopup] = useState(false);
-    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -35,8 +33,7 @@ const ContactUs = () => {
                 // Set a timer to close the popup after 1.2 seconds for redirecting
                 setTimeout(function () {
                     setContactUsPopup(false);
-                    // Redirect to Home (TODO: or My Profile page according to type of user) after
-                    navigate('/contact');
+                    window.location.reload();
                 }, 1300);
                 setIsPending(false)
             }else {
@@ -108,7 +105,7 @@ const ContactUs = () => {
                                     type="text" placeholder="Type your message here..."/>
                                 </div>
 
-                                { !isPending && <button id="service" type="submit">Send Message <Icon icon="akar-icons:arrow-right" inline={true} style={{ verticalAlign: '-0.3em', fontSize:'28px' }}/></button>}
+                                { !isPending && <button id="service" type="submit" >Send Message <Icon icon="akar-icons:arrow-right" inline={true} style={{ verticalAlign: '-0.3em', fontSize:'28px' }}/></button>}
                                 { isPending && <button disabled id="service" type="submit">Sending ... <Icon icon="akar-icons:arrow-right" inline={true} style={{ verticalAlign: '-0.3em', fontSize:'28px' }}/></button>}
                             </div>
                         </form>
