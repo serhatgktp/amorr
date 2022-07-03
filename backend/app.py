@@ -187,6 +187,48 @@ def do_register():  # Assuming username, password, & email regex is implemented 
 #########
 # End of register
 
+# ContactUs 
+#########
+@app.route('/contact', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def contact():
+    if request.method == 'POST':
+        return do_contact()
+
+def do_contact():
+
+    content_type = request.headers.get('Content-Type')
+    r = request 
+
+    if (content_type == 'application/jason'):
+        json = r.json
+        fullname = json['fullname']
+        email = json['fullname']
+        subject = json['subject']
+        message = json['message']
+
+    else:
+        fullname = r.form['fullname']
+        email = r.form['fullname']
+        subject = r.form['subject']
+        message = r.form['message']
+
+    new_message = {'fullname': [fullname], 'email': [email], 'subject': [subject], 'message': [message] }
+    df = pd.DataFrame.from_dict(new_message)
+    mu.insert(config, 'contact_us', df)
+    resp = make_response(
+        jsonify(
+            {"message": "Sent message!"}
+        ),
+        200,
+    )
+    resp.headers["Content-Type"] = "application/json"
+
+    return resp
+
+#########
+# End of ContactUs
+
 # get-profile
 #########
 @app.route('/get-profile', methods=['GET'])
