@@ -1,6 +1,17 @@
+
+
 *{
   font-family: 'Poppins', sans-serif;
 }
+
+.Navbar a{
+  all:unset;
+}
+
+.Navbar a:hover{
+  cursor: pointer;
+}
+
 
 .Navbar {
     height: 60px;
@@ -19,6 +30,9 @@
     
   } 
 
+  .Navbar > .icon{
+    margin-left: 300px;
+  }
   .Navbar > .nav-items > a {
     color: #000000;
     font-size: 18px;
