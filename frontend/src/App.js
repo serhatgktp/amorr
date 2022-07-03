@@ -12,6 +12,7 @@ import LoginSignupLanding from './components/initial_login_signup_landing/login_
 import InitialLogin from './components/initial-login/initial-login';
 import InitialSignUp from './components/initial-signup/initial-signup';
 import Login from './components/login-page/login-page';
+import CustomerProfile from './components/customer_profile/customer_profile';
 
 import {
   BrowserRouter as Router,
@@ -40,6 +41,7 @@ function App(){
         <Route path='/initial-login' element={<InitialLogin/>} />
         <Route path='/initial-signup' element={<InitialSignUp/>} />
         <Route path='/login' element={<Login/>} />
+        <Route path='/profile' element={<CustomerProfile/>}/>
 
       </Routes>
     </Router>

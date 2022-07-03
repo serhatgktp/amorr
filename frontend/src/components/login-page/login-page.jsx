@@ -24,6 +24,7 @@ const Login = () => {
         
         fetch('http://localhost:5000/login', {
             method: 'POST',
+            credentials: 'include',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(requestbody)
         }).then(response => {

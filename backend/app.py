@@ -12,7 +12,22 @@ import pandas as pd
 
 from flask_cors import CORS, cross_origin   # For front end request issue
 
+# Classes (for now)
 
+class User:
+    def __init__(self, sql_data):
+        self.email_address = sql_data['email_address']
+        self.user_type = sql_data['user_type']
+        self.uid  = sql_data['uid']
+        if self.user_type  == 'Customer':
+            self.privilege_title = 'Customer'
+        elif self.user_type  == 'Service Provider':
+            self.privilege_title = 'Service Provider'
+        elif self.user_type  == 'Admin':
+            self.privilege_title = 'Admin'
+        else:
+            self.privilege_title = 'Unknown'
+            
 # Database Settings
 config = configparser.ConfigParser()
 config.read('db_config.ini')
@@ -190,6 +205,7 @@ def do_register():  # Assuming username, password, & email regex is implemented 
 # get-profile
 #########
 @app.route('/get-profile', methods=['GET'])
+@cross_origin(supports_credentials=True)
 def get_profile():
     if request.method == 'GET':
         return fetch_profile()
@@ -236,6 +252,7 @@ def fetch_profile():  # Fetch full name and address from database
 # upload-profile-photo
 #########
 @app.route('/upload-profile-photo', methods=['POST'])
+@cross_origin(supports_credentials=True)
 def upload_file():  # Expects one image and sessionID
 
     files = request.files
@@ -320,18 +337,3 @@ if __name__ == "__main__":
 ################################################################################################################################################
 ################################################################################################################################################
 
-# Classes (for now)
-
-class User:
-    def __init__(self, sql_data):
-        self.email_address = sql_data['email_address']
-        self.user_type = sql_data['user_type']
-        self.uid  = sql_data['uid']
-        if self.user_type  == 'Customer':
-            self.privilege_title = 'Customer'
-        elif self.user_type  == 'Service Provider':
-            self.privilege_title = 'Service Provider'
-        elif self.user_type  == 'Admin':
-            self.privilege_title = 'Admin'
-        else:
-            self.privilege_title = 'Unknown'
