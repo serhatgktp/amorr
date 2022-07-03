@@ -115,6 +115,7 @@ The table below displays who worked on which task during this sprint.
 | STAC-121          | Connect frontend and backend: data is stored in the database (Full name, email, subject and message). |  Annanya Sharma |
 | STAC-123         | User information section including editable components: address, and save changes button.        | Shannon Budiman  |
 | STAC-124          | Editable profile photo.        | Shannon Budiman  |
+| STAC-144         |   Add POST request endpoint specifically for changing address.      | Serhat Goktepe |
 | STAC-125          | Get data of user to display name, rating, number of services ordered, address.        | Shannon Budiman  |
 | STAC-126          | Editing data of user accordingly in the database - address, profile photo.        |  Christopher Nathanael |
 | STAC-131          | Set up Flask API to handle profile related GET requests.        |  Serhat Goktepe |
