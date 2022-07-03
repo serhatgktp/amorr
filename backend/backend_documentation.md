@@ -13,7 +13,9 @@ The `config` dictionary is initialized with the database server credentials from
 
 ## 2) Sessions
 
-Sessions are aggregated in the `SESSIONS` list. A `sessionId` string is generated whenever a user successfully logs in.
+Sessions are aggregated in the `SESSIONS` dictionary. A `sessionId` string is generated whenever a user successfully logs in.
+The key/value pair `sessionId`:`User(sql_data)` is added to the `SESSIONS` dictionary after each user login.
+Each entry has a maximum age of 30 minutes (1800 seconds).
 
 ## 3) Classes
 
@@ -21,12 +23,12 @@ Sessions are aggregated in the `SESSIONS` list. A `sessionId` string is generate
 
 Constructor: `__init__(self, sql_data)`  
     Params: Dict sql_data  
-    "Initialized with dictionary `sql_data`   
+    "Initialized with dictionary `sql_data`"
 
 Data Structure:
-- str uname
-- str privilege
-- str privilege_title
+- str email_address
+- str user_type
+- str uid
 
 "User class for managing users"
 
