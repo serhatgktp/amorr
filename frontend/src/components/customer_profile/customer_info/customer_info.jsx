@@ -78,7 +78,7 @@ const CustomerInfo = () => {
                 <div id="rating">
                     <span className="rating_num">4.5</span>
                     <Rating name="read-only" size="medium" value={4.5} precision={0.5} readOnly />
-                    <span className="rating_num">({user.num_ratings})</span>
+                    <span className="rating_num">(4)</span>
                 </div>
 
                 <div id="services_ordered"> <span>75 </span>Services Ordered</div>
