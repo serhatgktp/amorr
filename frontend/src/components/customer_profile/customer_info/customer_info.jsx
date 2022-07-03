@@ -47,7 +47,7 @@ const CustomerInfo = () => {
         var requestbody = new Object();
         requestbody.new_address = newAddr;
 
-        fetch("", {
+        fetch("http://localhost:5000/edit-profile-address", {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             credentials: "include",
