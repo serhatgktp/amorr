@@ -85,9 +85,14 @@
     - Set up Flask API to handle profile related POST requests.
     - **Points assigned = 40**
 
+- (STAC-141) As a user, I want to have a profile photo attached to my account so customers/service providers can recognize me. The following is the task breakdown:
+    - Set default profile photo in profile page to GET request response.
+    - Editable profile photo in frontend.
+    - **Points assigned = 1**
+
 ---
 
-**Team Capacity = 69**
+**Team Capacity = 70**
 
 --- 
 
@@ -114,6 +119,8 @@ The table below displays who worked on which task during this sprint.
 | STAC-126          | Editing data of user accordingly in the database - address, profile photo.        |  Christopher Nathanael |
 | STAC-131          | Set up Flask API to handle profile related GET requests.        |  Serhat Goktepe |
 | STAC-134          | Set up Flask API to handle profile related POST requests.        | Christopher Nathanael  |
+| STAC-142          | SSet default profile photo in profile page to GET request response.        | Christopher Nathanael  |
+| STAC-124          | Editable profile photo in frontend.      | Shannon Budiman  |
 
 --- 
 **Spikes Recorded:**
