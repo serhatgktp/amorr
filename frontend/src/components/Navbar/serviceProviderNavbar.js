@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-const Navbar = () => {
+const ServiceProviderNavbar = () => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -23,17 +23,18 @@ const Navbar = () => {
     
     <div className="Navbar">
        <h1 class="logo">
-                <span>
-                    <span>a</span>
+       <span>
+                <a href="/home">
+                  <span>a</span>
                     <span>morr</span>
+                  </a>
                 </span>
         </h1>
       <div className="nav-items" >
         
-        <a href="/home"><b>About</b></a>
-        <a href="/about"><b>FAQ</b></a>
+        <a href="/about"><b>About</b></a>
+        <a href="/FAQ"><b>FAQ</b></a>
         <a href="/contact"><b>Contact</b></a>
-        <a href="/explore"><b>Home</b></a>
         <a href="/appointments"><b>My Appointments</b></a>
       </div>
       <div className="icon">
@@ -55,7 +56,7 @@ const Navbar = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose} sx={{ fontSize: '14px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/>  <b>Manage Account</b></MenuItem>
+        <MenuItem onClick={handleClose} sx={{ fontSize: '14px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/> <a href="/profile"> <b>Manage Account</b> </a> </MenuItem>
         <MenuItem onClick={handleClose} sx={{ fontSize: '14px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><DeleteIcon />  <b>Delete Account</b></MenuItem>
         <MenuItem onClick={handleClose} sx={{ fontSize: '14px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <b>Logout</b></MenuItem>
       </Menu>
@@ -64,4 +65,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default ServiceProviderNavbar;
