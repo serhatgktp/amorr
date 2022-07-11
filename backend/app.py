@@ -180,9 +180,14 @@ def do_register():  # Assuming username, password, & email regex is implemented 
         df = pd.DataFrame.from_dict(new_user)
         mu.insert(config, 'users', df)  # Insert new user into users table
 
+        user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
+        user_id = user[0]['uid']
+
+        pfp_dict = {'uid':[user_id], 'pfp_path':['../../../assets/profile_photos/default.jpg']}
+        pfp_df = pd.DataFrame.from_dict(pfp_dict)
+        mu.insert(config, 'profile_photos', pfp_df) # Create entry for default profile photo path for new user
+
         if user_type == 'Customer':
-            user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
-            user_id = user[0]['uid']
             d = {'uid':[user_id], 'total_rating':['0'], 'num_ratings':['0']}
             df = pd.DataFrame.from_dict(d)
             mu.insert(config, 'customers', df)  # Create new entry for new customer user
@@ -384,6 +389,17 @@ def edit_profile_address():  # Change address on profile
 #########
 # End of edit-profile-address
 
+@app.route('/check-user-type', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def check_user_type():
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"user_type": "Guest"} ), 200, )
+    else:
+        user_type = SESSIONS[request.cookies.get('sessionId')].user_type
+        resp = make_response( jsonify( {"user_type": f"{user_type}"} ), 200, )
+    return resp
+
 @app.route('/') # For testing upload-profile-photo
 def render_homepage():
     return render_template('dummy_image_upload.html')
@@ -408,4 +424,3 @@ if __name__ == "__main__":
 ################################################################################################################################################
 ################################################################################################################################################
 ################################################################################################################################################
-
