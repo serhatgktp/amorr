@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
+import CustomerNavbar from './components/Navbar/customerNavbar.js';
+import ServiceProviderNavbar from './components/Navbar/serviceProviderNavbar.js';
 import Navbar from './components/Navbar/Navbar.js';
 import AboutUs from './components/about_us/about_us';
 import ContactUs from './components/contact_us/contact_us';
@@ -21,12 +23,37 @@ import {
   Link
 } from "react-router-dom";
 
-//'./components//'
-
 function App(){
+  
+  const [loggedIn,setLoggedIn] = useState(false); //assuming default value is false
+  const [type,setType] = useState(false);
+  useEffect(() => {
+    fetch("http://localhost:5000/check-user-type", {credentials: 'include'}).then(response =>
+    response.json().then(data => {
+      console.log(data);
+      console.log(data.user_type != "Guest");
+      if (data.user_type == "Guest") {
+        setLoggedIn(false);
+        setType(false);
+      }
+      else if(data.user_type == "Customer"){
+        setType(true);
+        setLoggedIn(true);
+      }else{
+        setType(false);
+        setLoggedIn(true);
+      }
+    })
+    );
+  }, [loggedIn, type]);
+
   return (
-    <body> 
-    <Navbar/>
+    <body>
+    <div>
+    {!loggedIn && !type ? <Navbar/> : ''}
+    {loggedIn && type ? <CustomerNavbar/> : ''}
+    {loggedIn && !type ? <ServiceProviderNavbar/>:''}
+    </div>
     <Router>
       <Routes>
 
