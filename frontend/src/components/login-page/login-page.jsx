@@ -36,6 +36,7 @@ const Login = () => {
                 setLoginTriggerSuccessPopup(false);
                 // Redirect to Home (TODO: or My Profile page according to type of user) after
                 navigate('/home');
+                window.location.reload();
             }, 1300);
           }
            else if (response.status == 401) {
