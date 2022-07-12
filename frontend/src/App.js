@@ -15,6 +15,7 @@ import InitialLogin from './components/initial-login/initial-login';
 import InitialSignUp from './components/initial-signup/initial-signup';
 import Login from './components/login-page/login-page';
 import CustomerProfile from './components/customer_profile/customer_profile';
+import RequestAppointment from './components/request_appointment/RequestAppointment';
 
 import {
   BrowserRouter as Router,
@@ -25,35 +26,35 @@ import {
 
 function App(){
   
-  const [loggedIn,setLoggedIn] = useState(false); //assuming default value is false
-  const [type,setType] = useState(false);
-  useEffect(() => {
-    fetch("http://localhost:5000/check-user-type", {credentials: 'include'}).then(response =>
-    response.json().then(data => {
-      console.log(data);
-      console.log(data.user_type != "Guest");
-      if (data.user_type == "Guest") {
-        setLoggedIn(false);
-        setType(false);
-      }
-      else if(data.user_type == "Customer"){
-        setType(true);
-        setLoggedIn(true);
-      }else{
-        setType(false);
-        setLoggedIn(true);
-      }
-    })
-    );
-  }, [loggedIn, type]);
+  // const [loggedIn,setLoggedIn] = useState(false); //assuming default value is false
+  // const [type,setType] = useState(false);
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/check-user-type", {credentials: 'include'}).then(response =>
+  //   response.json().then(data => {
+  //     console.log(data);
+  //     console.log(data.user_type != "Guest");
+  //     if (data.user_type == "Guest") {
+  //       setLoggedIn(false);
+  //       setType(false);
+  //     }
+  //     else if(data.user_type == "Customer"){
+  //       setType(true);
+  //       setLoggedIn(true);
+  //     }else{
+  //       setType(false);
+  //       setLoggedIn(true);
+  //     }
+  //   })
+  //   );
+  // }, [loggedIn, type]);
 
   return (
     <body>
-    <div>
+    {/* <div>
     {!loggedIn && !type ? <Navbar/> : ''}
     {loggedIn && type ? <CustomerNavbar/> : ''}
     {loggedIn && !type ? <ServiceProviderNavbar/>:''}
-    </div>
+    </div> */}
     <Router>
       <Routes>
 
@@ -69,6 +70,7 @@ function App(){
         <Route path='/initial-signup' element={<InitialSignUp/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/profile' element={<CustomerProfile/>}/>
+        <Route path='/appointment' element={<RequestAppointment/>}/>
 
       </Routes>
     </Router>
