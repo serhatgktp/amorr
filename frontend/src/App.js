@@ -15,6 +15,7 @@ import InitialLogin from './components/initial-login/initial-login';
 import InitialSignUp from './components/initial-signup/initial-signup';
 import Login from './components/login-page/login-page';
 import CustomerProfile from './components/customer_profile/customer_profile';
+import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
 
 import {
   BrowserRouter as Router,
@@ -24,54 +25,10 @@ import {
 } from "react-router-dom";
 
 function App(){
-  
-  const [loggedIn,setLoggedIn] = useState(false); //assuming default value is false
-  const [type,setType] = useState(false);
-  useEffect(() => {
-    fetch("http://localhost:5000/check-user-type", {credentials: 'include'}).then(response =>
-    response.json().then(data => {
-      console.log(data);
-      console.log(data.user_type != "Guest");
-      if (data.user_type == "Guest") {
-        setLoggedIn(false);
-        setType(false);
-      }
-      else if(data.user_type == "Customer"){
-        setType(true);
-        setLoggedIn(true);
-      }else{
-        setType(false);
-        setLoggedIn(true);
-      }
-    })
-    );
-  }, [loggedIn, type]);
 
   return (
     <body>
-    <div>
-    {!loggedIn && !type ? <Navbar/> : ''}
-    {loggedIn && type ? <CustomerNavbar/> : ''}
-    {loggedIn && !type ? <ServiceProviderNavbar/>:''}
-    </div>
-    <Router>
-      <Routes>
-
-        <Route path='/' element={<Home/>} />
-        <Route path='/home' element={<Home/>} />
-        <Route path='/about' element={<AboutUs/>} />
-        <Route path='/contact' element={<ContactUs/>} />
-        <Route path='/customer-register' element={<CustomerRegistration/>} />
-        <Route path='/sp-register' element={<ServiceProviderRegistration/>} />
-        <Route path='/FAQ' element={<FAQ/>} />
-        <Route path='/initial-signup-landing' element={<LoginSignupLanding/>} />
-        <Route path='/initial-login' element={<InitialLogin/>} />
-        <Route path='/initial-signup' element={<InitialSignUp/>} />
-        <Route path='/login' element={<Login/>} />
-        <Route path='/profile' element={<CustomerProfile/>}/>
-
-      </Routes>
-    </Router>
+        <ServiceProviderProfile/>
     </body>
   )
  }
