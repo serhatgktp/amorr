@@ -22,16 +22,15 @@ const ServiceProviderInfo = () => {
 
     const [img, setImage] = useState(null);
     const [newAddr, setnewAddr] = useState('');
-    console.log(user.address);
     const [isEdit, setIsEdit] = useState(false);
 
+    console.log(addr);
     const imageHandler = (e) => {
         const selected = e.target.files[0];
 
         if(selected){
             let reader = new FileReader();
             reader.onload = () => {
-                console.log("hello");
                 setImage(reader.result);
             }
 
@@ -40,15 +39,22 @@ const ServiceProviderInfo = () => {
     }
     
     const handleChange = (e) => {
-        setnewAddr(e.target.value);
         setAddr(e.target.value);
     }
-    
-    /*const handleSubmit = (e) => {
-        console.log(newAddr);
-        e.preventDefault();
 
-        var requestbody = new Object();
+    const onKeyDown = (event) => {
+        if (event.key === "Enter" || event.key === "Escape"){
+            setIsEdit(false);
+            event.target.blur();
+        }
+    }
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setIsEdit(false);
+        e.target.blur();
+
+        /*var requestbody = new Object();
         requestbody.new_address = newAddr;
 
         fetch("http://localhost:5000/edit-profile-address", {
@@ -62,13 +68,13 @@ const ServiceProviderInfo = () => {
                     window.location.reload();
                 }, 1300);
             }
-        })
-    }*/
+        })*/
+    }
     return(
         <div id="service_provider_info">
 
             <div id="service_provider_left">
-                <div><Avatar alt="Lorem Ipsum Salons" src={img} sx={{ width: 120, height: 120, mb: 1 }}/></div>
+                <div><Avatar alt="Lorem Ipsum Salons" src={img} sx={{ width: 100, height: 100, mb: 1 }}/></div>
                 <input type="file" name="image-upload" id="change_photo" accept="image/*" onChange={imageHandler}/>
                 <div id="photo_label">
                     <label htmlFor="change_photo" className="image-upload" id="change_photo_label">Change profile photo</label>
@@ -86,16 +92,19 @@ const ServiceProviderInfo = () => {
                 </div>
 
                 <div id="services_completed"> <span>75 </span>Services Completed</div>
-                <div id="user_address">{user.address}</div>
                 <div id="editable_line">
-                    <div id="editable_input"><span id="icon"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginRight: '10px'}}/></span><input id="new_address" placeholder='Enter new address' value={newAddr} onChange={handleChange}/></div>
-                    <button id="save_changes">Save Changes</button>
+                    {!isEdit ? 
+                    (<>
+                    <div id="user_address">{addr}<button id="edit_button" onClick={ () => {setIsEdit(true)}}><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginLeft: '7px'}}/></button></div>
+                    <button id="save_changes" onClick={handleSubmit}>Save Changes</button>
+                    </>
+                    ) : (
+                        <>
+                        <div id="editable_input"><input id="new_address" placeholder='Enter new address' value={addr} onChange={handleChange} onKeyDown={onKeyDown} /></div>
+                        <button id="save_changes" onClick={handleSubmit}>Save Changes</button>
+                        </>
+                    ) }
                 </div>
-                {!isEdit ? 
-                   (<div id="user_address">{addr}<button id="edit_button" onClick={ () => {setIsEdit(true)}}><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginLeft: '7px'}}/></button></div>
-                   ) : (
-                    <div id="editable_input_second"><input id="new_address" placeholder='Enter new address' value={addr} onChange={handleChange}/></div>
-                   ) }
             </div>
         </div>
     )
