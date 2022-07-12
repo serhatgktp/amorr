@@ -7,6 +7,8 @@ const ServiceProviderInfo = () => {
 
     const [user, setUser] = useState({full_name: "", address: "", total_rating: 0, num_ratings: 0, profile_photo: null});
     const [addr, setAddr] = useState('');
+    const [img, setImage] = useState(null);
+    const [isEdit, setIsEdit] = useState(false);
 
     useEffect(() => {
         /*fetch("http://localhost:5000/get-profile", {credentials: 'include'}).then(response =>
@@ -19,12 +21,6 @@ const ServiceProviderInfo = () => {
         setAddr("100 Lorem Ipsum Road - M1C 0B6");
       }, []);
 
-
-    const [img, setImage] = useState(null);
-    const [newAddr, setnewAddr] = useState('');
-    const [isEdit, setIsEdit] = useState(false);
-
-    console.log(addr);
     const imageHandler = (e) => {
         const selected = e.target.files[0];
 
@@ -70,11 +66,12 @@ const ServiceProviderInfo = () => {
             }
         })*/
     }
+
     return(
         <div id="service_provider_info">
 
             <div id="service_provider_left">
-                <div><Avatar alt="Lorem Ipsum Salons" src={img} sx={{ width: 100, height: 100, mb: 1 }}/></div>
+                <div><Avatar alt="Lorem Ipsum Salons" src={img} sx={{ width: 110, height: 110, mb: 1 }}/></div>
                 <input type="file" name="image-upload" id="change_photo" accept="image/*" onChange={imageHandler}/>
                 <div id="photo_label">
                     <label htmlFor="change_photo" className="image-upload" id="change_photo_label">Change profile photo</label>
@@ -94,17 +91,14 @@ const ServiceProviderInfo = () => {
                 <div id="services_completed"> <span>75 </span>Services Completed</div>
                 <div id="editable_line">
                     {!isEdit ? 
-                    (<>
-                    <div id="user_address">{addr}<button id="edit_button" onClick={ () => {setIsEdit(true)}}><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginLeft: '7px'}}/></button></div>
-                    <button id="save_changes" onClick={handleSubmit}>Save Changes</button>
-                    </>
+                    (
+                        <div id="user_address">{addr}<button id="edit_button" onClick={ () => {setIsEdit(true)}}><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginLeft: '7px'}}/></button></div>
                     ) : (
-                        <>
-                        <div id="editable_input"><input id="new_address" placeholder='Enter new address' value={addr} onChange={handleChange} onKeyDown={onKeyDown} /></div>
-                        <button id="save_changes" onClick={handleSubmit}>Save Changes</button>
-                        </>
+                        <div id="editable_input"><input id="new_address" value={addr} onChange={handleChange} onKeyDown={onKeyDown} /></div>
                     ) }
+                    <button id="save_changes" onClick={handleSubmit}>Save Changes</button>
                 </div>
+
             </div>
         </div>
     )

@@ -4,6 +4,11 @@
 
 #service_provider_info{
     background-color: #F9F6EE;
+    display: flex;
+    padding: 20px;
+    margin: 20px 100px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
 }
 
 #service_provider_name{
@@ -16,6 +21,7 @@
     justify-content: space-between;
     width: 200px;
     margin: 6px 0px;
+    margin-top: 10px;
 }
 
 .rating_num{
@@ -53,15 +59,8 @@
 
 #services_completed{
     font-size: 18px;
-}
-
-#service_provider_info{
-    display: flex;
-    padding: 20px;
-    margin: 20px 100px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-}
+    margin-top: 7px;
+}   
 
 #editable_line{
     display: flex;
@@ -71,33 +70,35 @@
 
 #user_address{
     font-size: 18px;
-    margin-top: 5px;
+    margin-top: 8px;
     width: 80%;
-    margin-bottom: -10px;
+    padding: 5px;
+    padding-left: 0px;
+    margin-left: 0px;
 }
 
 #new_address{
     border-radius: 30px;
     border: none;
-    padding: 8px;
-    font-size: 16px;
-    padding-left: 15px;
+    padding: 5px;
+    font-size: 18px;
+    padding-left: 10px;
     width: 90%;
     margin-top: 8px;
-}
-
-button:hover{
-    transform: scale(1.03);
+    margin-left: -2px;
+    outline: 5px auto Highlight;
 }
 
 #edit_button{
     background: none;
     border: none;
+    color: gray;
 }
 
 #edit_button:hover{
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scale(1.2);
+    color: black;
 }
 
 #editable_input{
@@ -114,6 +115,10 @@ button:hover{
     font-weight: 400;
     color: #F9F6EE;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#save_changes:hover{
+    transform: scale(1.03);
 }
 
 @media only screen and (max-width: 948px) {
