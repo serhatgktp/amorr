@@ -427,9 +427,7 @@ def logout():
         resp = make_response( jsonify( {"Message": "User is not signed in, therefore cannot log out"} ), 400, )
     else:
         user_email = SESSIONS[request.cookies.get('sessionId')].email_address
-
         del SESSIONS[request.cookies.get('sessionId')]  # Delete session from flask server sessions
-
         resp = make_response( jsonify( {"user_type": f"Logout successful for: {user_email}"} ), 200, )
         resp.set_cookie('sessionId', '', expires=0) # Set sessionId to expire immediately
         # resp.delete_cookie('sessionId')
