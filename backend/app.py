@@ -361,6 +361,7 @@ def allowed_file(filename):         # Check if file type is in ALLOWED_EXTENSION
 
 # edit-profile-address
 #########
+
 @app.route('/edit-profile-address', methods=['POST'])
 @cross_origin(supports_credentials=True)
 def edit_profile_address():  # Change address on profile
@@ -388,8 +389,6 @@ def edit_profile_address():  # Change address on profile
 #########
 # End of edit-profile-address
 
-# check-user-type
-#########
 @app.route('/check-user-type', methods=['GET'])
 @cross_origin(supports_credentials=True)
 def check_user_type():
@@ -401,9 +400,9 @@ def check_user_type():
         resp = make_response( jsonify( {"user_type": f"{user_type}"} ), 200, )
     return resp
 
-# @app.route('/') # For testing upload-profile-photo
-# def render_homepage():
-#     return render_template('dummy_image_upload.html')
+@app.route('/') # For testing upload-profile-photo
+def render_homepage():
+    return render_template('dummy_image_upload.html')
 
 @app.route('/test-login') # For testing upload-profile-photo
 def test_login():
@@ -414,26 +413,6 @@ def get_user_id():   # uid is used to identify each user
         if request.cookies.get('sessionId') in SESSIONS.keys():
             return SESSIONS[request.cookies.get('sessionId')].uid
     return -1   # Session not found
-#########
-# End of check-user-type
-
-# logout
-#########
-@app.route('/logout', methods=['POST'])
-@cross_origin(supports_credentials=True)
-def logout():
-    user_id = get_user_id()
-    if user_id == -1:
-        resp = make_response( jsonify( {"Message": "User is not signed in, therefore cannot log out"} ), 400, )
-    else:
-        user_email = SESSIONS[request.cookies.get('sessionId')].email_address
-        del SESSIONS[request.cookies.get('sessionId')]  # Delete session from flask server sessions
-        resp = make_response( jsonify( {"user_type": f"Logout successful for: {user_email}"} ), 200, )
-        resp.set_cookie('sessionId', '', expires=0) # Set sessionId to expire immediately
-        # resp.delete_cookie('sessionId')
-    return resp
-#########
-# End of logout
 
 ################################################################################################################################################
 ################################################################################################################################################
