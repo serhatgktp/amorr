@@ -1,0 +1,93 @@
+*{
+    font-family: 'Poppins';
+}
+
+#service_provider_list_prices{
+    background-color: #F9F6EE;
+    display: flex;
+    padding: 20px;
+    margin: 20px 100px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    width: 30%;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#service_provider_list_prices #price_list_heading{
+    font-weight: 600;
+    font-size: 28px;
+    margin-left: 20px;
+}
+
+#service_provider_list_prices #price_list_divider{
+    border: 0;
+    width: 80%;
+}
+
+#service_provider_list_prices #list_of_prices{
+    font-size: 18px;
+    margin-top: 7px;
+    margin-left: 20px;
+} 
+
+#service_provider_list_prices #editable_line{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#service_provider_list_prices #user_address{
+    font-size: 18px;
+    margin-top: 8px;
+    width: 80%;
+    padding: 5px;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+#service_provider_list_prices #new_address{
+    border-radius: 30px;
+    border: none;
+    padding: 5px;
+    font-size: 18px;
+    padding-left: 10px;
+    width: 90%;
+    margin-top: 8px;
+    margin-left: -2px;
+    outline: 5px auto Highlight;
+}
+
+#service_provider_list_prices #edit_button{
+    background: none;
+    border: none;
+    color: gray;
+}
+
+#service_provider_list_prices #edit_button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    color: black;
+}
+
+#service_provider_list_prices #editable_input{
+    width: 80%;
+}
+
+#service_provider_list_prices #save_changes{
+    cursor: pointer;
+    background-color: #345392;
+    border: none;
+    border-radius: 40px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #F9F6EE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#service_provider_list_prices #save_changes:hover{
+    transform: scale(1.03);
+}

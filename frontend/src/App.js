@@ -23,6 +23,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
 
 function App(){
   
@@ -70,6 +71,7 @@ function App(){
         <Route path='/initial-signup' element={<InitialSignUp/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/profile' element={<CustomerProfile/>}/>
+        <Route path='/sp-profile' element={<ServiceProviderProfile/>}/>
         <Route path='/appointment' element={<RequestAppointment/>}/>
 
       </Routes>
