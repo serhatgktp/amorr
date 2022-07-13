@@ -59,8 +59,8 @@ const ServiceProviderInfo = () => {
         setIsEdit(false);
         e.target.blur();
 
-        /*var requestbody = new Object();
-        requestbody.new_address = newAddr;
+        var requestbody = new Object();
+        requestbody.new_address = addr;
 
         fetch("http://localhost:5000/edit-profile-address", {
             method: 'POST',
@@ -73,7 +73,7 @@ const ServiceProviderInfo = () => {
                     window.location.reload();
                 }, 1300);
             }
-        })*/
+        })
     }
 
     return(
