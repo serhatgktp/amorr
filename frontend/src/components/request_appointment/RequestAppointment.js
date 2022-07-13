@@ -29,15 +29,19 @@ function RequestAppointment() {
             <div class="RA_text">
                 <span className='RA_selectedDateText'>
                     <Icon id="RA_dateIcon" icon="fontisto:date"/>
-                    Selected Date:{' '}
+                    Selected date:{' '}
                     {date.toDateString()}
                 </span>
                 <span className='RA_selectedTimeText'>
                     <Icon id="RA_timeIcon" icon="bx:time"/>
-                    <TimePicker
-                        onChange={onChangeTime}
-                        value={time}
-                    />
+                    Request time:
+                    <div className="RA_timeDD">
+                        <TimePicker
+                            onChange={onChangeTime}
+                            value={time}
+                        />
+                        <Icon id="RA_dropdownIcon" icon="akar-icons:chevron-down"/>
+                    </div>
                 </span>
                 
             </div>
