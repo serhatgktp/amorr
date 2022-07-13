@@ -3,12 +3,16 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './RequestAppointment.css'
 import { Icon } from '@iconify/react';
+import TimePicker from 'react-ts-timepicker';
 
 function RequestAppointment() {
     const [date, setDate] = useState(new Date());
-    
+    const [time, setTime] = useState('08:00');
     const onChange = date => {
         setDate(date);
+    };
+    const onChangeTime = time => {
+        setTime(time);
     };
 
     return (
@@ -28,6 +32,14 @@ function RequestAppointment() {
                     Selected Date:{' '}
                     {date.toDateString()}
                 </span>
+                <span className='RA_selectedTimeText'>
+                    <Icon id="RA_timeIcon" icon="bx:time"/>
+                    <TimePicker
+                        onChange={onChangeTime}
+                        value={time}
+                    />
+                </span>
+                
             </div>
         </div>
     )
