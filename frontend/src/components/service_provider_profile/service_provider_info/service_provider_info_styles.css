@@ -2,38 +2,44 @@
     font-family: 'Poppins';
 }
 
-#customer_info{
+#service_provider_info{
     background-color: #F9F6EE;
+    display: flex;
+    padding: 20px;
+    margin: 20px 100px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
 }
 
-#customer_name{
+#service_provider_name{
     font-weight: 600;
     font-size: 28px;
 }
 
-#rating{
+#service_provider_info #rating{
     display:flex;
     justify-content: space-between;
     width: 200px;
     margin: 6px 0px;
+    margin-top: 10px;
 }
 
-.rating_num{
+#service_provider_info .rating_num{
     font-size: 18px;
 }
 
-#change_photo_label{
+#service_provider_info #change_photo_label{
     color: #808080;
     font-size: 12px;
     text-decoration: underline;
     cursor: pointer;
 }
 
-#change_photo{
+#service_provider_info #change_photo{
     display:none;
 }
 
-#customer_left{
+#service_provider_left{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,7 +48,7 @@
     width: 15%;
 }
 
-#customer_right{
+#service_provider_right{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,7 +57,55 @@
     margin-left: 20px;
 }
 
-#save_changes{
+#services_completed{
+    font-size: 18px;
+    margin-top: 7px;
+}   
+
+#service_provider_info #editable_line{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#service_provider_info #user_address{
+    font-size: 18px;
+    margin-top: 8px;
+    width: 80%;
+    padding: 5px;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+#service_provider_info #new_address{
+    border-radius: 30px;
+    border: none;
+    padding: 5px;
+    font-size: 18px;
+    padding-left: 10px;
+    width: 90%;
+    margin-top: 8px;
+    margin-left: -2px;
+    outline: 5px auto Highlight;
+}
+
+#service_provider_info #edit_button{
+    background: none;
+    border: none;
+    color: gray;
+}
+
+#service_provider_info #edit_button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    color: black;
+}
+
+#service_provider_info #editable_input{
+    width: 80%;
+}
+
+#service_provider_info #save_changes{
     cursor: pointer;
     background-color: #345392;
     border: none;
@@ -63,64 +117,10 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-#services_ordered{
-    font-size: 18px;
-    margin-top: 6px;
-}
-
-#customer_info{
-    display: flex;
-    padding: 20px;
-    margin: 20px 100px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-}
-
-#editable_line{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-#editable_input{
-    width:80%;
-}
-
-#user_address{
-    font-size: 18px;
-    margin-top: 8px;
-    width: 80%;
-    padding: 5px;
-    padding-left: 0px;
-    margin-left: 0px;
-}
-
-#new_address{
-    border-radius: 30px;
-    border: none;
-    padding: 5px;
-    font-size: 18px;
-    padding-left: 15px;
-    width: 90%;
-    margin-top: 8px;
-    outline: 5px auto Highlight;
-}
-
-button:hover{
+#service_provider_info #save_changes:hover{
     transform: scale(1.03);
 }
 
-#customer_info #edit_button{
-    background: none;
-    border: none;
-    color: gray;
-}
-
-#customer_info #edit_button:hover{
-    cursor: pointer;
-    transform: scale(1.2);
-    color: black;
-}
 @media only screen and (max-width: 948px) {
     #icon{
         display: none;
