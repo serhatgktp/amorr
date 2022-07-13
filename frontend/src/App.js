@@ -15,7 +15,7 @@ import InitialLogin from './components/initial-login/initial-login';
 import InitialSignUp from './components/initial-signup/initial-signup';
 import Login from './components/login-page/login-page';
 import CustomerProfile from './components/customer_profile/customer_profile';
-import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
+import RequestAppointment from './components/request_appointment/RequestAppointment';
 
 import {
   BrowserRouter as Router,
@@ -70,7 +70,7 @@ function App(){
         <Route path='/initial-signup' element={<InitialSignUp/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/profile' element={<CustomerProfile/>}/>
-        <Route path='/sp-profile' element={<ServiceProviderProfile/>}/>
+        <Route path='/appointment' element={<RequestAppointment/>}/>
 
       </Routes>
     </Router>
