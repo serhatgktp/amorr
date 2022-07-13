@@ -9,6 +9,7 @@
 
 .RA_selectedDateText {
   margin: 15px;
+  margin-top: 3px;
   margin-left: 30px;
   display: inline-block;
   overflow-y: hidden;
@@ -67,7 +68,6 @@
     margin: 0;
     border: 0;
     outline: none;
-    /* border-radius: 40px; */
   }
   .react-calendar button:enabled:hover {
     cursor: pointer;
@@ -79,6 +79,8 @@
   .react-calendar__navigation button {
     min-width: 44px;
     background: none;
+    font-size: 1em;
+    font-weight: 600;
   }
   .react-calendar__navigation button:enabled:hover,
   .react-calendar__navigation button:enabled:focus {
@@ -164,6 +166,7 @@
 /* -------- TIME PICKER STYLING START -------- */
 .RA_selectedTimeText {
   margin: 15px;
+  margin-top: 3px;
   margin-left: 30px;
   width: 295px;
   border: none;
@@ -182,6 +185,7 @@
 }
 
 #RA_timeIcon {
+  font-size: 18px;
   margin: auto;
   margin-top: 5px;
   margin-left: 10px;
@@ -192,6 +196,7 @@
 
 .RA_timeDD {
   position: relative;
+  /* color: white; */
   color: black;
 }
 
@@ -216,13 +221,16 @@
       padding: 1px;
       padding-left: 15px;
       box-shadow: none;
-      color: black;
       -webkit-appearance: none;
       background-image: none;
       border-radius: 30px;
-      border: none;
       width: 7em;
       z-index: 9;
+      /* color: white;
+      background-color: #d26e5d; */
+      border: none;
+      color: black;
+      background-color: white;
   }
 
   .time-picker__suggestion-list {

@@ -26,35 +26,35 @@ import {
 
 function App(){
   
-  // const [loggedIn,setLoggedIn] = useState(false); //assuming default value is false
-  // const [type,setType] = useState(false);
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/check-user-type", {credentials: 'include'}).then(response =>
-  //   response.json().then(data => {
-  //     console.log(data);
-  //     console.log(data.user_type != "Guest");
-  //     if (data.user_type == "Guest") {
-  //       setLoggedIn(false);
-  //       setType(false);
-  //     }
-  //     else if(data.user_type == "Customer"){
-  //       setType(true);
-  //       setLoggedIn(true);
-  //     }else{
-  //       setType(false);
-  //       setLoggedIn(true);
-  //     }
-  //   })
-  //   );
-  // }, [loggedIn, type]);
+  const [loggedIn,setLoggedIn] = useState(false); //assuming default value is false
+  const [type,setType] = useState(false);
+  useEffect(() => {
+    fetch("http://localhost:5000/check-user-type", {credentials: 'include'}).then(response =>
+    response.json().then(data => {
+      console.log(data);
+      console.log(data.user_type != "Guest");
+      if (data.user_type == "Guest") {
+        setLoggedIn(false);
+        setType(false);
+      }
+      else if(data.user_type == "Customer"){
+        setType(true);
+        setLoggedIn(true);
+      }else{
+        setType(false);
+        setLoggedIn(true);
+      }
+    })
+    );
+  }, [loggedIn, type]);
 
   return (
     <body>
-    {/* <div>
+    <div>
     {!loggedIn && !type ? <Navbar/> : ''}
     {loggedIn && type ? <CustomerNavbar/> : ''}
     {loggedIn && !type ? <ServiceProviderNavbar/>:''}
-    </div> */}
+    </div>
     <Router>
       <Routes>
 
