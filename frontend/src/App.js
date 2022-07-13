@@ -70,6 +70,7 @@ function App(){
         <Route path='/initial-signup' element={<InitialSignUp/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/profile' element={<CustomerProfile/>}/>
+        <Route path='/sp-profile' element={<ServiceProviderProfile/>}/>
 
       </Routes>
     </Router>

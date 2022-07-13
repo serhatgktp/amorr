@@ -16,7 +16,7 @@
     font-size: 28px;
 }
 
-#rating{
+#service_provider_info #rating{
     display:flex;
     justify-content: space-between;
     width: 200px;
@@ -24,18 +24,18 @@
     margin-top: 10px;
 }
 
-.rating_num{
+#service_provider_info .rating_num{
     font-size: 18px;
 }
 
-#change_photo_label{
+#service_provider_info #change_photo_label{
     color: #808080;
     font-size: 12px;
     text-decoration: underline;
     cursor: pointer;
 }
 
-#change_photo{
+#service_provider_info #change_photo{
     display:none;
 }
 
@@ -62,13 +62,13 @@
     margin-top: 7px;
 }   
 
-#editable_line{
+#service_provider_info #editable_line{
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-#user_address{
+#service_provider_info #user_address{
     font-size: 18px;
     margin-top: 8px;
     width: 80%;
@@ -77,7 +77,7 @@
     margin-left: 0px;
 }
 
-#new_address{
+#service_provider_info #new_address{
     border-radius: 30px;
     border: none;
     padding: 5px;
@@ -89,23 +89,23 @@
     outline: 5px auto Highlight;
 }
 
-#edit_button{
+#service_provider_info #edit_button{
     background: none;
     border: none;
     color: gray;
 }
 
-#edit_button:hover{
+#service_provider_info #edit_button:hover{
     cursor: pointer;
     transform: scale(1.2);
     color: black;
 }
 
-#editable_input{
+#service_provider_info #editable_input{
     width: 80%;
 }
 
-#save_changes{
+#service_provider_info #save_changes{
     cursor: pointer;
     background-color: #345392;
     border: none;
@@ -117,7 +117,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-#save_changes:hover{
+#service_provider_info #save_changes:hover{
     transform: scale(1.03);
 }
 
