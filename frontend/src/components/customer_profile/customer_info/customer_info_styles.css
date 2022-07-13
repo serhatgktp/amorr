@@ -65,6 +65,7 @@
 
 #services_ordered{
     font-size: 18px;
+    margin-top: 6px;
 }
 
 #customer_info{
@@ -87,23 +88,39 @@
 
 #user_address{
     font-size: 18px;
-    margin-top: 5px;
+    margin-top: 8px;
+    width: 80%;
+    padding: 5px;
+    padding-left: 0px;
+    margin-left: 0px;
 }
 
 #new_address{
     border-radius: 30px;
     border: none;
-    padding: 8px;
-    font-size: 16px;
+    padding: 5px;
+    font-size: 18px;
     padding-left: 15px;
     width: 90%;
     margin-top: 8px;
+    outline: 5px auto Highlight;
 }
 
 button:hover{
     transform: scale(1.03);
 }
 
+#customer_info #edit_button{
+    background: none;
+    border: none;
+    color: gray;
+}
+
+#customer_info #edit_button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    color: black;
+}
 @media only screen and (max-width: 948px) {
     #icon{
         display: none;
