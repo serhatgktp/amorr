@@ -1,0 +1,46 @@
+*{
+    font-family: 'Poppins';
+}
+
+#interactive_card{
+    background-color: #F9F6EE;
+    padding: 25px;
+    width: 1051px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+#avatar{
+    float: left;
+}
+
+#sp_name{
+    font-weight: 600;
+    font-size: 28px;
+}
+
+#rating{
+    display:flex;
+    justify-content: space-between;
+    width: 200px;
+    margin: 6px 0px;
+}
+
+.rating_num{
+    font-size: 18px;
+}
+
+#card_body{
+    color: #808080;
+}
+
+#second_line{
+    display: flex;
+    justify-content: space-between;
+}
+
+#third_line{
+    display: flex;
+    justify-content: space-between;
+}
+
