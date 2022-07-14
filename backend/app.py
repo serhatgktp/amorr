@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, g, redirect, url_for, make_response, jsonify
+from flask import Flask, render_template, request, g, redirect, url_for, make_response, jsonify, send_from_directory
 from werkzeug.utils import secure_filename  # For uploading files to the filesystem
 import os                   # For navigating the filesystem
 from sys import platform    # To check operating system for correct file path format for filesystem
@@ -9,6 +9,7 @@ import hashlib  # For password encryption
 import string   # For generating sessionIDs
 import random   # For randomizing sessionIDs
 import pandas as pd
+import requests # Importing for sending images
 
 from flask_cors import CORS, cross_origin   # For front end request issue
 
@@ -51,10 +52,10 @@ SESSIONS = dict() # Contains session_id and email_address
 
 # Determine OS and determine image uploads folder
 if platform == "win32": # Windows
-    path = os.path.abspath('../frontend/src/assets/profile_photos')
+    path = os.path.abspath('image_uploads')
     UPLOAD_FOLDER = path.replace("\\", "/")
 elif platform == "linux" or platform == "linux2" or platform == "darwin": # linux or OSX
-    UPLOAD_FOLDER = os.path.abspath('../frontend/src/assets/profile_photos')
+    UPLOAD_FOLDER = os.path.abspath('image_uploads')
 
 # List of allowed file extensions
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
@@ -327,20 +328,23 @@ def upload_file():  # Expects one image and sessionID
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         filetype = '.' + filename.rsplit('.', 1)[1].lower()
-        # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        # file.save(app.config['UPLOAD_FOLDER'] + '/' + filename)
+        
         file_save_path = app.config['UPLOAD_FOLDER'] + '/' + user_id + filetype
         file.save(file_save_path)   # Save image to upload folder
 
         # Delete old path if user already has a pfp path in the database
-        rows = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{user_id}\'')
-        if len(rows) > 0:
-            mu.delete(config, [f'uid = \'{user_id}\''], 'amorr.profile_photos') # Delete old path
+        # rows = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{user_id}\'')
+        # if len(rows) > 0:
+        #     mu.delete(config, [f'uid = \'{user_id}\''], 'amorr.profile_photos') # Delete old path
 
-        file_relative_path = '../../../assets/profile_photos/' + filename
-        d = {'uid':[user_id], 'pfp_path':[file_relative_path]}
-        df = pd.DataFrame.from_dict(d)
-        mu.insert(config, 'profile_photos', df) # Insert new pfp_path into database
+        # file_relative_path = '../../../assets/profile_photos/' + filename
+        # d = {'uid':[user_id], 'pfp_path':[file_relative_path]}
+        # df = pd.DataFrame.from_dict(d)
+        # mu.insert(config, 'profile_photos', df) # Insert new pfp_path into database
+
+        # OR INSTEAD, JUST UPDATE THE EXISTING ENTRY
+        sql = f'UPDATE amorr.profile_photos SET pfp_path = \'{user_id + filetype}\' WHERE uid = \'{user_id}\';'
+        mu.query(config, sql)
 
         resp = make_response(jsonify( {'message': 'Profile photo was successfully changed!'} ), 200,)
         return resp
@@ -359,8 +363,40 @@ def allowed_file(filename):         # Check if file type is in ALLOWED_EXTENSION
 #########
 # End of upload-profile-photo
 
+# get-profile-photo
+#########
+@app.route('/get-profile-photo', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_pfp():
+    user_id = str(get_user_id())
+    if user_id == "-1":
+        resp = make_response(jsonify( {'message': 'Must be logged in to see your profile photo'} ), 400,)
+        return resp
+
+    pfp_path = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{user_id}\'')
+    if len(pfp_path) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": f"pfp_path not found for user! (uid: {user_id})"}
+            ),
+            404,
+        )
+        return resp
+    else:
+        img_path = pfp_path[0]['pfp_path']
+        filetype = img_path.rsplit('.', 1)[1].lower()   # File type without the '.'
+        print("\n\n\nPATH1 :",UPLOAD_FOLDER,f"filetype = {filetype}\n\n\n")
+        
+        resp = send_from_directory(UPLOAD_FOLDER, img_path, mimetype=f'image/{filetype}')
+
+        return resp     # Should return with response code 200 if successful
+
+#########
+# get-profile-photo
+
 # edit-profile-address
 #########
+
 @app.route('/edit-profile-address', methods=['POST'])
 @cross_origin(supports_credentials=True)
 def edit_profile_address():  # Change address on profile
@@ -388,8 +424,6 @@ def edit_profile_address():  # Change address on profile
 #########
 # End of edit-profile-address
 
-# check-user-type
-#########
 @app.route('/check-user-type', methods=['GET'])
 @cross_origin(supports_credentials=True)
 def check_user_type():
@@ -401,9 +435,9 @@ def check_user_type():
         resp = make_response( jsonify( {"user_type": f"{user_type}"} ), 200, )
     return resp
 
-# @app.route('/') # For testing upload-profile-photo
-# def render_homepage():
-#     return render_template('dummy_image_upload.html')
+@app.route('/') # For testing upload-profile-photo
+def render_homepage():
+    return render_template('dummy_image_upload.html')
 
 @app.route('/test-login') # For testing upload-profile-photo
 def test_login():
@@ -414,26 +448,6 @@ def get_user_id():   # uid is used to identify each user
         if request.cookies.get('sessionId') in SESSIONS.keys():
             return SESSIONS[request.cookies.get('sessionId')].uid
     return -1   # Session not found
-#########
-# End of check-user-type
-
-# logout
-#########
-@app.route('/logout', methods=['POST'])
-@cross_origin(supports_credentials=True)
-def logout():
-    user_id = get_user_id()
-    if user_id == -1:
-        resp = make_response( jsonify( {"Message": "User is not signed in, therefore cannot log out"} ), 400, )
-    else:
-        user_email = SESSIONS[request.cookies.get('sessionId')].email_address
-        del SESSIONS[request.cookies.get('sessionId')]  # Delete session from flask server sessions
-        resp = make_response( jsonify( {"user_type": f"Logout successful for: {user_email}"} ), 200, )
-        resp.set_cookie('sessionId', '', expires=0) # Set sessionId to expire immediately
-        # resp.delete_cookie('sessionId')
-    return resp
-#########
-# End of logout
 
 ################################################################################################################################################
 ################################################################################################################################################
