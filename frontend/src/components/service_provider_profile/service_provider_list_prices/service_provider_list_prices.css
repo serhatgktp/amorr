@@ -41,7 +41,6 @@
 
 #service_provider_list_prices .member_list{
     display: flex;
-    flex-direction: row;
     margin-bottom: 5px;
 } 
 
@@ -52,11 +51,17 @@
     overflow-x: auto;
 } 
 
+#service_provider_list_prices .new_service{
+    border-radius: 30px;
+    border: none;
+    padding: 5px;
+    font-size: 18px;
+    padding-left: 10px;
+    width: 100%;
+    outline: 5px auto Highlight;
+}
+
 #service_provider_list_prices .editable_price{
-    /* width: 100%;
-    margin-top: -13px;
-    margin-left: 100px;
-    margin-bottom: 5px; */
     display: inline-block;
     margin-left: 10px; 
     margin-top: -13px;
