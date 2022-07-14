@@ -424,6 +424,36 @@ def edit_profile_address():  # Change address on profile
 #########
 # End of edit-profile-address
 
+# get-sp-price-list
+#########
+@app.route('/get-sp-price-list', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_price_list():
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"message": "You must be logged in to view your profile"} ), 400, )
+        return resp
+    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
+    if len(user) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": f"User not found! (uid: {user_id})"}
+            ),
+            404,
+        )
+    sql = f"SELECT * FROM amorr.services WHERE uid = '{user_id}'"
+    data = mu.load(config, 'amorr.services', sql)
+    if len(data) == 0:
+        resp = make_response(jsonify([]), 200, )    # Return an empty array
+    else:
+        services = []
+        for row in data:
+            services.append({'service':row['name'], 'price':row['price']})
+        resp = make_response(jsonify(services), 200, )    # Return services as an array of dictionaries
+    return resp
+#########
+# End of get-sp-price-list
+
 @app.route('/check-user-type', methods=['GET'])
 @cross_origin(supports_credentials=True)
 def check_user_type():
