@@ -147,8 +147,9 @@ const ServiceProviderListPrices = () => {
                     />
                     <input
                         id="input_price"
-                        type="text"
+                        type="number"
                         name="price"
+                        min="0"
                         required="required"
                         placeholder="Price"
                         onChange={handleAddChange}

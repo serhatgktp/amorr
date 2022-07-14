@@ -12,11 +12,9 @@
     width: 30%;
 
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
     position: relative;
     margin-top: 35px;
-    overflow-y: auto;
     height: 50vh;
 }
 
@@ -25,6 +23,7 @@
     font-weight: 600;
     font-size: 28px;
     margin-left: 20px;
+    margin-top: 10px;
 }
 
 #service_provider_list_prices #price_list_divider{
@@ -38,13 +37,18 @@
     margin-top: 7px;
     margin-left: 20px;
     margin-bottom: 30px;
-    /* width: 100%;
-    overflow-y: auto; */
-} 
-
+    width: 98%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+  
+/* -------- ROWS OF SERVICE & PRICE STYLING START -------- */
 #service_provider_list_prices .member_list{
     display: flex;
+    margin-left: 5px;
     margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 2px;
 } 
 
 #service_provider_list_prices .service_text{
@@ -75,7 +79,7 @@
     padding: 5px;
     font-size: 18px;
     padding-left: 10px;
-    width: 90%;
+    width: 110%;
     outline: 5px auto Highlight;
     margin-top: -6px;
 }
@@ -88,7 +92,7 @@
     padding-left: 10px;
     width: 50%;
     margin-top: 8px;
-    margin-left: 0px;
+    margin-left: 32px;
     outline: 5px auto Highlight;
 }
 
@@ -108,11 +112,14 @@
 #service_provider_list_prices .editable_input{
     width: 80%;
 }
+/* -------- ROWS OF SERVICE & PRICE STYLING END -------- */
+
 
 /* -------- ADDING SERVICE FORM STYLING START -------- */
 #service_provider_list_prices .adding_service_and_price {
     margin-left: 20px;
     margin-bottom: 10px;
+    margin-right: 20px;
 }
 
 #service_provider_list_prices #add_service_heading{
@@ -155,8 +162,6 @@
     border: none;
     border-radius: 40px;
     padding: 6px 15px;
-    font-size: 13px;
-    font-weight: 400;
     color: #F9F6EE;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     height: 45px;
@@ -165,26 +170,31 @@
 #service_provider_list_prices #add_service:hover{
     transform: scale(1.03);
 }
+
+#service_provider_list_prices input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
 /* -------- ADDING SERVICE FORM STYLING END -------- */
 
 
-#service_provider_list_prices #save_changes{
-    margin-top: 10px;
-    margin-left: 20px;
-    position: absolute;
-    right: 20px; bottom: 20px;
-    cursor: pointer;
-    background-color: #345392;
-    border: none;
-    border-radius: 40px;
-    padding: 6px 18px;
-    font-size: 13px;
-    font-weight: 400;
-    color: #F9F6EE;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    height: 45px;
-}
-
-#service_provider_list_prices #save_changes:hover{
-    transform: scale(1.03);
-}
+/* -------- SCROLLBAR STYLING START -------- */
+::-webkit-scrollbar {
+    width: 14px;
+    height: 18px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    height: 6px;
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    background-color: #E3DAC9;
+    -webkit-border-radius: 15px;
+    -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
+      inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+  }
+/* -------- SCROLLBAR STYLING END -------- */

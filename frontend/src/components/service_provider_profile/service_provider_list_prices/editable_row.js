@@ -16,7 +16,8 @@ const editable_row = ( {editData, handleEditChange, handleSaveEdit, handleCancel
         <div className="editable_price">
             <input 
                 className="new_price" 
-                type="text" 
+                type="number" 
+                min="0"
                 name="price"
                 value={editData.price} 
                 onChange={handleEditChange}/>
