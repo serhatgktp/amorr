@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-
+import CustomerExplore from './components/customer_explore/customer_explore';
+/*
 import CustomerNavbar from './components/Navbar/customerNavbar.js';
 import ServiceProviderNavbar from './components/Navbar/serviceProviderNavbar.js';
 import Navbar from './components/Navbar/Navbar.js';
@@ -25,9 +26,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
+*/
 function App(){
-  
+  /*
   const [loggedIn,setLoggedIn] = useState(false); //assuming default value is false
   const [type,setType] = useState(false);
   useEffect(() => {
@@ -78,6 +79,13 @@ function App(){
 
       </Routes>
     </Router>
+    </body>
+  )
+  */
+    
+  return (
+    <body>
+      <CustomerExplore/>
     </body>
   )
  }
