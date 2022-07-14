@@ -9,7 +9,7 @@ const read_only_row = ( {swp, handleEditClick} ) => {
             <div className="user_service">{swp.service}</div>
         </div>
         <div className="editable_price">
-            <div className="user_price">{swp.price}</div>
+            <div className="user_price">${swp.price}</div>
         </div>
         <button id="edit_button" onClick={ (e) => handleEditClick(e, swp)}><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginLeft: '7px'}}/></button>
     </div>

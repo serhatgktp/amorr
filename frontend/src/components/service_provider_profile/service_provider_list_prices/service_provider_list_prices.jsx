@@ -7,11 +7,11 @@ import EditableRow from './editable_row';
 
 const ServiceProviderListPrices = () => {
     const dummy_data = [
-        {service: 'Men Haircut', price: '$30.00'},
-        {service: 'Women Haircut', price: '$20.00'},
-        {service: 'Hair wash', price: '$30.00'},
-        {service: 'Basic Perm', price: '$100.00'},
-        {service: 'Massage', price: '$25.00'}
+        {service: 'Men Haircut', price: '30.00'},
+        {service: 'Women Haircut', price: '20.00'},
+        {service: 'Hair wash', price: '30.00'},
+        {service: 'Basic Perm', price: '100.00'},
+        {service: 'Massage', price: '25.00'}
     ];
 
     // initial values

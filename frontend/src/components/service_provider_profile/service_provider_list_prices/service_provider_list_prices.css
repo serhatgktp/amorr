@@ -16,10 +16,10 @@
     align-items: flex-start;
     position: relative;
     margin-top: 35px;
-    overflow: hidden;
-    overflow:auto;
+    overflow-y: auto;
     height: 50vh;
 }
+
 
 #service_provider_list_prices #price_list_heading{
     font-weight: 600;
@@ -38,6 +38,8 @@
     margin-top: 7px;
     margin-left: 20px;
     margin-bottom: 30px;
+    /* width: 100%;
+    overflow-y: auto; */
 } 
 
 #service_provider_list_prices .member_list{
