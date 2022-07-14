@@ -12,14 +12,15 @@ const CustomerInfo = () => {
     const [fullName, setFullName] = useState('');
 
     useEffect(() => {
+        setImage("http://localhost:5000/get-profile-photo");
         fetch("http://localhost:5000/get-profile", {credentials: 'include'}).then(response =>
           response.json().then(data => {
             setUser(data);
             setAddr(data.address);
             setFullName(data.full_name);
-            console.log(data);
           })
         );
+
       }, []);
 
     const imageHandler = (e) => {
@@ -28,7 +29,6 @@ const CustomerInfo = () => {
         if(selected){
             let reader = new FileReader();
             reader.onload = () => {
-                console.log("hello");
                 setImage(reader.result);
             }
 
@@ -74,7 +74,7 @@ const CustomerInfo = () => {
         <div id="customer_info">
 
             <div id="customer_left">
-                <div><Avatar alt="Sans Calibri" src="http://localhost:5000/get-profile-photo" sx={{ width: 100, height: 100, mb: 1 }}/></div>
+                <div><Avatar alt="Sans Calibri" src={img} sx={{ width: 100, height: 100, mb: 1 }}/></div>
                 <input type="file" name="image-upload" id="change_photo" accept="image/*" onChange={imageHandler}/>
                 <div id="photo_label">
                     <label htmlFor="change_photo" className="image-upload" id="change_photo_label">Change profile photo</label>
