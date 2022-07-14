@@ -18,6 +18,8 @@ import CustomerProfile from './components/customer_profile/customer_profile';
 import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile'
 import RequestAppointment from './components/request_appointment/RequestAppointment';
 
+import DeleteAccount from './components/delete_account/Delete_account';
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -73,6 +75,7 @@ function App(){
         <Route path='/profile' element={<CustomerProfile/>}/>
         <Route path='/sp-profile' element={<ServiceProviderProfile/>}/>
         <Route path='/appointment' element={<RequestAppointment/>}/>
+        <Route path='/delete-account' element={<DeleteAccount/>}/>
 
       </Routes>
     </Router>
