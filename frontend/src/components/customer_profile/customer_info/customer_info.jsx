@@ -2,9 +2,6 @@ import React , { useEffect, useState }from 'react';
 import './customer_info_styles.css'
 import { Icon } from '@iconify/react';
 import { Rating, Avatar, requirePropFactory } from '@mui/material';
-import InlineEdit from "./editable"
-import image from "../../../assets/customer_profile/customer.jpg"
-import pic from "../../../assets/profile_photos/4.jpg"
 
 const CustomerInfo = () => {
 
@@ -77,7 +74,7 @@ const CustomerInfo = () => {
         <div id="customer_info">
 
             <div id="customer_left">
-                <div><Avatar alt="Sans Calibri" src={img} sx={{ width: 100, height: 100, mb: 1 }}/></div>
+                <div><Avatar alt="Sans Calibri" src="http://localhost:5000/get-profile-photo" sx={{ width: 100, height: 100, mb: 1 }}/></div>
                 <input type="file" name="image-upload" id="change_photo" accept="image/*" onChange={imageHandler}/>
                 <div id="photo_label">
                     <label htmlFor="change_photo" className="image-upload" id="change_photo_label">Change profile photo</label>
