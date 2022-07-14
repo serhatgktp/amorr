@@ -10,7 +10,7 @@ import string   # For generating sessionIDs
 import random   # For randomizing sessionIDs
 import pandas as pd
 
-from flask_cors import CORS, cross_origin   # For front end request issue
+from flask_cors import CORS, cross_origin   # For handling cross-origin requests
 
 # Classes (for now)
 
