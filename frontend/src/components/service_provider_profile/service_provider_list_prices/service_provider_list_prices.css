@@ -17,6 +17,7 @@
     position: relative;
     margin-top: 35px;
     overflow: hidden;
+    overflow:auto;
 }
 
 #service_provider_list_prices #price_list_heading{
@@ -36,7 +37,6 @@
     margin-top: 7px;
     margin-left: 20px;
     margin-bottom: 30px;
-    height: 30vh;
 } 
 
 #service_provider_list_prices .member_list{
@@ -101,6 +101,64 @@
 #service_provider_list_prices .editable_input{
     width: 80%;
 }
+
+/* -------- ADDING SERVICE FORM STYLING START -------- */
+#service_provider_list_prices .adding_service_and_price {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+#service_provider_list_prices #add_service_heading{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+#service_provider_list_prices #add_service_form{
+    display: flex;
+}
+
+#service_provider_list_prices input{
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    font-size: 18px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+#service_provider_list_prices #input_service{
+    width: 60%;
+    padding-left: 20px;
+}
+
+#service_provider_list_prices #input_price{
+    width: 20%;
+    margin-left: 10px;
+    padding-left: 20px;
+}
+
+#service_provider_list_prices #add_service{
+    margin-top: 10px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: #345392;
+    border: none;
+    border-radius: 40px;
+    padding: 6px 15px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #F9F6EE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 45px;
+}
+
+#service_provider_list_prices #add_service:hover{
+    transform: scale(1.03);
+}
+/* -------- ADDING SERVICE FORM STYLING END -------- */
+
 
 #service_provider_list_prices #save_changes{
     margin-top: 10px;

@@ -6,42 +6,57 @@ import { Divider } from '@mui/material';
 const ServiceProviderListPrices = () => {
 
     // initializing values
-    const [hairPrice, setHairPrice] = useState('$');
-    const [barberPrice, setBarberPrice] = useState('$');
-    // const services_with_prices = [
-    //     {service: 'Hairdresser', price: null},
-    //     {service: 'Barber', price: null},
-    //     {service: 'Cleaner', price: null},
-    //     {service: 'Massage', price: null},
-    //     {service: 'Makeup', price: null},
-    //     {service: 'Eyebrow Tech', price: null},
-    //     {service: 'Eyelash Tech', price: null},
-    //   ];
-    // const list_ServicesPrices = services_with_prices.map((sp) => <li key={sp.service}>{sp.price}</li>);
-
     const [isEdit, setIsEdit] = useState(false);
-    const [isEdit2, setIsEdit2] = useState(false);
-
     // changing price according to input
-    const handleChange = (e) => {
-        setHairPrice(e.target.value);
+    const handleChange = (e) => { 
+        e.preventDefault();
     }
-    const handleChange2 = (e) => {
-        setBarberPrice(e.target.value);
-    }
-
     // exit editing mode when user presses enter or escape
     const onKeyDown = (event) => {
-        if (event.key === "Enter" || event.key === "Escape"){
+        if (event.key === "Enter" || event.key === "Escape" ){
             setIsEdit(false);
             event.target.blur();
         }
     }
-    const onKeyDown2 = (event) => {
-        if (event.key === "Enter" || event.key === "Escape"){
-            setIsEdit2(false);
-            event.target.blur();
+
+    const dummy_data = [
+        {service: 'Men Haircut', price: '$30.00'},
+        {service: 'Women Haircut', price: '$20.00'},
+        {service: 'Hair wash', price: '$30.00'},
+        {service: 'Basic Perm', price: '$100.00'},
+        {service: 'Massage', price: '$25.00'}
+    ];
+
+    const [servicesPricesList, setServicesPricesList] = useState(dummy_data);
+    const [addNewData, setAddNewData] = useState(
+        {service: "", price:""}
+    ) 
+
+    // handling changing text when adding a service / price
+    const handleAddChange = (e) => {
+        e.preventDefault();
+        
+        // name refers to 'service' or 'price'
+        const fieldName = e.target.getAttribute('name');
+        const fieldValue = e.target.value;
+
+        const newData = { ...addNewData };
+        newData[fieldName] = fieldValue;
+        setAddNewData(newData);
+        console.log(addNewData);
+    }
+
+    // handling actually adding the service + price
+    const handleAdd = (e) => {
+        e.preventDefault();
+
+        const newServicePrice = {
+            service: addNewData.service,
+            price: addNewData.price
         }
+
+        const newServicesPricesList = [...servicesPricesList, newServicePrice];
+        setServicesPricesList(newServicesPricesList);
     }
 
     // handling clicking save changes button
@@ -72,7 +87,7 @@ const ServiceProviderListPrices = () => {
             <div id="price_list_heading">Price List</div>
             <Divider id="price_list_divider" textAlign="center" variant="fullWidth" style={{width: '100%', borderBottomWidth: 2}}/>
             <div id="list_of_prices">
-                <div className="member_list">
+                {/* <div className="member_list">
                     <div className="service_text">Hairdresser -</div>
                     <div className="editable_price">
                         {!isEdit ? 
@@ -82,20 +97,44 @@ const ServiceProviderListPrices = () => {
                             <div className="editable_input"><input className="new_price" value={hairPrice} onChange={handleChange} onKeyDown={onKeyDown} /></div>
                         ) }
                     </div>
-                </div>
-                <div className="member_list">
-                    <div className="service_text">Barber -</div>
-                    <div className="editable_price">
-                        {!isEdit2 ? 
-                        (
-                            <div className="user_price">{barberPrice}<button id="edit_button" onClick={ () => {setIsEdit2(true)}}><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginLeft: '7px'}}/></button></div>
-                        ) : (
-                            <div className="editable_input"><input className="new_price" value={barberPrice} onChange={handleChange2} onKeyDown={onKeyDown2} /></div>
-                        ) }
+                </div> */}
+                {servicesPricesList.map((swp) => (
+                    <div className="member_list">
+                        <div className="service_text">{swp.service} -</div>
+                        <div className="editable_price">
+                            {!isEdit ? 
+                            (
+                                <div className="user_price">{swp.price}<button id="edit_button" onClick={ () => {setIsEdit(true)}}><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginLeft: '7px'}}/></button></div>
+                            ) : (
+                                <div className="editable_input"><input className="new_price" value={swp.price} onChange={handleChange} onKeyDown={onKeyDown} /></div>
+                            ) }
+                        </div>
                     </div>
-                </div>
+                ))}
             </div>
-            <button id="save_changes" onClick={handleSubmit}>Save Changes</button>
+            <div className="adding_service_and_price">
+                <div id="add_service_heading">Add a Service:</div>
+                <form id="add_service_form" onSubmit={handleAdd}>
+                    <input 
+                        id="input_service"
+                        type="text"
+                        name="service"
+                        required="required"
+                        placeholder="Service"
+                        onChange={handleAddChange}
+                    />
+                    <input
+                        id="input_price"
+                        type="text"
+                        name="price"
+                        required="required"
+                        placeholder="Price"
+                        onChange={handleAddChange}
+                    />
+                    <button type="submit" id="add_service"><Icon icon="fluent:add-12-filled" style={{ fontSize: '16px' }}/></button>
+                </form>
+            </div>
+            {/* <button id="save_changes" onClick={handleSubmit}>Save Changes</button> */}
         </div>
     )
 }
