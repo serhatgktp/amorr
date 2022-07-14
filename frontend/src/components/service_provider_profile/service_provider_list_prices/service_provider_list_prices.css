@@ -18,6 +18,7 @@
     margin-top: 35px;
     overflow: hidden;
     overflow:auto;
+    height: 50vh;
 }
 
 #service_provider_list_prices #price_list_heading{
@@ -47,19 +48,7 @@
 #service_provider_list_prices .service_text{
     font-size: 18px;
     font-weight: 600;
-    white-space: nowrap;
-    overflow-x: auto;
 } 
-
-#service_provider_list_prices .new_service{
-    border-radius: 30px;
-    border: none;
-    padding: 5px;
-    font-size: 18px;
-    padding-left: 10px;
-    width: 100%;
-    outline: 5px auto Highlight;
-}
 
 #service_provider_list_prices .editable_price{
     display: inline-block;
@@ -78,6 +67,17 @@
     margin-left: 0px;
 }
 
+#service_provider_list_prices .new_service{
+    border-radius: 30px;
+    border: none;
+    padding: 5px;
+    font-size: 18px;
+    padding-left: 10px;
+    width: 90%;
+    outline: 5px auto Highlight;
+    margin-top: -6px;
+}
+
 #service_provider_list_prices .new_price{
     border-radius: 30px;
     border: none;
@@ -86,7 +86,7 @@
     padding-left: 10px;
     width: 50%;
     margin-top: 8px;
-    margin-left: -2px;
+    margin-left: 0px;
     outline: 5px auto Highlight;
 }
 
@@ -121,6 +121,7 @@
 
 #service_provider_list_prices #add_service_form{
     display: flex;
+    margin-left: -6px;
 }
 
 #service_provider_list_prices input{

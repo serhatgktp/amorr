@@ -6,14 +6,6 @@ import ReadOnlyRow from './read_only_row';
 import EditableRow from './editable_row';
 
 const ServiceProviderListPrices = () => {
-    // exit editing mode when user presses enter or escape
-    // const onKeyDown = (event) => {
-    //     if (event.key === "Enter" || event.key === "Escape" ){
-    //         setIsEdit(false);
-    //         event.target.blur();
-    //     }
-    // }
-
     const dummy_data = [
         {service: 'Men Haircut', price: '$30.00'},
         {service: 'Women Haircut', price: '$20.00'},
@@ -81,6 +73,7 @@ const ServiceProviderListPrices = () => {
         setCheckService(null);
 
         console.log(servicesPricesList);
+
     }
 
     const handleCancelClick = () => {
@@ -115,10 +108,6 @@ const ServiceProviderListPrices = () => {
         // copy and add
         const newServicesPricesList = [...servicesPricesList, newServicePrice];
         setServicesPricesList(newServicesPricesList);
-
-        // clear the inputs
-        const clearedServicePrice = {service: "", price:""};
-        setAddNewData(clearedServicePrice);
 
         console.log(servicesPricesList);
     }
