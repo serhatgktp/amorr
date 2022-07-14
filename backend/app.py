@@ -184,7 +184,7 @@ def do_register():  # Assuming username, password, & email regex is implemented 
         user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
         user_id = user[0]['uid']
 
-        pfp_dict = {'uid':[user_id], 'pfp_path':['../../../assets/profile_photos/default.jpg']}
+        pfp_dict = {'uid':[user_id], 'pfp_path':['default.jpg']}
         pfp_df = pd.DataFrame.from_dict(pfp_dict)
         mu.insert(config, 'profile_photos', pfp_df) # Create entry for default profile photo path for new user
 
