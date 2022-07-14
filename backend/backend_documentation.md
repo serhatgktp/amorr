@@ -17,7 +17,11 @@ Sessions are aggregated in the `SESSIONS` dictionary. A `sessionId` string is ge
 The key/value pair `sessionId`:`User(sql_data)` is added to the `SESSIONS` dictionary after each user login.
 Each entry has a maximum age of 30 minutes (1800 seconds).
 
-## 3) Classes
+## 3) Storage Solution
+All factual data is stored in a MySQL database. For now, we are running our app on our local databases. In production, we would set up a remote MySQL database in a Linux instance on a cloud server (Such as AWS EC2 or S3).
+Images and profile photos are stored on the same filesystem that contains the flask instance. When a GET request is made to fetch a profile photo, flask receives the path of the photo from the database, fetches the image, and sends the image as a response, which the front end then renders.
+
+## 4) Classes
 
 ### User()
 
