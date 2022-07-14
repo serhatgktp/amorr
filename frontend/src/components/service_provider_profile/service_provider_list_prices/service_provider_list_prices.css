@@ -14,6 +14,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    position: relative;
+    margin-top: 35px;
 }
 
 #service_provider_list_prices #price_list_heading{
@@ -31,15 +33,36 @@
     font-size: 18px;
     margin-top: 7px;
     margin-left: 20px;
+    margin-bottom: 30px;
+    height: 30vh;
 } 
 
-#service_provider_list_prices #editable_line{
+#service_provider_list_prices .member_list{
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    flex-direction: row;
+    margin-bottom: 5px;
+} 
+
+#service_provider_list_prices .service_text{
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow-x: auto;
+} 
+
+#service_provider_list_prices .editable_price{
+    /* width: 100%;
+    margin-top: -13px;
+    margin-left: 100px;
+    margin-bottom: 5px; */
+    display: inline-block;
+    margin-left: 10px; 
+    margin-top: -13px;
 }
 
-#service_provider_list_prices #user_address{
+#service_provider_list_prices .user_price{
+    display: flex;
+    flex-direction: row;
     font-size: 18px;
     margin-top: 8px;
     width: 80%;
@@ -48,13 +71,13 @@
     margin-left: 0px;
 }
 
-#service_provider_list_prices #new_address{
+#service_provider_list_prices .new_price{
     border-radius: 30px;
     border: none;
     padding: 5px;
     font-size: 18px;
     padding-left: 10px;
-    width: 90%;
+    width: 50%;
     margin-top: 8px;
     margin-left: -2px;
     outline: 5px auto Highlight;
@@ -64,6 +87,7 @@
     background: none;
     border: none;
     color: gray;
+    margin-left: 5px;
 }
 
 #service_provider_list_prices #edit_button:hover{
@@ -72,11 +96,15 @@
     color: black;
 }
 
-#service_provider_list_prices #editable_input{
+#service_provider_list_prices .editable_input{
     width: 80%;
 }
 
 #service_provider_list_prices #save_changes{
+    margin-top: 10px;
+    margin-left: 20px;
+    position: absolute;
+    right: 20px; bottom: 20px;
     cursor: pointer;
     background-color: #345392;
     border: none;
@@ -86,6 +114,7 @@
     font-weight: 400;
     color: #F9F6EE;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 45px;
 }
 
 #service_provider_list_prices #save_changes:hover{
