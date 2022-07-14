@@ -82,6 +82,10 @@ const ServiceProviderListPrices = () => {
 
         console.log(servicesPricesList);
     }
+
+    const handleCancelClick = () => {
+        setCheckService(null);
+    }
     //******** EDITING HANDLERS END ********//
 
     //******** ADDING HANDLERS START ********//
@@ -129,7 +133,11 @@ const ServiceProviderListPrices = () => {
                 {servicesPricesList.map((swp) => (
                     <Fragment>
                         { checkService === swp.service ? ( 
-                            <EditableRow editData={editData} handleEditChange={handleEditChange} handleSaveEdit={handleSaveEdit}/> 
+                            <EditableRow 
+                                editData={editData} 
+                                handleEditChange={handleEditChange} 
+                                handleSaveEdit={handleSaveEdit}
+                                handleCancelClick={handleCancelClick}/> 
                         ) : (
                             <ReadOnlyRow swp={swp} handleEditClick={handleEditClick}/>
                         )}
