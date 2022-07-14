@@ -16,6 +16,7 @@
     align-items: flex-start;
     position: relative;
     margin-top: 35px;
+    overflow: hidden;
 }
 
 #service_provider_list_prices #price_list_heading{
@@ -25,8 +26,9 @@
 }
 
 #service_provider_list_prices #price_list_divider{
-    border: 0;
     width: 80%;
+    margin-top: 2px;
+    margin-bottom: 15px;
 }
 
 #service_provider_list_prices #list_of_prices{

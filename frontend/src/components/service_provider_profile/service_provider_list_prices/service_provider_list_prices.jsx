@@ -1,7 +1,7 @@
 import React , { useEffect, useState }from 'react';
 import { Icon } from '@iconify/react';
-import { Rating, Avatar, requirePropFactory, useScrollTrigger } from '@mui/material';
 import './service_provider_list_prices.css'
+import { Divider } from '@mui/material';
 
 const ServiceProviderListPrices = () => {
 
@@ -70,6 +70,7 @@ const ServiceProviderListPrices = () => {
     return(
         <div id="service_provider_list_prices">
             <div id="price_list_heading">Price List</div>
+            <Divider id="price_list_divider" textAlign="center" variant="fullWidth" style={{width: '100%', borderBottomWidth: 2}}/>
             <div id="list_of_prices">
                 <div className="member_list">
                     <div className="service_text">Hairdresser -</div>
