@@ -254,7 +254,7 @@ def do_contact():
 # Delete Account 
 #########
 
-@app.route('/DeleteAccount', methods=['DELETE'])
+@app.route('/delete-account', methods=['DELETE'])
 @cross_origin(supports_credentials=True)
 def delete_account():
     if request.method == 'DELETE':
