@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useState } from "react"; 
 // import Axios from 'react'; 
-import './Delete_account.css'
+import './delete_account.css'
 
 const DeleteAccount = () => {
 
