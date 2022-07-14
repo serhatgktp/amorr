@@ -207,43 +207,6 @@ def do_register():  # Assuming username, password, & email regex is implemented 
 #########
 # End of register
 
-# Delete Account 
-#########
-@app.route('/DeleteAccount', methods=['DELETE'])
-@cross_origin(supports_credentials=True)
-def delete_account():
-    if request.method == 'DELETE':
-        return fetch()
-def fetch(): # gets uid
-    user_id = get_user_id()
-
-    if user_id == -1:
-        resp = make_response(jsonify( {'message': 'User not logged in'} ), 400,)
-        return resp
-
-    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
-    if len(user) == 0:
-        resp = make_response(
-            jsonify(
-                {"message": "User not found!"}
-            ),
-            404,
-        )
-    else: 
-        mu.delete(config, [f'uid = \'{user_id}\''], 'amorr.users')
-        resp = make_response(
-         jsonify(
-             {"message": "Deleted User!"}
-         ),
-         200,
-     )
-    resp.headers["Content-Type"] = "application/json"
-    return resp
-
-#########
-# End of Delete Account 
-
-
 # ContactUs 
 #########
 @app.route('/contact', methods=['POST'])
