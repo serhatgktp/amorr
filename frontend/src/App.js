@@ -79,7 +79,7 @@ function App(){
         <Route path='/sp_profile' element={<ServiceProviderProfile/>}/>
         <Route path='/explore' element={<CustomerExplore/>}/>
         <Route path='/customer_logout' element={<InitialLogin/>}/>
-        <Route path='/sp_logout' element={<InitialLogin/>}/></Routes>
+        <Route path='/sp_logout' element={<InitialLogin/>}/>
     </Router>
     </div>    
   )
