@@ -448,7 +448,7 @@ def get_price_list():
     else:
         services = []
         for row in data:
-            services.append({'service':row['name'], 'price':row['price']})
+            services.append({'service_id':row['service_id'], 'service':row['name'], 'price':row['price']})
         resp = make_response(jsonify(services), 200, )    # Return services as an array of dictionaries
     return resp
 #########
