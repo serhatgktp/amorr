@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import "./Navbar.css";
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -8,7 +8,13 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SettingsIcon from '@mui/icons-material/Settings';
 
+import { useRef, useState, useEffect} from 'react';
+import LogoutPopup from '../logout-popup/logoutPopup';
+
 const CustomerNavbar = () => {
+
+  // Initial Settings for Logout Popup is FALSE, so the logout Popup is not rendered
+  const [triggerLogoutPopup, setTriggerLogoutPopup] = useState(false);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -17,6 +23,7 @@ const CustomerNavbar = () => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+    setTriggerLogoutPopup(true);
   };
 
   return (
@@ -62,6 +69,7 @@ const CustomerNavbar = () => {
         <MenuItem onClick={handleClose} sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <b>Logout</b></MenuItem>
       </Menu>
       </div>
+      <LogoutPopup trigger={triggerLogoutPopup}/>
     </div>
   );
 };
