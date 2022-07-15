@@ -16,7 +16,6 @@ import InitialSignUp from './components/initial-signup/initial-signup';
 import Login from './components/login-page/login-page';
 import CustomerProfile from './components/customer_profile/customer_profile';
 import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile';
-import RequestAppointment from './components/request_appointment/RequestAppointment';
 
 import CustomerExplore from './components/customer_explore/customer_explore.js';
 
