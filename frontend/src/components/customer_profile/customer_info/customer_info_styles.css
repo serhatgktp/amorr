@@ -18,7 +18,7 @@
     margin: 6px 0px;
 }
 
-button[type="submit"]{
+#upload_image{
     background: none;
     border: none;
     margin-left: 5px;

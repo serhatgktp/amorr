@@ -75,12 +75,12 @@ const CustomerInfo = () => {
 
             <div id="customer_left">
                 <div><Avatar alt="Sans Calibri" src={img} sx={{ width: 100, height: 100, mb: 1 }}/></div>
-                <form action="http://localhost:5000/edit-profile-address" enctype="multipart/form-data" method="POST">
+                <form action="http://localhost:5000/upload-profile-photo" enctype="multipart/form-data" method="POST">
                     <input type="file" name="pic" id="change_photo" accept="image/*" onChange={imageHandler}/>
                     <span id="photo_label">
                         <label htmlFor="change_photo" className="image-upload" id="change_photo_label">Change profile photo</label>
                     </span>
-                    <button type="submit"><Icon icon="carbon:image-reference" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px'}}/></button>
+                    <button id="upload_image" type="submit"><Icon icon="carbon:image-reference" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px'}}/></button>
                 </form>
             </div>
 
