@@ -2,11 +2,12 @@
 
 **Sprint Goal:**
 
-- User should be able to navigate to the appointments page.
-- User should be able to log out from their account.
-- User should be able to delete their account.
-- User should be able to set up their profile page. 
-- User should be able to look at different service provider's profiles.
+- Implementing the newly learn frameworks and tools.
+- Being able to save pictures in the backend. 
+- Displaying the pictures/data from the backend.
+- Frontened for the appointments page, profile page for service provider
+- Being able to log out from the account. 
+- Being able to delete the account i.e delete data from the backend.
 
 ---
 
@@ -37,7 +38,7 @@
     - Updated the team with the progress. 
 
 
-- Seventh stand-up (2022/06/29)
+- Seventh stand-up (2022/06/15)
     - Updated the team with the progress.
     - Discussed the documentation.
 
@@ -90,15 +91,21 @@
     - Information about the SP (rating, name etc) (Strictly Frontend, no functionality yet).
     - Handling POST request in Flask API to handle the editing of the bio.
     - Sending POST request for editing address.
-    - **Points assigned = *20*
+    - **Points assigned = 20**
 
 
-- ADD ONE MORE USER STORY 
+- (STAC-102) As a customer, I want to be able to scroll through a list of service providers and be able to filter my results. The following is the task breakdown: 
+    - A scrollable page where customers can see a list of service providers.
+    - Sending GET request to retrieve service providers from the database.
+    - Handling GET request to return all service providers from the database.
+    - Working filter and searchbar in frontend using datagrid or react filter.
+    - Interactive SP cards, to go to the SP profile page.
+    - **Points assigned = 20**
 
 
 ---
 
-**Team Capacity = *34* UPDATE THIS
+**Team Capacity = 54**
 
 --- 
 
