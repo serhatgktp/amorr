@@ -2,9 +2,6 @@ import React , { useEffect, useState }from 'react';
 import './customer_info_styles.css'
 import { Icon } from '@iconify/react';
 import { Rating, Avatar, requirePropFactory } from '@mui/material';
-import InlineEdit from "./editable"
-import image from "../../../assets/customer_profile/customer.jpg"
-import pic from "../../../assets/profile_photos/4.jpg"
 
 const CustomerInfo = () => {
 
@@ -15,14 +12,15 @@ const CustomerInfo = () => {
     const [fullName, setFullName] = useState('');
 
     useEffect(() => {
+        setImage("http://localhost:5000/get-profile-photo");
         fetch("http://localhost:5000/get-profile", {credentials: 'include'}).then(response =>
           response.json().then(data => {
             setUser(data);
             setAddr(data.address);
             setFullName(data.full_name);
-            console.log(data);
           })
         );
+
       }, []);
 
     const imageHandler = (e) => {
@@ -31,7 +29,6 @@ const CustomerInfo = () => {
         if(selected){
             let reader = new FileReader();
             reader.onload = () => {
-                console.log("hello");
                 setImage(reader.result);
             }
 
