@@ -2,26 +2,26 @@ import React , { useEffect, useState }from 'react';
 import './customer_info_styles.css'
 import { Icon } from '@iconify/react';
 import { Rating, Avatar, requirePropFactory } from '@mui/material';
-import InlineEdit from "./editable"
-import image from "../../../assets/customer_profile/customer.jpg"
-import pic from "../../../assets/profile_photos/4.jpg"
 
 const CustomerInfo = () => {
 
     const [user, setUser] = useState({full_name: "", address: "", total_rating: 0, num_ratings: 0, profile_photo: null});
+    const [addr, setAddr] = useState('')
+    const [img, setImage] = useState(null);
+    const [isEdit, setIsEdit] = useState(false);
+    const [fullName, setFullName] = useState('');
 
     useEffect(() => {
+        setImage("http://localhost:5000/get-profile-photo");
         fetch("http://localhost:5000/get-profile", {credentials: 'include'}).then(response =>
           response.json().then(data => {
             setUser(data);
-            console.log(data);
+            setAddr(data.address);
+            setFullName(data.full_name);
           })
         );
+
       }, []);
-
-
-    const [img, setImage] = useState(null);
-    const [newAddr, setnewAddr] = useState('');
 
     const imageHandler = (e) => {
         const selected = e.target.files[0];
@@ -29,7 +29,6 @@ const CustomerInfo = () => {
         if(selected){
             let reader = new FileReader();
             reader.onload = () => {
-                console.log("hello");
                 setImage(reader.result);
             }
 
@@ -38,14 +37,24 @@ const CustomerInfo = () => {
     }
     
     const handleChange = (e) => {
-        setnewAddr(e.target.value)
+        setAddr(e.target.value)
     }
+
+    // exit editing mode when user presses enter or escape
+    const onKeyDown = (event) => {
+        if (event.key === "Enter" || event.key === "Escape"){
+            setIsEdit(false);
+            event.target.blur();
+        }
+    }
+
     const handleSubmit = (e) => {
-        console.log(newAddr);
         e.preventDefault();
+        setIsEdit(false);
+        e.target.blur();
 
         var requestbody = new Object();
-        requestbody.new_address = newAddr;
+        requestbody.new_address = addr;
 
         fetch("http://localhost:5000/edit-profile-address", {
             method: 'POST',
@@ -60,6 +69,7 @@ const CustomerInfo = () => {
             }
         })
     }
+
     return(
         <div id="customer_info">
 
@@ -73,7 +83,7 @@ const CustomerInfo = () => {
 
             <div id="customer_right">
 
-                <div id="customer_name">{user.full_name}</div>
+                <div id="customer_name">{fullName}</div>
 
                 <div id="rating">
                     <span className="rating_num">4.5</span>
@@ -82,9 +92,13 @@ const CustomerInfo = () => {
                 </div>
 
                 <div id="services_ordered"> <span>75 </span>Services Ordered</div>
-                <div id="user_address">{user.address}</div>
                 <div id="editable_line">
-                    <div id="editable_input"><span id="icon"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginRight: '10px'}}/></span><input id="new_address" placeholder='Enter new address' value={newAddr} onChange={handleChange}/></div>
+                    {!isEdit ? 
+                    (
+                        <div id="user_address">{addr}<button id="edit_button" onClick={ () => {setIsEdit(true)}}><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginLeft: '7px'}}/></button></div>
+                    ) : (
+                        <div id="editable_input"><input id="new_address" value={addr} onChange={handleChange} onKeyDown={onKeyDown} /></div>
+                    ) }
                     <button id="save_changes" onClick={handleSubmit}>Save Changes</button>
                 </div>
 
