@@ -49,7 +49,7 @@ function App(){
   }, [loggedIn, type]);
 
   return (
-    <body>
+    <div>
     <div>
     {!loggedIn && !type ? <Navbar/> : ''}
     {loggedIn && type ? <CustomerNavbar/> : ''}
@@ -73,7 +73,7 @@ function App(){
         <Route path='/sp_profile' element={<ServiceProviderProfile/>}/>
       </Routes>
     </Router>
-    </body>
+    </div>    
   )
  }
 export default App;

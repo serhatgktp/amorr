@@ -4,14 +4,12 @@ import { Icon } from '@iconify/react';
 import './service_provider_bio_styles.css'
 
 const ServiceProviderBio = () => {
-    const [user, setUser] = useState({full_name: "", bio: ""});
     const [bio, setBio] = useState('');
     const [isEdit, setIsEdit] = useState(false);
     const [fullName, setFullName] = useState('');
     useEffect(() => {
         fetch("http://localhost:5000/get-sp-profile", {credentials: 'include'}).then(response =>
           response.json().then(data => {
-            setUser(data);
             setBio(data.bio);
             console.log("fasfaf00");
             console.log(bio);
