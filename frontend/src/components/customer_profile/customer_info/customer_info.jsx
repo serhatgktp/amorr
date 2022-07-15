@@ -98,7 +98,7 @@ const CustomerInfo = () => {
         <div id="customer_info">
 
             <div id="customer_left">
-            <form onSubmit={handlePicSubmit}>
+            <form>
                 <Badge
                 overlap="circular"
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
@@ -108,7 +108,7 @@ const CustomerInfo = () => {
                     <div><Avatar alt="Sans Calibri" src={img} sx={{ width: 120, height: 120, mb: 1 }} id="customer_photo"/></div>
                 </Badge>
                     <input type="file" name="pic" id="change_photo" accept="image/*" onChange={imageHandler}/>
-                    <button id="upload_image" type="submit">Save profile photo</button>
+                    <button id="upload_image" type="submit" onClick={handlePicSubmit}>Save profile photo</button>
             </form>
             </div>
 
