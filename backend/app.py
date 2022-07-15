@@ -346,8 +346,8 @@ def upload_file():  # Expects one image and sessionID
         sql = f'UPDATE amorr.profile_photos SET pfp_path = \'{user_id + filetype}\' WHERE uid = \'{user_id}\';'
         mu.query(config, sql)
 
-        resp = make_response(jsonify( {'message': 'Profile photo was successfully changed!'} ), 200,)
-        return resp
+        # resp = make_response(jsonify( {'message': 'Profile photo was successfully changed!'} ), 200,)
+        return redirect("localhost:3000/profile", code=200)
 
     elif not allowed_file(file.filename):   # Unsupported file type
         resp = make_response(jsonify( {'message': 'File type not supported!'} ), 400,)
