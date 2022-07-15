@@ -40,6 +40,13 @@ create table contact_info (
   `email` varchar(255), 
   `message` varchar(255));
 
+CREATE TABLE amorr.sp_reviews (	-- Reviews given to SPs from Customers
+  `recipient_uid` INT NOT NULL,
+  `reviewer_uid` INT NOT NULL,
+  `type_of_service` VARCHAR(45) NULL,
+  `rating` VARCHAR(45) NULL,
+  `review` VARCHAR(1000) NULL);
+
 -- Cleanup
 /*
 DROP TABLE amorr.customers;

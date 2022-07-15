@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-
+import CustomerExplore from './components/customer_explore/customer_explore.jsx';
+/*
 import CustomerNavbar from './components/Navbar/customerNavbar.js';
 import ServiceProviderNavbar from './components/Navbar/serviceProviderNavbar.js';
 import Navbar from './components/Navbar/Navbar.js';
@@ -15,8 +16,9 @@ import InitialLogin from './components/initial-login/initial-login';
 import InitialSignUp from './components/initial-signup/initial-signup';
 import Login from './components/login-page/login-page';
 import CustomerProfile from './components/customer_profile/customer_profile';
-import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile'
+import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile';
 import RequestAppointment from './components/request_appointment/RequestAppointment';
+import CustomerExplore from './components/customer_explore/customer_explore.js';
 
 import DeleteAccount from './components/delete_account/delete_account';
 
@@ -26,9 +28,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
+*/
 function App(){
-  
+  /*
   const [loggedIn,setLoggedIn] = useState(false); //assuming default value is false
   const [type,setType] = useState(false);
   useEffect(() => {
@@ -58,7 +60,7 @@ function App(){
     {loggedIn && type ? <CustomerNavbar/> : ''}
     {loggedIn && !type ? <ServiceProviderNavbar/>:''}
     </div>
-    <Router>
+    <Router>s
       <Routes>
 
         <Route path='/' element={<Home/>} />
@@ -76,9 +78,17 @@ function App(){
         <Route path='/sp-profile' element={<ServiceProviderProfile/>}/>
         <Route path='/appointment' element={<RequestAppointment/>}/>
         <Route path='/delete-account' element={<DeleteAccount/>}/>
+        <Route path='/explore' element={<CustomerExplore/>}/>
 
       </Routes>
     </Router>
+    </body>
+  )
+  */
+    
+  return (
+    <body>
+      <CustomerExplore/>
     </body>
   )
  }
