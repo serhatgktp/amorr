@@ -16,7 +16,6 @@ const ServiceProviderInfo = () => {
 
     // dummy get request to get data
     useEffect(() => {
-        /*
         setImage("http://localhost:5000/get-profile-photo")
         fetch("http://localhost:5000/get-sp-profile", {credentials: 'include'}).then(response =>
           response.json().then(data => {
@@ -25,7 +24,7 @@ const ServiceProviderInfo = () => {
             setNumRating(data.num_ratings);
             setRating(data.avg_ratings);
           })
-        );*/
+        );
         setUser({full_name: "Lorem Ipsum Salons", address: "100 Lorem Ipsum Road - M1C 0B6", total_rating: 0, num_ratings: 0, profile_photo: null})
         setAddr("100 Lorem Ipsum Road - M1C 0B6");
         setFullName("Lorem Ipsum Salons");
