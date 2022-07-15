@@ -65,7 +65,7 @@ function RequestAppointment() {
                     <div className="RA_timeDD">
                         <TimePicker
                             onChange={onChangeTime}
-                            value={time}
+                            value='08:00'
                         />
                         <Icon id="RA_dropdownIcon" icon="akar-icons:chevron-down"/>
                     </div>

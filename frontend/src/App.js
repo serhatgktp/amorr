@@ -25,6 +25,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
 
 function App(){
   
