@@ -84,9 +84,9 @@ const CustomerInfo = () => {
                 overlap="circular"
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                 badgeContent={
-                    <label htmlFor="change_photo" className="image-upload" id="change_photo_label"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px'}}/></label>
+                    <label htmlFor="change_photo" className="image-upload" id="change_photo_label_sp"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px'}}/></label>
                 }>
-                    <div><Avatar alt="Sans Calibri" src={img} sx={{ width: 100, height: 100, mb: 1 }}/></div>
+                    <div><Avatar alt="Sans Calibri" src={img} sx={{ width: 120, height: 120, mb: 1 }}/></div>
                 </Badge>
                     <input type="file" name="pic" id="change_photo" accept="image/*" onChange={imageHandler}/>
                     <button id="upload_image" type="submit">Save profile photo</button>
