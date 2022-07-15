@@ -22,7 +22,9 @@ const ServiceProviderInfo = () => {
             setAddr(data.address);
             setFullName(data.full_name);
             setNumRating(data.num_ratings);
-            setRating(data.avg_ratings);
+            setRating(data.avg_rating);
+            console.log(data.num_ratings);
+            console.log(data.avg_rating);
           })
         );
         setUser({full_name: "Lorem Ipsum Salons", address: "100 Lorem Ipsum Road - M1C 0B6", total_rating: 0, num_ratings: 0, profile_photo: null})
@@ -97,7 +99,7 @@ const ServiceProviderInfo = () => {
                 <div id="service_provider_name">{fullName}</div>
 
                 <div id="rating">
-                    <span className="rating_num">{rating}</span>
+                    <span className="rating_num">{rating.toFixed(1)}</span>
                     <Rating name="read-only" size="medium" value={rating} precision={0.1} readOnly />
                     <span className="rating_num">({numRating})</span>
                 </div>

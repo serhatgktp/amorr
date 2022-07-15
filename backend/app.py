@@ -507,14 +507,14 @@ def fetch_sp_profile():  # Fetch full name and address from database
         address = user[0]['address']
 
         bio = sp[0]['bio']
-        services = sp[0]['type_of_services']
+        services = sp[0]['types_of_services']
         
         sql = f'SELECT COUNT(*) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
         num_ratings = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
         
         sql = f'SELECT AVG(rating) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
         avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
-
+        print("avg rating is", avg_rating)
         resp = make_response(
             jsonify(
                 {
