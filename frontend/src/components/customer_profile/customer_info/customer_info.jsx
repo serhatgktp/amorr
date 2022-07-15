@@ -10,7 +10,7 @@ const CustomerInfo = () => {
     const [img, setImage] = useState(null);
     const [isEdit, setIsEdit] = useState(false);
     const [fullName, setFullName] = useState('');
-
+    const [file, setFile] = useState('')
     const SmallAvatar = styled(Avatar)(({ theme }) => ({
         width: 22,
         height: 22,
@@ -30,7 +30,8 @@ const CustomerInfo = () => {
 
     const imageHandler = (e) => {
         const selected = e.target.files[0];
-
+        setFile(e.target.files[0])
+        console.log("file is set")
         if(selected){
             let reader = new FileReader();
             reader.onload = () => {
@@ -76,7 +77,21 @@ const CustomerInfo = () => {
     }
 
     const handlePicSubmit = (e) => {
-        console.log("it runs")
+        e.preventDefault();
+        const data = new FormData();
+        data.append('pic', file)
+        fetch("http://localhost:5000/upload-profile-photo", {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            credentials: "include",
+            body: data
+        }).then(response => {
+            if (response.ok){
+                setTimeout(function () {
+                    window.location.reload();
+                }, 1300);
+            }
+        })
     }
     
     return(
