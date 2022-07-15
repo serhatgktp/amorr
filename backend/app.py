@@ -347,7 +347,7 @@ def upload_file():  # Expects one image and sessionID
         mu.query(config, sql)
 
         # resp = make_response(jsonify( {'message': 'Profile photo was successfully changed!'} ), 200,)
-        return redirect("localhost:3000/profile", code=200)
+        return redirect("http://localhost:3000/profile", code=200)
 
     elif not allowed_file(file.filename):   # Unsupported file type
         resp = make_response(jsonify( {'message': 'File type not supported!'} ), 400,)
