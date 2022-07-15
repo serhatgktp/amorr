@@ -155,6 +155,9 @@ def do_register():  # Assuming username, password, & email regex is implemented 
         user_type = json['user_type']
         full_name = json['full_name']
         password = json['password']
+
+        if user_type == 'Service Provider':  # Handle additional field
+            type_of_services = json['type_of_services'] 
     
     else:                                       # Case for submitted form
         email_address = r.form['email_address']
@@ -193,7 +196,11 @@ def do_register():  # Assuming username, password, & email regex is implemented 
             df = pd.DataFrame.from_dict(d)
             mu.insert(config, 'customers', df)  # Create new entry for new customer user
 
-        # No case for service provider as of now. SP registration form is not complete yet.
+        # Case for service provider
+        if user_type == 'Service Provider':
+            d = {'uid':[user_id], 'bio':[''], 'types_of_services':[str(type_of_services)]}
+            df = pd.DataFrame.from_dict(d)
+            mu.insert(config, 'service_providers', df)  # Create new entry for new customer user
 
         resp = make_response(
             jsonify(
