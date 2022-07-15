@@ -2,9 +2,9 @@ import React , { useEffect, useState }from 'react';
 import './customer_info_styles.css'
 import { Icon } from '@iconify/react';
 import { Rating, Avatar, Badge, styled} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const CustomerInfo = () => {
-
     const [user, setUser] = useState({full_name: "", address: "", total_rating: 0, num_ratings: 0, profile_photo: null});
     const [addr, setAddr] = useState('')
     const [img, setImage] = useState(null);
@@ -75,18 +75,22 @@ const CustomerInfo = () => {
         })
     }
 
+    const handlePicSubmit = (e) => {
+        console.log("it runs")
+    }
+    
     return(
         <div id="customer_info">
 
             <div id="customer_left">
-            <form action="http://localhost:5000/upload-profile-photo" enctype="multipart/form-data" method="POST">
+            <form onSubmit={handlePicSubmit}>
                 <Badge
                 overlap="circular"
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                 badgeContent={
                     <label htmlFor="change_photo" className="image-upload" id="change_photo_label_sp"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px'}}/></label>
                 }>
-                    <div><Avatar alt="Sans Calibri" src={img} sx={{ width: 120, height: 120, mb: 1 }}/></div>
+                    <div><Avatar alt="Sans Calibri" src={img} sx={{ width: 120, height: 120, mb: 1 }} id="customer_photo"/></div>
                 </Badge>
                     <input type="file" name="pic" id="change_photo" accept="image/*" onChange={imageHandler}/>
                     <button id="upload_image" type="submit">Save profile photo</button>
