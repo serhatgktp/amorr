@@ -1,14 +1,14 @@
 import React from "react";
 import ServiceProviderInfo from "./service_provider_info/service_provider_info";
-import ServiceProviderBio from "./service_provider_bio/service_provider_bio";
+
+import ServiceProviderListPrices from "./service_provider_list_prices/service_provider_list_prices";
+
 const ServiceProviderProfile = () => {
     return(
-        <div>
-            {/* <ServiceProviderInfo/> */}
-            <ServiceProviderBio/>
-        </div>
-        
-
+        <body>
+            <ServiceProviderInfo/>
+            <ServiceProviderListPrices/>
+        </body>
     )
 }
 
