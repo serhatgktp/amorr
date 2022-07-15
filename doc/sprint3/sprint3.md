@@ -5,7 +5,7 @@
 - Implementing the newly learn frameworks and tools.
 - Being able to save pictures in the backend. 
 - Displaying the pictures/data from the backend.
-- Frontened for the appointments page, profile page for service provider
+- Frontened for the appointments page, profile page for service provider, list of service providers with filters. 
 - Being able to log out from the account. 
 - Being able to delete the account i.e delete data from the backend.
 
@@ -121,31 +121,26 @@ The table below displays who worked on which task during this sprint.
 | STAC-175          |   Frontent for confirmation for deletion of the account.     |  Annanya Sharma  |
 | STAC-176          |   Sending POST request from frontend to delete the info of the user from the database.     |  Annanya Sharma |
 | STAC-177          |   Handling POST request in flask to delete the info of the user from the database.     |  Annanya Sharma |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-| STAC-          |        |   |
-
+| STAC-156          |  Editable Bio section      |  Mir Safwat Ayser |
+| STAC-158          |   Sending POST request to edit list of services and prices / add a service and price     |  Theora Pui |
+| STAC-159          | Handling POST request in Flask API to handle the editing of the List of prices       |  Serhet Goktepe |
+| STAC-185          |  Sending GET request for the main card (name, location, etc)      | Shannon Budiman  |
+| STAC-186          |   Sending GET request to retrieve the bio of the service provider     |  Mir Safwat Ayser |
+| STAC-187          |  Sending GET request to retrieve the list of prices      |  Theora Pui |
+| STAC-152          |   Handle GET request in the Flask API for initial data fetching     | Serhat Goktepe  |
+| STAC-154          |   Information about the SP (rating, name etc) (Strictly Frontend, no functionality yet)     | Shannon Budiman  |
+| STAC-155       |   Editable list of services and their prices and ability to add service / price     |  Theora Pui |
+| STAC-157          |  Handling POST request in Flask API to handle the editing of the Bio      |  Serhat Goktepe |
+| STAC-184          |   sending POST request for editing address     | Shannon Budiman  |
+| STAC-188          |    Handling GET request for list of prices    |  Serhat Goktepe |
+| STAC-163          |   A scrollable page where customers can see a list of service providers     | UNASSIGNED  |
+| STAC-164          |  Sending GET request to retrieve service providers from the database      |  UNASSIGNED |
+| STAC-165          |    Handling GET request to return all service providers from the database    |  UNASSIGNED |
+| STAC-166          |    Working filter and searchbar in frontend using datagrid or react filter | Christopher Nathaneal  |
+| STAC-167          |    Interactive SP cards, to go to the SP profile page    |  Shannon Budiman |
+| STAC-178          |   Pop-up for confirming that user has been logged out     |  Jumana Fanous |
+| STAC-180          |    Sending POST request from frontend to logout the user. Redirection to the home page with guest’s nav bar    | Mir Safwat Ayser  |
+| STAC-101          |  Handling POST request in flask to logout the user      |  Serhat Goktepe |
 
 
 --- 
