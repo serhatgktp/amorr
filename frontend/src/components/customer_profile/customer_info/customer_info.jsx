@@ -1,7 +1,7 @@
 import React , { useEffect, useState }from 'react';
 import './customer_info_styles.css'
 import { Icon } from '@iconify/react';
-import { Rating, Avatar, requirePropFactory } from '@mui/material';
+import { Rating, Avatar, Badge, styled} from '@mui/material';
 
 const CustomerInfo = () => {
 
@@ -11,6 +11,11 @@ const CustomerInfo = () => {
     const [isEdit, setIsEdit] = useState(false);
     const [fullName, setFullName] = useState('');
 
+    const SmallAvatar = styled(Avatar)(({ theme }) => ({
+        width: 22,
+        height: 22,
+        border: `2px solid ${theme.palette.background.paper}`,
+      }));
     useEffect(() => {
         setImage("http://localhost:5000/get-profile-photo");
         fetch("http://localhost:5000/get-profile", {credentials: 'include'}).then(response =>
@@ -74,14 +79,18 @@ const CustomerInfo = () => {
         <div id="customer_info">
 
             <div id="customer_left">
-                <div><Avatar alt="Sans Calibri" src={img} sx={{ width: 100, height: 100, mb: 1 }}/></div>
-                <form action="http://localhost:5000/upload-profile-photo" enctype="multipart/form-data" method="POST">
+            <form action="http://localhost:5000/upload-profile-photo" enctype="multipart/form-data" method="POST">
+                <Badge
+                overlap="circular"
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                badgeContent={
+                    <label htmlFor="change_photo" className="image-upload" id="change_photo_label"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px'}}/></label>
+                }>
+                    <div><Avatar alt="Sans Calibri" src={img} sx={{ width: 100, height: 100, mb: 1 }}/></div>
+                </Badge>
                     <input type="file" name="pic" id="change_photo" accept="image/*" onChange={imageHandler}/>
-                    <span id="photo_label">
-                        <label htmlFor="change_photo" className="image-upload" id="change_photo_label">Change profile photo</label>
-                    </span>
-                    <button id="upload_image" type="submit"><Icon icon="carbon:image-reference" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px'}}/></button>
-                </form>
+                    <button id="upload_image" type="submit">Save profile photo</button>
+            </form>
             </div>
 
             <div id="customer_right">

@@ -19,13 +19,16 @@
 }
 
 #upload_image{
-    background: none;
-    border: none;
-    margin-left: 5px;
     cursor: pointer;
-    border-radius: 50%;
-    padding: 6px;
-    color: gray;
+    background-color: #345392;
+    border: none;
+    border-radius: 40px;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #F9F6EE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 20px;
 }
 
 .rating_num{
@@ -33,10 +36,16 @@
 }
 
 #change_photo_label{
-    color: #808080;
+    background-color: #345392;
+    color: white;
     font-size: 12px;
-    text-decoration: underline;
     cursor: pointer;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+#change_photo_label:hover{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0 0);
 }
 
 #change_photo{
@@ -118,11 +127,6 @@
 
 button:hover{
     transform: scale(1.03);
-}
-
-#upload_image:hover{
-    transform: scale(1.1);
-    color: black;
 }
 
 #customer_info #edit_button{
