@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, g, redirect, url_for, make_response, jsonify
+from flask import Flask, render_template, request, g, redirect, url_for, make_response, jsonify, send_from_directory
 from werkzeug.utils import secure_filename  # For uploading files to the filesystem
 import os                   # For navigating the filesystem
 from sys import platform    # To check operating system for correct file path format for filesystem
@@ -9,8 +9,9 @@ import hashlib  # For password encryption
 import string   # For generating sessionIDs
 import random   # For randomizing sessionIDs
 import pandas as pd
+import requests # Importing for sending images
 
-from flask_cors import CORS, cross_origin   # For front end request issue
+from flask_cors import CORS, cross_origin   # For handling cross-origin requests
 
 # Classes (for now)
 
@@ -51,10 +52,10 @@ SESSIONS = dict() # Contains session_id and email_address
 
 # Determine OS and determine image uploads folder
 if platform == "win32": # Windows
-    path = os.path.abspath('../frontend/src/assets/profile_photos')
+    path = os.path.abspath('image_uploads')
     UPLOAD_FOLDER = path.replace("\\", "/")
 elif platform == "linux" or platform == "linux2" or platform == "darwin": # linux or OSX
-    UPLOAD_FOLDER = os.path.abspath('../frontend/src/assets/profile_photos')
+    UPLOAD_FOLDER = os.path.abspath('image_uploads')
 
 # List of allowed file extensions
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
@@ -183,7 +184,7 @@ def do_register():  # Assuming username, password, & email regex is implemented 
         user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
         user_id = user[0]['uid']
 
-        pfp_dict = {'uid':[user_id], 'pfp_path':['../../../assets/profile_photos/default.jpg']}
+        pfp_dict = {'uid':[user_id], 'pfp_path':['default.jpg']}
         pfp_df = pd.DataFrame.from_dict(pfp_dict)
         mu.insert(config, 'profile_photos', pfp_df) # Create entry for default profile photo path for new user
 
@@ -265,7 +266,7 @@ def fetch_profile():  # Fetch full name and address from database
 
     user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
     customer = mu.load(config, 'amorr.customers', f'SELECT * FROM amorr.customers WHERE uid = \'{user_id}\'')
-    pfp_path = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{user_id}\'')
+    pfp_path = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{user_id}\'') # Currently unused and redundant
     if len(user) == 0 or len(customer) == 0 or len(pfp_path) == 0:
         resp = make_response(
             jsonify(
@@ -278,7 +279,7 @@ def fetch_profile():  # Fetch full name and address from database
         address = user[0]['address']
         total_rating = customer[0]['total_rating']
         num_ratings = customer[0]['num_ratings']
-        profile_pic_path = pfp_path[0]['pfp_path']
+        profile_pic_path = pfp_path[0]['pfp_path']  # Currently unused and redundant
 
         resp = make_response(
             jsonify(
@@ -286,7 +287,7 @@ def fetch_profile():  # Fetch full name and address from database
                 'address': address,
                 'total_rating': total_rating,
                 'num_ratings': num_ratings,
-                'profile_pic_path': profile_pic_path,
+                'profile_pic_path': profile_pic_path,   # Currently unused and redundant
                 }
             ),
             200,
@@ -315,7 +316,6 @@ def upload_file():  # Expects one image and sessionID
         resp = make_response(jsonify( {'message': 'No file was attached to the request'} ), 400,)
         return resp
 
-
     file = files['pic'] # Type <werkzeug.FileStorage>
 
     # if user does not select file, the browser submits an empty string for filename
@@ -323,24 +323,16 @@ def upload_file():  # Expects one image and sessionID
         resp = make_response(jsonify( {'message': 'No file was selected'} ), 400,)
         return resp
 
-
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         filetype = '.' + filename.rsplit('.', 1)[1].lower()
-        # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        # file.save(app.config['UPLOAD_FOLDER'] + '/' + filename)
+        
         file_save_path = app.config['UPLOAD_FOLDER'] + '/' + user_id + filetype
         file.save(file_save_path)   # Save image to upload folder
 
-        # Delete old path if user already has a pfp path in the database
-        rows = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{user_id}\'')
-        if len(rows) > 0:
-            mu.delete(config, [f'uid = \'{user_id}\''], 'amorr.profile_photos') # Delete old path
-
-        file_relative_path = '../../../assets/profile_photos/' + filename
-        d = {'uid':[user_id], 'pfp_path':[file_relative_path]}
-        df = pd.DataFrame.from_dict(d)
-        mu.insert(config, 'profile_photos', df) # Insert new pfp_path into database
+        # Update the existing profile path entry for the user
+        sql = f'UPDATE amorr.profile_photos SET pfp_path = \'{user_id + filetype}\' WHERE uid = \'{user_id}\';'
+        mu.query(config, sql)
 
         resp = make_response(jsonify( {'message': 'Profile photo was successfully changed!'} ), 200,)
         return resp
@@ -358,6 +350,37 @@ def allowed_file(filename):         # Check if file type is in ALLOWED_EXTENSION
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 #########
 # End of upload-profile-photo
+
+# get-profile-photo
+#########
+@app.route('/get-profile-photo', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_pfp():
+    user_id = str(get_user_id())
+    if user_id == "-1":
+        resp = make_response(jsonify( {'message': 'Must be logged in to see your profile photo'} ), 400,)
+        return resp
+
+    pfp_path = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{user_id}\'')
+    if len(pfp_path) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": f"pfp_path not found for user! (uid: {user_id})"}
+            ),
+            404,
+        )
+        return resp
+    else:
+        img_path = pfp_path[0]['pfp_path']
+        filetype = img_path.rsplit('.', 1)[1].lower()   # File type without the '.'
+        print("\n\n\nPATH1 :",UPLOAD_FOLDER,f"filetype = {filetype}\n\n\n")
+        
+        resp = send_from_directory(UPLOAD_FOLDER, img_path, mimetype=f'image/{filetype}')
+
+        return resp     # Should return with response code 200 if successful
+
+#########
+# get-profile-photo
 
 # edit-profile-address
 #########
@@ -389,6 +412,9 @@ def edit_profile_address():  # Change address on profile
 #########
 # End of edit-profile-address
 
+# check-user-type
+#########
+
 @app.route('/check-user-type', methods=['GET'])
 @cross_origin(supports_credentials=True)
 def check_user_type():
@@ -413,6 +439,92 @@ def get_user_id():   # uid is used to identify each user
         if request.cookies.get('sessionId') in SESSIONS.keys():
             return SESSIONS[request.cookies.get('sessionId')].uid
     return -1   # Session not found
+
+#########
+# End of check-user-type
+
+# get-sp-profile
+#########
+@app.route('/get-sp-profile', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_sp_profile():
+    if request.method == 'GET':
+        return fetch_sp_profile()
+def fetch_sp_profile():  # Fetch full name and address from database
+
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"message": "Please log in to view your profile"} ), 400, )
+        return resp
+
+    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
+    sp = mu.load(config, 'amorr.service_providers', f'SELECT * FROM amorr.service_providers WHERE uid = \'{user_id}\'')
+    if len(user) == 0 or len(sp) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": "User not found!"}
+            ),
+            404,
+        )
+    else:
+        full_name = user[0]['full_name']
+        address = user[0]['address']
+
+        bio = sp[0]['bio']
+        services = sp[0]['type_of_services']
+        
+        sql = f'SELECT COUNT(*) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
+        num_ratings = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
+        
+        sql = f'SELECT AVG(rating) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
+        avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
+
+        resp = make_response(
+            jsonify(
+                {
+                'full_name': full_name,
+                'address': address,
+                'avg_rating': avg_rating,
+                'num_ratings': num_ratings,
+                'bio':bio,
+                'services':services
+                }
+            ),
+            200,
+        )
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of get-sp-profile
+
+# edit-bio
+#########
+@app.route('/logout', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def edit_bio():
+    user_id = get_user_id()
+    if user_id == -1:   # Check if user is signed in
+        resp = make_response( jsonify( {"Message": "Must be logged in before editing bio"} ), 400, )
+        return resp
+    sp_user = mu.load(config, 'amorr.service_providers', f'SELECT * FROM amorr.service_providers WHERE uid = \'{user_id}\'')
+    if len(sp_user) == 0:
+        resp = make_response( jsonify( {"Message": "User could not be determined as a valid service provider"} ), 404, )
+        return resp
+    elif len(sp_user) > 1:
+        resp = make_response( jsonify( {"Message": "Internal error: multiple records found for same user"} ), 500, )
+        return resp
+    content_type = request.headers.get('Content-Type')
+    r = request
+    if (content_type == 'application/json'):    # Case for JSON request body 
+        json = r.json
+        new_bio = json['bio']
+    else:                                       # Case for submitted form
+        new_bio = r.form['bio']
+    sql = f'UPDATE amorr.service_providers SET bio = \'{new_bio}\' WHERE uid = \'{user_id}\';'
+    mu.query(config, sql)
+    resp = make_response( jsonify( {"Message": "Bio edit request was successful!"} ), 200,)
+#########
+# End of edit-bio
 
 ################################################################################################################################################
 ################################################################################################################################################
