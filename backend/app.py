@@ -184,7 +184,7 @@ def do_register():  # Assuming username, password, & email regex is implemented 
         user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE email_address = \'{email_address}\'')
         user_id = user[0]['uid']
 
-        pfp_dict = {'uid':[user_id], 'pfp_path':['../../../assets/profile_photos/default.jpg']}
+        pfp_dict = {'uid':[user_id], 'pfp_path':['default.jpg']}
         pfp_df = pd.DataFrame.from_dict(pfp_dict)
         mu.insert(config, 'profile_photos', pfp_df) # Create entry for default profile photo path for new user
 
@@ -266,7 +266,7 @@ def fetch_profile():  # Fetch full name and address from database
 
     user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
     customer = mu.load(config, 'amorr.customers', f'SELECT * FROM amorr.customers WHERE uid = \'{user_id}\'')
-    pfp_path = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{user_id}\'')
+    pfp_path = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{user_id}\'') # Currently unused and redundant
     if len(user) == 0 or len(customer) == 0 or len(pfp_path) == 0:
         resp = make_response(
             jsonify(
@@ -279,7 +279,7 @@ def fetch_profile():  # Fetch full name and address from database
         address = user[0]['address']
         total_rating = customer[0]['total_rating']
         num_ratings = customer[0]['num_ratings']
-        profile_pic_path = pfp_path[0]['pfp_path']
+        profile_pic_path = pfp_path[0]['pfp_path']  # Currently unused and redundant
 
         resp = make_response(
             jsonify(
@@ -287,7 +287,7 @@ def fetch_profile():  # Fetch full name and address from database
                 'address': address,
                 'total_rating': total_rating,
                 'num_ratings': num_ratings,
-                'profile_pic_path': profile_pic_path,
+                'profile_pic_path': profile_pic_path,   # Currently unused and redundant
                 }
             ),
             200,
@@ -316,14 +316,12 @@ def upload_file():  # Expects one image and sessionID
         resp = make_response(jsonify( {'message': 'No file was attached to the request'} ), 400,)
         return resp
 
-
     file = files['pic'] # Type <werkzeug.FileStorage>
 
     # if user does not select file, the browser submits an empty string for filename
     if file.filename == '':
         resp = make_response(jsonify( {'message': 'No file was selected'} ), 400,)
         return resp
-
 
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
@@ -332,17 +330,7 @@ def upload_file():  # Expects one image and sessionID
         file_save_path = app.config['UPLOAD_FOLDER'] + '/' + user_id + filetype
         file.save(file_save_path)   # Save image to upload folder
 
-        # Delete old path if user already has a pfp path in the database
-        # rows = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{user_id}\'')
-        # if len(rows) > 0:
-        #     mu.delete(config, [f'uid = \'{user_id}\''], 'amorr.profile_photos') # Delete old path
-
-        # file_relative_path = '../../../assets/profile_photos/' + filename
-        # d = {'uid':[user_id], 'pfp_path':[file_relative_path]}
-        # df = pd.DataFrame.from_dict(d)
-        # mu.insert(config, 'profile_photos', df) # Insert new pfp_path into database
-
-        # OR INSTEAD, JUST UPDATE THE EXISTING ENTRY
+        # Update the existing profile path entry for the user
         sql = f'UPDATE amorr.profile_photos SET pfp_path = \'{user_id + filetype}\' WHERE uid = \'{user_id}\';'
         mu.query(config, sql)
 
@@ -454,6 +442,8 @@ def get_price_list():
 #########
 # End of get-sp-price-list
 
+# check-user-type
+#########
 @app.route('/check-user-type', methods=['GET'])
 @cross_origin(supports_credentials=True)
 def check_user_type():
@@ -478,6 +468,92 @@ def get_user_id():   # uid is used to identify each user
         if request.cookies.get('sessionId') in SESSIONS.keys():
             return SESSIONS[request.cookies.get('sessionId')].uid
     return -1   # Session not found
+
+#########
+# End of check-user-type
+
+# get-sp-profile
+#########
+@app.route('/get-sp-profile', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_sp_profile():
+    if request.method == 'GET':
+        return fetch_sp_profile()
+def fetch_sp_profile():  # Fetch full name and address from database
+
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"message": "Please log in to view your profile"} ), 400, )
+        return resp
+
+    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
+    sp = mu.load(config, 'amorr.service_providers', f'SELECT * FROM amorr.service_providers WHERE uid = \'{user_id}\'')
+    if len(user) == 0 or len(sp) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": "User not found!"}
+            ),
+            404,
+        )
+    else:
+        full_name = user[0]['full_name']
+        address = user[0]['address']
+
+        bio = sp[0]['bio']
+        services = sp[0]['type_of_services']
+        
+        sql = f'SELECT COUNT(*) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
+        num_ratings = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
+        
+        sql = f'SELECT AVG(rating) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
+        avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
+
+        resp = make_response(
+            jsonify(
+                {
+                'full_name': full_name,
+                'address': address,
+                'avg_rating': avg_rating,
+                'num_ratings': num_ratings,
+                'bio':bio,
+                'services':services
+                }
+            ),
+            200,
+        )
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of get-sp-profile
+
+# edit-bio
+#########
+@app.route('/logout', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def edit_bio():
+    user_id = get_user_id()
+    if user_id == -1:   # Check if user is signed in
+        resp = make_response( jsonify( {"Message": "Must be logged in before editing bio"} ), 400, )
+        return resp
+    sp_user = mu.load(config, 'amorr.service_providers', f'SELECT * FROM amorr.service_providers WHERE uid = \'{user_id}\'')
+    if len(sp_user) == 0:
+        resp = make_response( jsonify( {"Message": "User could not be determined as a valid service provider"} ), 404, )
+        return resp
+    elif len(sp_user) > 1:
+        resp = make_response( jsonify( {"Message": "Internal error: multiple records found for same user"} ), 500, )
+        return resp
+    content_type = request.headers.get('Content-Type')
+    r = request
+    if (content_type == 'application/json'):    # Case for JSON request body 
+        json = r.json
+        new_bio = json['bio']
+    else:                                       # Case for submitted form
+        new_bio = r.form['bio']
+    sql = f'UPDATE amorr.service_providers SET bio = \'{new_bio}\' WHERE uid = \'{user_id}\';'
+    mu.query(config, sql)
+    resp = make_response( jsonify( {"Message": "Bio edit request was successful!"} ), 200,)
+#########
+# End of edit-bio
 
 ################################################################################################################################################
 ################################################################################################################################################
