@@ -120,7 +120,7 @@ button:hover{
     transform: scale(1.03);
 }
 
-button[type="submit"]:hover{
+#upload_image:hover{
     transform: scale(1.1);
     color: black;
 }
