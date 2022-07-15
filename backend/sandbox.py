@@ -16,7 +16,14 @@ config = {
     'db': db
 }
 
-data = mu.load(config, 'amorr.users')
+user_id = 7
 
-for row in data:
-    print(row['email'])
+# sql = f'SELECT COUNT(*) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
+# num_reviews = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
+# 
+# print(num_reviews)
+
+sql = f'SELECT AVG(rating) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
+avg_rating = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)']
+avg_rating = round(avg_rating,1)
+print(avg_rating, type(avg_rating))
