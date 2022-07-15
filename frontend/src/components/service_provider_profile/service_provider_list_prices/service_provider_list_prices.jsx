@@ -6,17 +6,9 @@ import ReadOnlyRow from './read_only_row';
 import EditableRow from './editable_row';
 
 const ServiceProviderListPrices = () => {
-    const dummy_data = [
-        {service_id: '1', service: 'Men Haircut', price: '30.00'},
-        {service_id: '2', service: 'Women Haircut', price: '20.00'},
-        {service_id: '3', service: 'Hair wash', price: '30.00'},
-        {service_id: '4', service: 'Basic Perm', price: '100.00'}
-    ];
-
-    const empty_data = [];
 
     // initial values
-    const [servicesPricesList, setServicesPricesList] = useState(dummy_data);
+    const [servicesPricesList, setServicesPricesList] = useState([]);
     const [addNewData, setAddNewData] = useState(
         {service: "", price:""}
     )
@@ -24,16 +16,15 @@ const ServiceProviderListPrices = () => {
     const [editData, setEditData] =  useState(
         {service: "", price:""}
     )
-
     
     // GET REQUEST TO GET LIST OF SERVICES AND PRICES
-    // useEffect(() => {
-    //     fetch("http://localhost:5000/get-services-prices", {credentials: 'include'}).then(response =>
-    //       response.json().then(data => {
-    //         setServicesPricesList(data);
-    //       })
-    //     );
-    //   }, []);
+    useEffect(() => {
+        fetch("http://localhost:5000/get-sp-price-list", {credentials: 'include'}).then(response =>
+          response.json().then(data => {
+            setServicesPricesList(data);
+          })
+        );
+      }, []);
 
     
     //******** EDITING HANDLERS START ********//
