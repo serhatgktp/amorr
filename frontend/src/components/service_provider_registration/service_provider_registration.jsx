@@ -112,7 +112,7 @@ const ServiceProviderRegistration = () => {
       
       var requestbody = new Object();
       requestbody.email_address = formValues.email;
-      requestbody.type_of_services = formValues.serviceType
+      requestbody.type_of_services = serviceType
       requestbody.address = formValues.address;
       requestbody.user_type = "Service Provider";
       requestbody.full_name = formValues.name;
