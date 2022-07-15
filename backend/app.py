@@ -507,7 +507,7 @@ def fetch_sp_profile():  # Fetch full name and address from database
         address = user[0]['address']
 
         bio = sp[0]['bio']
-        services = sp[0]['type_of_services']
+        services = sp[0]['types_of_services']
         
         sql = f'SELECT COUNT(*) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
         num_ratings = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
@@ -559,6 +559,7 @@ def edit_bio():
     sql = f'UPDATE amorr.service_providers SET bio = \'{new_bio}\' WHERE uid = \'{user_id}\';'
     mu.query(config, sql)
     resp = make_response( jsonify( {"Message": "Bio edit request was successful!"} ), 200,)
+    return resp
 #########
 # End of edit-bio
 

@@ -32,18 +32,12 @@ const ServiceProviderBio = () => {
         setIsEdit(false);
         e.target.blur();
         var requestbody = new Object();
-        requestbody.new_address = bio;
+        requestbody.bio = bio;
         fetch("http://localhost:5000/edit-bio", {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             credentials: "include",
             body: JSON.stringify(requestbody)
-        }).then(response => {
-            if (response.ok){
-                setTimeout(function () {
-                    window.location.reload();
-                }, 1300);
-            }
         })
     }
     return(
