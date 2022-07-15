@@ -497,34 +497,23 @@ def fetch_sp_profile():  # Fetch full name and address from database
 #########
 # End of get-sp-profile
 
-# edit-bio
+# logout
 #########
 @app.route('/logout', methods=['POST'])
 @cross_origin(supports_credentials=True)
-def edit_bio():
+def logout():
     user_id = get_user_id()
-    if user_id == -1:   # Check if user is signed in
-        resp = make_response( jsonify( {"Message": "Must be logged in before editing bio"} ), 400, )
-        return resp
-    sp_user = mu.load(config, 'amorr.service_providers', f'SELECT * FROM amorr.service_providers WHERE uid = \'{user_id}\'')
-    if len(sp_user) == 0:
-        resp = make_response( jsonify( {"Message": "User could not be determined as a valid service provider"} ), 404, )
-        return resp
-    elif len(sp_user) > 1:
-        resp = make_response( jsonify( {"Message": "Internal error: multiple records found for same user"} ), 500, )
-        return resp
-    content_type = request.headers.get('Content-Type')
-    r = request
-    if (content_type == 'application/json'):    # Case for JSON request body 
-        json = r.json
-        new_bio = json['bio']
-    else:                                       # Case for submitted form
-        new_bio = r.form['bio']
-    sql = f'UPDATE amorr.service_providers SET bio = \'{new_bio}\' WHERE uid = \'{user_id}\';'
-    mu.query(config, sql)
-    resp = make_response( jsonify( {"Message": "Bio edit request was successful!"} ), 200,)
+    if user_id == -1:
+        resp = make_response( jsonify( {"Message": "User is not signed in, therefore cannot log out"} ), 400, )
+    else:
+        user_email = SESSIONS[request.cookies.get('sessionId')].email_address
+        del SESSIONS[request.cookies.get('sessionId')]  # Delete session from flask server sessions
+        resp = make_response( jsonify( {"user_type": f"Logout successful for: {user_email}"} ), 200, )
+        resp.set_cookie('sessionId', '', expires=0) # Set sessionId to expire immediately
+        # resp.delete_cookie('sessionId')
+    return resp
 #########
-# End of edit-bio
+# End of logout
 
 ################################################################################################################################################
 ################################################################################################################################################
