@@ -1,4 +1,4 @@
-import React , { Fragment, useState }from 'react';
+import React , { Fragment, useState, useEffect }from 'react';
 import { Icon } from '@iconify/react';
 import './service_provider_list_prices.css'
 import { Divider } from '@mui/material';
@@ -10,9 +10,10 @@ const ServiceProviderListPrices = () => {
         {service: 'Men Haircut', price: '30.00'},
         {service: 'Women Haircut', price: '20.00'},
         {service: 'Hair wash', price: '30.00'},
-        {service: 'Basic Perm', price: '100.00'},
-        {service: 'Massage', price: '25.00'}
+        {service: 'Basic Perm', price: '100.00'}
     ];
+
+    const empty_data = [];
 
     // initial values
     const [servicesPricesList, setServicesPricesList] = useState(dummy_data);
@@ -23,6 +24,17 @@ const ServiceProviderListPrices = () => {
     const [editData, setEditData] =  useState(
         {service: "", price:""}
     )
+
+    
+    // GET REQUEST TO GET LIST OF SERVICES AND PRICES
+    // useEffect(() => {
+    //     fetch("http://localhost:5000/get-services-prices", {credentials: 'include'}).then(response =>
+    //       response.json().then(data => {
+    //         setServicesPricesList(data);
+    //       })
+    //     );
+    //   }, []);
+
     
     //******** EDITING HANDLERS START ********//
     // checking which service is selected when edit button is clicked
@@ -69,11 +81,24 @@ const ServiceProviderListPrices = () => {
 
         setServicesPricesList(newServicesPricesList);
         
-        // finished editting
+        // finished editting, so reinitialize the state
         setCheckService(null);
 
-        console.log(servicesPricesList);
-
+        // POST REQUEST to send new updated list of services and prices 
+        // var requestbody = new Object();
+        // requestbody.new_address = addr;
+        // fetch("http://localhost:5000/add-sp-price-list", {
+        //     method: 'POST',
+        //     headers: {"Content-Type": "application/json"},
+        //     credentials: "include",
+        //     body: JSON.stringify(servicesPricesList)
+        // }).then(response => {
+        //     if (response.ok){
+        //         setTimeout(function () {
+        //             window.location.reload();
+        //         }, 1300);
+        //     }
+        // })
     }
 
     const handleCancelClick = () => {
@@ -93,6 +118,7 @@ const ServiceProviderListPrices = () => {
         const newData = { ...addNewData };
         newData[fieldName] = fieldValue;
         setAddNewData(newData);
+
         console.log(addNewData);
     }
 
@@ -109,7 +135,21 @@ const ServiceProviderListPrices = () => {
         const newServicesPricesList = [...servicesPricesList, newServicePrice];
         setServicesPricesList(newServicesPricesList);
 
-        console.log(servicesPricesList);
+        // POST REQUEST to send new updated list of services and prices 
+        // var requestbody = new Object();
+        // requestbody.new_address = addr;
+        // fetch("http://localhost:5000/add-sp-price-list", {
+        //     method: 'POST',
+        //     headers: {"Content-Type": "application/json"},
+        //     credentials: "include",
+        //     body: JSON.stringify(servicesPricesList)
+        // }).then(response => {
+        //     if (response.ok){
+        //         setTimeout(function () {
+        //             window.location.reload();
+        //         }, 1300);
+        //     }
+        // })
     }
     //******** ADDING HANDLERS END ********//
 

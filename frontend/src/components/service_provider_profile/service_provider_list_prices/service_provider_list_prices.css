@@ -37,9 +37,10 @@
     margin-top: 7px;
     margin-left: 20px;
     margin-bottom: 30px;
-    width: 98%;
+    width: 99%;
     overflow-y: auto;
     overflow-x: hidden;
+    height: 28vh;
 }
   
 /* -------- ROWS OF SERVICE & PRICE STYLING START -------- */
