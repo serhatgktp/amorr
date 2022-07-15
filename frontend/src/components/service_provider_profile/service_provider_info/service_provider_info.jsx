@@ -98,9 +98,9 @@ const ServiceProviderInfo = () => {
                 <div id="service_provider_name">{fullName}</div>
 
                 <div id="rating">
-                    <span className="rating_num">4.5</span>
-                    <Rating name="read-only" size="medium" value={4.5} precision={0.5} readOnly />
-                    <span className="rating_num">(4)</span>
+                    <span className="rating_num">{rating}</span>
+                    <Rating name="read-only" size="medium" value={rating} precision={0.1} readOnly />
+                    <span className="rating_num">({numRating})</span>
                 </div>
 
                 <div id="services_completed"> <span>75 </span>Services Completed</div>
