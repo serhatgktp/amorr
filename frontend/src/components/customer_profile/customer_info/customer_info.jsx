@@ -111,7 +111,7 @@ const CustomerInfo = () => {
                     ) : (
                         <div id="editable_input"><input id="new_address" value={addr} onChange={handleChange} onKeyDown={onKeyDown} /></div>
                     ) }
-                    <button id="save_changes" onClick={handleSubmit}>Save Changes</button>
+                    <button id="save_changes" onClick={handleSubmit}>Save Address</button>
                 </div>
 
             </div>
