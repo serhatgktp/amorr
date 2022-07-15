@@ -69,7 +69,7 @@ const ServiceProviderListPrices = () => {
         e.preventDefault();
 
         const edittedServicePrice = {
-            id: editServiceId,
+            service_id: editServiceId,
             service: editData.service,
             price: editData.price
         }
@@ -86,9 +86,7 @@ const ServiceProviderListPrices = () => {
         // finished editting, so reinitialize the state
         setEditServiceId(null);
 
-        // POST REQUEST to send new updated list of services and prices 
-        // var requestbody = new Object();
-        // requestbody.new_address = addr;
+        // POST REQUEST to send the editted service and price with service id  
         // fetch("http://localhost:5000/edit-sp-price-list", {
         //     method: 'POST',
         //     headers: {"Content-Type": "application/json"},
@@ -137,18 +135,15 @@ const ServiceProviderListPrices = () => {
         const newServicesPricesList = [...servicesPricesList, newServicePrice];
         setServicesPricesList(newServicesPricesList);
 
-        window.location.reload();
-
-        // POST REQUEST to send new updated list of services and prices 
+        // POST REQUEST to send new service and price 
         // var requestbody = new Object();
-        // requestbody.new_address = addr;
         // fetch("http://localhost:5000/add-sp-price-list", {
         //     method: 'POST',
         //     headers: {"Content-Type": "application/json"},
         //     credentials: "include",
         //     body: JSON.stringify(newServicePrice)
         // }).then(response => {
-        //     if (response.ok){
+        //     if (response.ok) {
         //         setTimeout(function () {
         //             window.location.reload();
         //         }, 1300);
