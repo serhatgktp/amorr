@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import CustomerExplore from './components/customer_explore/customer_explore';
+import CustomerExplore from './components/customer_explore/customer_explore.jsx';
 /*
 import CustomerNavbar from './components/Navbar/customerNavbar.js';
 import ServiceProviderNavbar from './components/Navbar/serviceProviderNavbar.js';
