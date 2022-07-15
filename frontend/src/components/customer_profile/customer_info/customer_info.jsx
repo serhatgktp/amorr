@@ -82,15 +82,8 @@ const CustomerInfo = () => {
         data.append('pic', file)
         fetch("http://localhost:5000/upload-profile-photo", {
             method: 'POST',
-            headers: {"Content-Type": "application/json"},
             credentials: "include",
             body: data
-        }).then(response => {
-            if (response.ok){
-                setTimeout(function () {
-                    window.location.reload();
-                }, 1300);
-            }
         })
     }
     
