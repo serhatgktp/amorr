@@ -4,11 +4,11 @@ import ServiceProviderBio from "./service_provider_bio/service_provider_bio";
 const ServiceProviderProfile = () => {
     return(
         <div>
-            <ServiceProviderInfo/>
+            {/* <ServiceProviderInfo/> */}
             <ServiceProviderBio/>
         </div>
         
+
     )
 }
-
 export default ServiceProviderProfile
