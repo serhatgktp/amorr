@@ -11,9 +11,6 @@ const DeleteAccount = () => {
 
     const handleYes= () => {
 
-        fetch('https://jsonplaceholder.typicode.com/posts/1', { method: 'DELETE' })
-        .then(() => this.setState({ status: 'Delete successful' }));
-
         // fetch('http://localhost:5000/delete-account', {
         //     method: 'DELETE',
         //     headers: {"Content-Type": "application/json"},
