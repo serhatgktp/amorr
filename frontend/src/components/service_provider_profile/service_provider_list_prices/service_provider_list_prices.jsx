@@ -7,10 +7,10 @@ import EditableRow from './editable_row';
 
 const ServiceProviderListPrices = () => {
     const dummy_data = [
-        {service: 'Men Haircut', price: '30.00'},
-        {service: 'Women Haircut', price: '20.00'},
-        {service: 'Hair wash', price: '30.00'},
-        {service: 'Basic Perm', price: '100.00'}
+        {service_id: '1', service: 'Men Haircut', price: '30.00'},
+        {service_id: '2', service: 'Women Haircut', price: '20.00'},
+        {service_id: '3', service: 'Hair wash', price: '30.00'},
+        {service_id: '4', service: 'Basic Perm', price: '100.00'}
     ];
 
     const empty_data = [];
@@ -20,7 +20,7 @@ const ServiceProviderListPrices = () => {
     const [addNewData, setAddNewData] = useState(
         {service: "", price:""}
     )
-    const [checkService, setCheckService] = useState(null);
+    const [editServiceId, setEditServiceId] = useState(null);
     const [editData, setEditData] =  useState(
         {service: "", price:""}
     )
@@ -40,7 +40,7 @@ const ServiceProviderListPrices = () => {
     // checking which service is selected when edit button is clicked
     const handleEditClick = (e, swp) => {
         e.preventDefault();
-        setCheckService(swp.service);
+        setEditServiceId(swp.service_id);
 
         const formValues = {
             service: swp.service,
@@ -49,7 +49,7 @@ const ServiceProviderListPrices = () => {
         setEditData(formValues);
     }
 
-    // handling editting existing service / price
+    // handling editting existing service / price inputs
     const handleEditChange = (e) => {
         e.preventDefault();
         
@@ -59,6 +59,7 @@ const ServiceProviderListPrices = () => {
 
         const newData = { ...editData };
         newData[fieldName] = fieldValue;
+
         setEditData(newData);
         console.log(editData);
     }
@@ -68,6 +69,7 @@ const ServiceProviderListPrices = () => {
         e.preventDefault();
 
         const edittedServicePrice = {
+            id: editServiceId,
             service: editData.service,
             price: editData.price
         }
@@ -76,22 +78,22 @@ const ServiceProviderListPrices = () => {
         const newServicesPricesList = [...servicesPricesList];
         
         // update by replacing
-        const index = servicesPricesList.findIndex((swp) => swp.service === checkService);
+        const index = servicesPricesList.findIndex((swp) => swp.service_id === editServiceId);
         newServicesPricesList[index] = edittedServicePrice;
 
         setServicesPricesList(newServicesPricesList);
         
         // finished editting, so reinitialize the state
-        setCheckService(null);
+        setEditServiceId(null);
 
         // POST REQUEST to send new updated list of services and prices 
         // var requestbody = new Object();
         // requestbody.new_address = addr;
-        // fetch("http://localhost:5000/add-sp-price-list", {
+        // fetch("http://localhost:5000/edit-sp-price-list", {
         //     method: 'POST',
         //     headers: {"Content-Type": "application/json"},
         //     credentials: "include",
-        //     body: JSON.stringify(servicesPricesList)
+        //     body: JSON.stringify(edittedServicePrice)
         // }).then(response => {
         //     if (response.ok){
         //         setTimeout(function () {
@@ -102,7 +104,7 @@ const ServiceProviderListPrices = () => {
     }
 
     const handleCancelClick = () => {
-        setCheckService(null);
+        setEditServiceId(null);
     }
     //******** EDITING HANDLERS END ********//
 
@@ -135,6 +137,8 @@ const ServiceProviderListPrices = () => {
         const newServicesPricesList = [...servicesPricesList, newServicePrice];
         setServicesPricesList(newServicesPricesList);
 
+        window.location.reload();
+
         // POST REQUEST to send new updated list of services and prices 
         // var requestbody = new Object();
         // requestbody.new_address = addr;
@@ -142,7 +146,7 @@ const ServiceProviderListPrices = () => {
         //     method: 'POST',
         //     headers: {"Content-Type": "application/json"},
         //     credentials: "include",
-        //     body: JSON.stringify(servicesPricesList)
+        //     body: JSON.stringify(newServicePrice)
         // }).then(response => {
         //     if (response.ok){
         //         setTimeout(function () {
@@ -161,7 +165,7 @@ const ServiceProviderListPrices = () => {
             <div id="list_of_prices">
                 {servicesPricesList.map((swp) => (
                     <Fragment>
-                        { checkService === swp.service ? ( 
+                        { editServiceId === swp.service_id ? ( 
                             <EditableRow 
                                 editData={editData} 
                                 handleEditChange={handleEditChange} 
@@ -181,6 +185,7 @@ const ServiceProviderListPrices = () => {
                         id="input_service"
                         type="text"
                         name="service"
+                        maxlength="40"
                         required="required"
                         placeholder="Service"
                         onChange={handleAddChange}

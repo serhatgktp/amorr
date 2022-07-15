@@ -10,6 +10,7 @@ const editable_row = ( {editData, handleEditChange, handleSaveEdit, handleCancel
                 className="new_service" 
                 type="text" 
                 name="service"
+                maxlength="40"
                 value={editData.service} 
                 onChange={handleEditChange}/>
         </div>
