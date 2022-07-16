@@ -717,6 +717,8 @@ def fetch_sps():
             avg_rating = 'No reviews yet'
         tos_str = sp['type_of_services']
         tos = tos_str.strip('][').split(', ')   # Convert from string to list
+        for i in range(len(tos)):
+            tos[i] = tos[i].strip("'")
         if len(tos) == 1:
             services_str = tos[0]
         elif len(tos) == 2:
