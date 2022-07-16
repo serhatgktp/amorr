@@ -2,12 +2,20 @@ import React from 'react'
 import './initial-login-styles.css'
 import { Icon, InlineIcon } from '@iconify/react';
 import  { useNavigate } from 'react-router-dom'
+import { useRef, useState, useEffect} from 'react';
+import LogoutPopup from '../logout-popup/logoutPopup';
 
 const InitialLogin = () => {
     // For redirection
+
+    // Initial Settings for Logout Popup is FALSE, so the logout Popup is not rendered
+    const [triggerLogoutPopup, setTriggerLogoutPopup] = useState(false);
+
     const navigate = useNavigate();
     const handleLoginClick = (e) => {
         navigate('/login');
+        setTriggerLogoutPopup(true);
+        console.log("works");
     }
 
     return(
@@ -30,7 +38,7 @@ const InitialLogin = () => {
                     <button id="customer" onClick={handleLoginClick}><Icon icon="bi:person-fill" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'28px' }}/> CUSTOMER</button>
                 </div>
             </div>
-
+            <LogoutPopup trigger={triggerLogoutPopup}/>
         </body>
     )
 }
