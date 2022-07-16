@@ -6,6 +6,7 @@
     right: 0;
     bottom: 0;
     position: fixed;
+    z-index: 9999999
 }
 
 .overlay {
@@ -28,7 +29,7 @@
 
 .logoutPopupUpper {
     padding: 2em;
-    background-color: red;
+    background-color: rgba(49,49,49,0.8);
     display: block;
     color: #fff;
     border-top-right-radius: 8px;
@@ -68,7 +69,7 @@
     position: relative;
     top: 2em;
     text-decoration: none;
-    background: red;
+    background: rgba(49,49,49,0.8);
     color: #fff;
     margin: auto;
     padding: .8em 3em;
