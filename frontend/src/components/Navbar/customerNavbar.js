@@ -8,13 +8,8 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-import { useRef, useState, useEffect} from 'react';
-import LogoutPopup from '../logout-popup/logoutPopup';
 
 const CustomerNavbar = () => {
-
-  // Initial Settings for Logout Popup is FALSE, so the logout Popup is not rendered
-  const [triggerLogoutPopup, setTriggerLogoutPopup] = useState(false);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -116,7 +111,6 @@ const CustomerNavbar = () => {
 
       </Menu>
       </div>
-      <LogoutPopup trigger={triggerLogoutPopup}/>
     </div>
   );
 };
