@@ -127,19 +127,19 @@ const ServiceProviderListPrices = () => {
         setServicesPricesList(newServicesPricesList);
 
         // POST REQUEST to send new service and price 
-        // var requestbody = new Object();
-        // fetch("http://localhost:5000/add-sp-price-list", {
-        //     method: 'POST',
-        //     headers: {"Content-Type": "application/json"},
-        //     credentials: "include",
-        //     body: JSON.stringify(newServicePrice)
-        // }).then(response => {
-        //     if (response.ok) {
-        //         setTimeout(function () {
-        //             window.location.reload();
-        //         }, 1300);
-        //     }
-        // })
+        var requestbody = new Object();
+        fetch("http://localhost:5000/add-sp-price-list", {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            credentials: "include",
+            body: JSON.stringify(newServicePrice)
+        }).then(response => {
+            if (response.ok) {
+                setTimeout(function () {
+                    window.location.reload();
+                }, 1300);
+            }
+        })
     }
     //******** ADDING HANDLERS END ********//
 
