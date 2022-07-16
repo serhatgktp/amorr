@@ -3,28 +3,36 @@
 import * as React from 'react';
 import { useState } from "react"; 
 // import Axios from 'react'; 
-import './delete_account.css'
+import './delete_account.css';
+import  { useNavigate } from 'react-router-dom'
 
 const DeleteAccount = () => {
 
-    
+    const navigate = useNavigate();    
 
     const handleYes= () => {
 
-        // fetch('http://localhost:5000/delete-account', {
-        //     method: 'DELETE',
-        //     headers: {"Content-Type": "application/json"},
-        // }).then(response => {
-        //     if (response.ok){
-        //         console.log('User Deleted!'); 
-        //         window.location.reload();
-        //     }else {
-        //         throw new Error(response.statusText)
-        //     }
-        // }).catch(err => {
-        //     console.log(err)
-        // })
+        fetch('http://localhost:5000/delete-account', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            credentials: 'include',
+        }).then(response => {
+            if (response.ok){
+                console.log('User Deleted!'); 
+                navigate('/initial-signup-landing');
+                window.location.reload();
+                
+            }else {
+                throw new Error(response.statusText)
+            }
+        }).catch(err => {
+            console.log(err)
+        })
     };
+
+    const handleNo=()=>{
+        navigate('/home');
+    }
 
     return(
         <body className='delete_account_wrapper'>
@@ -33,8 +41,10 @@ const DeleteAccount = () => {
                 <p className='sure'> Are you sure you want to delete your account? </p>
                 <p className='sure'> Deleting account will result in losing all your data.</p>
 
-                <button className = 'yes' onClick={handleYes}> <a href='/initial-signup-landing' >Yes</a> </button>
-                <button className='no'> <a href='/home' >No</a></button>
+               
+                <button className = 'yes' onClick={handleYes}> Yes </button>
+                <button className='no' onClick={handleNo}> No </button>
+                
             </div>
             
             {/* <DeletePopup trigger={triggerDeletePopup} /> */}

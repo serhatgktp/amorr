@@ -262,10 +262,10 @@ def do_contact():
 # Delete Account 
 #########
 
-@app.route('/delete-account', methods=['DELETE'])
+@app.route('/delete-account', methods=['POST'])
 @cross_origin(supports_credentials=True)
 def delete_account():
-    if request.method == 'DELETE':
+    if request.method == 'POST':
         return fetch()
 def fetch(): # gets uid
     user_id = get_user_id()
@@ -283,6 +283,9 @@ def fetch(): # gets uid
             404,
         )
     else: 
+        user_email = SESSIONS[request.cookies.get('sessionId')].email_address
+        del SESSIONS[request.cookies.get('sessionId')]
+
         mu.delete(config, [f'uid = \'{user_id}\''], 'amorr.users')
         resp = make_response(
          jsonify(
@@ -291,6 +294,7 @@ def fetch(): # gets uid
          200,
      )
     resp.headers["Content-Type"] = "application/json"
+    resp.set_cookie('sessionId', '', expires=0)
     return resp
 
 #########
