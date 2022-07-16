@@ -5,6 +5,7 @@ Python Dependencies:
 pip install pymysql
 pip install pandas
 pip install flask
+pip install requests
 ```
 
 ## 1) Configuration
