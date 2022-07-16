@@ -42,7 +42,7 @@
     font-size: 18px;
 }
 
-#change_photo_label_sp{
+#change_photo_label{
     background-color: #345392;
     color: white;
     font-size: 12px;
@@ -51,7 +51,7 @@
     padding: 5px;
 }
 
-#change_photo_label_sp:hover{
+#change_photo_label:hover{
     background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0 0);
 }
 

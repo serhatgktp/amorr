@@ -11,11 +11,7 @@ const CustomerInfo = () => {
     const [isEdit, setIsEdit] = useState(false);
     const [fullName, setFullName] = useState('');
     const [file, setFile] = useState('')
-    const SmallAvatar = styled(Avatar)(({ theme }) => ({
-        width: 22,
-        height: 22,
-        border: `2px solid ${theme.palette.background.paper}`,
-      }));
+
     useEffect(() => {
         setImage("http://localhost:5000/get-profile-photo");
         fetch("http://localhost:5000/get-profile", {credentials: 'include'}).then(response =>
@@ -91,18 +87,18 @@ const CustomerInfo = () => {
         <div id="customer_info">
 
             <div id="customer_left">
-            <form>
-                <Badge
-                overlap="circular"
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                badgeContent={
-                    <label htmlFor="change_photo" className="image-upload" id="change_photo_label_sp"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px'}}/></label>
-                }>
-                    <div><Avatar alt="Sans Calibri" src={img} sx={{ width: 120, height: 120, mb: 1 }} id="customer_photo"/></div>
-                </Badge>
-                    <input type="file" name="pic" id="change_photo" accept="image/*" onChange={imageHandler}/>
-                    <button id="upload_image" type="submit" onClick={handlePicSubmit}>Save profile photo</button>
-            </form>
+                <form>
+                    <Badge
+                    overlap="circular"
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                    badgeContent={
+                        <label htmlFor="change_photo" className="image-upload" id="change_photo_label"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px'}}/></label>
+                    }>
+                        <div><Avatar alt="Sans Calibri" src={img} sx={{ width: 120, height: 120, mb: 1 }} id="customer_photo"/></div>
+                    </Badge>
+                        <input type="file" name="pic" id="change_photo" accept="image/*" onChange={imageHandler}/>
+                        <button id="upload_image" type="submit" onClick={handlePicSubmit}>Save profile photo</button>
+                </form>
             </div>
 
             <div id="customer_right">
