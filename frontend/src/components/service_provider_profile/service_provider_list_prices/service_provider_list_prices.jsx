@@ -85,9 +85,7 @@ const ServiceProviderListPrices = () => {
             body: JSON.stringify(edittedServicePrice)
         }).then(response => {
             if (response.ok){
-                setTimeout(function () {
-                    window.location.reload();
-                }, 1300);
+                window.location.reload();
             }
         })
     }
@@ -135,9 +133,7 @@ const ServiceProviderListPrices = () => {
             body: JSON.stringify(newServicePrice)
         }).then(response => {
             if (response.ok) {
-                setTimeout(function () {
-                    window.location.reload();
-                }, 1300);
+                window.location.reload();
             }
         })
     }
@@ -181,6 +177,7 @@ const ServiceProviderListPrices = () => {
                         type="number"
                         name="price"
                         min="0"
+                        step=".01"
                         required="required"
                         placeholder="Price"
                         onChange={handleAddChange}
