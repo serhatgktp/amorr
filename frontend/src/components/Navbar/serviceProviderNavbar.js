@@ -67,8 +67,8 @@ const ServiceProviderNavbar = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem sx={{ fontSize: '14px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/> <a href="/profile"> <b>Manage Account</b> </a> </MenuItem>
-        <MenuItem sx={{ fontSize: '14px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><DeleteIcon />  <b>Delete Account</b></MenuItem>
+        <MenuItem onClick={handleClose} sx={{ fontSize: '14px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/> <a href="/sp_profile"> <b>Manage Account</b> </a> </MenuItem>
+        <MenuItem onClick={handleClose} sx={{ fontSize: '14px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><DeleteIcon />  <b>Delete Account</b></MenuItem>
         <MenuItem onClick={handleClose} sx={{ fontSize: '14px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <a href="/sp_logout"><b>Logout</b></a></MenuItem>
       </Menu>
       </div>
