@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, {useEffect} from "react";
+=======
+import React from 'react';
+>>>>>>> d23362e1a60f3c0a3d9a2ecd3e40aa3d59bf8660
 import "./Navbar.css";
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -8,13 +12,22 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SettingsIcon from '@mui/icons-material/Settings';
 
+import { useRef, useState, useEffect} from 'react';
+import LogoutPopup from '../logout-popup/logoutPopup';
+
+
 const CustomerNavbar = () => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
+  // Initial Settings for Logout Popup is FALSE, so the logout Popup is not rendered
+  const [triggerLogoutPopup, setTriggerLogoutPopup] = useState(false);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+<<<<<<< HEAD
   const handleClose = (e) => {
     fetch("http://localhost:5000/logout", {
         method: 'POST',
@@ -45,7 +58,19 @@ const CustomerNavbar = () => {
       //     console.log(err)
       //   })
 
+=======
+>>>>>>> d23362e1a60f3c0a3d9a2ecd3e40aa3d59bf8660
+  const handleLogout = () => {
+    setAnchorEl(null);
+    setTriggerLogoutPopup(true);
+    // Set a timer to close the popup after 1.2 seconds for redirecting
+    setTimeout(function () {
+      setTriggerLogoutPopup(false);
+      console.log("works");
+      window.location.reload();
+  }, 1300);
   };
+<<<<<<< HEAD
     //setDeletionPopup(true);
   //   fetch('http://localhost:5000/homepage', {
   //     method: 'POST',
@@ -66,6 +91,13 @@ const CustomerNavbar = () => {
   //     console.log(err)
   //   })
 
+=======
+>>>>>>> d23362e1a60f3c0a3d9a2ecd3e40aa3d59bf8660
+
+  const handleClose = () => {
+    setAnchorEl(null);
+    
+  };
 
   return (
     
@@ -104,12 +136,22 @@ const CustomerNavbar = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
+<<<<<<< HEAD
         <MenuItem sx={{ fontSize: '15px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/>  <a href="/profile"><b>Manage Account</b></a></MenuItem>
         <MenuItem  sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><DeleteIcon />  <b>Delete Account</b></MenuItem>
         <MenuItem onClick={handleClose} sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <a href="/customer_logout"><b>Logout</b></a></MenuItem>
 
+=======
+        <MenuItem onClick={handleClose} sx={{ fontSize: '15px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/>  <a href="/profile"><b>Manage Account</b></a></MenuItem>
+        <MenuItem onClick={handleClose} sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><DeleteIcon />  <b>Delete Account</b></MenuItem>
+        <MenuItem onClick={handleLogout} sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <b>Logout</b></MenuItem>
+<<<<<<< HEAD
+>>>>>>> 18d3b9b (STAC-178 navigate logout)
+=======
+>>>>>>> d23362e1a60f3c0a3d9a2ecd3e40aa3d59bf8660
       </Menu>
       </div>
+      <LogoutPopup trigger={triggerLogoutPopup} redirection="/sp-register"/>
     </div>
   );
 };
