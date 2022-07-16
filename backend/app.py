@@ -262,10 +262,10 @@ def do_contact():
 # Delete Account 
 #########
 
-@app.route('/delete-account', methods=['DELETE'])
+@app.route('/delete-account', methods=['POST'])
 @cross_origin(supports_credentials=True)
 def delete_account():
-    if request.method == 'DELETE':
+    if request.method == 'POST':
         return fetch()
 def fetch(): # gets uid
     user_id = get_user_id()

@@ -11,19 +11,20 @@ const DeleteAccount = () => {
 
     const handleYes= () => {
 
-        // fetch('http://localhost:5000/delete-account', {
-        //     method: 'DELETE',
-        //     headers: {"Content-Type": "application/json"},
-        // }).then(response => {
-        //     if (response.ok){
-        //         console.log('User Deleted!'); 
-        //         window.location.reload();
-        //     }else {
-        //         throw new Error(response.statusText)
-        //     }
-        // }).catch(err => {
-        //     console.log(err)
-        // })
+        fetch('http://localhost:5000/delete-account', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            credentials: 'include',
+        }).then(response => {
+            if (response.ok){
+                console.log('User Deleted!'); 
+                window.location.reload();
+            }else {
+                throw new Error(response.statusText)
+            }
+        }).catch(err => {
+            console.log(err)
+        })
     };
 
     return(
