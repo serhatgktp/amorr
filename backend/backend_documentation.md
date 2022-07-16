@@ -5,6 +5,7 @@ Python Dependencies:
 pip install pymysql
 pip install pandas
 pip install flask
+pip install requests
 ```
 
 ## 1) Configuration
@@ -17,11 +18,7 @@ Sessions are aggregated in the `SESSIONS` dictionary. A `sessionId` string is ge
 The key/value pair `sessionId`:`User(sql_data)` is added to the `SESSIONS` dictionary after each user login.
 Each entry has a maximum age of 30 minutes (1800 seconds).
 
-## 3) Storage Solution
-All factual data is stored in a MySQL database. For now, we are running our app on our local databases. In production, we would set up a remote MySQL database in a Linux instance on a cloud server (Such as AWS EC2 or S3).
-Images and profile photos are stored on the same filesystem that contains the flask instance. When a GET request is made to fetch a profile photo, flask receives the path of the photo from the database, fetches the image, and sends the image as a response, which the front end then renders.
-
-## 4) Classes
+## 3) Classes
 
 ### User()
 
@@ -107,3 +104,28 @@ Returns: JSON Response
 Params: None
 Returns: JSON Response
 "Allows editing of the current user's address"
+
+### get_pfp()
+Params: None
+Returns: Image file
+"Fetches user's profile image"
+
+### edit_profile_address()
+Params: None
+Returns: JSON Response
+"Replaces user's profile address in DB with the address received in the request body"
+
+### get_price_list()
+Params: None
+Returns: JSON Response
+"Fetches SP's service-price list"
+
+### check_user_type()
+Params: None
+Returns: JSON Response
+"Indicates whether user is a Guest (not logged in), Customer, Service Provider, or Admin"
+
+### get_sp_profile()
+Params: None
+Returns: JSON Response
+"Fetches all information belonging to a service provider"
