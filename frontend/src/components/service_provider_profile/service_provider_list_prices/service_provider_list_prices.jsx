@@ -78,18 +78,18 @@ const ServiceProviderListPrices = () => {
         setEditServiceId(null);
 
         // POST REQUEST to send the editted service and price with service id  
-        // fetch("http://localhost:5000/edit-sp-price-list", {
-        //     method: 'POST',
-        //     headers: {"Content-Type": "application/json"},
-        //     credentials: "include",
-        //     body: JSON.stringify(edittedServicePrice)
-        // }).then(response => {
-        //     if (response.ok){
-        //         setTimeout(function () {
-        //             window.location.reload();
-        //         }, 1300);
-        //     }
-        // })
+        fetch("http://localhost:5000/edit-sp-price-list", {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            credentials: "include",
+            body: JSON.stringify(edittedServicePrice)
+        }).then(response => {
+            if (response.ok){
+                setTimeout(function () {
+                    window.location.reload();
+                }, 1300);
+            }
+        })
     }
 
     const handleCancelClick = () => {
