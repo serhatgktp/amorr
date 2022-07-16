@@ -198,7 +198,7 @@ def do_register():  # Assuming username, password, & email regex is implemented 
 
         # Case for service provider
         if user_type == 'Service Provider':
-            d = {'uid':[user_id], 'bio':[''], 'types_of_services':[str(type_of_services)]}
+            d = {'uid':[user_id], 'bio':[''], 'type_of_services':[str(type_of_services)]}
             df = pd.DataFrame.from_dict(d)
             mu.insert(config, 'service_providers', df)  # Create new entry for new customer user
 
@@ -507,13 +507,17 @@ def fetch_sp_profile():  # Fetch full name and address from database
         address = user[0]['address']
 
         bio = sp[0]['bio']
-        services = sp[0]['types_of_services']
+        services = sp[0]['type_of_services']
         
         sql = f'SELECT COUNT(*) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
         num_ratings = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
         
         sql = f'SELECT AVG(rating) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
-        avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
+        avg = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)']
+        if avg is not None:
+            avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
+        else:
+            avg_rating = 'No reviews yet'
 
         resp = make_response(
             jsonify(
