@@ -607,6 +607,9 @@ def edit_pricelist():
     
     sql = f'UPDATE amorr.services SET price = \'{new_price}\' WHERE service_id = \'{service_id}\';'
     mu.query(config, sql)
+    sql = f'UPDATE amorr.services SET name = \'{service}\' WHERE service_id = \'{service_id}\';'
+    mu.query(config, sql)
+
     resp = make_response( jsonify( {"message": f"Price for service '{service}' was successfully updated!"} ), 200,)    
     return resp
 #########
