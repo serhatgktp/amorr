@@ -283,6 +283,9 @@ def fetch(): # gets uid
             404,
         )
     else: 
+        user_email = SESSIONS[request.cookies.get('sessionId')].email_address
+        del SESSIONS[request.cookies.get('sessionId')]
+
         mu.delete(config, [f'uid = \'{user_id}\''], 'amorr.users')
         resp = make_response(
          jsonify(
@@ -291,6 +294,7 @@ def fetch(): # gets uid
          200,
      )
     resp.headers["Content-Type"] = "application/json"
+    resp.set_cookie('sessionId', '', expires=0)
     return resp
 
 #########
