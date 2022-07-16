@@ -15,10 +15,6 @@ import InitialLogin from './components/initial-login/initial-login';
 import InitialSignUp from './components/initial-signup/initial-signup';
 import Login from './components/login-page/login-page';
 import CustomerProfile from './components/customer_profile/customer_profile';
-import CustomerExplore from './components/customer_explore/customer_explore.jsx';
-import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile';
-import CustomerExplore from './components/customer_explore/customer_explore.js';
-
 
 import {
   BrowserRouter as Router,
@@ -26,6 +22,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
 
 function App(){
   
@@ -52,7 +49,7 @@ function App(){
   }, [loggedIn, type]);
 
   return (
-    <div>
+    <body>
     <div>
     {!loggedIn && !type ? <Navbar/> : ''}
     {loggedIn && type ? <CustomerNavbar/> : ''}
@@ -73,15 +70,11 @@ function App(){
         <Route path='/initial-signup' element={<InitialSignUp/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/profile' element={<CustomerProfile/>}/>
-        <Route path='/customer_logout' element={<InitialLogin/>}/>
-        <Route path='/customer-explore' element={<CustomerExplore/>}/>
-        <Route path='/sp_logout' element={<InitialLogin/>}/></Routes>
         <Route path='/sp_profile' element={<ServiceProviderProfile/>}/>
-        <Route path='/explore' element={<CustomerExplore/>}/>
-        <Route path='/customer_logout' element={<InitialLogin/>}/>
-        <Route path='/sp_logout' element={<InitialLogin/>}/>
+
+      </Routes>
     </Router>
-    </div>    
+    </body>
   )
  }
 export default App;

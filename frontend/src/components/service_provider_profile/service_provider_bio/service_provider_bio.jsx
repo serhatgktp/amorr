@@ -42,14 +42,16 @@ const ServiceProviderBio = () => {
     }
     return(
         <div id="service_provider_bio">
-        <div id="service_provider_name">About {fullName}</div>
-                    {!isEdit ? 
-                    (
-                        <div id="user_address">{bio}<button id="edit_button" onClick={ () => {setIsEdit(true)}}><Icon icon="mdi:pencil"  /></button></div>
-                    ) : (
-                        <textarea id="new_address" maxlength="1500" rows="10" cols="50" value={bio} onChange={handleChange} onKeyDown={onKeyDown} ></textarea>
-                    ) }
-                    <button id="save_changes" onClick={handleSubmit}>Save Changes</button>
+            <div id="service_provider_name">About {fullName}</div>
+            <div id="service_provider_bio_area">
+                {!isEdit ? 
+                (
+                    <div id="user_address">{bio}<button id="edit_button" onClick={ () => {setIsEdit(true)}}><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginLeft: '7px'}}/></button></div>
+                ) : (
+                    <textarea id="new_address" maxlength="1500" rows="10" cols="50" value={bio} onChange={handleChange} onKeyDown={onKeyDown} ></textarea>
+                ) }
+            </div>
+            <button id="save_changes" onClick={handleSubmit}>Save Changes</button>
         </div>
     )
 }
