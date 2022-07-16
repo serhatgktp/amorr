@@ -24,6 +24,7 @@ const CustomerNavbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
     setTriggerLogoutPopup(true);
+    console.log("works");
   };
 
   return (
@@ -69,7 +70,7 @@ const CustomerNavbar = () => {
         <MenuItem onClick={handleClose} sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <b>Logout</b></MenuItem>
       </Menu>
       </div>
-      <LogoutPopup trigger={triggerLogoutPopup} redirection="/sp-register"/>
+      <LogoutPopup trigger={triggerLogoutPopup}/>
     </div>
   );
 };
