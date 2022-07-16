@@ -25,9 +25,15 @@ const CustomerNavbar = () => {
   };
   const handleClose = () => {
     setAnchorEl(null);
-
     setTriggerLogoutPopup(true);
-    console.log("works");
+    // Set a timer to close the popup after 1.2 seconds for redirecting
+    setTimeout(function () {
+      setTriggerLogoutPopup(false);
+      console.log("works");
+      // Redirect to Home (TODO: or My Profile page according to type of user) after
+      navigate('/home');
+      window.location.reload();
+  }, 1300);
   };
 
   return (

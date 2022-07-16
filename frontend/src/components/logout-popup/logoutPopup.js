@@ -11,9 +11,8 @@ function LogoutPopup(props) {
               <Icon id="logoutPopoutIcon" icon="ri:logout-box-r-line"/>
             </div>
             <div className="logoutPopupLower">
-              <h1 id="logoutPopupHeading">Logged Out</h1>
+              <h1 id="logoutPopupHeading">Logging Out...</h1>
               <p id="logoutPopupPara">You have succefully logged out of your account!</p>
-        
             </div>
         </div>
   </div>
