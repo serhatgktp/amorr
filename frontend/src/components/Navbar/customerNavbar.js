@@ -28,6 +28,45 @@ const CustomerNavbar = () => {
     })
 }
 
+  const handleDel = () => {
+
+    //navigate('/login');
+      
+      // fetch('http://localhost:5000/contact', {
+      //     method: 'DELETE',
+      //     headers: {"Content-Type": "application/json"},
+      // }).then(response => {
+      //     if (response.ok){
+      //         console.log('New message added'); 
+      //     }else {
+      //         throw new Error(response.statusText)
+      //     }
+      //     }).catch(err => {
+      //     console.log(err)
+      //   })
+
+  };
+    //setDeletionPopup(true);
+  //   fetch('http://localhost:5000/homepage', {
+  //     method: 'POST',
+  //     headers: {"Content-Type": "application/json"},
+  // }).then(response => {
+  //     if (response.ok){
+  //         console.log('Delete user'); 
+  //         setDeletionPopup(true);
+  //         // Set a timer to close the popup after 1.2 seconds for redirecting
+  //         setTimeout(function () {
+  //           setDeletionPopup(false);
+  //             window.location.reload();
+  //         }, 1300);
+  //     }else {
+  //         throw new Error(response.statusText)
+  //     }
+  //     }).catch(err => {
+  //     console.log(err)
+  //   })
+
+
   return (
     
     <div className="Navbar">
@@ -68,6 +107,7 @@ const CustomerNavbar = () => {
         <MenuItem sx={{ fontSize: '15px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/>  <a href="/profile"><b>Manage Account</b></a></MenuItem>
         <MenuItem  sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><DeleteIcon />  <b>Delete Account</b></MenuItem>
         <MenuItem onClick={handleClose} sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <a href="/customer_logout"><b>Logout</b></a></MenuItem>
+
       </Menu>
       </div>
     </div>

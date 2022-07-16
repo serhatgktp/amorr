@@ -155,6 +155,9 @@ def do_register():  # Assuming username, password, & email regex is implemented 
         user_type = json['user_type']
         full_name = json['full_name']
         password = json['password']
+
+        if user_type == 'Service Provider':  # Handle additional field
+            type_of_services = json['type_of_services'] 
     
     else:                                       # Case for submitted form
         email_address = r.form['email_address']
@@ -193,7 +196,11 @@ def do_register():  # Assuming username, password, & email regex is implemented 
             df = pd.DataFrame.from_dict(d)
             mu.insert(config, 'customers', df)  # Create new entry for new customer user
 
-        # No case for service provider as of now. SP registration form is not complete yet.
+        # Case for service provider
+        if user_type == 'Service Provider':
+            d = {'uid':[user_id], 'bio':[''], 'types_of_services':[str(type_of_services)]}
+            df = pd.DataFrame.from_dict(d)
+            mu.insert(config, 'service_providers', df)  # Create new entry for new customer user
 
         resp = make_response(
             jsonify(
@@ -249,6 +256,45 @@ def do_contact():
 
 #########
 # End of ContactUs
+
+
+
+# Delete Account 
+#########
+
+@app.route('/delete-account', methods=['DELETE'])
+@cross_origin(supports_credentials=True)
+def delete_account():
+    if request.method == 'DELETE':
+        return fetch()
+def fetch(): # gets uid
+    user_id = get_user_id()
+
+    if user_id == -1:
+        resp = make_response(jsonify( {'message': 'User not logged in'} ), 400,)
+        return resp
+
+    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
+    if len(user) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": "User not found!"}
+            ),
+            404,
+        )
+    else: 
+        mu.delete(config, [f'uid = \'{user_id}\''], 'amorr.users')
+        resp = make_response(
+         jsonify(
+             {"message": "Deleted User!"}
+         ),
+         200,
+     )
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+
+#########
+# End of Delete Account 
 
 # get-profile
 #########
@@ -334,8 +380,8 @@ def upload_file():  # Expects one image and sessionID
         sql = f'UPDATE amorr.profile_photos SET pfp_path = \'{user_id + filetype}\' WHERE uid = \'{user_id}\';'
         mu.query(config, sql)
 
-        resp = make_response(jsonify( {'message': 'Profile photo was successfully changed!'} ), 200,)
-        return resp
+        # resp = make_response(jsonify( {'message': 'Profile photo was successfully changed!'} ), 200,)
+        return redirect("http://localhost:3000/profile", code=200)
 
     elif not allowed_file(file.filename):   # Unsupported file type
         resp = make_response(jsonify( {'message': 'File type not supported!'} ), 400,)
@@ -412,9 +458,38 @@ def edit_profile_address():  # Change address on profile
 #########
 # End of edit-profile-address
 
+# get-sp-price-list
+#########
+@app.route('/get-sp-price-list', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_price_list():
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"message": "You must be logged in to view your profile"} ), 400, )
+        return resp
+    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
+    if len(user) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": f"User not found! (uid: {user_id})"}
+            ),
+            404,
+        )
+    sql = f"SELECT * FROM amorr.services WHERE uid = '{user_id}'"
+    data = mu.load(config, 'amorr.services', sql)
+    if len(data) == 0:
+        resp = make_response(jsonify([]), 200, )    # Return an empty array
+    else:
+        services = []
+        for row in data:
+            services.append({'service_id':row['service_id'], 'service':row['name'], 'price':row['price']})
+        resp = make_response(jsonify(services), 200, )    # Return services as an array of dictionaries
+    return resp
+#########
+# End of get-sp-price-list
+
 # check-user-type
 #########
-
 @app.route('/check-user-type', methods=['GET'])
 @cross_origin(supports_credentials=True)
 def check_user_type():
@@ -499,7 +574,7 @@ def fetch_sp_profile():  # Fetch full name and address from database
 
 # logout
 #########
-@app.route('/logout', methods=['POST'])
+@app.route('/edit-bio', methods=['POST'])
 @cross_origin(supports_credentials=True)
 def logout():
     user_id = get_user_id()
@@ -508,6 +583,27 @@ def logout():
     else:
         user_email = SESSIONS[request.cookies.get('sessionId')].email_address
         del SESSIONS[request.cookies.get('sessionId')]  # Delete session from flask server sessions
+        resp = make_response( jsonify( {"user_type": f"Logout successful for: {user_email}"} ), 200, )
+        resp.set_cookie('sessionId', '', expires=0) # Set sessionId to expire immediately
+        # resp.delete_cookie('sessionId')
+    return resp
+#########
+# End of logout
+
+
+# logout
+#########
+@app.route('/logout', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def logout():
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"Message": "User is not signed in, therefore cannot log out"} ), 400, )
+    else:
+        user_email = SESSIONS[request.cookies.get('sessionId')].email_address
+
+        del SESSIONS[request.cookies.get('sessionId')]  # Delete session from flask server sessions
+
         resp = make_response( jsonify( {"user_type": f"Logout successful for: {user_email}"} ), 200, )
         resp.set_cookie('sessionId', '', expires=0) # Set sessionId to expire immediately
         # resp.delete_cookie('sessionId')
