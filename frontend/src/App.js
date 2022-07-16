@@ -74,7 +74,6 @@ function App(){
         <Route path='/profile' element={<CustomerProfile/>}/>
         <Route path='/sp_profile' element={<ServiceProviderProfile/>}/>
         <Route path='/explore' element={<CustomerExplore/>}/>
-      </Routes>
         <Route path='/customer_logout' element={<InitialLogin/>}/>
         <Route path='/sp_logout' element={<InitialLogin/>}/></Routes>
     </Router>
