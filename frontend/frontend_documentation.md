@@ -1,4 +1,4 @@
-# Frontend Documentation
+# The Frontend Documentation
 
 How to update React Dependencies and start frontend:
 ```
