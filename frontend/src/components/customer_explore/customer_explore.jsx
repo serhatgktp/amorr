@@ -229,89 +229,93 @@ const CustomerExplore = () => {
     }
 
     return(
-        <>
+      <>
         <input
-        name="searchname"
-        placeholder="Search"
-        value={searchValue}
-        onChange={e => setSearchValue(e.target.value)}
+          name="searchname"
+          placeholder="Search"
+          value={searchValue}
+          onChange={e => setSearchValue(e.target.value)}
         />
 
         <button
-        type="button"
-        onClick={() => setSearchTerm(searchValue)}
+          type="button"
+          onClick={() => setSearchTerm(searchValue)}
         >Search</button>
 
         <div>Filters:</div>
+
         <div>
-        Hairdresser
-        <input
-          type="checkbox"
-          value={hairdresserFilter}
-          onChange={handleHairdresser}
-          id="isHairdresser"
-          name="isHairdresser"
-        />
+          Hairdresser
+          <input
+            type="checkbox"
+            value={hairdresserFilter}
+            onChange={handleHairdresser}
+            id="isHairdresser"
+            name="isHairdresser"
+          />
         </div>
+
         <div>
-        Barber
-        <input
-          type="checkbox"
-          value={barberFilter}
-          onChange={handleBarber}
-          id="isBarber"
-          name="isBarber"
-        />
+          Barber
+          <input
+            type="checkbox"
+            value={barberFilter}
+            onChange={handleBarber}
+            id="isBarber"
+            name="isBarber"
+          />
         </div>
+
         <div>
-        Cleaner
-        <input
-          type="checkbox"
-          value={cleanerFilter}
-          onChange={handleCleaner}
-          id="isCleaner"
-          name="isCleaner"
-        />
+          Cleaner
+          <input
+            type="checkbox"
+            value={cleanerFilter}
+            onChange={handleCleaner}
+            id="isCleaner"
+            name="isCleaner"
+          />
         </div>
+
         <div>
-        Massage
-        <input
-          type="checkbox"
-          value={massageFilter}
-          onChange={handleMassage}
-          id="isMassage"
-          name="isMassage"
-        />
+          Massage
+          <input
+            type="checkbox"
+            value={massageFilter}
+            onChange={handleMassage}
+            id="isMassage"
+            name="isMassage"
+          />
         </div>
 
         <div>
         Eyebrow Tech
-        <input
-          type="checkbox"
-          value={eyebrowFilter}
-          onChange={handleEyebrow}
-          id="isEyebrow"
-          name="isEyebrow"
-        />
+          <input
+            type="checkbox"
+            value={eyebrowFilter}
+            onChange={handleEyebrow}
+            id="isEyebrow"
+            name="isEyebrow"
+          />
         </div>
 
         <div>
-        Eyelash Tech
-        <input
-          type="checkbox"
-          value={eyelashFilter}
-          onChange={handleEyelash}
-          id="isEyelash"
-          name="isEyelash"
-        />
+          Eyelash Tech
+          <input
+            type="checkbox"
+            value={eyelashFilter}
+            onChange={handleEyelash}
+            id="isEyelash"
+            name="isEyelash"
+          />
         </div>
 
         <ul>
-        {filteredSearchedSp.map(data => (
-                <InteractiveCard SP={data}></InteractiveCard>
-        ))}
+          {filteredSearchedSp.map(data => (
+            <InteractiveCard SP={data}></InteractiveCard>
+          ))}
         </ul>
-        </>
+      </>
     )
 }
 
