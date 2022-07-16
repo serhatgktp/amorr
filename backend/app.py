@@ -622,6 +622,66 @@ def logout():
 #########
 # End of logout
 
+# edit-sp-price-list
+#########
+@app.route('/edit-sp-price-list', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def edit_pricelist():
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"Message": "Must be signed in to edit price list!"} ), 400, )
+        return resp
+    r = request
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':    # Case for JSON request body 
+        json = r.json
+        service_id = json['service_id']
+        service = json['service']
+        new_price = json['price']
+    
+    else:                                       # Case for submitted form
+        service_id = r.form['service_id']
+        service = r.form['service']
+        new_price = r.form['price']
+    
+    sql = f'UPDATE amorr.services SET price = \'{new_price}\' WHERE service_id = \'{service_id}\';'
+    mu.query(config, sql)
+    sql = f'UPDATE amorr.services SET name = \'{service}\' WHERE service_id = \'{service_id}\';'
+    mu.query(config, sql)
+
+    resp = make_response( jsonify( {"message": f"Price for service '{service}' was successfully updated!"} ), 200,)    
+    return resp
+#########
+# End of edit-sp-price-list
+
+# add-sp-price-list
+#########
+@app.route('/add-sp-price-list', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def add_pricelist():
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"Message": "Must be signed in to add a service to their price list!"} ), 400, )
+        return resp
+    r = request
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':    # Case for JSON request body 
+        json = r.json
+        service = json['service']
+        price = json['price']
+    
+    else:                                       # Case for submitted form
+        service = r.form['service']
+        price = r.form['price']
+
+    sql = f"INSERT INTO amorr.services (uid, name, price) VALUES ('{user_id}', '{service}', '{price}');"
+    mu.query(config, sql)
+
+    resp = make_response( jsonify( {"message": f"Service '{service}' was successfully added!"} ), 200,)    
+    return resp
+#########
+# End of add-sp-price-list
+
 ################################################################################################################################################
 ################################################################################################################################################
 ################################################################################################################################################

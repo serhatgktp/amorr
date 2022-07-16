@@ -47,6 +47,13 @@ CREATE TABLE amorr.sp_reviews (	-- Reviews given to SPs from Customers
   `rating` VARCHAR(45) NULL,
   `review` VARCHAR(1000) NULL);
 
+CREATE TABLE `amorr`.`services` (
+  `service_id` INT NOT NULL AUTO_INCREMENT,
+  `uid` VARCHAR(45) NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
+  `price` VARCHAR(45) NULL,
+  PRIMARY KEY(service_id));
+
 -- Cleanup
 /*
 DROP TABLE amorr.customers;
