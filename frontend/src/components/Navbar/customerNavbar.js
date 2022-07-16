@@ -84,6 +84,11 @@ const CustomerNavbar = () => {
   //   })
 
 
+  const handleClose = () => {
+    setAnchorEl(null);
+    
+  };
+
   return (
     
     <div className="Navbar">
