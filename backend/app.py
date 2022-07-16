@@ -257,6 +257,49 @@ def do_contact():
 #########
 # End of ContactUs
 
+
+
+# Delete Account 
+#########
+
+@app.route('/delete-account', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def delete_account():
+    if request.method == 'POST':
+        return fetch()
+def fetch(): # gets uid
+    user_id = get_user_id()
+
+    if user_id == -1:
+        resp = make_response(jsonify( {'message': 'User not logged in'} ), 400,)
+        return resp
+
+    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
+    if len(user) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": "User not found!"}
+            ),
+            404,
+        )
+    else: 
+        user_email = SESSIONS[request.cookies.get('sessionId')].email_address
+        del SESSIONS[request.cookies.get('sessionId')]
+
+        mu.delete(config, [f'uid = \'{user_id}\''], 'amorr.users')
+        resp = make_response(
+         jsonify(
+             {"message": "Deleted User!"}
+         ),
+         200,
+     )
+    resp.headers["Content-Type"] = "application/json"
+    resp.set_cookie('sessionId', '', expires=0)
+    return resp
+
+#########
+# End of Delete Account 
+
 # get-profile
 #########
 @app.route('/get-profile', methods=['GET'])
@@ -341,8 +384,8 @@ def upload_file():  # Expects one image and sessionID
         sql = f'UPDATE amorr.profile_photos SET pfp_path = \'{user_id + filetype}\' WHERE uid = \'{user_id}\';'
         mu.query(config, sql)
 
-        resp = make_response(jsonify( {'message': 'Profile photo was successfully changed!'} ), 200,)
-        return resp
+        # resp = make_response(jsonify( {'message': 'Profile photo was successfully changed!'} ), 200,)
+        return redirect("http://localhost:3000/profile", code=200)
 
     elif not allowed_file(file.filename):   # Unsupported file type
         resp = make_response(jsonify( {'message': 'File type not supported!'} ), 400,)
@@ -587,6 +630,66 @@ def logout():
     return resp
 #########
 # End of logout
+
+# edit-sp-price-list
+#########
+@app.route('/edit-sp-price-list', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def edit_pricelist():
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"Message": "Must be signed in to edit price list!"} ), 400, )
+        return resp
+    r = request
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':    # Case for JSON request body 
+        json = r.json
+        service_id = json['service_id']
+        service = json['service']
+        new_price = json['price']
+    
+    else:                                       # Case for submitted form
+        service_id = r.form['service_id']
+        service = r.form['service']
+        new_price = r.form['price']
+    
+    sql = f'UPDATE amorr.services SET price = \'{new_price}\' WHERE service_id = \'{service_id}\';'
+    mu.query(config, sql)
+    sql = f'UPDATE amorr.services SET name = \'{service}\' WHERE service_id = \'{service_id}\';'
+    mu.query(config, sql)
+
+    resp = make_response( jsonify( {"message": f"Price for service '{service}' was successfully updated!"} ), 200,)    
+    return resp
+#########
+# End of edit-sp-price-list
+
+# add-sp-price-list
+#########
+@app.route('/add-sp-price-list', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def add_pricelist():
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"Message": "Must be signed in to add a service to their price list!"} ), 400, )
+        return resp
+    r = request
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':    # Case for JSON request body 
+        json = r.json
+        service = json['service']
+        price = json['price']
+    
+    else:                                       # Case for submitted form
+        service = r.form['service']
+        price = r.form['price']
+
+    sql = f"INSERT INTO amorr.services (uid, name, price) VALUES ('{user_id}', '{service}', '{price}');"
+    mu.query(config, sql)
+
+    resp = make_response( jsonify( {"message": f"Service '{service}' was successfully added!"} ), 200,)    
+    return resp
+#########
+# End of add-sp-price-list
 
 ################################################################################################################################################
 ################################################################################################################################################

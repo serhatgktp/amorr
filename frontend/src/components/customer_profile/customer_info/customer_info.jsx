@@ -1,16 +1,21 @@
 import React , { useEffect, useState }from 'react';
 import './customer_info_styles.css'
 import { Icon } from '@iconify/react';
-import { Rating, Avatar, requirePropFactory } from '@mui/material';
+import { Rating, Avatar, Badge, styled} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const CustomerInfo = () => {
-
     const [user, setUser] = useState({full_name: "", address: "", total_rating: 0, num_ratings: 0, profile_photo: null});
     const [addr, setAddr] = useState('')
     const [img, setImage] = useState(null);
     const [isEdit, setIsEdit] = useState(false);
     const [fullName, setFullName] = useState('');
-
+    const [file, setFile] = useState('')
+    const SmallAvatar = styled(Avatar)(({ theme }) => ({
+        width: 22,
+        height: 22,
+        border: `2px solid ${theme.palette.background.paper}`,
+      }));
     useEffect(() => {
         setImage("http://localhost:5000/get-profile-photo");
         fetch("http://localhost:5000/get-profile", {credentials: 'include'}).then(response =>
@@ -25,7 +30,8 @@ const CustomerInfo = () => {
 
     const imageHandler = (e) => {
         const selected = e.target.files[0];
-
+        setFile(e.target.files[0])
+        console.log("file is set")
         if(selected){
             let reader = new FileReader();
             reader.onload = () => {
@@ -70,15 +76,33 @@ const CustomerInfo = () => {
         })
     }
 
+    const handlePicSubmit = (e) => {
+        e.preventDefault();
+        const data = new FormData();
+        data.append('pic', file)
+        fetch("http://localhost:5000/upload-profile-photo", {
+            method: 'POST',
+            credentials: "include",
+            body: data
+        })
+    }
+    
     return(
         <div id="customer_info">
 
             <div id="customer_left">
-                <div><Avatar alt="Sans Calibri" src={img} sx={{ width: 100, height: 100, mb: 1 }}/></div>
-                <input type="file" name="image-upload" id="change_photo" accept="image/*" onChange={imageHandler}/>
-                <div id="photo_label">
-                    <label htmlFor="change_photo" className="image-upload" id="change_photo_label">Change profile photo</label>
-                </div>
+            <form>
+                <Badge
+                overlap="circular"
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                badgeContent={
+                    <label htmlFor="change_photo" className="image-upload" id="change_photo_label_sp"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px'}}/></label>
+                }>
+                    <div><Avatar alt="Sans Calibri" src={img} sx={{ width: 120, height: 120, mb: 1 }} id="customer_photo"/></div>
+                </Badge>
+                    <input type="file" name="pic" id="change_photo" accept="image/*" onChange={imageHandler}/>
+                    <button id="upload_image" type="submit" onClick={handlePicSubmit}>Save profile photo</button>
+            </form>
             </div>
 
             <div id="customer_right">
@@ -99,7 +123,7 @@ const CustomerInfo = () => {
                     ) : (
                         <div id="editable_input"><input id="new_address" value={addr} onChange={handleChange} onKeyDown={onKeyDown} /></div>
                     ) }
-                    <button id="save_changes" onClick={handleSubmit}>Save Changes</button>
+                    <button id="save_changes" onClick={handleSubmit}>Save Address</button>
                 </div>
 
             </div>

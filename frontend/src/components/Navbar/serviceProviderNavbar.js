@@ -15,9 +15,20 @@ const ServiceProviderNavbar = () => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+
+  const handleClose = (e) => {
+    fetch("http://localhost:5000/logout", {
+        method: 'POST',
+        credentials: "include",
+    }).then(response => {
+        if (response.ok){
+            setTimeout(function () {
+                window.location.reload();
+            }, 1300);
+        }
+    })
+}
+
 
   return (
     
@@ -58,7 +69,7 @@ const ServiceProviderNavbar = () => {
       >
         <MenuItem onClick={handleClose} sx={{ fontSize: '14px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/> <a href="/sp_profile"> <b>Manage Account</b> </a> </MenuItem>
         <MenuItem onClick={handleClose} sx={{ fontSize: '14px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><DeleteIcon />  <b>Delete Account</b></MenuItem>
-        <MenuItem onClick={handleClose} sx={{ fontSize: '14px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <b>Logout</b></MenuItem>
+        <MenuItem onClick={handleClose} sx={{ fontSize: '14px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <a href="/sp_logout"><b>Logout</b></a></MenuItem>
       </Menu>
       </div>
     </div>
