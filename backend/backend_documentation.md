@@ -103,3 +103,28 @@ Returns: JSON Response
 Params: None
 Returns: JSON Response
 "Allows editing of the current user's address"
+
+### get_pfp()
+Params: None
+Returns: Image file
+"Fetches user's profile image"
+
+### edit_profile_address()
+Params: None
+Returns: JSON Response
+"Replaces user's profile address in DB with the address received in the request body"
+
+### get_price_list()
+Params: None
+Returns: JSON Response
+"Fetches SP's service-price list"
+
+### check_user_type()
+Params: None
+Returns: JSON Response
+"Indicates whether user is a Guest (not logged in), Customer, Service Provider, or Admin"
+
+### get_sp_profile()
+Params: None
+Returns: JSON Response
+"Fetches all information belonging to a service provider"
