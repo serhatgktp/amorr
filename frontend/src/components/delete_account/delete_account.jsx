@@ -3,11 +3,12 @@
 import * as React from 'react';
 import { useState } from "react"; 
 // import Axios from 'react'; 
-import './delete_account.css'
+import './delete_account.css';
+import  { useNavigate } from 'react-router-dom'
 
 const DeleteAccount = () => {
 
-    
+    const navigate = useNavigate();    
 
     const handleYes= () => {
 
@@ -18,7 +19,9 @@ const DeleteAccount = () => {
         }).then(response => {
             if (response.ok){
                 console.log('User Deleted!'); 
+                navigate('/initial-signup-landing');
                 window.location.reload();
+                
             }else {
                 throw new Error(response.statusText)
             }
@@ -27,6 +30,10 @@ const DeleteAccount = () => {
         })
     };
 
+    const handleNo=()=>{
+        navigate('/home');
+    }
+
     return(
         <body className='delete_account_wrapper'>
             <div className="DAbox">
@@ -34,9 +41,10 @@ const DeleteAccount = () => {
                 <p className='sure'> Are you sure you want to delete your account? </p>
                 <p className='sure'> Deleting account will result in losing all your data.</p>
 
-                {/* <button className = 'yes' onClick={handleYes}> <a href='/initial-signup-landing' >Yes</a> </button> */}
+               
                 <button className = 'yes' onClick={handleYes}> Yes </button>
-                <button className='no'> <a href='/home' >No</a></button>
+                <button className='no' onClick={handleNo}> No </button>
+                
             </div>
             
             {/* <DeletePopup trigger={triggerDeletePopup} /> */}
