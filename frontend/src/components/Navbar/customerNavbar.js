@@ -10,6 +10,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 
 import { useRef, useState, useEffect} from 'react';
 import LogoutPopup from '../logout-popup/logoutPopup';
+import  { useNavigate } from 'react-router-dom';
 
 
 const CustomerNavbar = () => {
@@ -20,10 +21,12 @@ const CustomerNavbar = () => {
   // Initial Settings for Logout Popup is FALSE, so the logout Popup is not rendered
   const [triggerLogoutPopup, setTriggerLogoutPopup] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleLogout = () => {
     setAnchorEl(null);
     setTriggerLogoutPopup(true);
     // Set a timer to close the popup after 1.2 seconds for redirecting
@@ -76,7 +79,7 @@ const CustomerNavbar = () => {
       >
         <MenuItem onClick={handleClose} sx={{ fontSize: '15px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/>  <a href="/profile"><b>Manage Account</b></a></MenuItem>
         <MenuItem onClick={handleClose} sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><DeleteIcon />  <b>Delete Account</b></MenuItem>
-        <MenuItem onClick={handleClose} sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <b>Logout</b></MenuItem>
+        <MenuItem onClick={handleLogout} sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <b>Logout</b></MenuItem>
       </Menu>
       </div>
       <LogoutPopup trigger={triggerLogoutPopup} redirection="/sp-register"/>
