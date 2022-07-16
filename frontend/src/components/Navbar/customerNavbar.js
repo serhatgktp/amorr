@@ -10,6 +10,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 
 import { useRef, useState, useEffect} from 'react';
 import LogoutPopup from '../logout-popup/logoutPopup';
+import  { useNavigate } from 'react-router-dom';
 
 
 const CustomerNavbar = () => {
@@ -19,6 +20,8 @@ const CustomerNavbar = () => {
 
   // Initial Settings for Logout Popup is FALSE, so the logout Popup is not rendered
   const [triggerLogoutPopup, setTriggerLogoutPopup] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -53,6 +56,17 @@ const CustomerNavbar = () => {
       //     console.log(err)
       //   })
 
+  const handleLogout = () => {
+    setAnchorEl(null);
+    setTriggerLogoutPopup(true);
+    // Set a timer to close the popup after 1.2 seconds for redirecting
+    setTimeout(function () {
+      setTriggerLogoutPopup(false);
+      console.log("works");
+      // Redirect to Home (TODO: or My Profile page according to type of user) after
+      navigate('/home');
+      window.location.reload();
+  }, 1300);
   };
     //setDeletionPopup(true);
   //   fetch('http://localhost:5000/homepage', {
@@ -112,10 +126,16 @@ const CustomerNavbar = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
+<<<<<<< HEAD
         <MenuItem sx={{ fontSize: '15px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/>  <a href="/profile"><b>Manage Account</b></a></MenuItem>
         <MenuItem  sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><DeleteIcon />  <b>Delete Account</b></MenuItem>
         <MenuItem onClick={handleClose} sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <a href="/customer_logout"><b>Logout</b></a></MenuItem>
 
+=======
+        <MenuItem onClick={handleClose} sx={{ fontSize: '15px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/>  <a href="/profile"><b>Manage Account</b></a></MenuItem>
+        <MenuItem onClick={handleClose} sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><DeleteIcon />  <b>Delete Account</b></MenuItem>
+        <MenuItem onClick={handleLogout} sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <b>Logout</b></MenuItem>
+>>>>>>> 18d3b9b (STAC-178 navigate logout)
       </Menu>
       </div>
       <LogoutPopup trigger={triggerLogoutPopup} redirection="/sp-register"/>
