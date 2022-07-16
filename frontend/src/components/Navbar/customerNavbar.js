@@ -116,7 +116,7 @@ const CustomerNavbar = () => {
 
       </Menu>
       </div>
-      <LogoutPopup trigger={triggerLogoutPopup} redirection="/sp-register"/>
+      <LogoutPopup trigger={triggerLogoutPopup}/>
     </div>
   );
 };
