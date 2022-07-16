@@ -10,7 +10,6 @@ import SettingsIcon from '@mui/icons-material/Settings';
 
 import { useRef, useState, useEffect} from 'react';
 import LogoutPopup from '../logout-popup/logoutPopup';
-import  { useNavigate } from 'react-router-dom';
 
 
 const CustomerNavbar = () => {
@@ -20,8 +19,6 @@ const CustomerNavbar = () => {
 
   // Initial Settings for Logout Popup is FALSE, so the logout Popup is not rendered
   const [triggerLogoutPopup, setTriggerLogoutPopup] = useState(false);
-
-  const navigate = useNavigate();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -63,8 +60,6 @@ const CustomerNavbar = () => {
     setTimeout(function () {
       setTriggerLogoutPopup(false);
       console.log("works");
-      // Redirect to Home (TODO: or My Profile page according to type of user) after
-      navigate('/home');
       window.location.reload();
   }, 1300);
   };
