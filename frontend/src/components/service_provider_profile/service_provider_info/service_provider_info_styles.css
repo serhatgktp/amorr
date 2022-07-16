@@ -16,6 +16,10 @@
     font-size: 28px;
 }
 
+#sp_photo{
+    margin-top: 8px;
+}
+
 #service_provider_info #rating{
     display:flex;
     justify-content: space-between;
@@ -29,12 +33,17 @@
 }
 
 #service_provider_info #change_photo_label{
-    color: #808080;
+    background-color: #345392;
+    color: white;
     font-size: 12px;
-    text-decoration: underline;
     cursor: pointer;
+    border-radius: 50%;
+    padding: 5px;
 }
 
+#service_provider_info #change_photo_label:hover{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0 0);
+}
 #service_provider_info #change_photo{
     display:none;
 }

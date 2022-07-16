@@ -6,7 +6,6 @@ const ServiceProviderProfile = () => {
     return(
         <body>
             <ServiceProviderInfo/>
-            <ServiceProviderListPrices/>
         </body>
     )
 }
