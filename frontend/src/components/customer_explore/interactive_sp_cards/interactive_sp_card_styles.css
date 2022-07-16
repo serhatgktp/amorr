@@ -5,10 +5,10 @@
 #interactive_card{
     background-color: #F9F6EE;
     padding: 25px;
-    width: 70%;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 #interactive_card:hover{

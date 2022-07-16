@@ -17,17 +17,17 @@ function InteractiveCard({SP}) {
                 <div id="sp_name">{SP.name}</div>
                 <div id="card_body">
                     <div id="rating">
-                        <span className="rating_num">4.0</span>
-                        <Rating name="read-only" size="medium" value={4.0} precision={0.5} readOnly />
-                        <span className="rating_num">({SP.num_rating})</span>
+                        <span className="rating_num">{SP.avg_rating.toFixed(1)}</span>
+                        <Rating name="read-only" size="medium" value={SP.avg_rating} precision={0.1} readOnly />
+                        <span className="rating_num">({SP.num_ratings})</span>
                     </div>
                     <div id="second_line">
-                        <div id="services_completed"> <span>{SP.services}</span> Services Completed</div>
-                        <div><span>$</span> <span>{SP.fee}</span> Transportation Fee</div>
+                        <div id="services_completed"> <span>75</span> Services Completed</div>
+                        <div><span>$</span> <span>4.95</span> Transportation Fee</div>
                     </div>
 
                     <div id="third_line">
-                        <div>Hairdresser, Makeup and more</div>
+                        <div>{SP.services}</div>
                         <div>Average Cost <span>$$$</span></div>
                     </div>
                 </div>
