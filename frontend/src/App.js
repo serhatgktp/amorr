@@ -69,7 +69,8 @@ function App(){
         <Route path='/initial-signup' element={<InitialSignUp/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/profile' element={<CustomerProfile/>}/>
-        <Route path='/customer_logout' element={<InitialLogin/>}/></Routes>
+        <Route path='/customer_logout' element={<InitialLogin/>}/>
+        <Route path='/sp_logout' element={<InitialLogin/>}/></Routes>
     </Router>
     </body>
   )

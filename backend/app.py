@@ -574,19 +574,19 @@ def fetch_sp_profile():  # Fetch full name and address from database
 
 # logout
 #########
-@app.route('/edit-bio', methods=['POST'])
-@cross_origin(supports_credentials=True)
-def logout():
-    user_id = get_user_id()
-    if user_id == -1:
-        resp = make_response( jsonify( {"Message": "User is not signed in, therefore cannot log out"} ), 400, )
-    else:
-        user_email = SESSIONS[request.cookies.get('sessionId')].email_address
-        del SESSIONS[request.cookies.get('sessionId')]  # Delete session from flask server sessions
-        resp = make_response( jsonify( {"user_type": f"Logout successful for: {user_email}"} ), 200, )
-        resp.set_cookie('sessionId', '', expires=0) # Set sessionId to expire immediately
-        # resp.delete_cookie('sessionId')
-    return resp
+# @app.route('/edit-bio', methods=['POST'])
+# @cross_origin(supports_credentials=True)
+# def edit_bio():
+#     user_id = get_user_id()
+#     if user_id == -1:
+#         resp = make_response( jsonify( {"Message": "User is not signed in, therefore cannot log out"} ), 400, )
+#     else:
+#         user_email = SESSIONS[request.cookies.get('sessionId')].email_address
+#         del SESSIONS[request.cookies.get('sessionId')]  # Delete session from flask server sessions
+#         resp = make_response( jsonify( {"user_type": f"Logout successful for: {user_email}"} ), 200, )
+#         resp.set_cookie('sessionId', '', expires=0) # Set sessionId to expire immediately
+#         # resp.delete_cookie('sessionId')
+#     return resp
 #########
 # End of logout
 
