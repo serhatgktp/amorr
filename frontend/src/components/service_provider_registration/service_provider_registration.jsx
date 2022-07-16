@@ -116,7 +116,7 @@ const ServiceProviderRegistration = () => {
       requestbody.address = formValues.address;
       requestbody.user_type = "Service Provider";
       requestbody.full_name = formValues.name;
-      realquestbody.password = formValues.password;
+      requestbody.password = formValues.password;
 
       fetch('http://localhost:5000/register', {
           method: 'POST',
