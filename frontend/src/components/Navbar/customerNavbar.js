@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./Navbar.css";
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -15,9 +15,18 @@ const CustomerNavbar = () => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const handleClose = (e) => {
+    fetch("http://localhost:5000/logout", {
+        method: 'POST',
+        credentials: "include",
+    }).then(response => {
+        if (response.ok){
+            setTimeout(function () {
+                window.location.reload();
+            }, 1300);
+        }
+    })
+}
 
   const handleDel = () => {
 
@@ -91,14 +100,14 @@ const CustomerNavbar = () => {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose} sx={{ fontSize: '15px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/>  <a href="/profile"><b>Manage Account</b></a></MenuItem>
-        <MenuItem onClick={handleDel} sx={{fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><DeleteIcon />  <a href="/delete-account"><b>Delete Account</b></a></MenuItem>
-        <MenuItem onClick={handleClose} sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <b>Logout</b></MenuItem>
+        <MenuItem sx={{ fontSize: '15px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/>  <a href="/profile"><b>Manage Account</b></a></MenuItem>
+        <MenuItem  sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><DeleteIcon />  <b>Delete Account</b></MenuItem>
+        <MenuItem onClick={handleClose} sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <a href="/customer_logout"><b>Logout</b></a></MenuItem>
+
       </Menu>
       </div>
     </div>
