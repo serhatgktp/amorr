@@ -19,6 +19,7 @@ const editable_row = ( {editData, handleEditChange, handleSaveEdit, handleCancel
                 className="new_price" 
                 type="number" 
                 min="0"
+                step=".01"
                 name="price"
                 value={editData.price} 
                 onChange={handleEditChange}/>

@@ -78,18 +78,16 @@ const ServiceProviderListPrices = () => {
         setEditServiceId(null);
 
         // POST REQUEST to send the editted service and price with service id  
-        // fetch("http://localhost:5000/edit-sp-price-list", {
-        //     method: 'POST',
-        //     headers: {"Content-Type": "application/json"},
-        //     credentials: "include",
-        //     body: JSON.stringify(edittedServicePrice)
-        // }).then(response => {
-        //     if (response.ok){
-        //         setTimeout(function () {
-        //             window.location.reload();
-        //         }, 1300);
-        //     }
-        // })
+        fetch("http://localhost:5000/edit-sp-price-list", {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            credentials: "include",
+            body: JSON.stringify(edittedServicePrice)
+        }).then(response => {
+            if (response.ok){
+                window.location.reload();
+            }
+        })
     }
 
     const handleCancelClick = () => {
@@ -127,19 +125,17 @@ const ServiceProviderListPrices = () => {
         setServicesPricesList(newServicesPricesList);
 
         // POST REQUEST to send new service and price 
-        // var requestbody = new Object();
-        // fetch("http://localhost:5000/add-sp-price-list", {
-        //     method: 'POST',
-        //     headers: {"Content-Type": "application/json"},
-        //     credentials: "include",
-        //     body: JSON.stringify(newServicePrice)
-        // }).then(response => {
-        //     if (response.ok) {
-        //         setTimeout(function () {
-        //             window.location.reload();
-        //         }, 1300);
-        //     }
-        // })
+        var requestbody = new Object();
+        fetch("http://localhost:5000/add-sp-price-list", {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            credentials: "include",
+            body: JSON.stringify(newServicePrice)
+        }).then(response => {
+            if (response.ok) {
+                window.location.reload();
+            }
+        })
     }
     //******** ADDING HANDLERS END ********//
 
@@ -181,6 +177,7 @@ const ServiceProviderListPrices = () => {
                         type="number"
                         name="price"
                         min="0"
+                        step=".01"
                         required="required"
                         placeholder="Price"
                         onChange={handleAddChange}
