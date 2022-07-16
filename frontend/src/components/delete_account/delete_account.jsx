@@ -34,7 +34,8 @@ const DeleteAccount = () => {
                 <p className='sure'> Are you sure you want to delete your account? </p>
                 <p className='sure'> Deleting account will result in losing all your data.</p>
 
-                <button className = 'yes' onClick={handleYes}> <a href='/initial-signup-landing' >Yes</a> </button>
+                {/* <button className = 'yes' onClick={handleYes}> <a href='/initial-signup-landing' >Yes</a> </button> */}
+                <button className = 'yes' onClick={handleYes}> Yes </button>
                 <button className='no'> <a href='/home' >No</a></button>
             </div>
             
