@@ -34,6 +34,11 @@ const CustomerNavbar = () => {
   }, 1300);
   };
 
+  const handleClose = () => {
+    setAnchorEl(null);
+    
+  };
+
   return (
     
     <div className="Navbar">
