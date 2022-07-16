@@ -550,7 +550,7 @@ def fetch_sp_profile():  # Fetch full name and address from database
         address = user[0]['address']
 
         bio = sp[0]['bio']
-        services = sp[0]['types_of_services']
+        services = sp[0]['type_of_services']
         
         sql = f'SELECT COUNT(*) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
         num_ratings = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
@@ -692,6 +692,49 @@ def add_pricelist():
     return resp
 #########
 # End of add-sp-price-list
+
+# fetch-service-providers
+#########
+@app.route('/fetch-service-providers', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def fetch_sps():
+    sql = "SELECT * FROM users as u INNER JOIN service_providers as sp ON u.uid = sp.uid"
+    sp_list = mu.load(config, 'amorr.users', sql)
+    if len(sp_list) == 0:
+        resp = make_response( jsonify([]), 200,)    # No SPs were found in the database
+        return resp
+    
+    return_data = []
+    for sp in sp_list:
+        uid = sp['uid']
+        sql = f"SELECT COUNT(*) FROM amorr.sp_reviews WHERE recipient_uid = '{uid}'"
+        num_ratings = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
+        sql = f"SELECT AVG(rating) FROM amorr.sp_reviews WHERE recipient_uid = '{uid}'"
+        avg = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)']
+        if avg is not None:
+            avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
+        else:
+            avg_rating = 'No reviews yet'
+        tos_str = sp['type_of_services']
+        tos = tos_str.strip('][').split(', ')   # Convert from string to list
+        if len(tos) == 1:
+            services_str = tos[0]
+        elif len(tos) == 2:
+            services_str = tos[0] + " and " + tos[1]
+        else:
+            services_str = tos[0] + ", " + tos[1] + " and more"
+        sp_dict = {}
+        sp_dict['id'] = uid
+        sp_dict['name'] = sp['full_name']
+        sp_dict['avg_rating'] = avg_rating
+        sp_dict['num_ratings'] = num_ratings
+        sp_dict['tos'] = tos
+        sp_dict['services'] = services_str
+        return_data.append(sp_dict)
+    resp = make_response( jsonify(return_data), 200,)
+    return resp
+#########
+# End of fetch-service-providers
 
 ################################################################################################################################################
 ################################################################################################################################################
