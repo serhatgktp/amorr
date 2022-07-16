@@ -1,5 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import CustomerExplore from './components/customer_explore/customer_explore.jsx';
+
+import {
+  BrowserRouter as Router
+} from 'react-router-dom'
 /*
 import CustomerNavbar from './components/Navbar/customerNavbar.js';
 import ServiceProviderNavbar from './components/Navbar/serviceProviderNavbar.js';
@@ -85,7 +89,9 @@ function App(){
     
   return (
     <body>
+      <Router>
       <CustomerExplore/>
+      </Router>
     </body>
   )
  }

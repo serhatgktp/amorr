@@ -17,7 +17,7 @@ function InteractiveCard({SP}) {
                 <div id="sp_name">{SP.name}</div>
                 <div id="card_body">
                     <div id="rating">
-                        <span className="rating_num">{SP.avg_rating}</span>
+                        <span className="rating_num">{SP.avg_rating.toFixed(1)}</span>
                         <Rating name="read-only" size="medium" value={SP.avg_rating} precision={0.1} readOnly />
                         <span className="rating_num">({SP.num_ratings})</span>
                     </div>

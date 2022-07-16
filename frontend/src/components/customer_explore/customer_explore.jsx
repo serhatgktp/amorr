@@ -308,15 +308,7 @@ const CustomerExplore = () => {
 
         <ul>
         {filteredSearchedSp.map(data => (
-            <li key={data.id}>
-                ---------------------------------------------
-                <p>SP name: {data.name}</p>
-                <p>SP Type of Services:</p>
-                {data.tos.map(element => 
-                    <p>{element}</p>
-                )}
-                ---------------------------------------------
-            </li>
+                <InteractiveCard SP={data}></InteractiveCard>
         ))}
         </ul>
         </>
