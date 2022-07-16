@@ -198,7 +198,7 @@ def do_register():  # Assuming username, password, & email regex is implemented 
 
         # Case for service provider
         if user_type == 'Service Provider':
-            d = {'uid':[user_id], 'bio':[''], 'types_of_services':[str(type_of_services)]}
+            d = {'uid':[user_id], 'bio':[''], 'type_of_services':[str(type_of_services)]}
             df = pd.DataFrame.from_dict(d)
             mu.insert(config, 'service_providers', df)  # Create new entry for new customer user
 
@@ -256,6 +256,49 @@ def do_contact():
 
 #########
 # End of ContactUs
+
+
+
+# Delete Account 
+#########
+
+@app.route('/delete-account', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def delete_account():
+    if request.method == 'POST':
+        return fetch()
+def fetch(): # gets uid
+    user_id = get_user_id()
+
+    if user_id == -1:
+        resp = make_response(jsonify( {'message': 'User not logged in'} ), 400,)
+        return resp
+
+    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
+    if len(user) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": "User not found!"}
+            ),
+            404,
+        )
+    else: 
+        user_email = SESSIONS[request.cookies.get('sessionId')].email_address
+        del SESSIONS[request.cookies.get('sessionId')]
+
+        mu.delete(config, [f'uid = \'{user_id}\''], 'amorr.users')
+        resp = make_response(
+         jsonify(
+             {"message": "Deleted User!"}
+         ),
+         200,
+     )
+    resp.headers["Content-Type"] = "application/json"
+    resp.set_cookie('sessionId', '', expires=0)
+    return resp
+
+#########
+# End of Delete Account 
 
 # get-profile
 #########
@@ -513,7 +556,13 @@ def fetch_sp_profile():  # Fetch full name and address from database
         num_ratings = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
         
         sql = f'SELECT AVG(rating) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
-        avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
+
+        avg = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)']
+        if avg is not None:
+            avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
+        else:
+            avg_rating = 'No reviews yet'
+
 
         resp = make_response(
             jsonify(
@@ -559,6 +608,7 @@ def edit_bio():
     sql = f'UPDATE amorr.service_providers SET bio = \'{new_bio}\' WHERE uid = \'{user_id}\';'
     mu.query(config, sql)
     resp = make_response( jsonify( {"Message": "Bio edit request was successful!"} ), 200,)
+    return resp
 #########
 # End of edit-bio
 
@@ -582,6 +632,111 @@ def logout():
     return resp
 #########
 # End of logout
+
+# edit-sp-price-list
+#########
+@app.route('/edit-sp-price-list', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def edit_pricelist():
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"Message": "Must be signed in to edit price list!"} ), 400, )
+        return resp
+    r = request
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':    # Case for JSON request body 
+        json = r.json
+        service_id = json['service_id']
+        service = json['service']
+        new_price = json['price']
+    
+    else:                                       # Case for submitted form
+        service_id = r.form['service_id']
+        service = r.form['service']
+        new_price = r.form['price']
+    
+    sql = f'UPDATE amorr.services SET price = \'{new_price}\' WHERE service_id = \'{service_id}\';'
+    mu.query(config, sql)
+    sql = f'UPDATE amorr.services SET name = \'{service}\' WHERE service_id = \'{service_id}\';'
+    mu.query(config, sql)
+
+    resp = make_response( jsonify( {"message": f"Price for service '{service}' was successfully updated!"} ), 200,)    
+    return resp
+#########
+# End of edit-sp-price-list
+
+# add-sp-price-list
+#########
+@app.route('/add-sp-price-list', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def add_pricelist():
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"Message": "Must be signed in to add a service to their price list!"} ), 400, )
+        return resp
+    r = request
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':    # Case for JSON request body 
+        json = r.json
+        service = json['service']
+        price = json['price']
+    
+    else:                                       # Case for submitted form
+        service = r.form['service']
+        price = r.form['price']
+
+    sql = f"INSERT INTO amorr.services (uid, name, price) VALUES ('{user_id}', '{service}', '{price}');"
+    mu.query(config, sql)
+
+    resp = make_response( jsonify( {"message": f"Service '{service}' was successfully added!"} ), 200,)    
+    return resp
+#########
+# End of add-sp-price-list
+
+# fetch-service-providers
+#########
+@app.route('/fetch-service-providers', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def fetch_sps():
+    sql = "SELECT * FROM users as u INNER JOIN service_providers as sp ON u.uid = sp.uid"
+    sp_list = mu.load(config, 'amorr.users', sql)
+    if len(sp_list) == 0:
+        resp = make_response( jsonify([]), 200,)    # No SPs were found in the database
+        return resp
+    
+    return_data = []
+    for sp in sp_list:
+        uid = sp['uid']
+        sql = f"SELECT COUNT(*) FROM amorr.sp_reviews WHERE recipient_uid = '{uid}'"
+        num_ratings = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
+        sql = f"SELECT AVG(rating) FROM amorr.sp_reviews WHERE recipient_uid = '{uid}'"
+        avg = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)']
+        if avg is not None:
+            avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
+        else:
+            avg_rating = 'No reviews yet'
+        tos_str = sp['type_of_services']
+        tos = tos_str.strip('][').split(', ')   # Convert from string to list
+        for i in range(len(tos)):
+            tos[i] = tos[i].strip("'")
+        if len(tos) == 1:
+            services_str = tos[0]
+        elif len(tos) == 2:
+            services_str = tos[0] + " and " + tos[1]
+        else:
+            services_str = tos[0] + ", " + tos[1] + " and more"
+        sp_dict = {}
+        sp_dict['id'] = uid
+        sp_dict['name'] = sp['full_name']
+        sp_dict['avg_rating'] = avg_rating
+        sp_dict['num_ratings'] = num_ratings
+        sp_dict['tos'] = tos
+        sp_dict['services'] = services_str
+        return_data.append(sp_dict)
+    resp = make_response( jsonify(return_data), 200,)
+    return resp
+#########
+# End of fetch-service-providers
 
 ################################################################################################################################################
 ################################################################################################################################################

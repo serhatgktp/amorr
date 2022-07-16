@@ -16,6 +16,9 @@ import InitialSignUp from './components/initial-signup/initial-signup';
 import Login from './components/login-page/login-page';
 import CustomerProfile from './components/customer_profile/customer_profile';
 import CustomerExplore from './components/customer_explore/customer_explore.jsx';
+import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile';
+import CustomerExplore from './components/customer_explore/customer_explore.js';
+
 
 import {
   BrowserRouter as Router,
@@ -49,7 +52,7 @@ function App(){
   }, [loggedIn, type]);
 
   return (
-    <body>
+    <div>
     <div>
     {!loggedIn && !type ? <Navbar/> : ''}
     {loggedIn && type ? <CustomerNavbar/> : ''}
@@ -73,8 +76,12 @@ function App(){
         <Route path='/customer_logout' element={<InitialLogin/>}/>
         <Route path='/customer-explore' element={<CustomerExplore/>}/>
         <Route path='/sp_logout' element={<InitialLogin/>}/></Routes>
+        <Route path='/sp_profile' element={<ServiceProviderProfile/>}/>
+        <Route path='/explore' element={<CustomerExplore/>}/>
+        <Route path='/customer_logout' element={<InitialLogin/>}/>
+        <Route path='/sp_logout' element={<InitialLogin/>}/></Routes>
     </Router>
-    </body>
+    </div>    
   )
  }
 export default App;

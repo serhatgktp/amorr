@@ -59,7 +59,6 @@
 
 - (STAC-101) As a logged in user, I want to be able to log out by clicking on the log out button on the navigation bar at any web pages so that other users that are not me will not be able to access the system without verifying their credentials. The following is the breakdown:
 
-    - Redirection to the home page with guest’s nav bar.
     - Sending POST request from frontend to logout the user.
     - Pop-up for confirming that user has been logged out.
     - Handling POST request in flask to logout the user.
@@ -133,9 +132,9 @@ The table below displays who worked on which task during this sprint.
 | STAC-157          |  Handling POST request in Flask API to handle the editing of the Bio      |  Serhat Goktepe |
 | STAC-184          |   sending POST request for editing address     | Shannon Budiman  |
 | STAC-188          |    Handling GET request for list of prices    |  Serhat Goktepe |
-| STAC-163          |   A scrollable page where customers can see a list of service providers     | UNASSIGNED  |
-| STAC-164          |  Sending GET request to retrieve service providers from the database      |  UNASSIGNED |
-| STAC-165          |    Handling GET request to return all service providers from the database    |  UNASSIGNED |
+| STAC-163          |   A scrollable page where customers can see a list of service providers     | Christopher Nathaneal  |
+| STAC-164          |  Sending GET request to retrieve service providers from the database      |  Christopher Nathaneal |
+| STAC-165          |    Handling GET request to return all service providers from the database    |  Serhat Goktepe |
 | STAC-166          |    Working filter and searchbar in frontend using datagrid or react filter | Christopher Nathaneal  |
 | STAC-167          |    Interactive SP cards, to go to the SP profile page    |  Shannon Budiman |
 | STAC-178          |   Pop-up for confirming that user has been logged out     |  Jumana Fanous |

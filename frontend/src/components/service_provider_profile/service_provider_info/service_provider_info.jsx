@@ -1,7 +1,7 @@
 import React , { useEffect, useState }from 'react';
 import './service_provider_info_styles.css'
 import { Icon } from '@iconify/react';
-import { Rating, Avatar, requirePropFactory, useScrollTrigger } from '@mui/material';
+import { Rating, Avatar, Badge, styled} from '@mui/material';
 
 const ServiceProviderInfo = () => {
 
@@ -11,24 +11,29 @@ const ServiceProviderInfo = () => {
     const [img, setImage] = useState(null);
     const [isEdit, setIsEdit] = useState(false);
     const [fullName, setFullName] = useState('');
+    const [numRating, setNumRating] = useState(0);
+    const [rating, setRating] = useState(0);
+    const [file, setFile] = useState('');
 
     // dummy get request to get data
     useEffect(() => {
-        /*fetch("http://localhost:5000/get-profile", {credentials: 'include'}).then(response =>
+        setImage("http://localhost:5000/get-profile-photo")
+        fetch("http://localhost:5000/get-sp-profile", {credentials: 'include'}).then(response =>
           response.json().then(data => {
-            setUser(data);
-            console.log(data);
+            setAddr(data.address);
+            setFullName(data.full_name);
+            setNumRating(data.num_ratings);
+            setRating(data.avg_rating);
+            console.log(data.num_ratings);
+            console.log(data.avg_rating);
           })
-        );*/
-        setUser({full_name: "Lorem Ipsum Salons", address: "100 Lorem Ipsum Road - M1C 0B6", total_rating: 0, num_ratings: 0, profile_photo: null})
-        setAddr("100 Lorem Ipsum Road - M1C 0B6");
-        setFullName("Lorem Ipsum Salons");
-        setImage(require("../../../assets/profile_photos/4.jpg"))
+        );
       }, []);
 
     // for handling changing profile photo
     const imageHandler = (e) => {
         const selected = e.target.files[0];
+        setFile(e.target.files[0]);
 
         if(selected){
             let reader = new FileReader();
@@ -76,15 +81,32 @@ const ServiceProviderInfo = () => {
         })
     }
 
+    const handlePicSubmit = (e) => {
+        e.preventDefault();
+        const data = new FormData();
+        data.append('pic', file)
+        fetch("http://localhost:5000/upload-profile-photo", {
+            method: 'POST',
+            credentials: "include",
+            body: data
+        })
+    }
+
     return(
         <div id="service_provider_info">
-
             <div id="service_provider_left">
-                <div><Avatar alt="Lorem Ipsum Salons" src={img} sx={{ width: 110, height: 110, mb: 1 }}/></div>
-                <input type="file" name="image-upload" id="change_photo" accept="image/*" onChange={imageHandler}/>
-                <div id="photo_label">
-                    <label htmlFor="change_photo" className="image-upload" id="change_photo_label">Change profile photo</label>
-                </div>
+                <form>
+                    <Badge
+                    overlap="circular"
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                    badgeContent={
+                        <label htmlFor="change_photo" className="image-upload" id="change_photo_label"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px'}}/></label>
+                    }>
+                        <div><Avatar alt="Lorem Ipsum Salons" src={img} sx={{ width: 120, height: 120, mb: 1 }} id="sp_photo"/></div>
+                    </Badge>
+                        <input type="file" name="pic" id="change_photo" accept="image/*" onChange={imageHandler}/>
+                        <button id="upload_image" type="submit" onClick={handlePicSubmit}>Save profile photo</button>
+                </form>
             </div>
 
             <div id="service_provider_right">
@@ -92,9 +114,9 @@ const ServiceProviderInfo = () => {
                 <div id="service_provider_name">{fullName}</div>
 
                 <div id="rating">
-                    <span className="rating_num">4.5</span>
-                    <Rating name="read-only" size="medium" value={4.5} precision={0.5} readOnly />
-                    <span className="rating_num">(4)</span>
+                    <span className="rating_num">{rating.toFixed(1)}</span>
+                    <Rating name="read-only" size="medium" value={rating} precision={0.1} readOnly />
+                    <span className="rating_num">({numRating})</span>
                 </div>
 
                 <div id="services_completed"> <span>75 </span>Services Completed</div>
