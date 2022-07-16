@@ -198,7 +198,7 @@ def do_register():  # Assuming username, password, & email regex is implemented 
 
         # Case for service provider
         if user_type == 'Service Provider':
-            d = {'uid':[user_id], 'bio':[''], 'types_of_services':[str(type_of_services)]}
+            d = {'uid':[user_id], 'bio':[''], 'type_of_services':[str(type_of_services)]}
             df = pd.DataFrame.from_dict(d)
             mu.insert(config, 'service_providers', df)  # Create new entry for new customer user
 
