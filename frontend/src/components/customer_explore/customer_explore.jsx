@@ -33,67 +33,107 @@ const CustomerExplore = () => {
             {
                 id: 1,
                 name: "Hairdresser A",
+                avg_rating: 3.5,
+                num_ratings: 2,
                 tos: ['Hairdresser'],
+                services: "Hairdresser"
             },
             {
                 id: 2,
                 name: "Hairdresser B",
+                avg_rating: 4.0,
+                num_ratings: 9,
                 tos: ['Hairdresser'],
+                services: "Hairdresser"
             },
             {
                 id: 3,
-                name: "Hairdresser C",
-                tos: ['Hairdresser'],
+                name: "Hair Master C",
+                avg_rating: 4.5,
+                num_ratings: 12,
+                tos: ['Hairdresser', 'Barber', 'Cleaner'],
+                services: "Hairdresser, Barber and more"
             },
             {
                 id: 4,
                 name: "Barber A",
+                avg_rating: 4.2,
+                num_ratings: 6,
                 tos: ['Barber'],
+                services: "Barber"
+
             },
             {
                 id: 5,
                 name: "Barber B",
+                avg_rating: 3.6,
+                num_ratings: 2,
                 tos: ['Barber'],
+                services: "Barber"
             },
             {
                 id: 6,
                 name: "Cleaner A",
+                avg_rating: 4.0,
+                num_ratings: 8,
                 tos: ['Cleaner'],
+                services: "Cleaner"
             },
             {
                 id: 7,
                 name: "Cleaner B",
+                avg_rating: 4.0,
+                num_ratings: 1,
                 tos: ['Cleaner'],
+                services: "Cleaner"
             },
             {
                 id: 8,
                 name: "Cleaner C",
+                avg_rating: 3.5,
+                num_ratings: 6,
                 tos: ['Cleaner'],
+                services: "Cleaner"
             },
             {
                 id: 9,
                 name: "Massage X",
+                avg_rating: 5.0,
+                num_ratings: 1,
                 tos: ['Massage'],
+                services: "Massage"
             },
             {
                 id: 10,
                 name: "Makeup Y",
+                avg_rating: 3.0,
+                num_ratings: 6,
                 tos: ['Makeup'],
+                services: "Makeup"
             },
             {
                 id: 11,
                 name: 'Eyebrow Tech Z',
+                avg_rating: 4.0,
+                num_ratings: 6,
                 tos: ['Eyebrow Tech'],
+                services: "Eyebrow Tech"
             },
             {
                 id: 12,
                 name: 'Eyelash Tech C',
+                avg_rating: 4.2,
+                num_ratings: 5,
                 tos: ['Eyelash Tech'],
+                services: "Eyelash Tech"
             },
             {
                 id: 13,
                 name: 'Tech Master',
+                avg_rating: 4.8,
+                num_ratings: 10,
                 tos: ['Eyebrow Tech','Eyelash Tech'],
+                services: "Eyebrow Tech and Eyelash Tech"
             }
           ]);
       }, []);
