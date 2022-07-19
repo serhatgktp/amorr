@@ -115,3 +115,22 @@
 .amorr-text {
   background-color: transparent;
 }
+
+#basic-menu a {
+  text-decoration: none;
+  color: black;
+}
+#basic-menu a:link {
+  text-decoration: none;
+  color: black;
+}
+#basic-menu a:visited {
+  text-decoration: none;
+  color: black;
+}
+#basic-menu a:hover {
+  text-decoration: underline;
+}
+#basic-menu a:active {
+  text-decoration: underline;
+}

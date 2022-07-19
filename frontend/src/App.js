@@ -15,6 +15,10 @@ import InitialLogin from './components/initial-login/initial-login';
 import InitialSignUp from './components/initial-signup/initial-signup';
 import Login from './components/login-page/login-page';
 import CustomerProfile from './components/customer_profile/customer_profile';
+import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
+import CustomerExplore from './components/customer_explore/customer_explore.jsx';
+import DeleteAccount from './components/delete_account/delete_account';
+
 
 import {
   BrowserRouter as Router,
@@ -22,7 +26,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
 
 function App(){
   
@@ -71,6 +74,9 @@ function App(){
         <Route path='/login' element={<Login/>} />
         <Route path='/profile' element={<CustomerProfile/>}/>
         <Route path='/sp_profile' element={<ServiceProviderProfile/>}/>
+        <Route path='/explore' element={<CustomerExplore/>}/>
+        <Route path='/logout' element={<InitialLogin/>}/>
+        <Route path = '/delete-account' element={<DeleteAccount/>}></Route>
 
       </Routes>
     </Router>
