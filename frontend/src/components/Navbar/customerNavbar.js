@@ -30,6 +30,7 @@ const CustomerNavbar = () => {
     // setTimeout(function () {
     //   setTriggerLogoutPopup(false);
     // }, 3000);
+    
     fetch("http://localhost:5000/logout", {
         method: 'POST',
         credentials: "include",
@@ -84,7 +85,7 @@ const CustomerNavbar = () => {
       >
         <MenuItem sx={{ fontSize: '15px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/>  <a href="/profile"><b>Manage Account</b></a></MenuItem>
         <MenuItem sx={{fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><DeleteIcon />  <a href="/delete-account"><b>Delete Account</b></a></MenuItem>
-        <MenuItem sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <a href="/logout" onClick={handleLogout}><b>Logout</b></a></MenuItem>
+        <MenuItem sx={{ fontSize: '15px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <a  onClick={handleLogout}><b>Logout</b></a></MenuItem>
       </Menu>
       </div>
       <LogoutPopup trigger={triggerLogoutPopup}/>
