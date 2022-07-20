@@ -83,7 +83,7 @@ const ServiceProviderNavbar = () => {
       >
         <MenuItem sx={{ fontSize: '14px', fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><SettingsIcon/> <a href="/sp_profile"> <b>Manage Account</b> </a> </MenuItem>
         <MenuItem sx={{ fontSize: '14px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><DeleteIcon />  <b>Delete Account</b></MenuItem>
-        <MenuItem sx={{ fontSize: '14px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <a href="/logout" onClick={handleLogout}><b>Logout</b></a></MenuItem>
+        <MenuItem sx={{ fontSize: '14px',fontFamily: 'Poppins', color: 'black', backgroundColor: 'white', borderColor: '#d46f5e' }}><LogoutIcon />  <a onClick={handleLogout}><b>Logout</b></a></MenuItem>
       </Menu>
       </div>
       <LogoutPopup trigger={triggerLogoutPopup}/>
