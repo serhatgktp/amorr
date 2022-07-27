@@ -18,6 +18,7 @@ import CustomerProfile from './components/customer_profile/customer_profile';
 import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
 import CustomerExplore from './components/customer_explore/customer_explore.jsx';
 import DeleteAccount from './components/delete_account/delete_account';
+import RequestAppointment from './components/request_appointment/RequestAppointment'
 
 
 import {
@@ -77,6 +78,7 @@ function App(){
         <Route path='/explore' element={<CustomerExplore/>}/>
         <Route path='/logout' element={<InitialLogin/>}/>
         <Route path = '/delete-account' element={<DeleteAccount/>}></Route>
+        <Route path = '/appointment' element={<RequestAppointment/>}></Route>
 
       </Routes>
     </Router>
