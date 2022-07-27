@@ -1,5 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import AppointmentCard from './appointment_card';
+import AppointmentCard from './appointment_cards/appointment_card';
+import AwaitingCard from './appointment_cards/awaiting_card';
+import ConfirmedCard from './appointment_cards/confirmed_card';
+import PastCard from './appointment_cards/past_card';
 import './my_appointment.css'
 
 const my_appointments = ( ) => {
@@ -58,7 +61,7 @@ const my_appointments = ( ) => {
             <div className="type_of_appointment_heading">Awaiting Confirmation</div>
             <div className="list_of_appointments">
                 {waitingApptList.map((appt) => (
-                        <AppointmentCard appt={appt}/>
+                        <AwaitingCard appt={appt}/>
                 ))}
             </div>
           </div>
@@ -67,7 +70,7 @@ const my_appointments = ( ) => {
             <div className="type_of_appointment_heading">Confirmed Appointments</div>
             <div className="list_of_appointments">
                 {confirmedApptList.map((appt) => (
-                        <AppointmentCard appt={appt}/>
+                        <ConfirmedCard appt={appt}/>
                 ))}
             </div>
           </div>
@@ -76,7 +79,7 @@ const my_appointments = ( ) => {
             <div className="type_of_appointment_heading">Past Appointments</div>
             <div className="list_of_appointments">
                 {pastApptList.map((appt) => (
-                        <AppointmentCard appt={appt}/>
+                        <PastCard appt={appt}/>
                 ))}
             </div>
           </div>
