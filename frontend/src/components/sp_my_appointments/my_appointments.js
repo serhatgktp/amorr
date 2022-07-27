@@ -25,6 +25,33 @@ const my_appointments = ( ) => {
         {name: "IwI", price:"32.22", time:"7:00PM", date:"26 July 2022"}
     ]);
 
+    // // GET REQUEST TO GET AWAITING CONFIRMATION APPOINTMENTS
+    // useEffect(() => {
+    //     fetch("http://localhost:5000/get-sp-awaiting-appts", {credentials: 'include'}).then(response =>
+    //       response.json().then(data => {
+    //         setWaitingApptList(data);
+    //       })
+    //     );
+    //   }, []);
+
+    // // GET REQUEST TO GET CONFIRMED APPOINTMENTS
+    // useEffect(() => {
+    //     fetch("http://localhost:5000/get-sp-confirmed-appts", {credentials: 'include'}).then(response =>
+    //       response.json().then(data => {
+    //         setConfirmedApptList(data);
+    //       })
+    //     );
+    //   }, []);
+
+    // // GET REQUEST TO GET PAST APPOINTMENTS
+    // useEffect(() => {
+    //     fetch("http://localhost:5000/get-sp-past-appts", {credentials: 'include'}).then(response =>
+    //       response.json().then(data => {
+    //         setPastApptList(data);
+    //       })
+    //     );
+    //   }, []);
+
     return (
       <div className="sp_my_appointments">
           <div className="appointment_section">
