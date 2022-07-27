@@ -185,12 +185,12 @@ input[type="number"] {
 
 
 /* -------- SCROLLBAR STYLING START -------- */
-::-webkit-scrollbar {
+#service_provider_list_prices ::-webkit-scrollbar {
     width: 14px;
     height: 18px;
   }
   
-  ::-webkit-scrollbar-thumb {
+  #service_provider_list_prices ::-webkit-scrollbar-thumb {
     height: 6px;
     border: 4px solid rgba(0, 0, 0, 0);
     background-clip: padding-box;
