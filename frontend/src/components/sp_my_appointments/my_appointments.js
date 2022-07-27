@@ -3,18 +3,54 @@ import AppointmentCard from './appointment_card';
 import './my_appointment.css'
 
 const my_appointments = ( ) => {
-    const appt = {name: "Customer Test", price:"32.22", time:"7:00PM", date:"26 July 2022"};
+    const [waitingApptList, setWaitingApptList] = useState([
+        {name: "Customer 1", price:"32.22", time:"7:00PM", date:"26 July 2022"},
+        {name: "Customer 2", price:"32.22", time:"7:00PM", date:"26 July 2022"},
+        {name: "Customer 3", price:"32.22", time:"7:00PM", date:"26 July 2022"},
+        {name: "Customer 4", price:"32.22", time:"7:00PM", date:"26 July 2022"},
+        {name: "Customer 5", price:"32.22", time:"7:00PM", date:"26 July 2022"}
+    ]);
+
+    const [confirmedApptList, setConfirmedApptList] = useState([
+        {name: "Customer 6", price:"32.22", time:"7:00PM", date:"26 July 2022"},
+        {name: "Customer 7", price:"32.22", time:"7:00PM", date:"26 July 2022"},
+        {name: "Customer 3", price:"32.22", time:"7:00PM", date:"26 July 2022"},
+        {name: "Customer 4", price:"32.22", time:"7:00PM", date:"26 July 2022"},
+        {name: "Customer 5", price:"32.22", time:"7:00PM", date:"26 July 2022"}
+    ]);
+
+    const [pastApptList, setPastApptList] = useState([
+        {name: "Customer Wee", price:"32.22", time:"7:00PM", date:"26 July 2022"},
+        {name: "Customer Woo", price:"32.22", time:"7:00PM", date:"26 July 2022"},
+        {name: "Customer 3", price:"32.22", time:"7:00PM", date:"26 July 2022"}
+    ]);
 
     return (
       <div className="sp_my_appointments">
           <div className="appointment_section">
             <div className="type_of_appointment_heading">Awaiting Confirmation</div>
             <div className="list_of_appointments">
-                <AppointmentCard appt={appt}/>
-                <AppointmentCard appt={appt}/>
-                <AppointmentCard appt={appt}/>
-                <AppointmentCard appt={appt}/>
-                <AppointmentCard appt={appt}/>
+                {waitingApptList.map((appt) => (
+                        <AppointmentCard appt={appt}/>
+                ))}
+            </div>
+          </div>
+
+          <div className="appointment_section">
+            <div className="type_of_appointment_heading">Confirmed Appointments</div>
+            <div className="list_of_appointments">
+                {confirmedApptList.map((appt) => (
+                        <AppointmentCard appt={appt}/>
+                ))}
+            </div>
+          </div>
+
+          <div className="appointment_section">
+            <div className="type_of_appointment_heading">Past Appointments</div>
+            <div className="list_of_appointments">
+                {pastApptList.map((appt) => (
+                        <AppointmentCard appt={appt}/>
+                ))}
             </div>
           </div>
       </div>

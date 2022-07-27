@@ -5,7 +5,7 @@
 .appointment_card {
     background-color: #F9F6EE;
     display: flex;
-    padding: 15px;
+    padding: 12px;
     /* margin: 20px 100px; */
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
@@ -26,7 +26,7 @@
 
 .appointment_card .details {
     color: #808080;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .appointment_card #more_info_button{
