@@ -36,7 +36,7 @@
     border-radius: 40px;
     padding: 6px 18px;
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 500;
     color: #F9F6EE;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     bottom: 0;
@@ -45,6 +45,6 @@
     margin-right: 15px;
 }
 
-.appointment_card #more_info_button{
+.appointment_card #more_info_button:hover{
     transform: scale(1.03);
 }
