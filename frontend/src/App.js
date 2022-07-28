@@ -21,7 +21,6 @@ import DeleteAccount from './components/delete_account/delete_account';
 import RequestAppointment from './components/request_appointment/RequestAppointment'
 import ServiceProviderAppointments from './components/sp_my_appointments/my_appointments'
 
-
 import {
   BrowserRouter as Router,
   Routes,

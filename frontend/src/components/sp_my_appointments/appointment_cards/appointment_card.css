@@ -1,0 +1,87 @@
+*{
+    font-family: 'Poppins';
+}
+
+.appointment_card {
+    background-color: #F9F6EE;
+    display: flex;
+    padding: 12px;
+    /* margin: 20px 100px; */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    /* margin-top: 25px; */
+    /* margin-left: 40px; */
+    margin-bottom: 10px;
+    width: 90%;
+}
+
+.appointment_card .customer_heading {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 3px;
+}
+
+.appointment_card .details {
+    color: #808080;
+    font-size: 16px;
+}
+
+.appointment_card #more_info_button{
+    position: absolute;
+    cursor: pointer;
+    background-color: #345392;
+    border: none;
+    border-radius: 40px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #F9F6EE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    bottom: 0;
+    right: 0;
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+.appointment_card #more_info_button:hover{
+    transform: scale(1.03);
+}
+
+.appointment_card .below_buttons{
+    position: absolute;
+    border: none;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 8px;
+    margin-right: 10px;
+    background-color: none;
+    color: none;
+}
+
+.appointment_card #past_button:hover{
+    transform: scale(1.03);
+}
+
+.appointment_card #mark_done_button{
+    position: absolute;
+    cursor: pointer;
+    background-color: #345392;
+    border: none;
+    border-radius: 40px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #F9F6EE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    bottom: 0;
+    right: 0;
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+.appointment_card #mark_done_button:hover{
+    transform: scale(1.03);
+}
