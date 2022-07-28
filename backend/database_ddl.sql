@@ -68,4 +68,5 @@ CREATE TABLE `amorr`.`appointments` (
   `price` VARCHAR(45) NULL,
   `address` VARCHAR(300) NULL,
   `status` VARCHAR(100) NULL,
+  `reviewed` VARCHAR(10) NULL,
   PRIMARY KEY (`appointment_id`));
