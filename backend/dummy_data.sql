@@ -24,3 +24,15 @@ insert into amorr.sp_reviews (recipient_uid, reviewer_uid, type_of_service, rati
 insert into amorr.sp_reviews (recipient_uid, reviewer_uid, type_of_service, rating, review) values ('9999', '7', 'brains', '4', 'example review 3');
 insert into amorr.sp_reviews (recipient_uid, reviewer_uid, type_of_service, rating, review) values ('9999', '7', 'brains', '2', 'example review 4');
 insert into amorr.sp_reviews (recipient_uid, reviewer_uid, type_of_service, rating, review) values ('9999', '7', 'brains', '4', 'example review 5');
+
+-- Test get-appointments
+insert into amorr.appointments (customer_uid, sp_uid, services, time, date, price, address, status)
+  values ('7', '12', "['Eyebrow Tech', 'Eyelash Tech']", '13:45', '2022-07-28', '45.00', '1256 Military Tr', 'confirmed');
+insert into amorr.appointments (customer_uid, sp_uid, services, time, date, price, address, status)
+  values ('7', '12', "['Eyebrow Tech', 'Eyelash Tech']", '13:45', '2022-07-28', '45.00', '1256 Military Tr', 'confirmed');
+insert into amorr.appointments (customer_uid, sp_uid, services, time, date, price, address, status)
+  values ('7', '12', "['Eyebrow Tech', 'Eyelash Tech']", '13:45', '2022-07-28', '45.00', '1256 Military Tr', 'awaiting');
+insert into amorr.appointments (customer_uid, sp_uid, services, time, date, price, address, status)
+  values ('7', '12', "['Eyebrow Tech', 'Eyelash Tech']", '13:45', '2022-07-28', '45.00', '1256 Military Tr', 'awaiting');
+insert into amorr.appointments (customer_uid, sp_uid, services, time, date, price, address, status)
+  values ('7', '12', "['Eyebrow Tech', 'Eyelash Tech']", '13:45', '2022-07-28', '45.00', '1256 Military Tr', 'past');
