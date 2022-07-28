@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 import { IconButton } from '@mui/material';
 import './appointment_card.css'
 
-const awaiting_card = ( {appt, handleAcceptClick, handleRejectClick} ) => {
+const AwaitingCard = ( {appt, handleAcceptClick, handleRejectClick} ) => {
     return (
       <div className="appointment_card">
         <div className="customer_heading">{appt.name}</div>
@@ -26,4 +26,4 @@ const awaiting_card = ( {appt, handleAcceptClick, handleRejectClick} ) => {
   }
 
   
-export default awaiting_card
+export default AwaitingCard

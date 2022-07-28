@@ -2,7 +2,7 @@ import React from 'react'
 import { Icon } from '@iconify/react';
 import './appointment_card.css'
 
-const confirmed_card = ( {appt, handleDoneClick} ) => {
+const ConfirmedCard = ( {appt, handleDoneClick} ) => {
     return (
       <div className="appointment_card">
         <div className="customer_heading">{appt.name}</div>
@@ -21,4 +21,4 @@ const confirmed_card = ( {appt, handleDoneClick} ) => {
   }
 
   
-export default confirmed_card
+export default ConfirmedCard
