@@ -13,8 +13,6 @@ import requests # Importing for sending images
 
 from flask_cors import CORS, cross_origin   # For handling cross-origin requests
 
-# Classes (for now)
-
 class User:
     def __init__(self, sql_data):
         self.email_address = sql_data['email_address']
