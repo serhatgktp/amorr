@@ -13,9 +13,7 @@ const ConfirmedCard = ( {appt, handleDoneClick} ) => {
               <div className="individual_detail"><Icon icon="uiw:date" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginLeft: '7px', marginRight:'10px'}}/>{appt.date}</div>
               <div className="individual_detail"><Icon icon="akar-icons:location" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginLeft: '7px', marginRight:'10px'}}/>{appt.address}</div>
           </div>
-          {/* <button id="mark_done_button" onClick={ (e) => handleDoneClick(e, appt)}>Mark as Done</button> */}
-          <button id="mark_done_button">Mark as Done</button>
-
+          <button id="mark_done_button" onClick={ (e) => handleDoneClick(e, appt)}>Mark as Done</button>
       </div>
     )
   }
