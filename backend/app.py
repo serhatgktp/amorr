@@ -799,9 +799,9 @@ def get_appts(status):
 def modify_appt(action):
     if action == "accept":
         status = "Confirmed"
-    elif action != "reject":
+    elif action == "reject":
         status = "Rejected"
-    elif action != "complete":
+    elif action == "complete":
         status = "Complete"
     else:
         resp = make_response( jsonify( {"message": "Endpoint not recognized!"} ), 405, )
