@@ -28,6 +28,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import ExploreSpProfile from './components/explore__sp_profile/explore_sp_profile.js';
 
 function App(){
   
@@ -80,8 +81,8 @@ function App(){
         <Route path='/logout' element={<InitialLogin/>}/>
         <Route path = '/delete-account' element={<DeleteAccount/>}></Route>
         <Route path = '/appointment' element={<RequestAppointment/>}></Route>
+        <Route path = '/explore-sp' element={<ExploreSpProfile/>}></Route>
         <Route path = '/sp-my-appointments' element={<ServiceProviderAppointments/>}></Route>
-
       </Routes>
     </Router>
     </body>
