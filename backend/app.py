@@ -748,7 +748,7 @@ def fetch_sps():
 @cross_origin(supports_credentials=True)
 def get_appts(status):
 
-    if status!='awaiting' and status!='confirmed' and status!='past':   # Undefined endpoint
+    if status!='Pending' and status!='Confirmed' and status!='Complete' and status!='Rejected':   # Undefined endpoint
         resp = make_response( jsonify( {"message": "Endpoint not recognized!"} ), 405, )
         return resp
 
@@ -791,6 +791,45 @@ def get_appts(status):
     return resp
 #########
 # get-appointments
+
+# modify-appointment
+#########
+@app.route('/modify-appointment/<action>', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def modify_appt(action):
+    if action == "accept":
+        status = "Confirmed"
+    elif action != "reject":
+        status = "Rejected"
+    elif action != "complete":
+        status = "Complete"
+    else:
+        resp = make_response( jsonify( {"message": "Endpoint not recognized!"} ), 405, )
+        return resp
+
+    uid = get_user_id()
+    if uid == -1:   # User not logged in
+        resp = make_response( jsonify( {"message": "Please log in to modify your appointments!"} ), 400, )
+        return resp
+    user_type = get_user_type()
+    if(user_type == 'Customer'):    # User not SP
+        resp = make_response( jsonify( {"message": "You are not permitted to use this endpoint"} ), 401, )
+        return resp
+
+    r = request
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':  # Case for JSON request body 
+        json = r.json
+        appt_id = json['appt_id']
+    else:   # Case for submitted form
+        appt_id = r.form['appt_id']
+
+    query = f"UPDATE amorr.appointments SET status = '{status}' WHERE appointment_id = '{appt_id}';"
+    mu.query(config, query)
+    resp = make_response( jsonify( {"message": f"Status for appointment {appt_id} set to {status}"} ), 200, )
+    return resp
+#########
+# End of modify-appointment
 
 ################################################################################################################################################
 ################################################################################################################################################
