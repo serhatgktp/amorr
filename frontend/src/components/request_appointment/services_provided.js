@@ -3,16 +3,15 @@ import './services_provided.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle, faMinusCircle, faCircle, faArrowRight} from '@fortawesome/free-solid-svg-icons';
 
-function Services_Provided () {
+function Services_Provided () { 
 	const [items, setItems] = useState([
-		{ itemName: 'item 1', price: 40, quantity: 0,},
-		{ itemName: 'item 2',price: 40,  quantity: 0,},
-		{ itemName: 'item 3', price: 40, quantity: 0,},
-        { itemName: 'item 3', price: 40, quantity: 0,},
-        { itemName: 'item 1', price: 40, quantity: 0,},
-		{ itemName: 'item 2', price: 40, quantity: 0,},
-		{ itemName: 'item 3', price: 40, quantity: 0,},
-        { itemName: 'item 3', price: 40, quantity: 0},
+		{ itemName: 'Hair wash and blow dry', price: 29.00, quantity: 0,},
+		{ itemName: 'Men haircut',price: 34.99,  quantity: 0,},
+		{ itemName: 'Women haircut', price: 21.99, quantity: 0,},
+        { itemName: 'Boys haircut', price: 19.99, quantity: 0,},
+        { itemName: 'Girls haircut', price: 21.99, quantity: 0,},
+		{ itemName: 'Basic perm', price: 19.99, quantity: 0,},
+		{ itemName: 'Digital perm', price: 19.99, quantity: 0,}
 	]);
 
 	const [totalItemCount, setTotalItemCount] = useState();
@@ -65,7 +64,7 @@ function Services_Provided () {
 						<div className='item-container'>
 							<div className='item-name'>
 										<FontAwesomeIcon icon={faCircle} />
-										<span><b>{item.itemName}</b> - {item.price}</span>
+										<span><b>{item.itemName}</b> - ${parseFloat(item.price).toFixed(2)}</span>
 								
 							</div>
 							<div className='quantity'>
@@ -86,7 +85,7 @@ function Services_Provided () {
                 
 		</div>
         <div>
-        <div className='subtotal'> <b>Subtotal: ${subtotal}</b></div>
+        <div className='subtotal'> <b>Subtotal: ${parseFloat(subtotal).toFixed(2)}</b></div>
         <div className='payment'> <button className='paymentButton'> <b>Checkout and Pay</b> <FontAwesomeIcon className='checkout_arrowicon'icon={faArrowRight}/></button></div>
         </div>
         </div>
