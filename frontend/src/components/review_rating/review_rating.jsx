@@ -40,7 +40,7 @@ const ReviewRate = () => {
             <div className='container'>
                 
                 <div className="right">
-                    <div className="heading">Review</div>
+                    <div className="heading">Write a Review!</div>
                     
                     <div className="box">
 
