@@ -13,61 +13,61 @@ const MyAppointments = () => {
     const handleAcceptClick = (e, appt) => {
         e.preventDefault();
 
-        const apptToAccept = {appointment_id: appt.appointment_id}
+        const apptToAccept = {appt_id: appt.appointment_id}
 
         console.log(apptToAccept)
 
         // POST REQUEST to accept the selected appointment to confirmed
-        // fetch("http://localhost:5000/sp-accept-appt", {
-        //     method: 'POST',
-        //     headers: {"Content-Type": "application/json"},
-        //     credentials: "include",
-        //     body: JSON.stringify(apptToAccept)
-        // }).then(response => {
-        //     if (response.ok){
-        //         window.location.reload();
-        //     }
-        // })
+        fetch("http://localhost:5000/modify-appointment/accept", {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            credentials: "include",
+            body: JSON.stringify(apptToAccept)
+        }).then(response => {
+            if (response.ok){
+                window.location.reload();
+            }
+        })
     }
 
     const handleRejectClick = (e, appt) => {
         e.preventDefault();
 
-        const apptToReject = {appointment_id: appt.appointment_id}
+        const apptToReject = {appt_id: appt.appointment_id}
 
         console.log(apptToReject)
 
         // POST REQUEST to accept the selected appointment to confirmed
-        // fetch("http://localhost:5000/sp-reject-appt", {
-        //     method: 'POST',
-        //     headers: {"Content-Type": "application/json"},
-        //     credentials: "include",
-        //     body: JSON.stringify(apptToAccept)
-        // }).then(response => {
-        //     if (response.ok){
-        //         window.location.reload();
-        //     }
-        // })
+        fetch("http://localhost:5000/modify-appointment/reject", {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            credentials: "include",
+            body: JSON.stringify(apptToReject)
+        }).then(response => {
+            if (response.ok){
+                window.location.reload();
+            }
+        })
     }
 
     const handleDoneClick = (e, appt) => {
         e.preventDefault();
 
-        const apptMarkDone = {appointment_id: appt.appointment_id}
+        const apptMarkDone = {appt_id: appt.appointment_id}
 
         console.log(apptMarkDone)
 
         // POST REQUEST to accept the selected appointment to confirmed
-        // fetch("http://localhost:5000/sp-mark-done-appt", {
-        //     method: 'POST',
-        //     headers: {"Content-Type": "application/json"},
-        //     credentials: "include",
-        //     body: JSON.stringify(apptToAccept)
-        // }).then(response => {
-        //     if (response.ok){
-        //         window.location.reload();
-        //     }
-        // })
+        fetch("http://localhost:5000/modify-appointment/complete", {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            credentials: "include",
+            body: JSON.stringify(apptMarkDone)
+        }).then(response => {
+            if (response.ok){
+                window.location.reload();
+            }
+        })
     }
 
     useEffect(() => {
