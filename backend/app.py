@@ -757,16 +757,22 @@ def get_appts(status):
         resp = make_response( jsonify( {"message": "Please log in to view your appointments!"} ), 400, )
         return resp
 
+    user_type = get_user_type()
+    if(user_type == 'Customer'):
+        name_uid = "sp_uid"
+    else:
+        name_uid = "customer_uid"
+
     query = f"""
         select a.appointment_id, u.full_name as name, a.services, a.time, a.date, a.price, a.address from
         amorr.appointments as a
         inner join
         amorr.users as u
-        on a.customer_uid = u.uid
+        on a.{name_uid} = u.uid
         where status = '{status}'
         """
 
-    if (get_user_type() == 'Customer'):
+    if (user_type == 'Customer'):
         query = query + f" and a.customer_uid = '{uid}'"
     else:
         query = query + f" and a.sp_uid = '{uid}'"
