@@ -7,6 +7,7 @@
     flex-direction: row;
     margin: 0 auto;
     width: 90%;
+    margin-top: 15px;
 }
 
 .sp_my_appointments .appointment_section {

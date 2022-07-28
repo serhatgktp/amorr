@@ -7,25 +7,27 @@ import './my_appointment.css'
 
 const my_appointments = ( ) => {
     const [waitingApptList, setWaitingApptList] = useState([
-        {name: "カワイイ", price:"32.22", time:"7:00PM", date:"26 July 2022"},
-        {name: "Customer 2", price:"32.22", time:"7:00PM", date:"26 July 2022"},
-        {name: "Customer 3", price:"32.22", time:"7:00PM", date:"26 July 2022"},
-        {name: "Customer 4", price:"32.22", time:"7:00PM", date:"26 July 2022"},
-        {name: "Customer 5", price:"32.22", time:"7:00PM", date:"26 July 2022"}
+        {appt_id: 1, name: "Customer 1", price:"99.99", services: "Extra Haircut, Massage", time:"7:00PM", date:"26 September 2022", address:"1 Uwu Road, M1C4Y7"},
+        {appt_id: 2, name: "Customer 2", price:"32.22", services: "Eyebrow, Eyeliner", time:"8:00PM", date:"26 June 2022", address:"1 OwO Road, M1C4Y7"},
+        {appt_id: 3, name: "Customer 3", price:"32.22", services: "Men's Haircut", time:"7:00AM", date:"26 July 2022", address:"1 EhE Road, M1C4Y7"},
+        {appt_id: 4, name: "Customer 4", price:"32.22", services: "Bob Cut", time:"9:00PM", date:"20 July 2022", address:"1 WrW Road, M1C4Y7"},
+        {appt_id: 5, name: "Customer 5", price:"32.22", services: "Hairdye", time:"11:11PM", date:"26 July 2022", address:"1 ZuZ Road, M1C4Y7"}
     ]);
 
     const [confirmedApptList, setConfirmedApptList] = useState([
-        {name: "A", price:"32.22", time:"7:00PM", date:"26 July 2022"},
-        {name: "B", price:"32.22", time:"7:00PM", date:"26 July 2022"},
-        {name: "C", price:"32.22", time:"7:00PM", date:"26 July 2022"},
-        {name: "D", price:"32.22", time:"7:00PM", date:"26 July 2022"},
-        {name: "E", price:"32.22", time:"7:00PM", date:"26 July 2022"}
+        {appt_id: 1, name: "Customer 1", price:"99.99", services: "Extra Haircut, Massage", time:"7:00PM", date:"26 September 2022", address:"1 Uwu Road, M1C4Y7"},
+        {appt_id: 2, name: "Customer 2", price:"32.22", services: "Eyebrow, Eyeliner", time:"8:00PM", date:"26 June 2022", address:"1 OwO Road, M1C4Y7"},
+        {appt_id: 3, name: "Customer 3", price:"32.22", services: "Men's Haircut", time:"7:00AM", date:"26 July 2022", address:"1 EhE Road, M1C4Y7"},
+        {appt_id: 4, name: "Customer 4", price:"32.22", services: "Bob Cut", time:"9:00PM", date:"20 July 2022", address:"1 WrW Road, M1C4Y7"},
+        {appt_id: 5, name: "Customer 5", price:"32.22", services: "Hairdye", time:"11:11PM", date:"26 July 2022", address:"1 ZuZ Road, M1C4Y7"}
     ]);
 
     const [pastApptList, setPastApptList] = useState([
-        {name: "UwU", price:"32.22", time:"7:00PM", date:"26 July 2022"},
-        {name: "OwO", price:"32.22", time:"7:00PM", date:"26 July 2022"},
-        {name: "IwI", price:"32.22", time:"7:00PM", date:"26 July 2022"}
+        {appt_id: 1, name: "Customer 1", price:"99.99", services: "Extra Haircut, Massage", time:"7:00PM", date:"26 September 2022", address:"1 Uwu Road, M1C4Y7"},
+        {appt_id: 2, name: "Customer 2", price:"32.22", services: "Eyebrow, Eyeliner", time:"8:00PM", date:"26 June 2022", address:"1 OwO Road, M1C4Y7"},
+        {appt_id: 3, name: "Customer 3", price:"32.22", services: "Men's Haircut", time:"7:00AM", date:"26 July 2022", address:"1 EhE Road, M1C4Y7"},
+        {appt_id: 4, name: "Customer 4", price:"32.22", services: "Bob Cut", time:"9:00PM", date:"20 July 2022", address:"1 WrW Road, M1C4Y7"},
+        {appt_id: 5, name: "Customer 5", price:"32.22", services: "Hairdye", time:"11:11PM", date:"26 July 2022", address:"1 ZuZ Road, M1C4Y7"}
     ]);
 
     // // GET REQUEST TO GET AWAITING CONFIRMATION APPOINTMENTS
