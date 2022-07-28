@@ -9,18 +9,22 @@
     border-width: 2px;
 }
 
-/* .creview_rating_wrapper textarea{
+.review_rating_wrapper textarea{
     border: solid;
     border-width: 2px;
     padding:10px;
     font-size: 16px;
     padding-left: 15px;
-    background-color: #F9F6EE;
+    background-color: #F9F6EE; 
     outline: none;
     resize: none;
     display: flex;
     height: 200px;
-} */
+}
+
+.review_rating_wrapper .inputs{
+    background-color: transparent;
+}
 
 .review_rating_wrapper .input1{
     flex: 1; 
@@ -29,7 +33,7 @@
     margin: 10px 10px;
     margin-top: 40px;
     overflow-wrap: break-all;
-    background-color: black;
+    background-color: transparent;
 
 }
 
