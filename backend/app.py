@@ -742,7 +742,7 @@ def fetch_sps():
 #########
 # End of fetch-service-providers
 
-# get-appts
+# get-appointments
 #########
 @app.route('/appointments/<status>', methods=['GET'])
 @cross_origin(supports_credentials=True)
@@ -772,11 +772,18 @@ def get_appts(status):
 
     data = mu.load(config, "amorr.users", query=query)
 
+    for i in range(len(data)):
+        services = data[i]['services']
+        services = services.replace("'", "")
+        services = services.replace("[", "")
+        services = services.replace("]", "")
+        data[i]['services'] = services
+
     return_data = data
     resp = make_response( jsonify(return_data), 200,)
     return resp
 #########
-# get-appts
+# get-appointments
 
 ################################################################################################################################################
 ################################################################################################################################################
