@@ -43,7 +43,8 @@ const ReviewRate = () => {
                     <div className="heading">Review</div>
                     
                     <div className="box">
-                        <p className='into'>Thanks for choosing Amorr, we strive to provide the highest quality service and your feedback would be greatly appreciated as it will help us make sure we serve you and other amazing customers well in the future.</p>
+
+                        <p className='into'>Thanks for choosing <span className='a'>a</span><span className= 'morr'>morr</span>, we strive to provide the highest quality service and your feedback would be greatly appreciated as it will help us make sure we serve you and other amazing customers well in the future.</p>
                         
                         <p> Rating Service Provider Name</p>
 

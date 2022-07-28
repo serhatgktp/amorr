@@ -91,13 +91,14 @@
     font-weight: 200;
 }
 
-.review_rating_wrapper .hdg_guide span {
+
+.review_rating_wrapper .into {
     color: black;
-    background: #F9F6EE;
+    background: transparent;
 }
-.review_rating_wrapper .hdg_guide span:nth-child(2) {
+.review_rating_wrapper .into .a {
     color: #d46f5e;
 }
-.review_rating_wrapper .hdg_guide span:nth-child(3) {
+.review_rating_wrapper .into .morr{
     color: #0b5394;
 }
