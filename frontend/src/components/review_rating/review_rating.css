@@ -67,10 +67,7 @@
 
 .review_rating_wrapper .right{
     width: 50%;
-    padding: 20px;
-    padding-top: 30px;
-    padding-right: 150px;
-    padding-left: 0px;
+    margin: 0 auto;
 }
 
 .review_rating_wrapper .left{
