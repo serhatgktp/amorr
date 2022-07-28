@@ -747,12 +747,13 @@ def fetch_sps():
 @app.route('/appointments/<status>', methods=['GET'])
 @cross_origin(supports_credentials=True)
 def get_appts(status):
-    if status!='awaiting' and status!='confirmed' and status!='past':
+
+    if status!='awaiting' and status!='confirmed' and status!='past':   # Undefined endpoint
         resp = make_response( jsonify( {"message": "Endpoint not recognized!"} ), 405, )
         return resp
-    
+
     uid = get_user_id()
-    if uid == -1:
+    if uid == -1:   # User not logged in
         resp = make_response( jsonify( {"message": "Please log in to view your appointments!"} ), 400, )
         return resp
 
