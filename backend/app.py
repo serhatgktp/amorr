@@ -764,7 +764,7 @@ def get_appts(status):
         name_uid = "customer_uid"
 
     query = f"""
-        select a.appointment_id, u.full_name as name, a.services, a.time, a.date, a.price, a.address from
+        select a.appointment_id, u.full_name as name, a.services, a.time, a.date, a.price, a.address, a.reviewed from
         amorr.appointments as a
         inner join
         amorr.users as u
