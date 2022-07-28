@@ -10,65 +10,65 @@ const MyAppointments = () => {
     const [confirmedApptList, setConfirmedApptList] = useState([]);
     const [pastApptList, setPastApptList] = useState([]);
 
-    // const handleAcceptClick = (e, appt) => {
-    //     e.preventDefault();
+    const handleAcceptClick = (e, appt) => {
+        e.preventDefault();
 
-    //     const apptToAccept = {appt_id: appt.appt_id}
+        const apptToAccept = {appointment_id: appt.appointment_id}
 
-    //     console.log(apptToAccept)
+        console.log(apptToAccept)
 
-    //     // POST REQUEST to accept the selected appointment to confirmed
-    //     // fetch("http://localhost:5000/sp-accept-appt", {
-    //     //     method: 'POST',
-    //     //     headers: {"Content-Type": "application/json"},
-    //     //     credentials: "include",
-    //     //     body: JSON.stringify(apptToAccept)
-    //     // }).then(response => {
-    //     //     if (response.ok){
-    //     //         window.location.reload();
-    //     //     }
-    //     // })
-    // }
+        // POST REQUEST to accept the selected appointment to confirmed
+        // fetch("http://localhost:5000/sp-accept-appt", {
+        //     method: 'POST',
+        //     headers: {"Content-Type": "application/json"},
+        //     credentials: "include",
+        //     body: JSON.stringify(apptToAccept)
+        // }).then(response => {
+        //     if (response.ok){
+        //         window.location.reload();
+        //     }
+        // })
+    }
 
-    // const handleRejectClick = (e, appt) => {
-    //     e.preventDefault();
+    const handleRejectClick = (e, appt) => {
+        e.preventDefault();
 
-    //     const apptToReject = {appt_id: appt.appt_id}
+        const apptToReject = {appointment_id: appt.appointment_id}
 
-    //     console.log(apptToReject)
+        console.log(apptToReject)
 
-    //     // POST REQUEST to accept the selected appointment to confirmed
-    //     // fetch("http://localhost:5000/sp-reject-appt", {
-    //     //     method: 'POST',
-    //     //     headers: {"Content-Type": "application/json"},
-    //     //     credentials: "include",
-    //     //     body: JSON.stringify(apptToAccept)
-    //     // }).then(response => {
-    //     //     if (response.ok){
-    //     //         window.location.reload();
-    //     //     }
-    //     // })
-    // }
+        // POST REQUEST to accept the selected appointment to confirmed
+        // fetch("http://localhost:5000/sp-reject-appt", {
+        //     method: 'POST',
+        //     headers: {"Content-Type": "application/json"},
+        //     credentials: "include",
+        //     body: JSON.stringify(apptToAccept)
+        // }).then(response => {
+        //     if (response.ok){
+        //         window.location.reload();
+        //     }
+        // })
+    }
 
-    // const handleDoneClick = (e, appt) => {
-    //     e.preventDefault();
+    const handleDoneClick = (e, appt) => {
+        e.preventDefault();
 
-    //     const apptMarkDone = {appt_id: appt.appt_id}
+        const apptMarkDone = {appointment_id: appt.appointment_id}
 
-    //     console.log(apptMarkDone)
+        console.log(apptMarkDone)
 
-    //     // POST REQUEST to accept the selected appointment to confirmed
-    //     // fetch("http://localhost:5000/sp-mark-done-appt", {
-    //     //     method: 'POST',
-    //     //     headers: {"Content-Type": "application/json"},
-    //     //     credentials: "include",
-    //     //     body: JSON.stringify(apptToAccept)
-    //     // }).then(response => {
-    //     //     if (response.ok){
-    //     //         window.location.reload();
-    //     //     }
-    //     // })
-    // }
+        // POST REQUEST to accept the selected appointment to confirmed
+        // fetch("http://localhost:5000/sp-mark-done-appt", {
+        //     method: 'POST',
+        //     headers: {"Content-Type": "application/json"},
+        //     credentials: "include",
+        //     body: JSON.stringify(apptToAccept)
+        // }).then(response => {
+        //     if (response.ok){
+        //         window.location.reload();
+        //     }
+        // })
+    }
 
     useEffect(() => {
         // GET REQUEST TO GET AWAITING CONFIRMATION APPOINTMENTS
@@ -94,8 +94,7 @@ const MyAppointments = () => {
             <div className="type_of_appointment_heading">Awaiting Confirmation</div>
             <div className="list_of_appointments">
                 {waitingApptList.map((appt) => (
-                        // <AwaitingCard appt={appt} handleAcceptClick={handleAcceptClick} handleRejectClick={handleRejectClick}/>
-                        <AwaitingCard appt={appt}/>
+                        <AwaitingCard appt={appt} handleAcceptClick={handleAcceptClick} handleRejectClick={handleRejectClick}/>
                 ))}
             </div>
           </div>
@@ -104,8 +103,7 @@ const MyAppointments = () => {
             <div className="type_of_appointment_heading">Confirmed Appointments</div>
             <div className="list_of_appointments">
                 {confirmedApptList.map((appt) => (
-                        // <ConfirmedCard appt={appt} handleDoneClick={handleDoneClick}/>
-                        <ConfirmedCard appt={appt}/>
+                        <ConfirmedCard appt={appt} handleDoneClick={handleDoneClick}/>
                 ))}
             </div>
           </div>
