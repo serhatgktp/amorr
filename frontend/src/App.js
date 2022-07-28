@@ -15,9 +15,6 @@ import InitialLogin from './components/initial-login/initial-login';
 import InitialSignUp from './components/initial-signup/initial-signup';
 import Login from './components/login-page/login-page';
 import CustomerProfile from './components/customer_profile/customer_profile';
-import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
-import CustomerExplore from './components/customer_explore/customer_explore.jsx';
-import DeleteAccount from './components/delete_account/delete_account';
 import ReviewRating from './components/review_rating/review_rating';
 
 import {
@@ -26,70 +23,60 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
 
 function App(){
   
-    return (
-      <body>
-        <div>
-        <ReviewRating></ReviewRating>
-        </div>
-      </body>
-    )
-    
+  const [loggedIn,setLoggedIn] = useState(false); //assuming default value is false
+  const [type,setType] = useState(false);
+  useEffect(() => {
+    fetch("http://localhost:5000/check-user-type", {credentials: 'include'}).then(response =>
+    response.json().then(data => {
+      console.log(data);
+      console.log(data.user_type != "Guest");
+      if (data.user_type == "Guest") {
+        setLoggedIn(false);
+        setType(false);
+      }
+      else if(data.user_type == "Customer"){
+        setType(true);
+        setLoggedIn(true);
+      }else{
+        setType(false);
+        setLoggedIn(true);
+      }
+    })
+    );
+  }, [loggedIn, type]);
 
-//   const [loggedIn,setLoggedIn] = useState(false); //assuming default value is false
-//   const [type,setType] = useState(false);
-//   useEffect(() => {
-//     fetch("http://localhost:5000/check-user-type", {credentials: 'include'}).then(response =>
-//     response.json().then(data => {
-//       console.log(data);
-//       console.log(data.user_type != "Guest");
-//       if (data.user_type == "Guest") {
-//         setLoggedIn(false);
-//         setType(false);
-//       }
-//       else if(data.user_type == "Customer"){
-//         setType(true);
-//         setLoggedIn(true);
-//       }else{
-//         setType(false);
-//         setLoggedIn(true);
-//       }
-//     })
-//     );
-//   }, [loggedIn, type]);
+  return (
+    <body>
+    <div>
+    {!loggedIn && !type ? <Navbar/> : ''}
+    {loggedIn && type ? <CustomerNavbar/> : ''}
+    {loggedIn && !type ? <ServiceProviderNavbar/>:''}
+    </div>
+    <Router>
+      <Routes>
 
-//   return (
-//     <body>
-//     <div>
-//     {!loggedIn && !type ? <Navbar/> : ''}
-//     {loggedIn && type ? <CustomerNavbar/> : ''}
-//     {loggedIn && !type ? <ServiceProviderNavbar/>:''}
-//     </div>
-//     <Router>
-//       <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/home' element={<Home/>} />
+        <Route path='/about' element={<AboutUs/>} />
+        <Route path='/contact' element={<ContactUs/>} />
+        <Route path='/customer-register' element={<CustomerRegistration/>} />
+        <Route path='/sp-register' element={<ServiceProviderRegistration/>} />
+        <Route path='/FAQ' element={<FAQ/>} />
+        <Route path='/initial-signup-landing' element={<LoginSignupLanding/>} />
+        <Route path='/initial-login' element={<InitialLogin/>} />
+        <Route path='/initial-signup' element={<InitialSignUp/>} />
+        <Route path='/login' element={<Login/>} />
+        <Route path='/profile' element={<CustomerProfile/>}/>
+        <Route path='/sp_profile' element={<ServiceProviderProfile/>}/>
+        <Route path = '/review-rating' element={<ReviewRating/>}></Route>
 
-//         <Route path='/' element={<Home/>} />
-//         <Route path='/home' element={<Home/>} />
-//         <Route path='/about' element={<AboutUs/>} />
-//         <Route path='/contact' element={<ContactUs/>} />
-//         <Route path='/customer-register' element={<CustomerRegistration/>} />
-//         <Route path='/sp-register' element={<ServiceProviderRegistration/>} />
-//         <Route path='/FAQ' element={<FAQ/>} />
-//         <Route path='/initial-signup-landing' element={<LoginSignupLanding/>} />
-//         <Route path='/initial-login' element={<InitialLogin/>} />
-//         <Route path='/initial-signup' element={<InitialSignUp/>} />
-//         <Route path='/login' element={<Login/>} />
-//         <Route path='/profile' element={<CustomerProfile/>}/>
-//         <Route path='/sp_profile' element={<ServiceProviderProfile/>}/>
-//         <Route path='/explore' element={<CustomerExplore/>}/>
-//         <Route path='/logout' element={<InitialLogin/>}/>
-//         <Route path = '/delete-account' element={<DeleteAccount/>}></Route>
-
-//       </Routes>
-//     </Router>
-//     </body>
-//   )
-}
+      </Routes>
+    </Router>
+    </body>
+  )
+ }
 export default App;
