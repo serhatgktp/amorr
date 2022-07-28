@@ -748,7 +748,7 @@ def fetch_sps():
 @cross_origin(supports_credentials=True)
 def get_appts(status):
 
-    if status!='Pending' and status!='Confirmed' and status!='Complete' and status!='Rejected':   # Undefined endpoint
+    if status!='pending' and status!='confirmed' and status!='complete' and status!='rejected':   # Undefined endpoint
         resp = make_response( jsonify( {"message": "Endpoint not recognized!"} ), 405, )
         return resp
 
