@@ -1,6 +1,7 @@
 import React from 'react';  
 import peacock from "../../assets/about_us/peacock.png"; 
 import './styles.css';
+import { Icon } from '@iconify/react';
 
 function App() {
     return (
@@ -40,7 +41,7 @@ function App() {
                 justifyContent: "space-between",
               }}
             >
-              <button className="click">Connect with Us </button>
+              <a href="/contact/"><button id="service" type="submit">Connect With Us<Icon icon="akar-icons:arrow-right" inline={true} style={{ marginLeft:'7px', verticalAlign: '-0.3em', fontSize:'21px' }}/></button></a>
               <img src={peacock} className="img-peacock" />
             </div>
           </div>
