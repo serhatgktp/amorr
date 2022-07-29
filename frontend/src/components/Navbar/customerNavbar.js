@@ -62,7 +62,7 @@ const CustomerNavbar = () => {
         <a href="/FAQ"><b>FAQ</b></a>
         <a href="/contact"><b>Contact</b></a>
         <a href="/explore"><b>Explore</b></a>
-        <a href="/appointments"><b>My Appointments</b></a>
+        <a href="/customer-my-appointments"><b>My Appointments</b></a>
       </div>
       <div className="icon">
       <IconButton 

@@ -21,6 +21,7 @@ import CustomerExplore from './components/customer_explore/customer_explore.jsx'
 import DeleteAccount from './components/delete_account/delete_account';
 import RequestAppointment from './components/request_appointment/RequestAppointment'
 import ServiceProviderAppointments from './components/sp_my_appointments/my_appointments'
+import CustomerAppointments from './components/customer_my_appointments/my_appointments'
 
 import {
   BrowserRouter as Router,
@@ -85,6 +86,7 @@ function App(){
         <Route path = '/appointment' element={<RequestAppointment/>}></Route>
         <Route path = '/explore-sp' element={<ExploreSpProfile/>}></Route>
         <Route path = '/sp-my-appointments' element={<ServiceProviderAppointments/>}></Route>
+        <Route path = '/customer-my-appointments' element={<CustomerAppointments/>}></Route>
       </Routes>
     </Router>
     </body>
