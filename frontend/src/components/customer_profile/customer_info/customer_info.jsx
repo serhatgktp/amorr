@@ -80,6 +80,12 @@ const CustomerInfo = () => {
             method: 'POST',
             credentials: "include",
             body: data
+        }).then(response => {
+            if (response.ok){
+                setTimeout(function () {
+                    window.location.reload();
+                }, 1300);
+            }
         })
     }
     
