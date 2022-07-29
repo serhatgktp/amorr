@@ -1,19 +1,25 @@
-import React from "react";
+import React , { useEffect, useState }from 'react';
 import "./Navbar.css";
 import LogoutIcon from '@mui/icons-material/Logout';
+import { Avatar } from '@mui/material';
+import { shadows } from '@mui/system';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { useRef, useState } from 'react';
 import LogoutPopup from '../logout-popup/logoutPopup';
 
 const ServiceProviderNavbar = () => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [triggerLogoutPopup, setTriggerLogoutPopup] = useState(false);
+  const [img, setImage] = useState(null);
+
+  useEffect(() => {
+    setImage("http://localhost:5000/get-profile-photo")
+  }, []);
 
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -70,7 +76,7 @@ const ServiceProviderNavbar = () => {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         size="large"
-      ><AccountCircleIcon/>
+      ><Avatar alt="Lorem Ipsum Salons" src={img} sx={{ width: 50, height: 50, boxShadow: 3}}/>
       </IconButton>
       <Menu
         id="basic-menu"
