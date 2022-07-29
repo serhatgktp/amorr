@@ -60,7 +60,7 @@ const ServiceProviderNavbar = () => {
         <a href="/about"><b>About</b></a>
         <a href="/FAQ"><b>FAQ</b></a>
         <a href="/contact"><b>Contact</b></a>
-        <a href="/appointments"><b>My Appointments</b></a>
+        <a href="/sp-my-appointments"><b>My Appointments</b></a>
       </div>
       <div className="icon">
       <IconButton 

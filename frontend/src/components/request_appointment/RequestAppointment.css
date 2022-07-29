@@ -1,0 +1,278 @@
+* {
+    font-family: 'Poppins';
+  }
+  
+  .RA_left {
+    margin: 70px;
+    margin-left: 100px;
+  }
+  
+  .RA_selectedDateText {
+    margin: 15px;
+    margin-top: 3px;
+    margin-left: 30px;
+    display: inline-block;
+    overflow-y: hidden;
+    width: 295px;
+    height: 30px;
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    font-size: 16px;
+    padding-left: 15px;
+    background-color: white;
+    border-radius: 45px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  #RA_dateIcon {
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+  }
+  
+  
+  /* -------- CALENDAR STYLING START -------- */
+  .react-calendar {
+      margin: 20px;
+      width: 350px;
+      max-width: 100%;
+      background: white;
+      line-height: 1.125em;
+      padding: 25px;
+      box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      border: none;
+    }
+    .react-calendar--doubleView {
+      width: 700px;
+    }
+    .react-calendar--doubleView .react-calendar__viewContainer {
+      display: flex;
+      margin: -0.5em;
+    }
+    .react-calendar--doubleView .react-calendar__viewContainer > * {
+      width: 50%;
+      margin: 0.5em;
+    }
+    .react-calendar,
+    .react-calendar *,
+    .react-calendar *:before,
+    .react-calendar *:after {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    .react-calendar button {
+      margin: 0;
+      border: 0;
+      outline: none;
+    }
+    .react-calendar button:enabled:hover {
+      cursor: pointer;
+    }
+    .react-calendar__navigation {
+      height: 44px;
+      margin-bottom: 1em;
+    }
+    .react-calendar__navigation button {
+      min-width: 44px;
+      background: none;
+      font-size: 1em;
+      font-weight: 600;
+    }
+    .react-calendar__navigation button:enabled:hover,
+    .react-calendar__navigation button:enabled:focus {
+      background-color: #e6e6e6;
+    }
+    .react-calendar__navigation button[disabled] {
+      background-color: #f0f0f0;
+    }
+    .react-calendar__month-view__weekdays {
+      text-align: center;
+      font-weight: bold;
+      font-size: 0.75em;
+    }
+    .react-calendar__month-view__weekdays__weekday {
+      padding: 0.5em;
+    }
+    .react-calendar__month-view__weekNumbers {
+      font-weight: bold;
+    }
+    .react-calendar__month-view__weekNumbers .react-calendar__tile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75em;
+      padding: calc(0.75em / 0.75) calc(0.5em / 0.75);
+    }
+    .react-calendar__month-view__days__day--weekend {
+      color: #d10000;
+    }
+    .react-calendar__month-view__days__day--neighboringMonth {
+      color: #757575;
+    }
+    .react-calendar__year-view .react-calendar__tile,
+    .react-calendar__decade-view .react-calendar__tile,
+    .react-calendar__century-view .react-calendar__tile {
+      padding: 2em 0.5em;
+    }
+    .react-calendar__tile {
+      max-width: 100%;
+      text-align: center;
+      padding: 1em 1em;
+      background: none;
+    }
+    .react-calendar__tile:disabled {
+      background-color: #f0f0f0;
+    }
+    .react-calendar__tile:enabled:hover,
+    .react-calendar__tile:enabled:focus {
+      background-color: #e6e6e6;
+      border-radius: 20px;
+    }
+    .react-calendar__tile--now {
+      background: #f8f8fa;
+      color: #d26e5d;
+    }
+    .react-calendar__tile--now:enabled:hover,
+    .react-calendar__tile--now:enabled:focus {
+      background: #f8f8fa;
+    }
+    .react-calendar__tile--hasActive {
+      background: #76baff;
+    }
+    .react-calendar__tile--hasActive:enabled:hover,
+    .react-calendar__tile--hasActive:enabled:focus {
+      background: #a9d4ff;
+    }
+    .react-calendar__tile--active {
+      background: #d46f5d;
+      color: white;
+      border-radius: 40px;
+    }
+    .react-calendar__tile--active:enabled:hover,
+    .react-calendar__tile--active:enabled:focus {
+      background: #d46f5d;
+    }
+    .react-calendar--selectRange .react-calendar__tile--hover {
+      background-color: #e6e6e6;
+    }
+  /* -------- CALENDAR STYLING END -------- */
+  
+  
+  
+  /* -------- TIME PICKER STYLING START -------- */
+  .RA_selectedTimeText {
+    margin: 15px;
+    margin-top: 3px;
+    margin-left: 30px;
+    width: 295px;
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    font-size: 16px;
+    padding-left: 15px;
+    background-color: #d26e5d;
+    border-radius: 45px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+    color: white;
+  }
+  
+  #RA_timeIcon {
+    font-size: 18px;
+    margin: auto;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .RA_timeDD {
+    position: relative;
+    /* color: white; */
+    color: black;
+  }
+  
+  #RA_dropdownIcon {
+    position: absolute;
+    margin-top: -24px;
+    margin-left: 110px;
+  }
+  
+  .time-picker {
+    position: relative;
+    margin-left: 10px;
+  }
+  
+    .time-picker__trigger {
+        position: relative;
+    }
+  
+    .time-picker__input {
+        line-height: 28px;
+        font-size: 16px;
+        padding: 1px;
+        padding-left: 15px;
+        box-shadow: none;
+        -webkit-appearance: none;
+        background-image: none;
+        border-radius: 30px;
+        width: 7em;
+        z-index: 9;
+        /* color: white;
+        background-color: #d26e5d; */
+        border: none;
+        color: black;
+        background-color: white;
+    }
+  
+    .time-picker__suggestion-list {
+        background: #fff;
+        -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        outline: 0;
+        z-index: 2099;
+        margin: 0;
+        font-weight: 400;
+        line-height: 1.42857;
+        text-align: left;
+        overflow-y: auto;
+        height: 150px;
+        width: 8em;
+        position: absolute;
+        top: 100%;
+        margin-left: 5px;
+    }
+  
+    .time-picker__suggestion {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 3px 0 3px 5px;
+      cursor: pointer;
+      white-space: nowrap;
+      color: #000;
+      list-style: none;
+      margin: 0;
+      user-select: none;
+      border: none;
+      background: 0 0;
+      font-size: 15px;
+    }
+  
+    .time-picker__suggestion_selected,
+    .time-picker__suggestion:active:hover,
+    .time-picker__suggestion:active:focus {
+      background: #1980ec;
+      color: #fff;
+    }
+  /* -------- TIME PICKER STYLING END -------- */
+  

@@ -13,8 +13,6 @@ import requests # Importing for sending images
 
 from flask_cors import CORS, cross_origin   # For handling cross-origin requests
 
-# Classes (for now)
-
 class User:
     def __init__(self, sql_data):
         self.email_address = sql_data['email_address']
@@ -503,6 +501,8 @@ def check_user_type():
         user_type = SESSIONS[request.cookies.get('sessionId')].user_type
         resp = make_response( jsonify( {"user_type": f"{user_type}"} ), 200, )
     return resp
+#########
+# End of check-user-type
 
 # @app.route('/') # For testing upload-profile-photo
 # def render_homepage():
@@ -517,8 +517,12 @@ def get_user_id():   # uid is used to identify each user
         if request.cookies.get('sessionId') in SESSIONS.keys():
             return SESSIONS[request.cookies.get('sessionId')].uid
     return -1   # Session not found
-#########
-# End of check-user-type
+
+def get_user_type():
+    if 'sessionId' in request.cookies:
+        if request.cookies.get('sessionId') in SESSIONS.keys():
+            return SESSIONS[request.cookies.get('sessionId')].user_type
+    return -1   # Session not found
 
 # logout
 #########
@@ -737,6 +741,95 @@ def fetch_sps():
     return resp
 #########
 # End of fetch-service-providers
+
+# get-appointments
+#########
+@app.route('/appointments/<status>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_appts(status):
+
+    if status!='pending' and status!='confirmed' and status!='complete' and status!='rejected':   # Undefined endpoint
+        resp = make_response( jsonify( {"message": "Endpoint not recognized!"} ), 405, )
+        return resp
+
+    uid = get_user_id()
+    if uid == -1:   # User not logged in
+        resp = make_response( jsonify( {"message": "Please log in to view your appointments!"} ), 400, )
+        return resp
+
+    user_type = get_user_type()
+    if(user_type == 'Customer'):
+        name_uid = "sp_uid"
+    else:
+        name_uid = "customer_uid"
+
+    query = f"""
+        select a.appointment_id, u.full_name as name, a.services, a.time, a.date, a.price, a.address, a.reviewed from
+        amorr.appointments as a
+        inner join
+        amorr.users as u
+        on a.{name_uid} = u.uid
+        where status = '{status}'
+        """
+
+    if (user_type == 'Customer'):
+        query = query + f" and a.customer_uid = '{uid}'"
+    else:
+        query = query + f" and a.sp_uid = '{uid}'"
+
+    data = mu.load(config, "amorr.users", query=query)
+
+    for i in range(len(data)):
+        services = data[i]['services']
+        services = services.replace("'", "")
+        services = services.replace("[", "")
+        services = services.replace("]", "")
+        data[i]['services'] = services
+
+    return_data = data
+    resp = make_response( jsonify(return_data), 200,)
+    return resp
+#########
+# get-appointments
+
+# modify-appointment
+#########
+@app.route('/modify-appointment/<action>', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def modify_appt(action):
+    if action == "accept":
+        status = "Confirmed"
+    elif action == "reject":
+        status = "Rejected"
+    elif action == "complete":
+        status = "Complete"
+    else:
+        resp = make_response( jsonify( {"message": "Endpoint not recognized!"} ), 405, )
+        return resp
+
+    uid = get_user_id()
+    if uid == -1:   # User not logged in
+        resp = make_response( jsonify( {"message": "Please log in to modify your appointments!"} ), 400, )
+        return resp
+    user_type = get_user_type()
+    if(user_type == 'Customer'):    # User not SP
+        resp = make_response( jsonify( {"message": "You are not permitted to use this endpoint"} ), 401, )
+        return resp
+
+    r = request
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':  # Case for JSON request body 
+        json = r.json
+        appt_id = json['appt_id']
+    else:   # Case for submitted form
+        appt_id = r.form['appt_id']
+
+    query = f"UPDATE amorr.appointments SET status = '{status}' WHERE appointment_id = '{appt_id}';"
+    mu.query(config, query)
+    resp = make_response( jsonify( {"message": f"Status for appointment {appt_id} set to {status}"} ), 200, )
+    return resp
+#########
+# End of modify-appointment
 
 ################################################################################################################################################
 ################################################################################################################################################

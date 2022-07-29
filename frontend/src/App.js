@@ -16,6 +16,11 @@ import InitialSignUp from './components/initial-signup/initial-signup';
 import Login from './components/login-page/login-page';
 import CustomerProfile from './components/customer_profile/customer_profile';
 import ReviewRating from './components/review_rating/review_rating';
+import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
+import CustomerExplore from './components/customer_explore/customer_explore.jsx';
+import DeleteAccount from './components/delete_account/delete_account';
+import RequestAppointment from './components/request_appointment/RequestAppointment'
+import ServiceProviderAppointments from './components/sp_my_appointments/my_appointments'
 
 import {
   BrowserRouter as Router,
@@ -24,6 +29,7 @@ import {
   Link
 } from "react-router-dom";
 import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
+import ExploreSpProfile from './components/explore__sp_profile/explore_sp_profile.js';
 
 function App(){
   
@@ -73,7 +79,12 @@ function App(){
         <Route path='/profile' element={<CustomerProfile/>}/>
         <Route path='/sp_profile' element={<ServiceProviderProfile/>}/>
         <Route path = '/review-rating' element={<ReviewRating/>}></Route>
-
+        <Route path='/explore' element={<CustomerExplore/>}/>
+        <Route path='/logout' element={<InitialLogin/>}/>
+        <Route path = '/delete-account' element={<DeleteAccount/>}></Route>
+        <Route path = '/appointment' element={<RequestAppointment/>}></Route>
+        <Route path = '/explore-sp' element={<ExploreSpProfile/>}></Route>
+        <Route path = '/sp-my-appointments' element={<ServiceProviderAppointments/>}></Route>
       </Routes>
     </Router>
     </body>
