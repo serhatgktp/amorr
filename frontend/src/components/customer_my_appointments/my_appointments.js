@@ -22,66 +22,26 @@ const MyAppointments = () => {
       {appt_id: 3, name: "Customer 3", price:"32.22", services: "Men's Haircut", time:"7:00AM", date:"26 July 2022", address:"1 EhE Road, M1C4Y7", reviewed:"0"}
     ]);
 
-    // const handleAcceptClick = (e, appt) => {
-    //     e.preventDefault();
+    const handleReviewClick = (e, appt) => {
+        e.preventDefault();
 
-    //     const apptToAccept = {appt_id: appt.appointment_id}
+        const apptToMakeReview = {appt_id: appt.appointment_id}
 
-    //     console.log(apptToAccept)
+        console.log(apptToMakeReview)
 
-    //     // POST REQUEST to accept the selected appointment to confirmed
-    //     fetch("http://localhost:5000/modify-appointment/accept", {
-    //         method: 'POST',
-    //         headers: {"Content-Type": "application/json"},
-    //         credentials: "include",
-    //         body: JSON.stringify(apptToAccept)
-    //     }).then(response => {
-    //         if (response.ok){
-    //             window.location.reload();
-    //         }
-    //     })
-    // }
-
-    // const handleRejectClick = (e, appt) => {
-    //     e.preventDefault();
-
-    //     const apptToReject = {appt_id: appt.appointment_id}
-
-    //     console.log(apptToReject)
-
-    //     // POST REQUEST to accept the selected appointment to confirmed
-    //     fetch("http://localhost:5000/modify-appointment/reject", {
-    //         method: 'POST',
-    //         headers: {"Content-Type": "application/json"},
-    //         credentials: "include",
-    //         body: JSON.stringify(apptToReject)
-    //     }).then(response => {
-    //         if (response.ok){
-    //             window.location.reload();
-    //         }
-    //     })
-    // }
-
-    // const handleDoneClick = (e, appt) => {
-    //     e.preventDefault();
-
-    //     const apptMarkDone = {appt_id: appt.appointment_id}
-
-    //     console.log(apptMarkDone)
-
-    //     // POST REQUEST to accept the selected appointment to confirmed
-    //     fetch("http://localhost:5000/modify-appointment/complete", {
-    //         method: 'POST',
-    //         headers: {"Content-Type": "application/json"},
-    //         credentials: "include",
-    //         body: JSON.stringify(apptMarkDone)
-    //     }).then(response => {
-    //         if (response.ok){
-    //             window.location.reload();
-    //         }
-    //     })
-    // }
-
+        // POST REQUEST to accept the selected appointment to confirmed
+        // fetch("http://localhost:5000/modify-appointment/accept", {
+        //     method: 'POST',
+        //     headers: {"Content-Type": "application/json"},
+        //     credentials: "include",
+        //     body: JSON.stringify(apptToAccept)
+        // }).then(response => {
+        //     if (response.ok){
+        //         window.location.reload();
+        //     }
+        // })
+    }
+    
     // useEffect(() => {
     //     // GET REQUEST TO GET AWAITING CONFIRMATION APPOINTMENTS
     //     fetch("http://localhost:5000/appointments/pending", {credentials: 'include'}).then(response =>
@@ -124,7 +84,7 @@ const MyAppointments = () => {
             <div className="type_of_appointment_heading">Past Appointments</div>
             <div className="list_of_appointments">
                 {pastApptList.map((appt) => (
-                        <PastCard appt={appt}/>
+                        <PastCard appt={appt} handleReviewClick={handleReviewClick}/>
                 ))}
             </div>
           </div>

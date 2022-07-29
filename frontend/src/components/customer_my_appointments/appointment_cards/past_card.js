@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Icon } from '@iconify/react';
 import './appointment_card.css'
 
-const PastCard = ( {appt, reviewCheck} ) => {    
+const PastCard = ( {appt, handleReviewClick} ) => {    
     return (
       <div className="appointment_card">
         <div className="customer_heading">{appt.name}</div>
@@ -14,7 +14,7 @@ const PastCard = ( {appt, reviewCheck} ) => {
               <div className="individual_detail"><Icon icon="akar-icons:location" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginLeft: '7px', marginRight:'10px'}}/>{appt.address}</div>
           </div>
           { appt.reviewed==0 ? ( 
-                <button id="mark_done_button" onClick={ (e) => reviewCheck(e, appt)}>Write Review</button>
+                <button id="mark_done_button" onClick={ (e) => handleReviewClick(e, appt)}>Write Review</button>
             ) : (
                 ""
           )}
