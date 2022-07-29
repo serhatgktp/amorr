@@ -489,6 +489,32 @@ def get_price_list():
 #########
 # End of get-sp-price-list
 
+# get-sp-price-list-customer
+#########
+@app.route('/get-sp-price-list-customer', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_price_list_customer():
+    r = request
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':  # Case for JSON request body 
+        json = r.json
+        user_id = json['uid']
+    else:   # Case for submitted form
+        user_id = r.form['uid']
+        
+    sql = f"SELECT * FROM amorr.services WHERE uid = '{user_id}'"
+    data = mu.load(config, 'amorr.services', sql)
+    if len(data) == 0:
+        resp = make_response(jsonify({}), 200, )    # Return an empty dict
+    else:
+        services = []
+        for row in data:
+            services.append({'service':row['name'], 'price':row['price']})
+        resp = make_response(jsonify(services), 200, )    # Return services as an array of dictionaries
+    return resp
+#########
+# End of get-sp-price-list-customer
+
 # check-user-type
 #########
 @app.route('/check-user-type', methods=['GET'])
