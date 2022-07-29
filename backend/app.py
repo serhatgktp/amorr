@@ -831,6 +831,37 @@ def modify_appt(action):
 #########
 # End of modify-appointment
 
+# get-sp-name-of-appt
+#########
+@app.route('/review/<appointment_id>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_sp_name_of_appt(appointment_id):
+
+    uid = get_user_id()
+    if uid == -1:   # User not logged in
+        resp = make_response( jsonify( {"message": "Please log in!"} ), 400, )
+        return resp
+    user_type = get_user_type()
+    if(user_type == 'Service Provider'):    # User not Customer
+        resp = make_response( jsonify( {"message": "You are not permitted to use this endpoint"} ), 401, )
+        return resp
+
+    query = f"""
+        SELECT full_name 
+        FROM amorr.users as user, amorr.appointments as appt 
+        WHERE user.uid = appt.sp_uid AND appt.appointment_id={appointment_id};
+        """
+    data = mu.load(config, 'amorr.users', query=query)
+    if len(data) == 0:
+        resp = make_response(jsonify({"message": "Appointment not found!"}), 404,)
+    else:
+        resp = make_response(jsonify({"full_name": data[0]['full_name']}), 200,)
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of get-sp-name-of-appt
+
+
 ################################################################################################################################################
 ################################################################################################################################################
 ################################################################################################################################################
