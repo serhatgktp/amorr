@@ -857,6 +857,38 @@ def modify_appt(action):
 #########
 # End of modify-appointment
 
+# add-review
+#########
+@app.route('/add-review', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def add_review():
+    uid = get_user_id()
+    if uid == -1:   # User not logged in
+        resp = make_response( jsonify( {"message": "You must be logged in to leave a review!"} ), 400, )
+        return resp
+
+    r = request
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':  # Case for JSON request body 
+        json = r.json
+        sp_uid = json['sp_uid']
+        type_of_service = json['type_of_service']
+        rating = json['rating']
+        review = json['review']
+    else:   # Case for submitted form
+        sp_uid = r.form['sp_uid']
+        type_of_service = r.form['type_of_service']
+        rating = r.form['rating']
+        review = r.form['review']
+    new_review = {'reviewer_uid':[uid], 'recipient_uid':[sp_uid], 'type_of_service':[type_of_service], 'rating':[rating], 'review':[review]}
+    df = pd.DataFrame.from_dict(new_review)
+    mu.insert(config, 'users', df)  # Insert new user into users table
+    
+    resp = make_response( jsonify( {"message": "Review submitted!"} ), 200, )
+    return resp
+#########
+# End of add-review
+
 ################################################################################################################################################
 ################################################################################################################################################
 ################################################################################################################################################
