@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Icon } from '@iconify/react';
 import './appointment_card.css'
 
-const PastCard = ( {appt} ) => {
+const PastCard = ( {appt, reviewCheck} ) => {    
     return (
       <div className="appointment_card">
         <div className="customer_heading">{appt.name}</div>
@@ -13,6 +13,11 @@ const PastCard = ( {appt} ) => {
               <div className="individual_detail"><Icon icon="uiw:date" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginLeft: '7px', marginRight:'10px'}}/>{appt.date}</div>
               <div className="individual_detail"><Icon icon="akar-icons:location" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px', marginLeft: '7px', marginRight:'10px'}}/>{appt.address}</div>
           </div>
+          { appt.reviewed==0 ? ( 
+                <button id="mark_done_button" onClick={ (e) => reviewCheck(e, appt)}>Write Review</button>
+            ) : (
+                ""
+          )}
       </div>
     )
   }
