@@ -82,8 +82,8 @@ Updated weight of user story: 8
 
 ### As a customer, I would like to be able to rate a service that I had so that other customers can know better about the quality of service of the corresponding service provider
 
+- Customers should be able to see the name of the service provider the review is for
 - Customers are able to rate a service out of 5 stars and post text alongside this rating
-- Written reviews should be able to be seen by other customers and the service provider
 
 Tasks: 
 - The number of stars to give for rating and a textbox for body message
@@ -94,17 +94,15 @@ Tasks:
 
 Updated weight of user story: 13
 
-### As a customer, I would like to be able to rate a service that I had so that other customers can know better about the quality of service of the corresponding service provider
+### As a service provider, I want to be able to view all reviews I have received including the message and rating of each review so I know how to improve my service
 
-- Customers are able to rate a service out of 5 stars and post text alongside this rating
-- Written reviews should be able to be seen by other customers and the service provider
+- The list of reviews should appear under the service provider’s profile on both the customer and service provider’s side. 
 
 Tasks: 
-- The number of stars to give for rating and a textbox for body message
-- Sending POST request for rating and message
-- Sending GET request for SP name
-- Flask API POST request for storing the rating, message, date of review
-- Flask API GET request to get SP name
+- Individual review cards: show pfp, name of customer, ratings, date, review text
+- All reviews under service provider profile page
+- Sending GET request for service provider’s reviews
+- Flask API GET request to get service provider’s reviews
 
 Updated weight of user story: 13
 
@@ -139,9 +137,6 @@ Updated weight of user story: 13
 
 ### As a service provider, I want to be able to create posts under my profile where I can not only write texts but also attach images so I can keep clients updated regarding ongoing discounts, closures, promotions, etc
 - Service providers should be able to create time stamped posts that include text and images attached
-
-### As a service provider, I want to be able to view all reviews I have received including the message and rating of each review so I know how to improve my service
-- Service Providers are able to view a lists of previously received Reviews (maybe under profile) including the data contained in the respective review
 
 ### As a service provider, I would like to see a popup page, after clicking on the “More Info” button in the list of my appointments page, containing the full details of an appointment with different information specified depending on the type of appointment. 
 - Details of the appointment should include: date requested, date confirmed, appointment status, appointment date, appointment time, appointment address, and payment method
