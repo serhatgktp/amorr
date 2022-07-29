@@ -8,6 +8,7 @@ import StarIcon from '@mui/icons-material/Star';
 // import Axios from 'react'; 
 import { useState } from "react"; 
 import { Icon } from '@iconify/react';
+import { useParams } from "react-router-dom";
 
 const labels = {
     1: 'Poor',
@@ -24,8 +25,13 @@ function getLabelText(value) {
 
 const ReviewRate = () => {
 
+    let {appointment_id} = useParams();
+    console.log(appointment_id);
+    const uri = "http://localhost:5000/review/" + JSON.stringify(appointment_id).replaceAll("\"", '');
+    console.log(uri);
+
     const [value, setValue] = React.useState(5);
-  const [hover, setHover] = React.useState(-1);
+    const [hover, setHover] = React.useState(-1);
 
     const [isPending, setIsPending] = useState(false);
 
