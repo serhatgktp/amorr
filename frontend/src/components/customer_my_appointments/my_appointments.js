@@ -6,21 +6,9 @@ import PastCard from './appointment_cards/past_card';
 import './my_appointment.css'
 
 const MyAppointments = () => {
-    const [waitingApptList, setWaitingApptList] = useState([
-      {appt_id: 1, name: "Customer 1", price:"99.99", services: "Extra Haircut, Massage", time:"7:00PM", date:"26 September 2022", address:"1 Uwu Road, M1C4Y7", reviewed:"1"},
-      {appt_id: 2, name: "Customer 2", price:"32.22", services: "Eyebrow, Eyeliner", time:"8:00PM", date:"26 June 2022", address:"1 OwO Road, M1C4Y7", reviewed:"0"},
-      {appt_id: 3, name: "Customer 3", price:"32.22", services: "Men's Haircut", time:"7:00AM", date:"26 July 2022", address:"1 EhE Road, M1C4Y7", reviewed:"0"}
-    ]);
-    const [confirmedApptList, setConfirmedApptList] = useState([
-      {appt_id: 1, name: "Customer 1", price:"99.99", services: "Extra Haircut, Massage", time:"7:00PM", date:"26 September 2022", address:"1 Uwu Road, M1C4Y7", reviewed:"1"},
-      {appt_id: 2, name: "Customer 2", price:"32.22", services: "Eyebrow, Eyeliner", time:"8:00PM", date:"26 June 2022", address:"1 OwO Road, M1C4Y7", reviewed:"0"},
-      {appt_id: 3, name: "Customer 3", price:"32.22", services: "Men's Haircut", time:"7:00AM", date:"26 July 2022", address:"1 EhE Road, M1C4Y7", reviewed:"0"}
-    ]);
-    const [pastApptList, setPastApptList] = useState([
-      {appt_id: 1, name: "Customer 1", price:"99.99", services: "Extra Haircut, Massage", time:"7:00PM", date:"26 September 2022", address:"1 Uwu Road, M1C4Y7", reviewed:"1"},
-      {appt_id: 2, name: "Customer 2", price:"32.22", services: "Eyebrow, Eyeliner", time:"8:00PM", date:"26 June 2022", address:"1 OwO Road, M1C4Y7", reviewed:"0"},
-      {appt_id: 3, name: "Customer 3", price:"32.22", services: "Men's Haircut", time:"7:00AM", date:"26 July 2022", address:"1 EhE Road, M1C4Y7", reviewed:"0"}
-    ]);
+    const [waitingApptList, setWaitingApptList] = useState([]);
+    const [confirmedApptList, setConfirmedApptList] = useState([]);
+    const [pastApptList, setPastApptList] = useState([]);
 
     const handleReviewClick = (e, appt) => {
         e.preventDefault();
@@ -29,36 +17,26 @@ const MyAppointments = () => {
 
         console.log(apptToMakeReview)
 
-        // POST REQUEST to accept the selected appointment to confirmed
-        // fetch("http://localhost:5000/modify-appointment/accept", {
-        //     method: 'POST',
-        //     headers: {"Content-Type": "application/json"},
-        //     credentials: "include",
-        //     body: JSON.stringify(apptToAccept)
-        // }).then(response => {
-        //     if (response.ok){
-        //         window.location.reload();
-        //     }
-        // })
+        // TODO: NAVIGATE TO REVIEW PAGE (DYNAMIC ENDPOINTS) 
     }
     
-    // useEffect(() => {
-    //     // GET REQUEST TO GET AWAITING CONFIRMATION APPOINTMENTS
-    //     fetch("http://localhost:5000/appointments/pending", {credentials: 'include'}).then(response =>
-    //       response.json().then(data => {
-    //         setWaitingApptList(data);
-    //       }));
-    //     // GET REQUEST TO GET CONFIRMED APPOINTMENTS
-    //     fetch("http://localhost:5000/appointments/confirmed", {credentials: 'include'}).then(response =>
-    //     response.json().then(data => {
-    //       setConfirmedApptList(data);
-    //     }));
-    //     // GET REQUEST TO GET PAST APPOINTMENTS
-    //     fetch("http://localhost:5000/appointments/complete", {credentials: 'include'}).then(response =>
-    //     response.json().then(data => {
-    //       setPastApptList(data);
-    //     }));
-    //   }, []);
+    useEffect(() => {
+        // GET REQUEST TO GET AWAITING CONFIRMATION APPOINTMENTS
+        fetch("http://localhost:5000/appointments/pending", {credentials: 'include'}).then(response =>
+          response.json().then(data => {
+            setWaitingApptList(data);
+          }));
+        // GET REQUEST TO GET CONFIRMED APPOINTMENTS
+        fetch("http://localhost:5000/appointments/confirmed", {credentials: 'include'}).then(response =>
+        response.json().then(data => {
+          setConfirmedApptList(data);
+        }));
+        // GET REQUEST TO GET PAST APPOINTMENTS
+        fetch("http://localhost:5000/appointments/complete", {credentials: 'include'}).then(response =>
+        response.json().then(data => {
+          setPastApptList(data);
+        }));
+      }, []);
 
     return (
       <div className="sp_my_appointments">
