@@ -15,13 +15,14 @@ import InitialLogin from './components/initial-login/initial-login';
 import InitialSignUp from './components/initial-signup/initial-signup';
 import Login from './components/login-page/login-page';
 import CustomerProfile from './components/customer_profile/customer_profile';
-import ReviewRating from './components/review_rating/review_rating';
 import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
 import CustomerExplore from './components/customer_explore/customer_explore.jsx';
 import DeleteAccount from './components/delete_account/delete_account';
-import RequestAppointment from './components/request_appointment/RequestAppointment'
-import ServiceProviderAppointments from './components/sp_my_appointments/my_appointments'
-import CustomerAppointments from './components/customer_my_appointments/my_appointments'
+import ExploreSpProfile from './components/explore__sp_profile/explore_sp_profile.js';
+import RequestAppointment from './components/request_appointment/RequestAppointment';
+import ServiceProviderAppointments from './components/sp_my_appointments/my_appointments';
+import CustomerAppointments from './components/customer_my_appointments/my_appointments';
+import ReviewRating from './components/review_rating/review_rating';
 
 import {
   BrowserRouter as Router,
@@ -29,8 +30,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
-import ExploreSpProfile from './components/explore__sp_profile/explore_sp_profile.js';
 
 function App(){
   
