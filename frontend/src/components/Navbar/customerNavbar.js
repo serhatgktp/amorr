@@ -78,6 +78,7 @@ const CustomerNavbar = () => {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         size="large"
+        sx = {{  width: 50, height: 50}}
       ><Avatar alt="Lorem Ipsum Salons" src={img} sx={{ width: 50, height: 50, boxShadow: 3}}/>
       </IconButton>
       <Menu
