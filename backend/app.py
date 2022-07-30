@@ -1,3 +1,4 @@
+import datetime
 from flask import Flask, render_template, request, g, redirect, url_for, make_response, jsonify, send_from_directory
 from werkzeug.utils import secure_filename  # For uploading files to the filesystem
 import os                   # For navigating the filesystem
@@ -880,7 +881,10 @@ def add_review():
         type_of_service = r.form['type_of_service']
         rating = r.form['rating']
         review = r.form['review']
-    new_review = {'reviewer_uid':[uid], 'recipient_uid':[sp_uid], 'type_of_service':[type_of_service], 'rating':[rating], 'review':[review]}
+
+    date = str(datetime.date.today().strftime('%Y-%m-%d'))
+
+    new_review = {'reviewer_uid':[uid], 'recipient_uid':[sp_uid], 'type_of_service':[type_of_service], 'rating':[rating], 'review':[review], 'date':[date]}
     df = pd.DataFrame.from_dict(new_review)
     mu.insert(config, 'users', df)  # Insert new user into users table
     
