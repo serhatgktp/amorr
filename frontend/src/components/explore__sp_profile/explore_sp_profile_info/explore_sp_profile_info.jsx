@@ -9,7 +9,7 @@ const ExploreSpInfo = ({SP}) => {
 
     let navigate = useNavigate();
     function handleClick(){
-        navigate('/appointment/:id' + SP.id)
+        navigate('/appointment' + SP.id)
     }
 
     // initializing values
