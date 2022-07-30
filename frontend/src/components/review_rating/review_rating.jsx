@@ -44,11 +44,12 @@ const ReviewRate = () => {
         e.preventDefault();
         const body = {value, review};
         setIsPending(true);
+        //console.log("Entering here"); 
 
         //setReviewPopup(true);
         //navigate('/home');
 
-        fetch('http://localhost:5000/review-rating', {
+        fetch('http://localhost:5000/review/<appt_id>', {
             method: 'POST', 
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(body)
@@ -63,6 +64,7 @@ const ReviewRate = () => {
                 }, 1300); 
                 setIsPending(false); 
             }else{
+                //console.log("Entering here"); 
                 throw new Error(response.statusTest)
             }
         }).catch(err =>{
