@@ -860,25 +860,36 @@ def modify_appt(action):
 
 # add-review
 #########
-@app.route('/add-review', methods=['POST'])
+@app.route('/review/<appt_id>', methods=['POST'])
 @cross_origin(supports_credentials=True)
-def add_review():
+def add_review(appt_id):
     uid = get_user_id()
     if uid == -1:   # User not logged in
         resp = make_response( jsonify( {"message": "You must be logged in to leave a review!"} ), 400, )
         return resp
 
+    # Fetch appointment
+    query = f"SELECT * FROM amorr.appointments WHERE appointment_id = '{appt_id}'"
+    appt = mu.load(config, 'amorr.appointments', query)
+    
+    # Check if logged in user was the customer of this appointment
+    if int(appt[0]['customer_uid']) != int(uid):
+        resp = make_response( jsonify( {"message": "Appointment is for a different customer!"} ), 401, )
+        return resp
+
+    # Fetch SP uid from appointment
+    sp_uid = appt[0]['sp_uid']
+
+    # Set reviewed = 1 in appointments table
+    query = f"UPDATE amorr.appointments SET reviewed = '1' WHERE appointment_id = '{appt_id}'"
+
     r = request
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':  # Case for JSON request body 
         json = r.json
-        appt_id = json['appointment_id']
-        sp_uid = json['sp_uid']
         rating = json['rating']
         review = json['review']
     else:   # Case for submitted form
-        appt_id = r.form['appointment_id']
-        sp_uid = r.form['sp_uid']
         rating = r.form['rating']
         review = r.form['review']
 
