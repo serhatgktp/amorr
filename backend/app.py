@@ -871,7 +871,10 @@ def add_review(appt_id):
     # Fetch appointment
     query = f"SELECT * FROM amorr.appointments WHERE appointment_id = '{appt_id}'"
     appt = mu.load(config, 'amorr.appointments', query)
-    
+    if len(appt) == 0:
+        resp = make_response( jsonify( {"message": "Appointment not found"} ), 404, )
+        return resp
+
     # Check if logged in user was the customer of this appointment
     if int(appt[0]['customer_uid']) != int(uid):
         resp = make_response( jsonify( {"message": "Appointment is for a different customer!"} ), 401, )
