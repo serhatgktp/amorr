@@ -28,9 +28,7 @@ function getLabelText(value) {
 const ReviewRate = () => {
 
     let {appointment_id} = useParams();
-    console.log(appointment_id);
     const uri = "http://localhost:5000/review/" + JSON.stringify(appointment_id).replaceAll("\"", '');
-    console.log(uri);
 
     const [value, setValue] = React.useState(5);
     const [hover, setHover] = React.useState(-1);
@@ -42,20 +40,19 @@ const ReviewRate = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const body = {value, review};
+        const body = {
+            rating: value,
+            review: review
+        }
         setIsPending(true);
-        //console.log("Entering here"); 
 
-        //setReviewPopup(true);
-        //navigate('/home');
-
-        fetch('http://localhost:5000/review/<appt_id>', {
+        fetch(uri, {
             method: 'POST', 
             headers: {"Content-Type": "application/json"},
+            credentials: "include",
             body: JSON.stringify(body)
         }).then(response => {
             if (response.ok){
-                console.log('Review added'); 
                 setReviewPopup(true); 
                 setTimeout(function () {
                     setReviewPopup(false);
@@ -64,7 +61,6 @@ const ReviewRate = () => {
                 }, 1300); 
                 setIsPending(false); 
             }else{
-                //console.log("Entering here"); 
                 throw new Error(response.statusTest)
             }
         }).catch(err =>{
