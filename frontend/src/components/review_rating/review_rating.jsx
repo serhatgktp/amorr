@@ -9,6 +9,8 @@ import { useState } from "react";
 import { Icon } from '@iconify/react';
 import { useParams } from "react-router-dom";
 import  { useNavigate } from 'react-router-dom';
+import ReviewPopup from '../review_popup/review_popup';
+
 
 const labels = {
     1: 'Poor',
@@ -34,6 +36,7 @@ const ReviewRate = () => {
     const [hover, setHover] = React.useState(-1);
     const [spName, setSpName] = useState(''); 
     const [review, setReview] = useState('');
+    const [triggerReviewPopup, setReviewPopup] = useState(false);
     const navigate = useNavigate(); 
     const [isPending, setIsPending] = useState(false);
 
@@ -136,6 +139,7 @@ const ReviewRate = () => {
                 </div>
 
             </div>
+            <ReviewPopup trigger={triggerReviewPopup}/>
         </body>
     );
 }
