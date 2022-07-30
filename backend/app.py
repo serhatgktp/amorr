@@ -976,6 +976,78 @@ def get_sp_name_of_appt(appointment_id):
 #########
 # End of get-sp-name-of-appt
 
+# explore-sp-price-list
+#########
+@app.route('/explore-sp-price-list/<sp_uid>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_pricelist(sp_uid):
+    query = f"SELECT service_id, name as service, price FROM amorr.services WHERE uid = '{sp_uid}'"
+    data = mu.load(config, 'amorr.services', query)
+    resp = make_response(jsonify(data), 200,)
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of explore-sp-price-list
+
+# explore-sp-profile
+#########
+@app.route('/explore-sp-profile/<sp_uid>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def explore_sp_profile(sp_uid):
+    query = f"""
+            SELECT u.full_name, u.address, s.bio
+            FROM users as u INNER JOIN service_providers as s
+            ON u.uid = s.uid
+            WHERE u.uid = {sp_uid};
+            """
+    data = mu.load(config, 'null', query)
+    data = data[0]
+
+    sql = f'SELECT COUNT(*) FROM amorr.sp_reviews WHERE recipient_uid = \'{sp_uid}\''
+    num_ratings = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
+    data['num_ratings'] = num_ratings
+
+    sql = f'SELECT AVG(rating) FROM amorr.sp_reviews WHERE recipient_uid = \'{sp_uid}\''
+    avg = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)']
+
+    if avg is not None:
+        avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
+    else:
+        avg_rating = 'No reviews yet'
+
+    data['avg_rating'] = avg_rating
+
+    resp = make_response(jsonify(data), 200,)
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of explore-sp-profile
+
+# explore-profile-photo
+#########
+@app.route('/explore-profile-photo/<sp_uid>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_sp_photo(sp_uid):
+    pfp_path = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{sp_uid}\'')
+    if len(pfp_path) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": f"pfp_path not found for user! (uid: {sp_uid})"}
+            ),
+            404,
+        )
+        return resp
+    else:
+        img_path = pfp_path[0]['pfp_path']
+        filetype = img_path.rsplit('.', 1)[1].lower()   # File type without the '.'
+        # print("\n\n\nPATH1 :",UPLOAD_FOLDER,f"filetype = {filetype}\n\n\n")
+        
+        resp = send_from_directory(UPLOAD_FOLDER, img_path, mimetype=f'image/{filetype}')
+        return resp     # Should return with response code 200 if successful
+#########
+# End of explore-profile-photo
+
+
 
 ################################################################################################################################################
 ################################################################################################################################################
