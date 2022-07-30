@@ -45,7 +45,8 @@ const ReviewRate = () => {
         const body = {value, review};
         setIsPending(true);
 
-        // setReviewPopup(true); 
+        //setReviewPopup(true);
+        //navigate('/home');
 
         fetch('http://localhost:5000/review-rating', {
             method: 'POST', 
