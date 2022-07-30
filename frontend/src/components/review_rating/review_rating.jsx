@@ -1,7 +1,6 @@
 import './review_rating.css'
 
-import * as React from 'react';
-
+import React, { useEffect } from 'react'
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
@@ -33,7 +32,7 @@ const ReviewRate = () => {
     const [value, setValue] = React.useState(5);
     const [hover, setHover] = React.useState(-1);
 
-    const [spName, setSpName] = useState(''); 
+    const [spName, setSpName] = useState({}); 
 
     const [isPending, setIsPending] = useState(false);
 
@@ -42,12 +41,11 @@ const ReviewRate = () => {
         setIsPending(true);
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         // get SP name
         fetch(uri, {credentials:'include'}).then(response =>
-            response.json().then(data=>{
+            response.json().then(data => {
                 setSpName(data);
-                console.log(spName);
             }));
     }, []); 
 
@@ -63,7 +61,7 @@ const ReviewRate = () => {
 
                         <p className='into'>Thanks for choosing <span className='a'>a</span><span className= 'morr'>morr</span>, we strive to provide the highest quality service and your feedback would be greatly appreciated as it will help us make sure we serve you and other amazing customers well in the future.</p>
                         
-                        <p> Rating Service Provider Name</p>
+                        <p> Rating for <span style={{fontWeight: '600'}}>{spName.full_name}</span></p>
 
                         <Box
                             sx={{
