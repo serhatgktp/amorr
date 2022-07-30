@@ -897,7 +897,7 @@ def add_review(appt_id):
 
     new_review = {'appointment_id':[appt_id], 'reviewer_uid':[uid], 'recipient_uid':[sp_uid], 'rating':[rating], 'review':[review], 'date':[date]}
     df = pd.DataFrame.from_dict(new_review)
-    mu.insert(config, 'users', df)  # Insert new user into users table
+    mu.insert(config, 'sp_reviews', df)
     
     resp = make_response( jsonify( {"message": "Review submitted!"} ), 200, )
     return resp
