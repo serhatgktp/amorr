@@ -4,7 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 import './RequestAppointment.css'
 import { Icon } from '@iconify/react';
 import TimePicker from 'react-ts-timepicker';
-
+import Services_Provided from './services_provided';
 function RequestAppointment() {
     const [date, setDate] = useState(new Date());
     const [time, setTime] = useState('08:00');
@@ -72,6 +72,7 @@ function RequestAppointment() {
                 </span>
                 
             </div>
+            <div className='serivesProvided'><Services_Provided/></div>
         </div>
     )
 }
