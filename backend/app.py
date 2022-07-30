@@ -882,6 +882,7 @@ def add_review(appt_id):
 
     # Set reviewed = 1 in appointments table
     query = f"UPDATE amorr.appointments SET reviewed = '1' WHERE appointment_id = '{appt_id}'"
+    mu.query(config, query)
 
     r = request
     content_type = request.headers.get('Content-Type')
