@@ -109,14 +109,6 @@
 
 --- 
 
-Shannon Budiman
-Theora Pui
-Serhat Goktepe
-Christopher Nathaneal
-Annanya Sharma 
-Jumana Fanous
-Mir Safwat Ayser
-
 The table below displays who worked on which task during this sprint. 
 
 | Ticket Number    | Description     | Assigned to:    |
@@ -155,4 +147,4 @@ The table below displays who worked on which task during this sprint.
 
 --- 
 **Spikes Recorded:**
-- Sprint 3 started a bit late because of the c01 assignments.
+- Sprint 3 started a bit late because of the c01 assignment.
