@@ -2,6 +2,7 @@ import React , { useEffect, useState }from 'react';
 import { Icon } from '@iconify/react';
 import "./explore_sp_profile_info_styles.css"
 import { Rating, Avatar, Badge, styled} from '@mui/material';
+import { useNavigate } from "react-router-dom";
 
 const ExploreSpInfo = () => {
 
@@ -44,7 +45,7 @@ const ExploreSpInfo = () => {
             <div id="service_provider_right">
                 <div id="first_line">
                     <div id="service_provider_name">{fullName}</div>
-                    <div><button id="req_appointment">Request an Appointment</button></div>
+                    <div><Link to="/RequestAppointment" className="req_appointment">Request an Appointment</Link></div>
                 </div>
                 <div id="rating">
                     <span className="rating_num">{rating.toFixed(1)}</span>
