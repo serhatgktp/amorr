@@ -719,7 +719,7 @@ def fetch_sps():
             avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
         else:
             avg_rating = 'No reviews yet'
-        tos_str = sp['types_of_services']
+        tos_str = sp['type_of_services']
         tos = tos_str.strip('][').split(', ')   # Convert from string to list
         for i in range(len(tos)):
             tos[i] = tos[i].strip("'")
