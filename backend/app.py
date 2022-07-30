@@ -1,3 +1,4 @@
+import datetime
 from flask import Flask, render_template, request, g, redirect, url_for, make_response, jsonify, send_from_directory
 from werkzeug.utils import secure_filename  # For uploading files to the filesystem
 import os                   # For navigating the filesystem
@@ -12,8 +13,6 @@ import pandas as pd
 import requests # Importing for sending images
 
 from flask_cors import CORS, cross_origin   # For handling cross-origin requests
-
-# Classes (for now)
 
 class User:
     def __init__(self, sql_data):
@@ -491,6 +490,32 @@ def get_price_list():
 #########
 # End of get-sp-price-list
 
+# get-sp-price-list-customer
+#########
+@app.route('/get-sp-price-list-customer', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_price_list_customer():
+    r = request
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':  # Case for JSON request body 
+        json = r.json
+        user_id = json['uid']
+    else:   # Case for submitted form
+        user_id = r.form['uid']
+        
+    sql = f"SELECT * FROM amorr.services WHERE uid = '{user_id}'"
+    data = mu.load(config, 'amorr.services', sql)
+    if len(data) == 0:
+        resp = make_response(jsonify({}), 200, )    # Return an empty dict
+    else:
+        services = []
+        for row in data:
+            services.append({'service':row['name'], 'price':row['price']})
+        resp = make_response(jsonify(services), 200, )    # Return services as an array of dictionaries
+    return resp
+#########
+# End of get-sp-price-list-customer
+
 # check-user-type
 #########
 @app.route('/check-user-type', methods=['GET'])
@@ -503,6 +528,8 @@ def check_user_type():
         user_type = SESSIONS[request.cookies.get('sessionId')].user_type
         resp = make_response( jsonify( {"user_type": f"{user_type}"} ), 200, )
     return resp
+#########
+# End of check-user-type
 
 # @app.route('/') # For testing upload-profile-photo
 # def render_homepage():
@@ -517,8 +544,12 @@ def get_user_id():   # uid is used to identify each user
         if request.cookies.get('sessionId') in SESSIONS.keys():
             return SESSIONS[request.cookies.get('sessionId')].uid
     return -1   # Session not found
-#########
-# End of check-user-type
+
+def get_user_type():
+    if 'sessionId' in request.cookies:
+        if request.cookies.get('sessionId') in SESSIONS.keys():
+            return SESSIONS[request.cookies.get('sessionId')].user_type
+    return -1   # Session not found
 
 # logout
 #########
@@ -737,6 +768,214 @@ def fetch_sps():
     return resp
 #########
 # End of fetch-service-providers
+
+# get-appointments
+#########
+@app.route('/appointments/<status>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_appts(status):
+
+    if status!='pending' and status!='confirmed' and status!='complete' and status!='rejected':   # Undefined endpoint
+        resp = make_response( jsonify( {"message": "Endpoint not recognized!"} ), 405, )
+        return resp
+
+    uid = get_user_id()
+    if uid == -1:   # User not logged in
+        resp = make_response( jsonify( {"message": "Please log in to view your appointments!"} ), 400, )
+        return resp
+
+    user_type = get_user_type()
+    if(user_type == 'Customer'):
+        name_uid = "sp_uid"
+    else:
+        name_uid = "customer_uid"
+
+    query = f"""
+        select a.appointment_id, u.full_name as name, a.services, a.time, a.date, a.price, a.address, a.reviewed from
+        amorr.appointments as a
+        inner join
+        amorr.users as u
+        on a.{name_uid} = u.uid
+        where status = '{status}'
+        """
+
+    if (user_type == 'Customer'):
+        query = query + f" and a.customer_uid = '{uid}'"
+    else:
+        query = query + f" and a.sp_uid = '{uid}'"
+
+    data = mu.load(config, "amorr.users", query=query)
+
+    for i in range(len(data)):
+        services = data[i]['services']
+        services = services.replace("'", "")
+        services = services.replace("[", "")
+        services = services.replace("]", "")
+        data[i]['services'] = services
+
+    return_data = data
+    resp = make_response( jsonify(return_data), 200,)
+    return resp
+#########
+# get-appointments
+
+# modify-appointment
+#########
+@app.route('/modify-appointment/<action>', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def modify_appt(action):
+    if action == "accept":
+        status = "Confirmed"
+    elif action == "reject":
+        status = "Rejected"
+    elif action == "complete":
+        status = "Complete"
+    else:
+        resp = make_response( jsonify( {"message": "Endpoint not recognized!"} ), 405, )
+        return resp
+
+    uid = get_user_id()
+    if uid == -1:   # User not logged in
+        resp = make_response( jsonify( {"message": "Please log in to modify your appointments!"} ), 400, )
+        return resp
+    user_type = get_user_type()
+    if(user_type == 'Customer'):    # User not SP
+        resp = make_response( jsonify( {"message": "You are not permitted to use this endpoint"} ), 401, )
+        return resp
+
+    r = request
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':  # Case for JSON request body 
+        json = r.json
+        appt_id = json['appt_id']
+    else:   # Case for submitted form
+        appt_id = r.form['appt_id']
+
+    query = f"UPDATE amorr.appointments SET status = '{status}' WHERE appointment_id = '{appt_id}';"
+    mu.query(config, query)
+    resp = make_response( jsonify( {"message": f"Status for appointment {appt_id} set to {status}"} ), 200, )
+    return resp
+#########
+# End of modify-appointment
+
+# add-review
+#########
+@app.route('/review/<appt_id>', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def add_review(appt_id):
+    uid = get_user_id()
+    if uid == -1:   # User not logged in
+        resp = make_response( jsonify( {"message": "You must be logged in to leave a review!"} ), 400, )
+        return resp
+
+    # Fetch appointment
+    query = f"SELECT * FROM amorr.appointments WHERE appointment_id = '{appt_id}'"
+    appt = mu.load(config, 'amorr.appointments', query)
+    if len(appt) == 0:
+        resp = make_response( jsonify( {"message": "Appointment not found"} ), 404, )
+        return resp
+
+    # Check if logged in user was the customer of this appointment
+    if int(appt[0]['customer_uid']) != int(uid):
+        resp = make_response( jsonify( {"message": "Appointment is for a different customer!"} ), 401, )
+        return resp
+
+    # Fetch SP uid from appointment
+    sp_uid = appt[0]['sp_uid']
+
+    # Set reviewed = 1 in appointments table
+    query = f"UPDATE amorr.appointments SET reviewed = '1' WHERE appointment_id = '{appt_id}'"
+    mu.query(config, query)
+
+    r = request
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':  # Case for JSON request body 
+        json = r.json
+        rating = json['rating']
+        review = json['review']
+    else:   # Case for submitted form
+        rating = r.form['rating']
+        review = r.form['review']
+
+    date = str(datetime.date.today().strftime('%Y-%m-%d'))
+
+    new_review = {'appointment_id':[appt_id], 'reviewer_uid':[uid], 'recipient_uid':[sp_uid], 'rating':[rating], 'review':[review], 'date':[date]}
+    df = pd.DataFrame.from_dict(new_review)
+    mu.insert(config, 'sp_reviews', df)
+    
+    resp = make_response( jsonify( {"message": "Review submitted!"} ), 200, )
+    return resp
+#########
+# End of add-review
+
+# get-sp-reviews
+#########
+@app.route('/get-sp-reviews', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_sp_reviews():
+    if request.method == 'GET':
+        return fetch_sp_reviews()
+def fetch_sp_reviews():  # Fetch full name and address from database
+
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"message": "Please log in to view your profile"} ), 400, )
+        return resp
+
+    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
+    sp = mu.load(config, 'amorr.service_providers', f'SELECT * FROM amorr.service_providers WHERE uid = \'{user_id}\'')
+    if len(user) == 0 or len(sp) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": "User not found!"}
+            ),
+            404,
+        )
+    else:
+        query = f"""
+        SELECT u.full_name, r.rating, r.date, r.review 
+        FROM amorr.users as u, amorr.sp_reviews as r
+        WHERE r.recipient_uid = {user_id} AND r.reviewer_uid = u.uid;
+        """
+
+        data = mu.load(config, 'amorr.sp_reviews', query=query)
+
+        resp = make_response(jsonify(data), 200,)
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of get-sp-reviews
+
+# get-sp-name-of-appt
+#########
+@app.route('/review/<appointment_id>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_sp_name_of_appt(appointment_id):
+
+    uid = get_user_id()
+    if uid == -1:   # User not logged in
+        resp = make_response( jsonify( {"message": "Please log in!"} ), 400, )
+        return resp
+    user_type = get_user_type()
+    if(user_type == 'Service Provider'):    # User not Customer
+        resp = make_response( jsonify( {"message": "You are not permitted to use this endpoint"} ), 401, )
+        return resp
+
+    query = f"""
+        SELECT full_name 
+        FROM amorr.users as user, amorr.appointments as appt 
+        WHERE user.uid = appt.sp_uid AND appt.appointment_id={appointment_id};
+        """
+    data = mu.load(config, 'amorr.users', query=query)
+    if len(data) == 0:
+        resp = make_response(jsonify({"message": "Appointment not found!"}), 404,)
+    else:
+        resp = make_response(jsonify({"full_name": data[0]['full_name']}), 200,)
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of get-sp-name-of-appt
+
 
 ################################################################################################################################################
 ################################################################################################################################################

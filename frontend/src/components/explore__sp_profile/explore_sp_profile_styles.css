@@ -1,0 +1,9 @@
+*{
+    font-family: 'Poppins';
+}
+
+
+#service_provider_profile_body_section {
+    display: flex;
+    flex-direction: row;
+}

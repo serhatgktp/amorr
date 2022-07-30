@@ -73,6 +73,7 @@ function RequestAppointment() {
                 </span>
                 <Services_Provided/>
             </div>
+            <div className='serivesProvided'><Services_Provided/></div>
         </div>
     )
 }
