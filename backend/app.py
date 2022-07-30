@@ -899,6 +899,18 @@ def get_sp_name_of_appt(appointment_id):
 #########
 # End of get-sp-name-of-appt
 
+# explore-sp-price-list
+#########
+@app.route('/explore-sp-price-list/<sp_uid>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_pricelist(sp_uid):
+    query = f"SELECT service_id, name as service, price FROM amorr.services WHERE uid = '{sp_uid}'"
+    data = mu.load(config, 'amorr.services', query)
+    resp = make_response(jsonify(data), 200,)
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of explore-sp-price-list
 
 ################################################################################################################################################
 ################################################################################################################################################
