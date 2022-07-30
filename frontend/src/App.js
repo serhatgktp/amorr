@@ -21,13 +21,13 @@ import DeleteAccount from './components/delete_account/delete_account';
 import RequestAppointment from './components/request_appointment/RequestAppointment'
 import ServiceProviderAppointments from './components/sp_my_appointments/my_appointments'
 
-
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link
 } from "react-router-dom";
+import ExploreSpProfile from './components/explore__sp_profile/explore_sp_profile.js';
 
 function App(){
   
@@ -79,9 +79,9 @@ function App(){
         <Route path='/explore' element={<CustomerExplore/>}/>
         <Route path='/logout' element={<InitialLogin/>}/>
         <Route path = '/delete-account' element={<DeleteAccount/>}></Route>
-        <Route path = '/appointment' element={<RequestAppointment/>}></Route>
+        <Route path = '/appointment/:id' element={<RequestAppointment/>}></Route>
+        <Route path = '/explore-sp' element={<ExploreSpProfile/>}></Route>
         <Route path = '/sp-my-appointments' element={<ServiceProviderAppointments/>}></Route>
-
       </Routes>
     </Router>
     </body>
