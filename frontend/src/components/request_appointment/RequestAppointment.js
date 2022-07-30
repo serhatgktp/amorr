@@ -5,6 +5,7 @@ import './RequestAppointment.css'
 import { Icon } from '@iconify/react';
 import TimePicker from 'react-ts-timepicker';
 import Services_Provided from './services_provided';
+
 function RequestAppointment() {
     const [date, setDate] = useState(new Date());
     const [time, setTime] = useState('08:00');
@@ -70,7 +71,7 @@ function RequestAppointment() {
                         <Icon id="RA_dropdownIcon" icon="akar-icons:chevron-down"/>
                     </div>
                 </span>
-                
+                <Services_Provided/>
             </div>
             <div className='serivesProvided'><Services_Provided/></div>
         </div>
