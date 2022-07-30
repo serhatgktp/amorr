@@ -32,7 +32,7 @@ const ReviewRate = () => {
     const [value, setValue] = React.useState(5);
     const [hover, setHover] = React.useState(-1);
 
-    const [spName, setSpName] = useState({}); 
+    const [spName, setSpName] = useState(''); 
 
     const [isPending, setIsPending] = useState(false);
 
