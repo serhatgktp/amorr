@@ -575,7 +575,7 @@ def fetch_sp_profile():  # Fetch full name and address from database
         address = user[0]['address']
 
         bio = sp[0]['bio']
-        services = sp[0]['type_of_services']
+        services = sp[0]['types_of_services']
         
         sql = f'SELECT COUNT(*) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
         num_ratings = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
@@ -719,7 +719,7 @@ def fetch_sps():
             avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
         else:
             avg_rating = 'No reviews yet'
-        tos_str = sp['type_of_services']
+        tos_str = sp['types_of_services']
         tos = tos_str.strip('][').split(', ')   # Convert from string to list
         for i in range(len(tos)):
             tos[i] = tos[i].strip("'")
