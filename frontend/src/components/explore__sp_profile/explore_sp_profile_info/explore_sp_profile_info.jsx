@@ -5,7 +5,12 @@ import { Rating, Avatar, Badge, styled} from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
-const ExploreSpInfo = () => {
+const ExploreSpInfo = ({SP}) => {
+
+    let navigate = useNavigate();
+    function handleClick(){
+        navigate('/appointment/:id' + SP.id)
+    }
 
     // initializing values
     const [addr, setAddr] = useState('');
@@ -46,7 +51,7 @@ const ExploreSpInfo = () => {
             <div id="service_provider_right">
                 <div id="first_line">
                     <div id="service_provider_name">{fullName}</div>
-                    <div><Link to="/appointment/:id" className="req_appointment">Request an Appointment</Link></div>
+                    <div><button id="req_appointment" onClick={handleClick}>Request an Appointment</button></div>
                 </div>
                 <div id="rating">
                     <span className="rating_num">{rating.toFixed(1)}</span>
