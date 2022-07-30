@@ -71,7 +71,7 @@ function RequestAppointment() {
                         <Icon id="RA_dropdownIcon" icon="akar-icons:chevron-down"/>
                     </div>
                 </span>
-                <Services_Provided/>
+                
             </div>
             <div className='serivesProvided'><Services_Provided/></div>
         </div>
