@@ -16,7 +16,7 @@ const ExploreSpInfo = ({ id }) => {
 
     // dummy get request to get data
     useEffect(() => {
-        /*setImage(`http://localhost:5000/explore-profile-photo/${id}`)
+        setImage(`http://localhost:5000/explore-profile-photo/${id}`)
         fetch(`http://localhost:5000/explore-sp-profile/${id}`, {credentials: 'include'}).then(response =>
           response.json().then(data => {
             setAddr(data.address);
@@ -26,7 +26,7 @@ const ExploreSpInfo = ({ id }) => {
             console.log(data.num_ratings);
             console.log(data.avg_rating);
           })
-        );*/
+        );
         setAddr("100 Lorem Ipsum Road - M1C 0B7");
         setFullName("Lorem Ipsum Salons");
         setNumRating(50);

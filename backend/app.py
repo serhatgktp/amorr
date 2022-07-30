@@ -575,7 +575,7 @@ def fetch_sp_profile():  # Fetch full name and address from database
         address = user[0]['address']
 
         bio = sp[0]['bio']
-        services = sp[0]['types_of_services']
+        services = sp[0]['type_of_services']
         
         sql = f'SELECT COUNT(*) FROM amorr.sp_reviews WHERE recipient_uid = \'{user_id}\''
         num_ratings = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
@@ -719,7 +719,7 @@ def fetch_sps():
             avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
         else:
             avg_rating = 'No reviews yet'
-        tos_str = sp['types_of_services']
+        tos_str = sp['type_of_services']
         tos = tos_str.strip('][').split(', ')   # Convert from string to list
         for i in range(len(tos)):
             tos[i] = tos[i].strip("'")
@@ -830,6 +830,147 @@ def modify_appt(action):
     return resp
 #########
 # End of modify-appointment
+
+# get-sp-reviews
+#########
+@app.route('/get-sp-reviews', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_sp_reviews():
+    if request.method == 'GET':
+        return fetch_sp_reviews()
+def fetch_sp_reviews():  # Fetch full name and address from database
+
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"message": "Please log in to view your profile"} ), 400, )
+        return resp
+
+    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
+    sp = mu.load(config, 'amorr.service_providers', f'SELECT * FROM amorr.service_providers WHERE uid = \'{user_id}\'')
+    if len(user) == 0 or len(sp) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": "User not found!"}
+            ),
+            404,
+        )
+    else:
+        query = f"""
+        SELECT u.full_name, r.rating, r.date, r.review 
+        FROM amorr.users as u, amorr.sp_reviews as r
+        WHERE r.recipient_uid = {user_id} AND r.reviewer_uid = u.uid;
+        """
+
+        data = mu.load(config, 'amorr.sp_reviews', query=query)
+
+        resp = make_response(jsonify(data), 200,)
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of get-sp-reviews
+
+# get-sp-name-of-appt
+#########
+@app.route('/review/<appointment_id>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_sp_name_of_appt(appointment_id):
+
+    uid = get_user_id()
+    if uid == -1:   # User not logged in
+        resp = make_response( jsonify( {"message": "Please log in!"} ), 400, )
+        return resp
+    user_type = get_user_type()
+    if(user_type == 'Service Provider'):    # User not Customer
+        resp = make_response( jsonify( {"message": "You are not permitted to use this endpoint"} ), 401, )
+        return resp
+
+    query = f"""
+        SELECT full_name 
+        FROM amorr.users as user, amorr.appointments as appt 
+        WHERE user.uid = appt.sp_uid AND appt.appointment_id={appointment_id};
+        """
+    data = mu.load(config, 'amorr.users', query=query)
+    if len(data) == 0:
+        resp = make_response(jsonify({"message": "Appointment not found!"}), 404,)
+    else:
+        resp = make_response(jsonify({"full_name": data[0]['full_name']}), 200,)
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of get-sp-name-of-appt
+
+# explore-sp-price-list
+#########
+@app.route('/explore-sp-price-list/<sp_uid>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_pricelist(sp_uid):
+    query = f"SELECT service_id, name as service, price FROM amorr.services WHERE uid = '{sp_uid}'"
+    data = mu.load(config, 'amorr.services', query)
+    resp = make_response(jsonify(data), 200,)
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of explore-sp-price-list
+
+# explore-sp-profile
+#########
+@app.route('/explore-sp-profile/<sp_uid>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def explore_sp_profile(sp_uid):
+    query = f"""
+            SELECT u.full_name, u.address, s.bio
+            FROM users as u INNER JOIN service_providers as s
+            ON u.uid = s.uid
+            WHERE u.uid = {sp_uid};
+            """
+    data = mu.load(config, 'null', query)
+    data = data[0]
+
+    sql = f'SELECT COUNT(*) FROM amorr.sp_reviews WHERE recipient_uid = \'{sp_uid}\''
+    num_ratings = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
+    data['num_ratings'] = num_ratings
+
+    sql = f'SELECT AVG(rating) FROM amorr.sp_reviews WHERE recipient_uid = \'{sp_uid}\''
+    avg = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)']
+
+    if avg is not None:
+        avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
+    else:
+        avg_rating = 'No reviews yet'
+
+    data['avg_rating'] = avg_rating
+
+    resp = make_response(jsonify(data), 200,)
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of explore-sp-profile
+
+# explore-profile-photo
+#########
+@app.route('/explore-profile-photo/<sp_uid>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_sp_photo(sp_uid):
+    pfp_path = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{sp_uid}\'')
+    if len(pfp_path) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": f"pfp_path not found for user! (uid: {sp_uid})"}
+            ),
+            404,
+        )
+        return resp
+    else:
+        img_path = pfp_path[0]['pfp_path']
+        filetype = img_path.rsplit('.', 1)[1].lower()   # File type without the '.'
+        # print("\n\n\nPATH1 :",UPLOAD_FOLDER,f"filetype = {filetype}\n\n\n")
+        
+        resp = send_from_directory(UPLOAD_FOLDER, img_path, mimetype=f'image/{filetype}')
+        return resp     # Should return with response code 200 if successful
+#########
+# End of explore-profile-photo
+
+
 
 ################################################################################################################################################
 ################################################################################################################################################
