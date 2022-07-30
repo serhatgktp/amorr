@@ -79,7 +79,7 @@ function App(){
         <Route path='/explore' element={<CustomerExplore/>}/>
         <Route path='/logout' element={<InitialLogin/>}/>
         <Route path = '/delete-account' element={<DeleteAccount/>}></Route>
-        <Route path = '/appointment' element={<RequestAppointment/>}></Route>
+        <Route path = '/appointment/:id' element={<RequestAppointment/>}></Route>
         <Route path = '/explore-sp' element={<ExploreSpProfile/>}></Route>
         <Route path = '/sp-my-appointments' element={<ServiceProviderAppointments/>}></Route>
       </Routes>

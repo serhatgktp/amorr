@@ -46,7 +46,7 @@ const ExploreSpInfo = () => {
             <div id="service_provider_right">
                 <div id="first_line">
                     <div id="service_provider_name">{fullName}</div>
-                    <div><Link to="/RequestAppointment" className="req_appointment">Request an Appointment</Link></div>
+                    <div><Link to="/appointment/:id" className="req_appointment">Request an Appointment</Link></div>
                 </div>
                 <div id="rating">
                     <span className="rating_num">{rating.toFixed(1)}</span>
