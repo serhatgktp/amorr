@@ -916,7 +916,7 @@ def get_pricelist(sp_uid):
 #########
 @app.route('/explore-sp-profile/<sp_uid>', methods=['GET'])
 @cross_origin(supports_credentials=True)
-def get_profile(sp_uid):
+def explore_sp_profile(sp_uid):
     query = f"""
             SELECT u.full_name, u.address, s.bio
             FROM users as u INNER JOIN service_providers as s
@@ -945,6 +945,30 @@ def get_profile(sp_uid):
     return resp
 #########
 # End of explore-sp-profile
+
+# explore-profile-photo
+#########
+@app.route('/explore-profile-photo/<sp_uid>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_sp_photo(sp_uid):
+    pfp_path = mu.load(config, 'amorr.profile_photos', f'SELECT * FROM amorr.profile_photos WHERE uid = \'{sp_uid}\'')
+    if len(pfp_path) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": f"pfp_path not found for user! (uid: {sp_uid})"}
+            ),
+            404,
+        )
+        return resp
+    else:
+        img_path = pfp_path[0]['pfp_path']
+        filetype = img_path.rsplit('.', 1)[1].lower()   # File type without the '.'
+        # print("\n\n\nPATH1 :",UPLOAD_FOLDER,f"filetype = {filetype}\n\n\n")
+        
+        resp = send_from_directory(UPLOAD_FOLDER, img_path, mimetype=f'image/{filetype}')
+        return resp     # Should return with response code 200 if successful
+#########
+# End of explore-profile-photo
 
 
 
