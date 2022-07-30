@@ -29,7 +29,6 @@ const ReviewRate = () => {
 
     let {appointment_id} = useParams();
     const uri = "http://localhost:5000/review/" + JSON.stringify(appointment_id).replaceAll("\"", '');
-
     const [value, setValue] = React.useState(5);
     const [hover, setHover] = React.useState(-1);
     const [spName, setSpName] = useState(''); 
@@ -56,7 +55,7 @@ const ReviewRate = () => {
                 setReviewPopup(true); 
                 setTimeout(function () {
                     setReviewPopup(false);
-                    navigate('/home');
+                    navigate('/customer-my-appointments');
                     window.location.reload(); 
                 }, 1300); 
                 setIsPending(false); 
