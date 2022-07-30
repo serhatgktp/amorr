@@ -33,12 +33,23 @@ const ReviewRate = () => {
     const [value, setValue] = React.useState(5);
     const [hover, setHover] = React.useState(-1);
 
+    const [spName, setSpName] = useState(''); 
+
     const [isPending, setIsPending] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsPending(true);
     };
+
+    React.useEffect(() => {
+        // get SP name
+        fetch(uri, {credentials:'include'}).then(response =>
+            response.json().then(data=>{
+                setSpName(data);
+                console.log(spName);
+            }));
+    }, []); 
 
 
     return(
