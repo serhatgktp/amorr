@@ -8,6 +8,9 @@ import StarIcon from '@mui/icons-material/Star';
 import { useState } from "react"; 
 import { Icon } from '@iconify/react';
 import { useParams } from "react-router-dom";
+import  { useNavigate } from 'react-router-dom';
+import ReviewPopup from '../review_popup/review_popup';
+
 
 const labels = {
     1: 'Poor',
@@ -25,20 +28,43 @@ function getLabelText(value) {
 const ReviewRate = () => {
 
     let {appointment_id} = useParams();
-    console.log(appointment_id);
     const uri = "http://localhost:5000/review/" + JSON.stringify(appointment_id).replaceAll("\"", '');
-    console.log(uri);
-
     const [value, setValue] = React.useState(5);
     const [hover, setHover] = React.useState(-1);
-
     const [spName, setSpName] = useState(''); 
-
+    const [review, setReview] = useState('');
+    const [triggerReviewPopup, setReviewPopup] = useState(false);
+    const navigate = useNavigate(); 
     const [isPending, setIsPending] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const body = {
+            rating: value,
+            review: review
+        }
         setIsPending(true);
+
+        fetch(uri, {
+            method: 'POST', 
+            headers: {"Content-Type": "application/json"},
+            credentials: "include",
+            body: JSON.stringify(body)
+        }).then(response => {
+            if (response.ok){
+                setReviewPopup(true); 
+                setTimeout(function () {
+                    setReviewPopup(false);
+                    navigate('/customer-my-appointments');
+                    window.location.reload(); 
+                }, 1300); 
+                setIsPending(false); 
+            }else{
+                throw new Error(response.statusTest)
+            }
+        }).catch(err =>{
+            console.log(err)
+        })
     };
 
     useEffect(() => {
@@ -88,7 +114,7 @@ const ReviewRate = () => {
                             )}
                         </Box>
 
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className="inputs">
 
                                 <div className="input1" id="review"><textarea 
@@ -96,6 +122,8 @@ const ReviewRate = () => {
                                     rows="10" 
                                     cols="40" 
                                     required
+                                    value={review}
+                                    onChange={(e)=> setReview(e.target.value)}
                                     type="text" placeholder="Type your review here..."/>
                                 </div>
 
@@ -109,6 +137,7 @@ const ReviewRate = () => {
                 </div>
 
             </div>
+            <ReviewPopup trigger={triggerReviewPopup}/>
         </body>
     );
 }
