@@ -26,6 +26,8 @@ Justification: This user story has been simplified and combined with STAC-96.
 #### (STAC-99) As a service provider, I would like to see a popup page, after clicking on the “More Info” button in the list of my appointments page, containing the full details of an appointment with different information specified depending on the type of appointment.
 Justification: This user story has been simplified and combined with STAC-88.
 
+#### (STAC-120) As a user, I would like to see a popup page, after clicking on the “More Info” button in the list of my appointments page, containing the full details of an appointment. 
+Justification: This user story has been combined with STAC-88 and STAC-96.
 
 ## Remaining User Stories in the Backlog
 Justification: These user stories act as delighters or extra features that were planned to be done with extra time and thus were not main priority as we focused on the important main features first.
