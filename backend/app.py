@@ -856,9 +856,9 @@ def fetch_sp_reviews():  # Fetch full name and address from database
         )
     else:
         query = f"""
-        SELECT p.pfp_path, u.full_name, r.rating, r.date, r.review 
-        FROM amorr.users as u, amorr.sp_reviews as r, amorr.profile_photos as p
-        WHERE r.recipient_uid = {user_id} AND r.reviewer_uid = u.uid AND p.uid = reviewer_uid;
+        SELECT u.full_name, r.rating, r.date, r.review 
+        FROM amorr.users as u, amorr.sp_reviews as r
+        WHERE r.recipient_uid = {user_id} AND r.reviewer_uid = u.uid;
         """
 
         data = mu.load(config, 'amorr.sp_reviews', query=query)
