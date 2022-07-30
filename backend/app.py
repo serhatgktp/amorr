@@ -872,19 +872,19 @@ def add_review():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':  # Case for JSON request body 
         json = r.json
+        appt_id = json['appointment_id']
         sp_uid = json['sp_uid']
-        type_of_service = json['type_of_service']
         rating = json['rating']
         review = json['review']
     else:   # Case for submitted form
+        appt_id = r.form['appointment_id']
         sp_uid = r.form['sp_uid']
-        type_of_service = r.form['type_of_service']
         rating = r.form['rating']
         review = r.form['review']
 
     date = str(datetime.date.today().strftime('%Y-%m-%d'))
 
-    new_review = {'reviewer_uid':[uid], 'recipient_uid':[sp_uid], 'type_of_service':[type_of_service], 'rating':[rating], 'review':[review], 'date':[date]}
+    new_review = {'appointment_id':[appt_id], 'reviewer_uid':[uid], 'recipient_uid':[sp_uid], 'rating':[rating], 'review':[review], 'date':[date]}
     df = pd.DataFrame.from_dict(new_review)
     mu.insert(config, 'users', df)  # Insert new user into users table
     
