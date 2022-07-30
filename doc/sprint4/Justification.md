@@ -6,17 +6,19 @@ Duplicate to STAC-116.
 
 #### (STAC-36) As a registered user, I want to be able to log in with my username and password so that the system can authenticate me and redirect me to the homepage with the corresponding navigation bar according to my type of user (service provider or customer).
 Justification: This user story is already implemented in the previous sprints, and thus redundant and act as duplicates due to being created twice, hence we deleted them. 
-Duplicate to STAC-112
+Duplicate to STAC-112.
 
 #### (STAC-35) As a new user, I want to be able to create a unique account and securely access my data.so I can log back in whenever to keep track and make appointments
 Justification: This user story is already implemented in the previous sprints, and thus redundant and act as duplicates due to being created twice, hence we deleted them. 
-Duplicate to STAC-107
+Duplicate to STAC-107.
 
 #### (STAC-141) As a user, I want to have a profile photo attached to my account so customers/service providers can recognize me
 Justification: This user story is already implemented in the previous sprints, and thus redundant and act as duplicates due to being created twice, hence we deleted them. 
+Duplicate to STAC-145.
 
 #### (STAC-92) As a customer, I would like to be able to filter and sort the services provided based on proximity, ratings, average price so that it is easier for me to find my desired service provider
 Justification: This user story is already implemented in the previous sprints, and thus redundant and act as duplicates due to being created twice, hence we deleted them. 
+Duplicate to STAC-102.
 
 #### (STAC-104) As a customer, I would like to see a popup page, after clicking on the “More Info” button, containing the full details of an appointment with a link to chat with the service provider and a button to cancel the appointment.
 Justification: This user story has been simplified and combined with STAC-96. 
@@ -25,8 +27,8 @@ Justification: This user story has been simplified and combined with STAC-96.
 Justification: This user story has been simplified and combined with STAC-88.
 
 
-## Remaining User Stories in the Backlog (Delighter/Extra Features)
-Justification: These user stories act as delighters or extra features and thus were not implemented as we focused on the main features first.
+## Remaining User Stories in the Backlog
+Justification: These user stories act as delighters or extra features that were planned to be done with extra time and thus were not main priority as we focused on the important main features first.
 
 #### (STAC-90) As a service provider, I want to be able to create posts under my profile where I can not only write texts but also attach images so I can keep clients updated regarding ongoing discounts, closures, promotions, etc
 
