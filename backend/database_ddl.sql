@@ -43,9 +43,10 @@ create table contact_info (
 
 -- Reviews given to SPs from Customers
 CREATE TABLE amorr.sp_reviews (
+  `appointment_id` INT NOT NULL,
   `recipient_uid` INT NOT NULL,
   `reviewer_uid` INT NOT NULL,
-  `type_of_service` VARCHAR(45) NULL,
+  `date` VARCHAR(45) NULL,
   `rating` VARCHAR(45) NULL,
   `review` VARCHAR(1000) NULL);
 
