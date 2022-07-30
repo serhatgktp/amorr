@@ -912,6 +912,42 @@ def get_pricelist(sp_uid):
 #########
 # End of explore-sp-price-list
 
+# explore-sp-profile
+#########
+@app.route('/explore-sp-profile/<sp_uid>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_profile(sp_uid):
+    query = f"""
+            SELECT u.full_name, u.address, s.bio
+            FROM users as u INNER JOIN service_providers as s
+            ON u.uid = s.uid
+            WHERE u.uid = {sp_uid};
+            """
+    data = mu.load(config, 'null', query)
+    data = data[0]
+
+    sql = f'SELECT COUNT(*) FROM amorr.sp_reviews WHERE recipient_uid = \'{sp_uid}\''
+    num_ratings = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['COUNT(*)']
+    data['num_ratings'] = num_ratings
+
+    sql = f'SELECT AVG(rating) FROM amorr.sp_reviews WHERE recipient_uid = \'{sp_uid}\''
+    avg = mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)']
+
+    if avg is not None:
+        avg_rating = round(mu.load(config, 'amorr.sp_reviews', query=sql)[0]['AVG(rating)'], 1)
+    else:
+        avg_rating = 'No reviews yet'
+
+    data['avg_rating'] = avg_rating
+
+    resp = make_response(jsonify(data), 200,)
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of explore-sp-profile
+
+
+
 ################################################################################################################################################
 ################################################################################################################################################
 ################################################################################################################################################
