@@ -908,6 +908,75 @@ def add_review(appt_id):
 #########
 # End of add-review
 
+# get-sp-reviews
+#########
+@app.route('/get-sp-reviews', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_sp_reviews():
+    if request.method == 'GET':
+        return fetch_sp_reviews()
+def fetch_sp_reviews():  # Fetch full name and address from database
+
+    user_id = get_user_id()
+    if user_id == -1:
+        resp = make_response( jsonify( {"message": "Please log in to view your profile"} ), 400, )
+        return resp
+
+    user = mu.load(config, 'amorr.users', f'SELECT * FROM amorr.users WHERE uid = \'{user_id}\'')
+    sp = mu.load(config, 'amorr.service_providers', f'SELECT * FROM amorr.service_providers WHERE uid = \'{user_id}\'')
+    if len(user) == 0 or len(sp) == 0:
+        resp = make_response(
+            jsonify(
+                {"message": "User not found!"}
+            ),
+            404,
+        )
+    else:
+        query = f"""
+        SELECT u.full_name, r.rating, r.date, r.review 
+        FROM amorr.users as u, amorr.sp_reviews as r
+        WHERE r.recipient_uid = {user_id} AND r.reviewer_uid = u.uid;
+        """
+
+        data = mu.load(config, 'amorr.sp_reviews', query=query)
+
+        resp = make_response(jsonify(data), 200,)
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of get-sp-reviews
+
+# get-sp-name-of-appt
+#########
+@app.route('/review/<appointment_id>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def get_sp_name_of_appt(appointment_id):
+
+    uid = get_user_id()
+    if uid == -1:   # User not logged in
+        resp = make_response( jsonify( {"message": "Please log in!"} ), 400, )
+        return resp
+    user_type = get_user_type()
+    if(user_type == 'Service Provider'):    # User not Customer
+        resp = make_response( jsonify( {"message": "You are not permitted to use this endpoint"} ), 401, )
+        return resp
+
+    query = f"""
+        SELECT full_name 
+        FROM amorr.users as user, amorr.appointments as appt 
+        WHERE user.uid = appt.sp_uid AND appt.appointment_id={appointment_id};
+        """
+    data = mu.load(config, 'amorr.users', query=query)
+    if len(data) == 0:
+        resp = make_response(jsonify({"message": "Appointment not found!"}), 404,)
+    else:
+        resp = make_response(jsonify({"full_name": data[0]['full_name']}), 200,)
+    resp.headers["Content-Type"] = "application/json"
+    return resp
+#########
+# End of get-sp-name-of-appt
+
+
 ################################################################################################################################################
 ################################################################################################################################################
 ################################################################################################################################################

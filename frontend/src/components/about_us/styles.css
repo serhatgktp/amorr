@@ -1,10 +1,7 @@
 .about_us_wrapper .box {
     background-color: #F9F6EE;
-    width: 90%;
-    height: 37rem;
-    margin-left: 5%;
-    margin-top: 6%;
-    margin-bottom: 6%;
+    width: 75%;
+    margin: auto;
 
   }
   
@@ -16,6 +13,7 @@
   .about_us_wrapper .titleContainer {
     flex-direction: row;
     display: flex;
+    margin-bottom: -20px;
   }
   
   .about_us_wrapper .title{
@@ -60,43 +58,19 @@
     color: black;
   }
   
-  .about_us_wrapper .click{
-    background-color: #345392;
-    border: none;
-    color: #f9f6ee;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin-left: 70px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 26px;
-    height: 40px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    
-  }
-
-  .about_us_wrapper .click:hover{
-    transform: scale(1.03);
-  }
-  
   .about_us_wrapper .box{
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
   }
   
-  .about_us_wrapper .p1{
+  .about_us_wrapper .p{
     position: relative;
-    width: 600px;
+    width: 700px;
     margin-left: 4rem;
+    font-size: 18px;
+    line-height: 1.8;
   }
   
-  .about_us_wrapper .p2{
-    position: relative;
-    width: 600px;
-    margin-left: 4rem;
-  }
   
   .about_us_wrapper .title{
     position: relative;
@@ -105,9 +79,29 @@
   }
   
   .about_us_wrapper .img-peacock {
-    margin-top: -450px;
+    margin-top: -600px;
     margin-right: 100px;
     display: flex;
-    height: 500px
+    height: 700px
     
   }
+
+  .about_us_wrapper button{
+    cursor: pointer;
+    background-color: #345392;
+    border: none;
+    border-radius: 40px;
+    padding: 15px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #F9F6EE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-left: 60px;
+    margin-top: 15px;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.about_us_wrapper button:hover{
+    transform: scale(1.03);
+}
