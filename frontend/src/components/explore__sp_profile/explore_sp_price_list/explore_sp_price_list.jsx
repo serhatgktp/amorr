@@ -4,7 +4,7 @@ import './explore_sp_price_list_styles.css'
 import { Divider } from '@mui/material';
 import ReadOnlyRow from './read_only_row';
 
-const ExploreSpPriceList = () => {
+const ExploreSpPriceList = ({ id }) => {
 
     // initial values
     const [servicesPricesList, setServicesPricesList] = useState([]);
@@ -18,7 +18,7 @@ const ExploreSpPriceList = () => {
     
     // GET REQUEST TO GET LIST OF SERVICES AND PRICES
     useEffect(() => {
-        /*fetch("http://localhost:5000/get-sp-price-list", {credentials: 'include'}).then(response =>
+        /*fetch(`http://localhost:5000/explore-sp-price-list/${id}`, {credentials: 'include'}).then(response =>
           response.json().then(data => {
             setServicesPricesList(data);
           })

@@ -3,11 +3,11 @@ import './explore_sp_profile_bio_styles.css'
 import { Icon } from '@iconify/react';
 
 
-const ExploreSpBio = () => {
+const ExploreSpBio = ({ id }) => {
     const [bio, setBio] = useState('');
     const [fullName, setFullName] = useState('');
     useEffect(() => {
-        /*fetch("http://localhost:5000/get-sp-profile", {credentials: 'include'}).then(response =>
+        /*fetch(`http://localhost:5000/explore-sp-profile/${id}`, {credentials: 'include'}).then(response =>
           response.json().then(data => {
             setBio(data.bio);
             console.log(bio);
