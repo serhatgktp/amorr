@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import "./Navbar.css";
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Avatar } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -15,12 +14,7 @@ const CustomerNavbar = () => {
   
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [triggerLogoutPopup, setTriggerLogoutPopup] = useState(false);
-  const [img, setImage] = useState(null);
-
-  useEffect(() => {
-    setImage("http://localhost:5000/get-profile-photo")
-  }, []);
-
+  
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -68,7 +62,7 @@ const CustomerNavbar = () => {
         <a href="/FAQ"><b>FAQ</b></a>
         <a href="/contact"><b>Contact</b></a>
         <a href="/explore"><b>Explore</b></a>
-        <a href="/customer-my-appointments"><b>My Appointments</b></a>
+        <a href="/appointments"><b>My Appointments</b></a>
       </div>
       <div className="icon">
       <IconButton 
@@ -78,8 +72,7 @@ const CustomerNavbar = () => {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         size="large"
-        sx = {{  width: 50, height: 50}}
-      ><Avatar alt="" src={img} sx={{ width: 50, height: 50, boxShadow: 3}}/>
+      ><AccountCircleIcon/>
       </IconButton>
       <Menu
         id="basic-menu"

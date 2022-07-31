@@ -125,9 +125,10 @@ margin-left: 500px;
 }
 
 .total {
+  position: fixed;
   float: right;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 290px;
 }
 
 .quantity {
@@ -155,4 +156,3 @@ button:focus {
 button:hover {
   cursor: pointer;
 }
-
