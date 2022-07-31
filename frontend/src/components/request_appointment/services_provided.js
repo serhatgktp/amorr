@@ -6,9 +6,9 @@ import { Routes, Route, useParams } from 'react-router-dom';
 
 function Services_Provided () { 
 
-	const [items, setItems] = useState([
-        {service:"", price:""}
-    ]);
+	let newItems = [];
+
+	const [items, setItems] = useState([]);
 
 	
 	const [totalItemCount, setTotalItemCount] = useState();
@@ -25,6 +25,13 @@ function Services_Provided () {
           response.json().then(data => {
             console.log(data);
 			setItems(data);
+
+			const defaultQuantity = {quantity : 0};
+			Object.keys(data).forEach(key => {
+				newItems[key] = { ...data[key], ...defaultQuantity };
+			});
+
+			setItems(newItems);
           })
         );
       }, []);
