@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import './services_provided.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle, faMinusCircle, faCircle, faArrowRight} from '@fortawesome/free-solid-svg-icons';
+import { Routes, Route, useParams } from 'react-router-dom';
 
 function Services_Provided () { 
 	const [items, setItems] = useState([
@@ -17,15 +18,20 @@ function Services_Provided () {
 
     const [subtotal, setSubtotal] = useState();
 
+
+	const pathname = window.location.pathname;
+	const uid = pathname.split("/");
+	console.log(uid[2]);
+	const id = uid[2];
+
 	useEffect(() => {
-        fetch("http://localhost:5000/get-sp-price-list", {credentials: 'include'}).then(response =>
+        fetch(`/explore-sp-price-list/${id}`, {credentials: 'include'}).then(response =>
           response.json().then(data => {
             console.log(data);
+			setItems(data);
           })
         );
       }, []);
-
-	
 
 	const handleQuantityIncrease = (index) => {
 		const newItems = [...items];
