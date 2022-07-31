@@ -33,10 +33,6 @@ const ExploreSpInfo = ({ id }) => {
             console.log(data.avg_rating);
           })
         );
-        setAddr("100 Lorem Ipsum Road - M1C 0B7");
-        setFullName("Lorem Ipsum Salons");
-        setNumRating(50);
-        setRating(4.2);
       }, []);
 
     return(
