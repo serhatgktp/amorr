@@ -17,8 +17,11 @@ import CustomerProfile from './components/customer_profile/customer_profile';
 import ServiceProviderProfile from './components/service_provider_profile/service_provider_profile.jsx';
 import CustomerExplore from './components/customer_explore/customer_explore.jsx';
 import DeleteAccount from './components/delete_account/delete_account';
-import RequestAppointment from './components/request_appointment/RequestAppointment'
-import ServiceProviderAppointments from './components/sp_my_appointments/my_appointments'
+import ExploreSpProfile from './components/explore__sp_profile/explore_sp_profile.js';
+import RequestAppointment from './components/request_appointment/RequestAppointment';
+import ServiceProviderAppointments from './components/sp_my_appointments/my_appointments';
+import CustomerAppointments from './components/customer_my_appointments/my_appointments';
+import ReviewRating from './components/review_rating/review_rating';
 
 import {
   BrowserRouter as Router,
@@ -26,7 +29,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import ExploreSpProfile from './components/explore__sp_profile/explore_sp_profile.js';
 
 function App(){
   
@@ -64,7 +66,7 @@ function App(){
 
         <Route path='/' element={<Home/>} />
         <Route path='/home' element={<Home/>} />
-        <Route path='/about' element={<RequestAppointment/>} />
+        <Route path='/about' element={<AboutUs/>} />
         <Route path='/contact' element={<ContactUs/>} />
         <Route path='/customer-register' element={<CustomerRegistration/>} />
         <Route path='/sp-register' element={<ServiceProviderRegistration/>} />
@@ -81,6 +83,8 @@ function App(){
         <Route path = '/appointment/:id' element={<RequestAppointment/>}></Route>
         <Route path = '/explore-sp/:id' element={<ExploreSpProfile/>}></Route>
         <Route path = '/sp-my-appointments' element={<ServiceProviderAppointments/>}></Route>
+        <Route path = '/customer-my-appointments' element={<CustomerAppointments/>}></Route>
+        <Route path = '/review/:appointment_id' element={<ReviewRating/>}></Route>
       </Routes>
     </Router>
     </body>
