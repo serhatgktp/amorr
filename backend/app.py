@@ -970,7 +970,46 @@ def get_sp_photo(sp_uid):
 #########
 # End of explore-profile-photo
 
+# add-appointment
+#########
+@app.route('/add-appointment', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def add_appointment():
+    cust_uid = get_user_id()
+    if cust_uid == -1:   # User not logged in
+        resp = make_response( jsonify( {"message": "You must be logged in to book an appointment!"} ), 400, )
+        return resp
 
+    data = mu.load(config, 'amorr.users', f"SELECT * FROM amorr.users WHERE uid = '{cust_uid}'")
+    address = data[0]['address']
+
+    content_type = request.headers.get('Content-Type')
+    r = request
+
+    if (content_type == 'application/json'):    # Case for JSON request body 
+        json = r.json
+        sp_uid = json['sp_uid']
+        services = json['services']
+        time = json['time']
+        date = json['date']
+        price = json['price']
+    
+    else:                                       # Case for submitted form
+        sp_uid = r.form['sp_uid']
+        services = r.form['services']
+        time = r.form['time']
+        date = r.form['date']
+        price = r.form['price']
+
+    d = {'customer_uid':[cust_uid], 'sp_uid':[sp_uid], 'services':[services], 'time':[time], 'date':[date], 'price':[price], 'address':[address], 'status':['pending'], 'reviewed':['0']}
+    df = pd.DataFrame.from_dict(d)
+    mu.insert(config, 'amorr.users', df)
+
+    resp = make_response( jsonify( {"message": "Appointment created!"} ), 200, )
+    return resp
+
+#########
+# End of add-appointment
 
 ################################################################################################################################################
 ################################################################################################################################################
