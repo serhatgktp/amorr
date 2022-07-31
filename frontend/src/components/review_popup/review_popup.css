@@ -1,0 +1,70 @@
+*{
+    font-family: 'Poppins';
+}
+
+.ReviewPopup, .R_overlay {
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.R_overlay {
+    background: rgba(49,49,49,0.8);
+}
+
+.R_content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    line-height: 1.4;
+    padding: 14px 28px;
+    display: block;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.R_upper {
+    padding: 2em;
+    background-color: #8BC34A;
+    /* background-color: #FCFC70; */
+    display: block;
+    color: #fff;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
+}
+
+.R_lower {
+    padding: 2em 2em 3em 2em;
+    background: #fff;
+    display: block;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
+}
+
+#R_icon {
+    color: #fff;
+    font-size: 100px;
+}
+
+#R_heading {
+    font-size: 25px;
+    font-weight: 600;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+#R_para {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 0px;
+}

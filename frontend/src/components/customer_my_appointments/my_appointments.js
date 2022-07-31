@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import AppointmentCard from './appointment_cards/appointment_card';
 import AwaitingCard from './appointment_cards/awaiting_card';
 import ConfirmedCard from './appointment_cards/confirmed_card';
@@ -6,18 +7,20 @@ import PastCard from './appointment_cards/past_card';
 import './my_appointment.css'
 
 const MyAppointments = () => {
+    let navigate = useNavigate();
+
     const [waitingApptList, setWaitingApptList] = useState([]);
     const [confirmedApptList, setConfirmedApptList] = useState([]);
     const [pastApptList, setPastApptList] = useState([]);
 
     const handleReviewClick = (e, appt) => {
         e.preventDefault();
-
-        const apptToMakeReview = {appt_id: appt.appointment_id}
-
-        console.log(apptToMakeReview)
-
-        // TODO: NAVIGATE TO REVIEW PAGE (DYNAMIC ENDPOINTS) 
+        // NAVIGATE TO REVIEW PAGE (DYNAMIC ENDPOINTS) 
+        const reviewAndApptId = "/review/" + appt.appointment_id;
+        setTimeout(function () {
+          navigate(reviewAndApptId);
+          window.location.reload();
+      }, 500);
     }
     
     useEffect(() => {

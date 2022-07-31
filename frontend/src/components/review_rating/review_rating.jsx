@@ -1,13 +1,16 @@
 import './review_rating.css'
 
-import * as React from 'react';
-
+import React, { useEffect } from 'react'
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
 // import Axios from 'react'; 
 import { useState } from "react"; 
 import { Icon } from '@iconify/react';
+import { useParams } from "react-router-dom";
+import  { useNavigate } from 'react-router-dom';
+import ReviewPopup from '../review_popup/review_popup';
+
 
 const labels = {
     1: 'Poor',
@@ -24,15 +27,53 @@ function getLabelText(value) {
 
 const ReviewRate = () => {
 
+    let {appointment_id} = useParams();
+    const uri = "http://localhost:5000/review/" + JSON.stringify(appointment_id).replaceAll("\"", '');
     const [value, setValue] = React.useState(5);
-  const [hover, setHover] = React.useState(-1);
-
+    const [hover, setHover] = React.useState(-1);
+    const [spName, setSpName] = useState(''); 
+    const [review, setReview] = useState('');
+    const [triggerReviewPopup, setReviewPopup] = useState(false);
+    const navigate = useNavigate(); 
     const [isPending, setIsPending] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const body = {
+            rating: value,
+            review: review
+        }
         setIsPending(true);
+
+        fetch(uri, {
+            method: 'POST', 
+            headers: {"Content-Type": "application/json"},
+            credentials: "include",
+            body: JSON.stringify(body)
+        }).then(response => {
+            if (response.ok){
+                setReviewPopup(true); 
+                setTimeout(function () {
+                    setReviewPopup(false);
+                    navigate('/customer-my-appointments');
+                    window.location.reload(); 
+                }, 1300); 
+                setIsPending(false); 
+            }else{
+                throw new Error(response.statusTest)
+            }
+        }).catch(err =>{
+            console.log(err)
+        })
     };
+
+    useEffect(() => {
+        // get SP name
+        fetch(uri, {credentials:'include'}).then(response =>
+            response.json().then(data => {
+                setSpName(data);
+            }));
+    }, []); 
 
 
     return(
@@ -46,7 +87,7 @@ const ReviewRate = () => {
 
                         <p className='into'>Thanks for choosing <span className='a'>a</span><span className= 'morr'>morr</span>, we strive to provide the highest quality service and your feedback would be greatly appreciated as it will help us make sure we serve you and other amazing customers well in the future.</p>
                         
-                        <p> Rating Service Provider Name</p>
+                        <p> Rating for <span style={{fontWeight: '600'}}>{spName.full_name}</span></p>
 
                         <Box
                             sx={{
@@ -73,7 +114,7 @@ const ReviewRate = () => {
                             )}
                         </Box>
 
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className="inputs">
 
                                 <div className="input1" id="review"><textarea 
@@ -81,6 +122,8 @@ const ReviewRate = () => {
                                     rows="10" 
                                     cols="40" 
                                     required
+                                    value={review}
+                                    onChange={(e)=> setReview(e.target.value)}
                                     type="text" placeholder="Type your review here..."/>
                                 </div>
 
@@ -94,6 +137,7 @@ const ReviewRate = () => {
                 </div>
 
             </div>
+            <ReviewPopup trigger={triggerReviewPopup}/>
         </body>
     );
 }

@@ -77,7 +77,6 @@ function App(){
         <Route path='/login' element={<Login/>} />
         <Route path='/profile' element={<CustomerProfile/>}/>
         <Route path='/sp_profile' element={<ServiceProviderProfile/>}/>
-        <Route path = '/review-rating' element={<ReviewRating/>}></Route>
         <Route path='/explore' element={<CustomerExplore/>}/>
         <Route path='/logout' element={<InitialLogin/>}/>
         <Route path = '/delete-account' element={<DeleteAccount/>}></Route>
@@ -85,6 +84,7 @@ function App(){
         <Route path = '/explore-sp/:id' element={<ExploreSpProfile/>}></Route>
         <Route path = '/sp-my-appointments' element={<ServiceProviderAppointments/>}></Route>
         <Route path = '/customer-my-appointments' element={<CustomerAppointments/>}></Route>
+        <Route path = '/review/:appointment_id' element={<ReviewRating/>}></Route>
       </Routes>
     </Router>
     </body>

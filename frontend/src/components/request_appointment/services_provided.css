@@ -1,0 +1,158 @@
+.app-background * {
+  font-size: 18px;
+}
+
+
+
+.services-provided{
+margin-top: -550px;
+margin-left: 500px;
+}
+
+.app-background {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.main-container {
+  background-color: #ffffff;
+  width: 600px;
+  height: 400px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.35);
+  
+}
+
+.subtotal{
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  padding: 15px;
+  background-color: #ffffff;
+  font-size: 18px;
+  border-radius: 10px;
+  width: 200px;
+  margin-left: 200px;
+  margin-top: 50px;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.35);
+}
+.paymentButton{
+  font-size: 18px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  padding: 15px;
+  background: #3b4da7;
+  border-radius: 25px;
+  width: 270px;
+  margin-left: 600px;
+  margin-top: -57px;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.35);
+}
+
+.checkout_arrowicon{
+  padding-left: 17px;
+  padding-top: 3px;;
+}
+
+.title {
+  text-align: center;
+}
+
+.add-item-box {
+  background: #fbc1bb;
+  color: #ec645b;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.add-item-box svg {
+  margin: 5px;
+}
+
+.add-item-input {
+  box-sizing: border-box;
+  border: none;
+  background: transparent;
+  color: #ec645b;
+  width: 100%;
+  height: 30px;
+}
+
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  max-height: 350px;
+}
+
+.item-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 20px 0;
+  border-bottom: 1px #fbc1bb solid;
+}
+
+.item-name {
+  cursor: pointer;
+}
+
+.item-name svg {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.item-action-buttons {
+  /* width: 30%; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.remove-button {
+  color: white;
+  background-color: red;
+}
+
+.total {
+  float: right;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  border: 1px solid #000000;
+  background: white;
+  border-radius: 50px;
+  font-size: 12px;
+  color: #000000;
+  min-width: 70px;
+  justify-content: space-between;
+}
+
+button {
+  background: transparent;
+  border: none;
+  margin: 3px;
+  color: #000000;
+}
+button:focus {
+  outline: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
