@@ -5,17 +5,13 @@ import { faPlusCircle, faMinusCircle, faCircle, faArrowRight} from '@fortawesome
 import { Routes, Route, useParams } from 'react-router-dom';
 
 function Services_Provided () { 
-	const [items, setItems] = useState([
-		{ itemName: 'Hair wash and blow dry', price: 29.00, quantity: 0,},
-		{ itemName: 'Men haircut',price: 34.99,  quantity: 0,},
-		{ itemName: 'Women haircut', price: 21.99, quantity: 0,},
-        { itemName: 'Boys haircut', price: 19.99, quantity: 0,},
-        { itemName: 'Girls haircut', price: 21.99, quantity: 0,},
-		{ itemName: 'Basic perm', price: 19.99, quantity: 0,},
-		{ itemName: 'Digital perm', price: 19.99, quantity: 0,}
-	]);
-	const [totalItemCount, setTotalItemCount] = useState();
 
+	const [items, setItems] = useState([
+        {service:"", price:""}
+    ]);
+
+	
+	const [totalItemCount, setTotalItemCount] = useState();
     const [subtotal, setSubtotal] = useState();
 
 
@@ -34,22 +30,17 @@ function Services_Provided () {
       }, []);
 
 	const handleQuantityIncrease = (index) => {
-		const newItems = [...items];
-		newItems[index].quantity++;
-		setItems(newItems);
+		const NewItems = [...items];
+		NewItems[index].quantity++;
+		setItems(NewItems);
 		calculateTotal();
         calculateSubtotal();
 	};
 
 	const handleQuantityDecrease = (index) => {
-		const newItems = [...items];
-		if(newItems[index].quantity<1){
-            newItems[index].quantity=0;
-        }
-        else{
-            newItems[index].quantity--;
-        }
-		setItems(newItems);
+		const NewItems = [...items];
+            NewItems[index].quantity--;
+		setItems(NewItems);
 		calculateTotal();
         calculateSubtotal();
 	};
@@ -79,7 +70,7 @@ function Services_Provided () {
 						<div className='item-container'>
 							<div className='item-name'>
 										<FontAwesomeIcon icon={faCircle} />
-										<span><b>{item.itemName}</b> - ${parseFloat(item.price).toFixed(2)}</span>
+										<span><b>{item.service}</b> - ${parseFloat(item.price).toFixed(2)}</span>
 								
 							</div>
 							<div className='quantity'>
