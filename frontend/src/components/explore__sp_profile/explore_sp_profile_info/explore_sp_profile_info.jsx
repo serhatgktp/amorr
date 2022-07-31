@@ -5,6 +5,11 @@ import { Rating, Avatar, Badge, styled} from '@mui/material';
 
 const ExploreSpInfo = ({ id }) => {
 
+    let navigate = useNavigate();
+    function handleClick(){
+        navigate('/appointment/' + id)
+    }
+    
     // initializing values
     const [addr, setAddr] = useState('');
     const [img, setImage] = useState(null);
@@ -44,7 +49,7 @@ const ExploreSpInfo = ({ id }) => {
             <div id="service_provider_right">
                 <div id="first_line">
                     <div id="service_provider_name">{fullName}</div>
-                    <div><button id="req_appointment">Request an Appointment</button></div>
+                    <div><button id="req_appointment" onclick={handleClick}>Request an Appointment</button></div>
                 </div>
                 <div id="rating">
                     <span className="rating_num">{rating.toFixed(1)}</span>
