@@ -8,7 +8,6 @@ import ContactUs from './components/contact_us/contact_us';
 import CustomerRegistration from './components/customer_registration/customer_registration';
 import ServiceProviderRegistration from './components/service_provider_registration/service_provider_registration';
 import FAQ from './components/FAQ/FAQpage';
-
 import Home from './components/home/Home';
 import LoginSignupLanding from './components/initial_login_signup_landing/login_signup_landing';
 import InitialLogin from './components/initial-login/initial-login';
@@ -82,7 +81,7 @@ function App(){
         <Route path='/logout' element={<InitialLogin/>}/>
         <Route path = '/delete-account' element={<DeleteAccount/>}></Route>
         <Route path = '/appointment' element={<RequestAppointment/>}></Route>
-        <Route path = '/explore-sp' element={<ExploreSpProfile/>}></Route>
+        <Route path = '/explore-sp/:id' element={<ExploreSpProfile/>}></Route>
         <Route path = '/sp-my-appointments' element={<ServiceProviderAppointments/>}></Route>
         <Route path = '/customer-my-appointments' element={<CustomerAppointments/>}></Route>
         <Route path = '/review/:appointment_id' element={<ReviewRating/>}></Route>

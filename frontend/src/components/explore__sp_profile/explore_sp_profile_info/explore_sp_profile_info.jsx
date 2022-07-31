@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 import "./explore_sp_profile_info_styles.css"
 import { Rating, Avatar, Badge, styled} from '@mui/material';
 
-const ExploreSpInfo = () => {
+const ExploreSpInfo = ({ id }) => {
 
     // initializing values
     const [addr, setAddr] = useState('');
@@ -16,8 +16,8 @@ const ExploreSpInfo = () => {
 
     // dummy get request to get data
     useEffect(() => {
-        /*setImage("http://localhost:5000/get-profile-photo")
-        fetch("http://localhost:5000/get-sp-profile", {credentials: 'include'}).then(response =>
+        setImage(`http://localhost:5000/explore-profile-photo/${id}`)
+        fetch(`http://localhost:5000/explore-sp-profile/${id}`, {credentials: 'include'}).then(response =>
           response.json().then(data => {
             setAddr(data.address);
             setFullName(data.full_name);
@@ -26,7 +26,7 @@ const ExploreSpInfo = () => {
             console.log(data.num_ratings);
             console.log(data.avg_rating);
           })
-        );*/
+        );
         setAddr("100 Lorem Ipsum Road - M1C 0B7");
         setFullName("Lorem Ipsum Salons");
         setNumRating(50);
