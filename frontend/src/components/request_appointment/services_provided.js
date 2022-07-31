@@ -25,10 +25,9 @@ function Services_Provided () {
           response.json().then(data => {
             console.log(data);
 			setItems(data);
-
 			const defaultQuantity = {quantity : 0};
 			Object.keys(data).forEach(key => {
-				newItems[key] = { ...data[key], ...defaultQuantity };
+				newItems[key] = {...data[key], ...defaultQuantity };
 			});
 
 			setItems(newItems);
@@ -46,7 +45,11 @@ function Services_Provided () {
 
 	const handleQuantityDecrease = (index) => {
 		const NewItems = [...items];
-            NewItems[index].quantity--;
+		if(NewItems[index].quantity<1){
+        NewItems[index].quantity=0;
+		}else{
+			NewItems[index].quantity--;
+		}
 		setItems(NewItems);
 		calculateTotal();
         calculateSubtotal();
@@ -71,14 +74,12 @@ function Services_Provided () {
         <div className = "services-provided">
 		<div className='app-background'>
 			<div className='main-container'>
-				
 				<div className='item-list'>
 					{items.map((item, index) => (
 						<div className='item-container'>
 							<div className='item-name'>
 										<FontAwesomeIcon icon={faCircle} />
 										<span><b>{item.service}</b> - ${parseFloat(item.price).toFixed(2)}</span>
-								
 							</div>
 							<div className='quantity'>
 								<button>
