@@ -6,6 +6,7 @@ import { Rating, Avatar, Badge, styled} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const ExploreSpInfo = ({ id }) => {
+
     let navigate = useNavigate();
     function handleClick(){
         navigate('/appointment/' + id)

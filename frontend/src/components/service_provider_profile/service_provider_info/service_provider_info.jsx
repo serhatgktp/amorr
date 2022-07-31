@@ -89,6 +89,12 @@ const ServiceProviderInfo = () => {
             method: 'POST',
             credentials: "include",
             body: data
+        }).then(response => {
+            if (response.ok){
+                setTimeout(function () {
+                    window.location.reload();
+                }, 1300);
+            }
         })
     }
 
@@ -102,7 +108,7 @@ const ServiceProviderInfo = () => {
                     badgeContent={
                         <label htmlFor="change_photo" className="image-upload" id="change_photo_label"><Icon icon="mdi:pencil" inline={true} style={{ verticalAlign: '-0.2em', fontSize:'20px'}}/></label>
                     }>
-                        <div><Avatar alt="Lorem Ipsum Salons" src={img} sx={{ width: 120, height: 120, mb: 1 }} id="sp_photo"/></div>
+                        <div><Avatar alt="" src={img} sx={{ width: 120, height: 120, mb: 1 }} id="sp_photo"/></div>
                     </Badge>
                         <input type="file" name="pic" id="change_photo" accept="image/*" onChange={imageHandler}/>
                         <button id="upload_image" type="submit" onClick={handlePicSubmit}>Save profile photo</button>
