@@ -79,9 +79,9 @@ function Services_Provided () {
 						</div>
 					))}
 				</div>
+				<div className='total'>Number of services: {totalItemCount}</div>
                 
                 </div>
-				<div className='total'>Total number of services: {totalItemCount}</div>
                 
 		</div>
         <div>
