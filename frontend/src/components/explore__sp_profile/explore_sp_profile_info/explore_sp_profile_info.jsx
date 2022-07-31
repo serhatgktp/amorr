@@ -2,6 +2,7 @@ import React , { useEffect, useState }from 'react';
 import { Icon } from '@iconify/react';
 import "./explore_sp_profile_info_styles.css"
 import { Rating, Avatar, Badge, styled} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const ExploreSpInfo = ({ id }) => {
 
