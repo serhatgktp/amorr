@@ -80,7 +80,7 @@ function App(){
         <Route path='/logout' element={<InitialLogin/>}/>
         <Route path = '/delete-account' element={<DeleteAccount/>}></Route>
         <Route path = '/appointment/:id' element={<RequestAppointment/>}></Route>
-        <Route path = '/explore-sp' element={<ExploreSpProfile/>}></Route>
+        <Route path = '/explore-sp/:id' element={<ExploreSpProfile/>}></Route>
         <Route path = '/sp-my-appointments' element={<ServiceProviderAppointments/>}></Route>
       </Routes>
     </Router>

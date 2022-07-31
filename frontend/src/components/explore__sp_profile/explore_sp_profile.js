@@ -9,11 +9,9 @@ const ExploreSpProfile = () => {
 
     const { id } = useParams();
 
-    console.log("This SP's id is " + id);
-
     return(
         <body>
-            <ExploreSpInfo SP={id}/>
+            <ExploreSpInfo id={id}/>
             <div id="service_provider_profile_body_section">
                 <ExploreSpBio/>
                 <ExploreSpPriceList/>
