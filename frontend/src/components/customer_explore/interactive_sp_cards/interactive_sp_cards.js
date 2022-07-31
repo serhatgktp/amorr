@@ -6,7 +6,7 @@ import { useNavigate, useHistory } from "react-router-dom";
 function InteractiveCard({SP}) {
     let navigate = useNavigate();
     function handleClick() {
-      navigate('/explore-sp/' + SP.id)
+      navigate('/home')
     }
 
     return (

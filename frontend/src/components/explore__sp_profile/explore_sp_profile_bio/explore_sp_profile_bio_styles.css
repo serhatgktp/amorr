@@ -42,12 +42,13 @@
     font-size: 18px;
     margin-top: 8px;
     padding: 5px;
+    padding-left: 0px;
+    padding-right: 100px;
     margin-left: 30px;
     max-height: inherit;
     word-wrap: break-word;
-    height: 35vh;
+    height: 30vh;
     overflow-y: visible;
-    width: 90%;
 }
 
 #service_provider_bio #new_address{
