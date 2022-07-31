@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from 'react-router-dom';
 import './explore_sp_profile_styles.css'
 import ExploreSpPriceList from "./explore_sp_price_list/explore_sp_price_list";
 import ExploreSpBio from "./explore_sp_profile_bio/explore_sp_profile_bio";
@@ -8,15 +9,12 @@ import { useParams } from "react-router-dom";
 const ExploreSpProfile = () => {
 
     const { id } = useParams();
-
-    console.log("This SP's id is " + id);
-
     return(
         <body>
-            <ExploreSpInfo SP={id}/>
+            <ExploreSpInfo id={id}/>
             <div id="service_provider_profile_body_section">
-                <ExploreSpBio/>
-                <ExploreSpPriceList/>
+                <ExploreSpBio id={id}/>
+                <ExploreSpPriceList id={id}/>
             </div>
         </body>
     )
