@@ -1080,7 +1080,7 @@ def add_appointment():
 
     d = {'customer_uid':[cust_uid], 'sp_uid':[sp_uid], 'services':[services], 'time':[time], 'date':[date], 'price':[price], 'address':[address], 'status':['pending'], 'reviewed':['0']}
     df = pd.DataFrame.from_dict(d)
-    mu.insert(config, 'amorr.users', df)
+    mu.insert(config, 'appointments', df)
 
     resp = make_response( jsonify( {"message": "Appointment created!"} ), 200, )
     return resp
