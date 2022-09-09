@@ -100,7 +100,7 @@ localhost:3000/amorr
 ```
 
 ## Development Team
-Amorr is currently being developed by a Stackato Studio:
+Amorr is currently being developed by Stackato Studio:
 1. Efkan Serhat Goktepe
 2. Jumana Fanous
 3. Annanya Sharma
