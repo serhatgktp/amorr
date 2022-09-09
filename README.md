@@ -9,6 +9,21 @@ Amorr provides a convenient way to find and have beauty services provided to peo
 2. Do not have the means of transportation and/or
 3. Do not know about the quality of service
 
+![Landing page](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/(0).jpg)
+![About](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/%20%20(2).png)
+![Contact us](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/%20%20(3).png)
+![Log in / Sign up](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/%20%20(4).png)
+![Sign up](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/%20%20(6).png)
+![Customer Register](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/%20%20(7).png)
+![Login](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/%20%20(8).png)
+![Login Successful](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/(1).jpg)
+![Explore](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/%20%20(9).png)
+![SP Profile](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/%20%20(10).png)
+![Request Appointment](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/%20%20(11).png)
+![SP Appointments](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/%20%20(12).png)
+![Customer Appointments](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/%20%20(13).png)
+![Customer Profile](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/(14).png)
+
 ## Tools used in Development
 - Frontend: React (Installation guide [here](https://reactjs.org/docs/getting-started.html))
 - Backend Database: MySQL (Installation guide [here](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/))
