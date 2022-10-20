@@ -1,0 +1,50 @@
+.all_QuickGuide {
+    display: flex;
+    align-items: flex-end;
+    background: #F9F6EE;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+    width: 61%;
+    margin-top: 70px;
+    margin-bottom: 60px;
+    overflow: hidden;
+    float: none;
+}
+
+.all_QuickGuide .guide_container {
+    background: #F9F6EE;
+    float: left;
+    width: 300%;
+}
+
+.all_QuickGuide .hdg_guide {
+    text-align: left;
+    margin-top: 35px;
+    margin-left: 40px;
+    font-family: "poppins";
+    font-weight: 600;
+    font-size: 28px;
+}
+
+.all_QuickGuide .hdg_guide span {
+    color: black;
+    background: #F9F6EE;
+}
+.all_QuickGuide .hdg_guide span:nth-child(2) {
+    color: #d46f5e;
+}
+.all_QuickGuide .hdg_guide span:nth-child(3) {
+    color: #0b5394;
+}
+
+.all_QuickGuide .p_QuickGuide {
+    font-family: "poppins";
+    font-size: 85%;
+    font-weight: 500;
+    background: #F9F6EE;
+    text-align: left;
+    margin: 25px;
+}

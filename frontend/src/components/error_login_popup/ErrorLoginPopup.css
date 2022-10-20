@@ -1,0 +1,89 @@
+.errorLoginPopup, .overlay {
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
+
+.errorLoginPopupContent {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    line-height: 1.4;
+    padding: 14px 28px;
+    height: auto;
+    display: block;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.loginpopupUpper {
+    padding: 2em;
+    background-color: red;
+    display: block;
+    color: #fff;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
+}
+
+.loginpopupLower {
+    padding: 2em 2em 5em 2em;
+    background: #fff;
+    display: block;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.25);
+}
+
+#errorLoginIcon {
+    color: #fff;
+    font-size: 100px;
+}
+
+#errorLoginHeading {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+#errorLoginPara {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+#contBtn {
+    position: relative;
+    top: 2em;
+    text-decoration: none;
+    background: red;
+    color: #fff;
+    margin: auto;
+    padding: .8em 3em;
+    box-shadow: 0px 2px 6px rgba(50, 50, 50, 0.21);
+    border-radius: 25px;
+    -webkit-transition: all .4s ease;
+          -moz-transition: all .4s ease;
+          -o-transition: all .4s ease;
+          transition: all .4s ease;
+}
+
+#contBtn:hover {
+    padding: .9em 3.1em;
+    -webkit-transition: all .4s ease;
+            -moz-transition: all .4s ease;
+            -o-transition: all .4s ease;
+            transition: all .4s ease;
+}

@@ -1,0 +1,154 @@
+*{
+    font-family: 'Poppins';
+}
+
+#customer_info{
+    background-color: #F9F6EE;
+}
+
+#customer_name{
+    font-weight: 600;
+    font-size: 28px;
+}
+
+#customer_photo{
+    margin-top: 8px;
+}
+
+#rating{
+    display:flex;
+    justify-content: space-between;
+    width: 200px;
+    margin: 6px 0px;
+}
+
+#upload_image{
+    cursor: pointer;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    color: gray;
+    border-radius: 40px;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+#upload_image:hover{
+    color: black;
+}
+
+.rating_num{
+    font-size: 18px;
+}
+
+#change_photo_label{
+    background-color: #345392;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+#change_photo_label:hover{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0 0);
+}
+
+#change_photo{
+    display:none;
+}
+
+#customer_left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 15%;
+}
+
+#customer_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 85%;
+    margin-left: 20px;
+}
+
+#save_changes{
+    cursor: pointer;
+    background-color: #345392;
+    border: none;
+    border-radius: 40px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #F9F6EE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#services_ordered{
+    font-size: 18px;
+    margin-top: 6px;
+}
+
+#customer_info{
+    display: flex;
+    padding: 20px;
+    margin: 20px 100px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+#editable_line{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#editable_input{
+    width:80%;
+}
+
+#user_address{
+    font-size: 18px;
+    margin-top: 8px;
+    width: 80%;
+    padding: 5px;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+#new_address{
+    border-radius: 30px;
+    border: none;
+    padding: 5px;
+    font-size: 18px;
+    padding-left: 15px;
+    width: 90%;
+    margin-top: 8px;
+    outline: 5px auto Highlight;
+}
+
+button:hover{
+    transform: scale(1.03);
+}
+
+#customer_info #edit_button{
+    background: none;
+    border: none;
+    color: gray;
+}
+
+#customer_info #edit_button:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    color: black;
+}
+@media only screen and (max-width: 948px) {
+    #icon{
+        display: none;
+    }
+}
