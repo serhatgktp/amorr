@@ -28,6 +28,8 @@ class User:
         else:
             self.privilege_title = 'Unknown'
             
+# TODO: Split functions into classes
+            
 # Database Settings
 config = configparser.ConfigParser()
 config.read('db_config.ini')
