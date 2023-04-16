@@ -7,7 +7,7 @@ Amorr is a web application that serves as an online platform providing users wit
 Amorr provides a convenient way to find and have beauty services provided to people who:
 1. Do not have the time (Scheduling issues or Traffic) and/or
 2. Do not have the means of transportation and/or
-3. Do not know about the quality of service
+3. Do not know about the quality of servicee
 
 ![Landing page](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/(0).jpg)
 ![About](https://github.com/UTSCCSCC01/finalprojects22-stackato-studio/blob/development-sprint-4/doc/screenshots/%20%20(2).png)
